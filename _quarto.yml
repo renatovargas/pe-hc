@@ -1,0 +1,23 @@
+project:
+  type: website
+  output-dir: docs
+  execute-dir: project
+
+website:
+  title: "Perú HC"
+  description: "Implementación de Huellas de Carbono por parte del INEI de Perú"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+
+format:
+  html:
+    theme:
+      - flatly
+      - brand
+    css: styles.css
+    toc: true
+
+
+
