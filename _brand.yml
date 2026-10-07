@@ -1,0 +1,20 @@
+color:
+  palette:
+    white: "#FFFFFF"
+    dark-grey: "#222222"
+    blue: "#204B92"
+  background: white
+  foreground: blue
+  primary: black
+
+# logo: 
+#   medium: imf-statistics-logo.svg
+
+typography:
+  fonts:
+    - family: Roboto
+      source: google
+    - family: Oswald
+      source: google
+  base: Roboto
+  headings: Oswald

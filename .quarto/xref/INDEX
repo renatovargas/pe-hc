@@ -4,5 +4,11 @@
   },
   "about.qmd": {
     "about.html": "06819fdf"
+  },
+  "presentaciones/01-intro-algebra.qmd": {
+    "01-intro-algebra.html": "da0da731"
+  },
+  "materiales/01-intro-algebra/index.qmd": {
+    "index.html": "2f187a26"
   }
 }

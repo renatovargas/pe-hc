@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "Descargo de responsabilidad"
 ---
 
-About this site
+A pesar que el Fondo Monetario Internacional (FMI) ha acompañado este proceso y tiene el objetivo de mostrar alternativas de implementación de las metodologías tratadas, nada de lo expresado en este sitio constituye una instrucción ni recomendación definitiva sobre las metodologías a adoptar. Las opiniones aquí incluidas no constituyen una directriz del FMI y no deben interpretarse como apoyo de las ideas de los consultores que han contribuido a la construcción de este sitio y su material.

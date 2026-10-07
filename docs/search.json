@@ -2,15 +2,260 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "Descargo de responsabilidad",
     "section": "",
-    "text": "About this site"
+    "text": "A pesar que el Fondo Monetario Internacional (FMI) ha acompañado este proceso y tiene el objetivo de mostrar alternativas de implementación de las metodologías tratadas, nada de lo expresado en este sitio constituye una instrucción ni recomendación definitiva sobre las metodologías a adoptar. Las opiniones aquí incluidas no constituyen una directriz del FMI y no deben interpretarse como apoyo de las ideas de los consultores que han contribuido a la construcción de este sitio y su material."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Perú HC",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "Implementación de Huellas de Carbono en Perú\nEl Instituto Nacional de Estadística e Informática de Perú, con acompañamiento del Fondo Monetario Internacional implementa la metodología de Huellas de Carbono en Perú. Aquí se recopila una serie de materiales útiles para este proceso.\n\n\nObjetivos\n\nQue los participantes se familiaricen con el álgebra matricial y su notación.\nQue los participantes se familiaricen con la metodología de insumo-producto ambientalmente extendido.\nQue los participantes implementen la metodología de huella de carbono de manera práctica.\nQue los participantes se familiaricen con el diseño de flujo de análisis de datos."
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#contenido",
+    "href": "presentaciones/01-intro-algebra.html#contenido",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "Contenido",
+    "text": "Contenido\n\nDefiniciones básicas.\nSuma y sustracción.\nMultiplicación.\nTransposición de matrices.\nSistemas de ecuaciones lineales.\nMatrices diagonales.\nVectores sumatorios."
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#section",
+    "href": "presentaciones/01-intro-algebra.html#section",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "",
+    "text": "Descargar el archivo de ejemplo:\noperaciones-matriciales.xlsx"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#definición-de-una-matriz",
+    "href": "presentaciones/01-intro-algebra.html#definición-de-una-matriz",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "Definición de una matriz",
+    "text": "Definición de una matriz\nUna matriz es un arreglo rectangular de elementos, ordenados en filas y columnas (Miller & Blair, 2022). En insumo-producto, los elementos son números reales: flujos, coeficientes o multiplicadores.\n\\[\n\\mathbf{A}_{m \\times n} = \\begin{bmatrix} a_{11} & a_{12} & \\cdots & a_{1n} \\\\ a_{21} & a_{22} & \\cdots & a_{2n} \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ a_{m1} & a_{m2} & \\cdots & a_{mn} \\end{bmatrix} = [\\, a_{ij} \\,]\n\\]\n\nLas matrices se denotan con letras mayúsculas en negrita: \\(\\mathbf{A}\\).\nLa dimensión es \\(m \\times n\\): \\(m\\) filas y \\(n\\) columnas.\nEl elemento \\(a_{ij}\\) está en la fila \\(i\\) y la columna \\(j\\).\nUn vector es una matriz de una sola columna (\\(m \\times 1\\)) o de una sola fila (\\(1 \\times n\\))."
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#crear-una-matriz",
+    "href": "presentaciones/01-intro-algebra.html#crear-una-matriz",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "Crear una matriz",
+    "text": "Crear una matriz\n\n\nNotación\n\\[\n\\mathbf{A}_{m \\times n} = \\begin{bmatrix} a_{11} & a_{12} & a_{13} \\\\ a_{21} & a_{22} & a_{23} \\end{bmatrix} \\qquad \\mathbf{M} = \\begin{bmatrix} 2 & 1 & 3 \\\\ 4 & 6 & 12 \\end{bmatrix}\n\\]\nEn Excel\n\n\nEn R\n\nc &lt;- c(2, 1, 3, 4, 6, 12)\nc\n\n[1]  2  1  3  4  6 12\n\nM &lt;- matrix(c, nrow = 2, ncol = 3, byrow = TRUE)\nM\n\n     [,1] [,2] [,3]\n[1,]    2    1    3\n[2,]    4    6   12\n\n\n\n\n\n\nMatrices en Excel\n\n\nSeleccione un rango y asígnele un nombre en el Cuadro de nombres. Para hacer operaciones matriciales, seleccione un rango con las dimensiones del resultado, escriba = seguido de la fórmula y presione CTRL + ENTER. Esto envolverá a la fórmula entre { } como se verá más adelante en la diapositiva de Suma lo cual señalará que se trata de una operación matricial."
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#índices",
+    "href": "presentaciones/01-intro-algebra.html#índices",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "Índices",
+    "text": "Índices\n\n\nNotación\n\\[\n\\mathbf{M} = \\begin{bmatrix} 2 & 1 & 3 \\\\ 4 & 6 & 12 \\end{bmatrix}\n\\]\n\\[\nm_{23} = 12 \\qquad m_{22} = 6\n\\]\n\\[\n\\mathbf{c}' = \\begin{bmatrix} 2 & 1 & 3 & 4 & 6 & 12 \\end{bmatrix} \\qquad c_5 = 6\n\\]\nEn Excel\n\n\nEn R\n\nM[2, 3]\n\n[1] 12\n\nM[2, 2]\n\n[1] 6\n\n# En vectores, por posición\nc[5]\n\n[1] 6"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#suma",
+    "href": "presentaciones/01-intro-algebra.html#suma",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "Suma",
+    "text": "Suma\n\n\nNotación\n\\[\n\\mathbf{S} = \\mathbf{M} + \\mathbf{N}, \\quad s_{ij} = m_{ij} + n_{ij}\n\\]\n\\[\n\\mathbf{N} = \\begin{bmatrix} 1 & 2 & 3 \\\\ 3 & 2 & 1 \\end{bmatrix}, \\quad \\mathbf{S} = \\begin{bmatrix} 3 & 3 & 6 \\\\ 7 & 8 & 13 \\end{bmatrix}\n\\]\nEn Excel\n\n\nEn R\n\nN &lt;- matrix(\n  c(1,2,3, 3,2,1), \n  nrow = 2, \n  ncol = 3, \n  byrow = TRUE\n  )\nN\n\n     [,1] [,2] [,3]\n[1,]    1    2    3\n[2,]    3    2    1\n\ndim(M)\n\n[1] 2 3\n\ndim(N)\n\n[1] 2 3\n\ndim(M) == dim(N)\n\n[1] TRUE TRUE\n\nS &lt;- M + N\nS\n\n     [,1] [,2] [,3]\n[1,]    3    3    6\n[2,]    7    8   13"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#suma-de-matrices-de-dimensiones-diferentes-no-definida",
+    "href": "presentaciones/01-intro-algebra.html#suma-de-matrices-de-dimensiones-diferentes-no-definida",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "Suma de matrices de dimensiones diferentes no definida",
+    "text": "Suma de matrices de dimensiones diferentes no definida\n\n\nNotación\n\\[\n\\mathbf{M}_{2 \\times 3} + \\mathbf{O}_{2 \\times 2}\n\\]\n\\[\n\\mathbf{M} = \\begin{bmatrix} 2 & 1 & 3 \\\\ 4 & 6 & 12 \\end{bmatrix} \\qquad \\mathbf{O} = \\begin{bmatrix} 2 & 2 \\\\ 3 & 4 \\end{bmatrix}\n\\]\nEn Excel\n\n\nEn R\nComo esta operación matricial no está definida, R la marca como un error.\n\nO &lt;- matrix(c(2,2,3,4), ncol = 2, nrow = 2, byrow = TRUE)\nM\n\n     [,1] [,2] [,3]\n[1,]    2    1    3\n[2,]    4    6   12\n\nO\n\n     [,1] [,2]\n[1,]    2    2\n[2,]    3    4\n\nM + O\n\nError in `M + O`:\n! non-conformable arrays"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#resta",
+    "href": "presentaciones/01-intro-algebra.html#resta",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "Resta",
+    "text": "Resta\n\n\nNotación\n\\[\n\\mathbf{D} = \\mathbf{M} - \\mathbf{N}, \\quad d_{ij} = m_{ij} - n_{ij}\n\\]\n\\[\n\\mathbf{D} = \\begin{bmatrix} 1 & -1 & 0 \\\\ 1 & 4 & 11 \\end{bmatrix}\n\\]\nEn Excel\n\n\nEn R\n\nD &lt;- M - N\nM\n\n     [,1] [,2] [,3]\n[1,]    2    1    3\n[2,]    4    6   12\n\nN\n\n     [,1] [,2] [,3]\n[1,]    1    2    3\n[2,]    3    2    1\n\nD\n\n     [,1] [,2] [,3]\n[1,]    1   -1    0\n[2,]    1    4   11"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#igualdad",
+    "href": "presentaciones/01-intro-algebra.html#igualdad",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "Igualdad",
+    "text": "Igualdad\n\n\nNotación\n\\[\n\\mathbf{A} = \\mathbf{B} \\iff a_{ij} = b_{ij} \\ \\ \\forall \\, i, j\n\\]\n\\[\n\\text{dim}(\\mathbf{A}) = \\text{dim}(\\mathbf{B})\n\\]\nEn Excel\n\n\nEn R\n\ndim(M) == dim(N) # mismas dimensiones\n\n[1] TRUE TRUE\n\nM\n\n     [,1] [,2] [,3]\n[1,]    2    1    3\n[2,]    4    6   12\n\nN\n\n     [,1] [,2] [,3]\n[1,]    1    2    3\n[2,]    3    2    1\n\nM == N # comparación elemento por elemento\n\n      [,1]  [,2]  [,3]\n[1,] FALSE FALSE  TRUE\n[2,] FALSE FALSE FALSE\n\nall(M == N) # todos los elementos no son iguales\n\n[1] FALSE\n\nM2 &lt;- M\nM2\n\n     [,1] [,2] [,3]\n[1,]    2    1    3\n[2,]    4    6   12\n\nall(M == M2) # todos los e\n\n[1] TRUE"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#la-matriz-nula",
+    "href": "presentaciones/01-intro-algebra.html#la-matriz-nula",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "La matriz nula",
+    "text": "La matriz nula\n\n\nNotación\n\\[\n\\mathbf{0} = \\begin{bmatrix} 0 & 0 & 0 \\\\ 0 & 0 & 0 \\end{bmatrix}\n\\]\n\\[\n\\mathbf{M} + \\mathbf{0} = \\mathbf{M}\n\\]\nEn Excel\n\n\nEn R\n\nZ &lt;- matrix(\n  c(0,0,0, 0,0,0), \n  nrow = 2, \n  ncol = 3, \n  byrow = TRUE)\nM\n\n     [,1] [,2] [,3]\n[1,]    2    1    3\n[2,]    4    6   12\n\nZ\n\n     [,1] [,2] [,3]\n[1,]    0    0    0\n[2,]    0    0    0\n\nM + Z\n\n     [,1] [,2] [,3]\n[1,]    2    1    3\n[2,]    4    6   12"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#multiplicación-por-un-escalar",
+    "href": "presentaciones/01-intro-algebra.html#multiplicación-por-un-escalar",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "Multiplicación por un escalar",
+    "text": "Multiplicación por un escalar\nSe multiplica cada elemento de la matriz por el valor único y se coloca el resultado en los mismos lugares de una matriz con las mismas dimensiones a la matriz por la cual se está multiplicando el escalar. Esto es útil, por ejemplo, para multiplicar por un tipo de cambio.\n\n\nNotación\n\\[\nk\\mathbf{M} = [\\, k \\, m_{ij} \\,]\n\\]\n\\[\n2\\mathbf{M} = \\begin{bmatrix} 4 & 2 & 6 \\\\ 8 & 12 & 24 \\end{bmatrix}\n\\]\nEn Excel\n\n\nEn R\n\nM\n\n     [,1] [,2] [,3]\n[1,]    2    1    3\n[2,]    4    6   12\n\nMx2 &lt;- M * 2\nMx2\n\n     [,1] [,2] [,3]\n[1,]    4    2    6\n[2,]    8   12   24"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#multiplicación-de-matrices-definición",
+    "href": "presentaciones/01-intro-algebra.html#multiplicación-de-matrices-definición",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "Multiplicación de matrices: definición",
+    "text": "Multiplicación de matrices: definición\nSean \\(\\mathbf{M}\\) de dimensión \\(m \\times r\\) y \\(\\mathbf{Q}\\) de dimensión \\(r \\times n\\). Las matrices son conformables para la multiplicación cuando el número de columnas de la primera es igual al número de filas de la segunda.\n\\[\n\\mathbf{P}_{m \\times n} = \\mathbf{M}_{m \\times r} \\, \\mathbf{Q}_{r \\times n}; \\quad p_{ij} = \\sum_{k=1}^{r} m_{ik} \\, q_{kj}\n\\]\nCada elemento \\(p_{ij}\\) es la suma de los productos de los elementos de la fila \\(i\\) de \\(\\mathbf{M}\\) por los elementos de la columna \\(j\\) de \\(\\mathbf{Q}\\) (Miller & Blair, 2022). La matriz resultante \\(\\mathbf{P}\\) es de dimensión \\(m \\times n\\): tiene el número de filas de \\(\\mathbf{M}\\) y el número de columnas de \\(\\mathbf{Q}\\).\nEn general, \\(\\mathbf{M}\\mathbf{Q} \\neq \\mathbf{Q}\\mathbf{M}\\) , y a veces solo uno de los dos productos está definido.\n\n\\[\n\\begin{bmatrix} 2 & 1 & 3 \\\\ 4 & 6 & 12 \\end{bmatrix}\n\\times\n\\begin{bmatrix} 2 & 0 & 4 \\\\ 1 & 1 & 2 \\\\ 3 & 4 & 5 \\end{bmatrix}\n=\n\\begin{bmatrix}\n2 \\cdot 2 + 1 \\cdot 1 + 3 \\cdot 3 & 2 \\cdot 0 + 1 \\cdot 1 + 3 \\cdot 4 & 2 \\cdot 4 + 1 \\cdot 2 + 3 \\cdot 5 \\\\\n4 \\cdot 2 + 6 \\cdot 1 + 12 \\cdot 3 & 4 \\cdot 0 + 6 \\cdot 1 + 12 \\cdot 4 & 4 \\cdot 4 + 6 \\cdot 2 + 12 \\cdot 5\n\\end{bmatrix}\n\\]"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#multiplicación-de-matrices-en-la-práctica",
+    "href": "presentaciones/01-intro-algebra.html#multiplicación-de-matrices-en-la-práctica",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "Multiplicación de matrices: en la práctica",
+    "text": "Multiplicación de matrices: en la práctica\n\n\nNotación\n\\[\n\\mathbf{P}_{m \\times n} = \\mathbf{M}_{m \\times r} \\, \\mathbf{Q}_{r \\times n}; \\quad p_{ij} = \\sum_{k=1}^{r} m_{ik} \\, q_{kj}\n\\]\n\\[\n\\mathbf{P} = \\begin{bmatrix} 14 & 13 & 25 \\\\ 50 & 54 & 88 \\end{bmatrix}\n\\]\nEn Excel\n\n\nEn R\n\nQ &lt;- matrix(\n  c(2,0,4, 1,1,2, 3,4,5), \n  nrow = 3, \n  ncol = 3, \n  byrow = TRUE)\nQ\n\n     [,1] [,2] [,3]\n[1,]    2    0    4\n[2,]    1    1    2\n[3,]    3    4    5\n\n# A mano\nc(\n  (2*2 + 1*1 + 3*3),(2*0 + 1*1 + 3*4),(2*4 + 1*2 + 3*5),\n  (4*2 + 6*1 + 12*3),(4*0 + 6*1 + 12*4),(4*4 + 6*2 + 12*5)\n )\n\n[1] 14 13 25 50 54 88\n\nP &lt;- M %*% Q\nP\n\n     [,1] [,2] [,3]\n[1,]   14   13   25\n[2,]   50   54   88"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#multiplicación-no-conformable",
+    "href": "presentaciones/01-intro-algebra.html#multiplicación-no-conformable",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "Multiplicación no conformable",
+    "text": "Multiplicación no conformable\n\n\nNotación\n\\[\n\\mathbf{Q}_{3 \\times 3} \\, \\mathbf{M}_{2 \\times 3} \\text{ no es conformable}\n\\]\n\\[\n3 \\neq 2\n\\]\nEn Excel\n\n\nEn R\nQ tiene 3 columnas y M solo 2 filas\n\nQ %*% M\n\nError in `Q %*% M`:\n! non-conformable arguments"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#identidad-el-intento-incorrecto",
+    "href": "presentaciones/01-intro-algebra.html#identidad-el-intento-incorrecto",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "Identidad: el intento incorrecto",
+    "text": "Identidad: el intento incorrecto\n\n\nIntuitivamente pensamos que una matriz de unos es el equivalente al 1 del álgebra normal, es decir un número por el cual yo puedo multiplicar a otro número y obtener como resultado ese mismo número. Pero esto es incorrecto.\nNotación\n\\[\n\\mathbf{M} = \\begin{bmatrix} 2 & 1 & 3 \\\\ 4 & 6 & 12 \\end{bmatrix} \\times \\mathbf{J} = \\begin{bmatrix} 1 & 1 & 1 \\\\ 1 & 1 & 1 \\\\ 1 & 1 & 1 \\end{bmatrix}\n\\]\n\\[\n\\mathbf{M}\\mathbf{J} = \\begin{bmatrix} 6 & 6 & 6 \\\\ 22 & 22 & 22 \\end{bmatrix} \\neq \\mathbf{M}\n\\]\n\nEn Excel\n\nEn R\n\n# Una matriz de 1s no es la identidad\nM %*% matrix(1, nrow = 3, ncol = 3)\n\n     [,1] [,2] [,3]\n[1,]    6    6    6\n[2,]   22   22   22"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#matriz-identidad-posmultiplicación",
+    "href": "presentaciones/01-intro-algebra.html#matriz-identidad-posmultiplicación",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "Matriz identidad: posmultiplicación",
+    "text": "Matriz identidad: posmultiplicación\n\n\nNotación\nUna matriz diagonal de unos es la matriz identidad correcta.\n\\[\n\\mathbf{I}_3 = \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix} \\qquad  \\mathbf{M}\\mathbf{I} = \\mathbf{M}\n\\]\nEn Excel\n\n\nEn R\n\nI &lt;- matrix(\n  c(1,0,0, 0,1,0, 0,0,1), \n  nrow = 3, \n  ncol = 3, \n  byrow = TRUE)\n\nI\n\n     [,1] [,2] [,3]\n[1,]    1    0    0\n[2,]    0    1    0\n[3,]    0    0    1\n\nM\n\n     [,1] [,2] [,3]\n[1,]    2    1    3\n[2,]    4    6   12\n\nM %*% I\n\n     [,1] [,2] [,3]\n[1,]    2    1    3\n[2,]    4    6   12"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#identidad-para-matrices-grandes",
+    "href": "presentaciones/01-intro-algebra.html#identidad-para-matrices-grandes",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "Identidad para matrices grandes",
+    "text": "Identidad para matrices grandes\n\n\nNotación\n\\[\n\\mathbf{I}_n: \\ \\delta_{ij} = \\begin{cases} 1 & i = j \\\\ 0 & i \\neq j \\end{cases}\n\\]\nEn Excel\nSeleccionar todo el rango y usar =MUNIT().\n\n\nEn R\n\ndim(M)\n\n[1] 2 3\n\ndim(M)[1]\n\n[1] 2\n\ndim(M)[2]\n\n[1] 3\n\nI3 &lt;- diag(3)\nI3\n\n     [,1] [,2] [,3]\n[1,]    1    0    0\n[2,]    0    1    0\n[3,]    0    0    1\n\ndiag(dim(M)[2])\n\n     [,1] [,2] [,3]\n[1,]    1    0    0\n[2,]    0    1    0\n[3,]    0    0    1"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#matriz-identidad-premultiplicación",
+    "href": "presentaciones/01-intro-algebra.html#matriz-identidad-premultiplicación",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "Matriz identidad: premultiplicación",
+    "text": "Matriz identidad: premultiplicación\n\n\nNotación\n\\[\n\\mathbf{I}_2 = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}\n\\]\n\\[\n\\mathbf{I}\\mathbf{M} = \\mathbf{M}\n\\]\nEn Excel\n\n\nEn R\n\ndiag(dim(M)[1]) %*% M\n\n     [,1] [,2] [,3]\n[1,]    2    1    3\n[2,]    4    6   12"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#transposición",
+    "href": "presentaciones/01-intro-algebra.html#transposición",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "Transposición",
+    "text": "Transposición\n\n\nNotación\n\\[\n\\mathbf{M}' = \\mathbf{M}^{T}, \\quad (\\mathbf{M}')_{ij} = m_{ji}\n\\]\n\\[\n\\mathbf{M}' = \\begin{bmatrix} 2 & 4 \\\\ 1 & 6 \\\\ 3 & 12 \\end{bmatrix}\n\\]\nEn Excel\nUsar TRANSPONER() o TRANSPOSE().\n\nEn R\n\nMt &lt;- t(M)\nMt\n\n     [,1] [,2]\n[1,]    2    4\n[2,]    1    6\n[3,]    3   12"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#transposición-de-vectores",
+    "href": "presentaciones/01-intro-algebra.html#transposición-de-vectores",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "Transposición de vectores",
+    "text": "Transposición de vectores\n\n\nNotación\n\\[\n\\mathbf{c}' = \\begin{bmatrix} 2 & 1 & 3 & 4 & 6 & 12 \\end{bmatrix}\n\\]\n\\[\n(\\mathbf{c}')' = \\mathbf{c}\n\\]\nEn Excel\nUsar TRANSPONER() o TRANSPOSE())\n\nEn R\nEn R, los vectores no tienen dimensiones. R los conforma como fila o columna al multiplicar, siempre que su largo sea el requerido para la pre o posmultiplicación. Pero se puede forzar al convertirlos en matrices y transponerlas según sea necesario.\n\nt(c) # transpone y convierte un vector en matriz\n\n     [,1] [,2] [,3] [,4] [,5] [,6]\n[1,]    2    1    3    4    6   12\n\nt(t(c))\n\n     [,1]\n[1,]    2\n[2,]    1\n[3,]    3\n[4,]    4\n[5,]    6\n[6,]   12"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#sistemas-de-ecuaciones-lineales",
+    "href": "presentaciones/01-intro-algebra.html#sistemas-de-ecuaciones-lineales",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "Sistemas de ecuaciones lineales",
+    "text": "Sistemas de ecuaciones lineales\nUn sistema de \\(n\\) ecuaciones lineales con \\(n\\) incógnitas tiene la forma:\n\\[\n\\begin{aligned}\na_{11}x_1 + a_{12}x_2 + \\cdots + a_{1n}x_n &= b_1 \\\\\n&\\vdots \\\\\na_{n1}x_1 + a_{n2}x_2 + \\cdots + a_{nn}x_n &= b_n\n\\end{aligned}\n\\]\nSe puede representar como \\(\\mathbf{A}\\mathbf{x} = \\mathbf{b}\\), donde \\(\\mathbf{A} = [\\, a_{ij} \\,]\\) es la matriz de coeficientes (\\(n \\times n\\)), \\(\\mathbf{x}\\) es el vector de incógnitas (\\(n \\times 1\\)) y \\(\\mathbf{b}\\) es el vector de constantes (\\(n \\times 1\\)).\nPor ejemplo:\n\\[\n\\begin{aligned}\n2x_1 + x_2 &= 10 \\\\\n5x_1 + 3x_2 &= 26\n\\end{aligned}\n\\quad \\Rightarrow \\quad\n\\begin{bmatrix} 2 & 1 \\\\ 5 & 3 \\end{bmatrix}\\begin{bmatrix} x_1 \\\\ x_2 \\end{bmatrix} = \\begin{bmatrix} 10 \\\\ 26 \\end{bmatrix}\n\\]"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#sistemas-de-ecuaciones-lineales-en-la-práctica",
+    "href": "presentaciones/01-intro-algebra.html#sistemas-de-ecuaciones-lineales-en-la-práctica",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "Sistemas de ecuaciones lineales: en la práctica",
+    "text": "Sistemas de ecuaciones lineales: en la práctica\n\n\nEn Excel\n\n\nEn R\n\n# 2x_1 +  x_2 = 10\n# 5x_1 + 3x_2 = 26\nA &lt;- matrix(c(2,1,5,3), nrow = 2, ncol = 2, byrow = TRUE)\nb &lt;- matrix(c(10, 26), nrow = 2, ncol = 1, byrow = TRUE)\nA\n\n     [,1] [,2]\n[1,]    2    1\n[2,]    5    3\n\nb\n\n     [,1]\n[1,]   10\n[2,]   26"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#la-división-de-matrices",
+    "href": "presentaciones/01-intro-algebra.html#la-división-de-matrices",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "La división de matrices",
+    "text": "La división de matrices\nPara resolver \\(\\mathbf{A}\\mathbf{x} = \\mathbf{b}\\), la idea intuitiva es dividir \\(\\mathbf{b}\\) entre \\(\\mathbf{A}\\), como en el álgebra de números:\n\\[\nax = b \\quad \\Rightarrow \\quad x = \\frac{b}{a} = a^{-1}b\n\\]\nLa división de matrices no está definida. En su lugar se usa la inversa de \\(\\mathbf{A}\\), denotada \\(\\mathbf{A}^{-1}\\), que es la matriz que al multiplicarla por \\(\\mathbf{A}\\) da la matriz identidad \\(\\mathbf{I}\\) (Miller & Blair, 2022):\n\\[\n\\mathbf{A}^{-1}\\mathbf{A} = \\mathbf{A}\\mathbf{A}^{-1} = \\mathbf{I}\n\\]\nLa inversa cumple el papel del recíproco de un número, que al multiplicarlo por el número da 1, y la identidad cumple el papel del 1. Al premultiplicar ambos lados de la ecuación por \\(\\mathbf{A}^{-1}\\):\n\\[\n\\mathbf{A}^{-1}\\mathbf{A}\\mathbf{x} = \\mathbf{A}^{-1}\\mathbf{b} \\quad \\Rightarrow \\quad \\mathbf{x} = \\mathbf{A}^{-1}\\mathbf{b}\n\\]"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#la-inversa",
+    "href": "presentaciones/01-intro-algebra.html#la-inversa",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "La inversa",
+    "text": "La inversa\n\n\nNotación\n\\[\n\\mathbf{A}^{-1} = \\begin{bmatrix} 3 & -1 \\\\ -5 & 2 \\end{bmatrix} \\qquad \\mathbf{A}\\mathbf{A}^{-1} = \\mathbf{I}\n\\]\nEn Excel\n\n\nEn R\n\nA\n\n     [,1] [,2]\n[1,]    2    1\n[2,]    5    3\n\nsolve(A)\n\n     [,1] [,2]\n[1,]    3   -1\n[2,]   -5    2"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#la-inversa-a-mano-eliminación-de-gauss-jordan",
+    "href": "presentaciones/01-intro-algebra.html#la-inversa-a-mano-eliminación-de-gauss-jordan",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "La inversa a mano: eliminación de Gauss-Jordan",
+    "text": "La inversa a mano: eliminación de Gauss-Jordan\nDada una matriz \\(\\mathbf{A}\\) de \\(n \\times n\\), se arma una matriz ampliada de \\(n \\times 2n\\) que une a \\(\\mathbf{A}\\) con la identidad \\(\\mathbf{I}\\) de \\(n \\times n\\): \\([\\, \\mathbf{A} \\mid \\mathbf{I} \\,]\\). Se trabaja columna por columna, de izquierda a derecha, con tres operaciones permitidas entre filas. Para cada columna, en este orden:\n\nIntercambiar dos filas (\\(F_i \\leftrightarrow F_j\\)): si el elemento de la diagonal (el pivote) es 0, sube una fila con un valor distinto de 0.\nMultiplicar una fila por un número distinto de 0 (\\(F_i \\leftarrow kF_i\\)): convierte el pivote en 1.\nSumar a una fila un múltiplo de otra (\\(F_i \\leftarrow F_i + kF_j\\)): convierte en 0 el resto de la columna, arriba y abajo del pivote.\n\nLas tres operaciones son reversibles y no cambian la solución del sistema. Aplicadas a la matriz ampliada convierten \\(\\mathbf{A}\\) en \\(\\mathbf{I}\\), y la \\(\\mathbf{I}\\) original en \\(\\mathbf{A}^{-1}\\). Si en alguna columna no se encuentra un pivote distinto de 0, la matriz no tiene inversa."
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#la-inversa-a-mano-eliminación-de-gauss-jordan-1",
+    "href": "presentaciones/01-intro-algebra.html#la-inversa-a-mano-eliminación-de-gauss-jordan-1",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "La inversa a mano: eliminación de Gauss-Jordan",
+    "text": "La inversa a mano: eliminación de Gauss-Jordan\nSe aplican operaciones entre filas a la matriz ampliada \\([\\, \\mathbf{A} \\mid \\mathbf{I} \\,]\\) hasta convertir \\(\\mathbf{A}\\) en \\(\\mathbf{I}\\). Lo que queda a la derecha es \\(\\mathbf{A}^{-1}\\).\n\n\nInicio\n\\[\n\\left[\\begin{array}{cc|cc} 2 & 1 & 1 & 0 \\\\ 5 & 3 & 0 & 1 \\end{array}\\right]\n\\]\n1. \\(F_1 \\leftarrow F_1 / 2\\)\n\\[\n\\left[\\begin{array}{cc|cc} 1 & \\tfrac{1}{2} & \\tfrac{1}{2} & 0 \\\\ 5 & 3 & 0 & 1 \\end{array}\\right]\n\\]\n2. \\(F_2 \\leftarrow F_2 - 5F_1\\)\n\\[\n\\left[\\begin{array}{cc|cc} 1 & \\tfrac{1}{2} & \\tfrac{1}{2} & 0 \\\\ 0 & \\tfrac{1}{2} & -\\tfrac{5}{2} & 1 \\end{array}\\right]\n\\]\n\n3. \\(F_2 \\leftarrow 2F_2\\)\n\\[\n\\left[\\begin{array}{cc|cc} 1 & \\tfrac{1}{2} & \\tfrac{1}{2} & 0 \\\\ 0 & 1 & -5 & 2 \\end{array}\\right]\n\\]\n4. \\(F_1 \\leftarrow F_1 - \\tfrac{1}{2}F_2\\)\n\\[\n\\left[\\begin{array}{cc|cc} 1 & 0 & 3 & -1 \\\\ 0 & 1 & -5 & 2 \\end{array}\\right]\n\\]\nResultado y verificación\n\\[\n\\mathbf{A}^{-1} = \\begin{bmatrix} 3 & -1 \\\\ -5 & 2 \\end{bmatrix}, \\quad \\mathbf{A}\\mathbf{A}^{-1} = \\mathbf{I}\n\\]"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#matrices-sin-inversa",
+    "href": "presentaciones/01-intro-algebra.html#matrices-sin-inversa",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "Matrices sin inversa",
+    "text": "Matrices sin inversa\n\n\nNotación\n\\[\n\\mathbf{C} = \\begin{bmatrix} 2 & 6 \\\\ 4 & 12 \\end{bmatrix}, \\quad |\\mathbf{C}| = 0\n\\]\n\\[\n\\nexists \\, \\mathbf{C}^{-1}\n\\]\nEn Excel\n\n\nEn R\n\n# Productos cruzados iguales: matriz singular\nC &lt;- matrix(c(2,4,6,12), nrow = 2, ncol = 2)\nsolve(C)\n\nError in `solve.default()`:\n! Lapack routine dgesv: system is exactly singular: U[2,2] = 0"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#solución-del-sistema-x-a-1b",
+    "href": "presentaciones/01-intro-algebra.html#solución-del-sistema-x-a-1b",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "Solución del sistema: \\(x = A^{-1}b\\)",
+    "text": "Solución del sistema: \\(x = A^{-1}b\\)\n\n\nNotación\n\\[\n\\mathbf{x} = \\mathbf{A}^{-1}\\mathbf{b} = \\begin{bmatrix} 4 \\\\ 2 \\end{bmatrix}\n\\]\nEn Excel\n\n\nEn R\n\nA\n\n     [,1] [,2]\n[1,]    2    1\n[2,]    5    3\n\nb\n\n     [,1]\n[1,]   10\n[2,]   26\n\nx &lt;- solve(A) %*% b\nx\n\n     [,1]\n[1,]    4\n[2,]    2"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#matrices-diagonales",
+    "href": "presentaciones/01-intro-algebra.html#matrices-diagonales",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "Matrices diagonales",
+    "text": "Matrices diagonales\n\n\nNotación\n\\[\n\\mathbf{g}' = \\begin{bmatrix} 8 & 9 & 17 \\end{bmatrix} \\quad \\hat{\\mathbf{g'}} = \\begin{bmatrix} 8 & 0 & 0 \\\\ 0 & 9 & 0 \\\\ 0 & 0 & 17 \\end{bmatrix}\n\\]\nEn Excel\n\n\nEn R\n\ng &lt;- c(8,9,17)\ng\n\n[1]  8  9 17\n\n# Q sombrero: solo la diagonal\nGhat &lt;- diag(g)\nGhat\n\n     [,1] [,2] [,3]\n[1,]    8    0    0\n[2,]    0    9    0\n[3,]    0    0   17"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#inversa-de-una-matriz-diagonal",
+    "href": "presentaciones/01-intro-algebra.html#inversa-de-una-matriz-diagonal",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "Inversa de una matriz diagonal",
+    "text": "Inversa de una matriz diagonal\n\n\nNotación\n\\[\n\\hat{\\mathbf{G}}^{-1} = \\begin{bmatrix} 1/8 & 0 & 0 \\\\ 0 & 1/9 & 0 \\\\ 0 & 0 & 1/17 \\end{bmatrix} ; \\quad \\hat{\\mathbf{G}}^{-1}\\hat{\\mathbf{G}} = \\mathbf{I}\n\\]\nEn Excel\n\n\n\nEn R\n\nGhat\n\n     [,1] [,2] [,3]\n[1,]    8    0    0\n[2,]    0    9    0\n[3,]    0    0   17\n\ninvGhat &lt;- solve(Ghat)\ninvGhat\n\n      [,1]      [,2]       [,3]\n[1,] 0.125 0.0000000 0.00000000\n[2,] 0.000 0.1111111 0.00000000\n[3,] 0.000 0.0000000 0.05882353\n\ninvGhat %*% Ghat\n\n     [,1] [,2] [,3]\n[1,]    1    0    0\n[2,]    0    1    0\n[3,]    0    0    1"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#vectores-sumatorios-suma-de-filas",
+    "href": "presentaciones/01-intro-algebra.html#vectores-sumatorios-suma-de-filas",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "Vectores sumatorios: suma de filas",
+    "text": "Vectores sumatorios: suma de filas\n\n\nNotación\n\\[\n\\mathbf{i} = \\begin{bmatrix} 1 \\\\ 1 \\\\ 1 \\end{bmatrix} \\quad \\mathbf{M}\\mathbf{i} = \\begin{bmatrix} 6 \\\\ 22 \\end{bmatrix}\n\\]\nEn Excel\n\n\nEn R\n\nM\n\n     [,1] [,2] [,3]\n[1,]    2    1    3\n[2,]    4    6   12\n\nisum &lt;- matrix(1, nrow = 3, ncol = 1)\nM %*% isum\n\n     [,1]\n[1,]    6\n[2,]   22\n\n#Alternativamente\nM %*% c(1,1,1)\n\n     [,1]\n[1,]    6\n[2,]   22"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#vectores-sumatorios-suma-de-columnas",
+    "href": "presentaciones/01-intro-algebra.html#vectores-sumatorios-suma-de-columnas",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "Vectores sumatorios: suma de columnas",
+    "text": "Vectores sumatorios: suma de columnas\n\n\nNotación\n\\[\n\\mathbf{i}' = \\begin{bmatrix} 1 & 1 \\end{bmatrix} \\quad \\mathbf{i}'\\mathbf{M} = \\begin{bmatrix} 6 & 7 & 15 \\end{bmatrix}\n\\]\nEn Excel\n\n\nEn R\n\nmatrix(1, ncol = 2, nrow = 1) %*% M\n\n     [,1] [,2] [,3]\n[1,]    6    7   15\n\nc(1,1) %*% M\n\n     [,1] [,2] [,3]\n[1,]    6    7   15"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#atajos-en-excel-y-en-r",
+    "href": "presentaciones/01-intro-algebra.html#atajos-en-excel-y-en-r",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "Atajos en Excel y en R",
+    "text": "Atajos en Excel y en R\n\n\nEn Excel\n \n\nEn R\n\ncolSums(M)\n\n[1]  6  7 15\n\nrowSums(M)\n\n[1]  6 22"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#bibliografía",
+    "href": "presentaciones/01-intro-algebra.html#bibliografía",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "Bibliografía",
+    "text": "Bibliografía\nMiller, R. E., & Blair, P. D. (2022). Input-Output Analysis: Foundations and Extensions (3.ª ed.). Cambridge University Press. https://cambridge.org/9781108484763"
+  },
+  {
+    "objectID": "presentaciones/01-intro-algebra.html#section-1",
+    "href": "presentaciones/01-intro-algebra.html#section-1",
+    "title": "Álgebra matricial para insumo-producto",
+    "section": "",
+    "text": "¡Gracias!\nrenatovargas.com"
   }
 ]

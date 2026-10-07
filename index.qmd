@@ -2,6 +2,14 @@
 title: "Perú HC"
 ---
 
-This is a Quarto website.
+# Implementación de Huellas de Carbono en Perú
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+El Instituto Nacional de Estadística e Informática de Perú, con acompañamiento del Fondo Monetario Internacional implementa la metodología de Huellas de Carbono en Perú. Aquí se recopila una serie de materiales útiles para este proceso.
+
+# Objetivos
+
+* Que los participantes se familiaricen con el álgebra matricial y su notación.
+* Que los participantes se familiaricen con la metodología de insumo-producto ambientalmente extendido.
+* Que los participantes implementen la metodología de huella de carbono de manera práctica.
+* Que los participantes se familiaricen con el diseño de flujo de análisis de datos.
+

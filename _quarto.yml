@@ -2,6 +2,8 @@ project:
   type: website
   output-dir: docs
   execute-dir: project
+  resources:
+    - datos/
 
 website:
   title: "Perú HC"
@@ -14,10 +16,7 @@ website:
 format:
   html:
     theme:
-      - flatly
+      - yeti
       - brand
     css: styles.css
     toc: true
-
-
-
