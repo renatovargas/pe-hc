@@ -1,0 +1,758 @@
+---
+title: "Matrices rectangulares de insumo-producto"
+subtitle: "De los cuadros de oferta y utilización al modelo de producto por industria"
+author: 
+  - name: "Renato Vargas"
+    affiliations: 
+      - name: Economista / Consultor FMI
+  - name: "Con ejemplos de Joe St. Lawrence, consultor FMI"
+lang: es
+bibliography: refs.bib
+csl: ../../assets/apa-es.csl
+format: 
+  revealjs:
+    theme: [simple, ../pstyles.scss]
+    # Escala de las fórmulas (MathJax 2); se define antes de que cargue MathJax
+    include-in-header:
+      - text: |
+          <script>
+            window.MathJax = {
+              "HTML-CSS": { scale: 80 }
+            };
+          </script>
+    footer: "Matrices rectangulares de insumo-producto"
+    title-slide-attributes:
+      class: theme-title
+      data-state: sin-footer
+execute:
+  echo: true
+---
+
+## Temas a tratar {.theme-content}
+
+1.  Por qué matrices rectangulares.
+2.  Estructura del sistema producto por industria.
+3.  De precios de comprador a precios de productor.
+4.  El modelo de insumo-producto con matrices rectangulares.
+5.  Ejercicio numérico.
+
+## El flujo circular de la economía {#flujo-circular}
+
+Las cuentas nacionales organizan la información económica con base en la idea del flujo circular [@sna2009]. En su forma más simple:
+
+$$
+Q + M = C + X + G + I
+$$
+
+El producto total ($Q$) más las importaciones ($M$) es igual al consumo final de bienes y servicios ($C$), las exportaciones ($X$), las compras del gobierno ($G$) y la inversión en capital ($I$). En un período dado, lo que se produce y se importa es igual a lo que se utiliza.
+
+Esta ecuación se desagrega en los **cuadros de oferta y utilización**, que registran las transacciones por producto (filas) y por actividad económica o industria (columnas).
+
+## Cuadros de oferta y utilización {#cou}
+
+:::::: columns
+:::: {.column width="50%"}
+[Oferta]{.emphasis}
+
+Muestra qué productos genera cada industria y cuánto se importa de cada producto. Se compila a precios básicos o de productor, y se le agregan los márgenes de comercio y transporte y los impuestos menos subsidios a los productos, para llegar a precios de comprador.
+::::
+
+:::: {.column width="50%"}
+[Utilización]{.emphasis}
+
+Muestra qué productos consume cada industria como insumo (consumo intermedio) y cuáles se destinan a la demanda final: hogares, gobierno, inversión y exportaciones. Se compila a precios de comprador.
+::::
+::::::
+
+El valor agregado de una industria es su producción menos su consumo intermedio. La suma del valor agregado de todas las industrias, más los impuestos netos a los productos, da el producto interno bruto.
+
+## Por qué matrices rectangulares {#rectangulares}
+
+Un cuadro de insumo-producto cuadrado necesita que filas y columnas sean la misma lista. Los cuadros de oferta y utilización tienen productos en filas e industrias en columnas, y esas dos listas no coinciden: cada industria puede producir más de un producto y un producto puede ser producido por varias industrias [@millerblair2022].
+
+| Enfoque | Dimensión | Costo |
+|----------------------|---------------------|---------------------------------------|
+| Industria por industria | Cuadrada | Pierde detalle de producción primaria y secundaria; exige supuestos para reasignar la producción secundaria |
+| Producto por industria | Rectangular | Conserva el detalle por producto; requiere un paso adicional para llegar a la matriz de requerimientos totales |
+
+El Sistema de Cuentas Nacionales sugiere el enfoque industria por industria [@sna2009]. Aquí se trabaja el segundo, que conserva el detalle de los productos.
+
+## El diagrama del sistema {#diagrama}
+
+```{=html}
+<table class="diagrama">
+<thead>
+<tr><th></th><th>Productos</th><th>Industrias</th><th>Demanda final</th><th>Producto total</th></tr>
+</thead>
+<tbody>
+<tr><th>Productos</th><td class="vacio"></td><td class="bg-Z">\(\mathbf{U}\)<br><small>productos × industrias</small></td><td class="bg-f">\(\mathbf{f}\)<br><small>productos × 1</small></td><td class="bg-x">\(\mathbf{q}\)<br><small>productos × 1</small></td></tr>
+<tr><th>Industrias</th><td class="bg-V">\(\mathbf{V}\)<br><small>industrias × productos</small></td><td class="vacio"></td><td class="vacio"></td><td class="bg-x">\(\mathbf{x}\)<br><small>industrias × 1</small></td></tr>
+<tr><th>Valor agregado</th><td class="vacio"></td><td class="bg-va">\(\mathbf{v}'\)<br><small>1 × industrias</small></td><td class="vacio"></td><td class="vacio"></td></tr>
+<tr><th>Insumos totales</th><td class="bg-x">\(\mathbf{q}'\)<br><small>1 × productos</small></td><td class="bg-x">\(\mathbf{x}'\)<br><small>1 × industrias</small></td><td class="vacio"></td><td class="vacio"></td></tr>
+</tbody>
+</table>
+```
+
+## Qué contiene cada bloque {#bloques}
+
+- [$\mathbf{U}$]{.bg-Z}, matriz de **utilización** (también de absorción o de insumos): el elemento $u_{ij}$ es el valor de las compras del producto $i$ por la industria $j$.
+- [$\mathbf{V}$]{.bg-V}, matriz de **producción** (en inglés, *Make*): el elemento $v_{ij}$ es el valor del producto $j$ producido por la industria $i$.
+- [$\mathbf{f}$]{.bg-f}, vector de demanda final por producto.
+- [$\mathbf{x}$]{.bg-x}, producto total por industria, y [$\mathbf{q}$]{.bg-x}, producto total por producto.
+- [$\mathbf{v}'$]{.bg-va}, vector fila de valor agregado por industria.
+
+Con $\mathbf{i}$ como vector sumatorio del tamaño apropiado, los totales salen de sumar las filas y columnas de $\mathbf{V}$ [@millerblair2022]:
+
+$$
+\bbox[#A6C9EC,3px]{\mathbf{x}} = \bbox[#FFF0A6,3px]{\mathbf{V}}\mathbf{i} \qquad\qquad \bbox[#A6C9EC,3px]{\mathbf{q}} = \bbox[#FFF0A6,3px]{\mathbf{V}}'\mathbf{i}
+$$
+
+## Identidades del sistema {#identidades}
+
+El producto de cada producto se vende como insumo a las industrias o a la demanda final. Los insumos de cada industria se completan con el valor agregado:
+
+$$
+\bbox[#A6C9EC,3px]{\mathbf{q}} = \bbox[#B5E6A2,3px]{\mathbf{U}}\mathbf{i} + \bbox[#F2CEEF,3px]{\mathbf{f}} \qquad\qquad \bbox[#A6C9EC,3px]{\mathbf{x}}' = \mathbf{i}'\bbox[#B5E6A2,3px]{\mathbf{U}} + \bbox[#D9D6F0,3px]{\mathbf{v}'}
+$$
+
+Son los mismos balances del modelo con una matriz cuadrada, $\mathbf{x} = \mathbf{Z}\mathbf{i} + \mathbf{f}$, pero con dos clasificaciones distintas: la primera ecuación está en términos de productos y la segunda en términos de industrias.
+
+Esa diferencia es el problema central de este modelo y se resuelve más adelante.
+
+## Datos del ejercicio: utilización {#datos-u}
+
+Un ejercicio con 8 productos y 5 industrias, adaptado de un ejercicio de extensiones ambientales. Los valores son monetarios.
+
+```{r}
+#| echo: false
+productos <- c("ganado", "hierro", "leche", "queso", 
+               "combustible", "acero", "autos", "publicidad")
+industrias <- c("granjas", "minas", "alimentos", 
+                "manufacturas", "servicios")
+
+U <- matrix(
+  c(10,   0,  80,  10,  0,
+     0,   0,   0, 100,  0,
+    10,   5, 100,   0,  5,
+     0,   5,   0,   0,  5,
+   100, 200,  10,  50, 50,
+     0,   5,   0, 145,  0,
+    10,   5,   5,   5, 10,
+     5,  15,  20,  40, 20),
+  nrow = 8, byrow = TRUE,
+  dimnames = list(productos, industrias))
+```
+
+:::::: columns
+:::: {.column width="50%"}
+[En Excel]{.emphasis}
+
+Insertar captura de pantalla de Excel aquí.
+::::
+
+::: {.column width="50%"}
+[En R]{.emphasis}
+
+```{r}
+U
+```
+:::
+::::::
+
+## Datos del ejercicio: producción {#datos-v}
+
+Las minas producen hierro y combustible; las manufacturas producen combustible, acero y autos. Es producción secundaria, que un cuadro cuadrado tendría que reasignar.
+
+```{r}
+#| echo: false
+V <- matrix(
+  c(100,   0, 100,  10,    0,   0,   0,   0,
+      0, 100,   0,   0, 1000,   0,   0,   0,
+      0,   0,  80, 200,    0,   0,   0,   0,
+      0,   0,   0,   0,   10, 150, 200,   0,
+      0,   0,   0,   0,    0,   0,   0, 100),
+  nrow = 5, byrow = TRUE,
+  dimnames = list(industrias, productos))
+```
+
+:::::: columns
+:::: {.column width="40%"}
+[En Excel]{.emphasis}
+
+Insertar captura de pantalla de Excel aquí.
+::::
+
+::: {.column width="60%"}
+[En R]{.emphasis}
+
+```{r}
+V
+```
+:::
+::::::
+
+## Datos del ejercicio: demanda final y valor agregado {#datos-e}
+
+```{r}
+f <- c(0, 0, 60, 200, 600, 0, 165, 0)
+names(f) <- productos
+f
+
+va <- c(75, 865, 65, 10, 10)
+names(va) <- industrias
+va
+```
+
+## Totales y balances {#balances}
+
+:::::: columns
+:::: {.column width="50%"}
+[Notación]{.emphasis}
+
+$$
+\bbox[#A6C9EC,3px]{\mathbf{x}} = \bbox[#FFF0A6,3px]{\mathbf{V}}\mathbf{i} \qquad \bbox[#A6C9EC,3px]{\mathbf{q}} = \bbox[#FFF0A6,3px]{\mathbf{V}}'\mathbf{i}
+$$
+
+$$
+\mathbf{q} = \mathbf{U}\mathbf{i} + \mathbf{f}
+$$
+
+[En Excel]{.emphasis}
+
+Insertar captura de pantalla de Excel aquí.
+::::
+
+::: {.column width="50%"}
+[En R]{.emphasis}
+
+```{r}
+ic <- rep(1, 8)
+ii <- rep(1, 5)
+
+x <- V %*% ic
+q <- t(V) %*% ii
+
+# Producto total contra utilización más demanda final
+cbind(q, U %*% ii + f)
+```
+:::
+::::::
+
+## Totales por industria {#balance-x}
+
+Cada industria usa insumos y valor agregado por el mismo valor que su producto total.
+
+```{r}
+cbind(x, colSums(U) + va)
+```
+
+Si ambas columnas coinciden en todas las filas, el cuadro es consistente. Esta revisión es la calibración del sistema: sin ella, los pasos siguientes no reproducen los datos originales.
+
+## Una matriz cuadrada vive en un solo juego de precios {#precios-contexto}
+
+En un cuadro cuadrado, cada flujo está valorado de la misma manera: todo a precios de comprador, o todo a precios de productor, y todo incluyendo importaciones o todo solo producción nacional. Así, lo que vende una fila coincide con lo que compra una columna, y los coeficientes técnicos tienen sentido.
+
+Los cuadros de oferta y utilización no cumplen esa condición: la oferta se registra a precios de productor y la utilización a precios de comprador.
+
+## Un mismo producto, dos precios {#precios-ejemplo}
+
+Un producto cambia de precio en el camino de la fábrica al comprador:
+
+| Concepto | Valor |
+|--------------------------------------|-------:|
+| Precio de productor (a la puerta de la fábrica) | 100 |
+| Más margen de comercio | 20 |
+| Más margen de transporte | 5 |
+| Más impuestos menos subsidios a los productos | 10 |
+| **Precio de comprador** | **135** |
+
+La oferta registra los 100; la utilización registra los 135. Si se combinan tal cual, el total de un producto en la oferta no coincide con el de la utilización, y los 35 de diferencia se atribuirían a la industria que lo compra, aunque corresponden al comercio, al transporte y al gobierno.
+
+Antes de calcular coeficientes hay que llevar la utilización al mismo juego de precios que la oferta. Se hace en tres ajustes: márgenes, importaciones competitivas e impuestos.
+
+## De precios de comprador a precios de productor: márgenes {#margenes}
+
+La utilización está a precios de comprador y la oferta a precios de productor. Cada transacción de la utilización incluye los márgenes de comercio y transporte (y de servicios como electricidad y agua) que llevan el producto al punto de compra.
+
+Se supone que, para cada producto, la proporción de margen es la misma en todas sus compras. Con ese supuesto:
+
+1.  Se resta el margen de cada fila de la matriz de utilización.
+2.  Se suman los márgenes extraídos en un vector fila.
+3.  Se vuelven a agregar en la fila del servicio que representa el margen (comercio, transporte, etc.).
+
+Los márgenes pasan a ser insumos de servicios para cada industria. Se aplica el mismo procedimiento al vector de demanda final. Las matrices resultantes se denotan $\widetilde{\mathbf{U}}$ y $\widetilde{\mathbf{f}}$; la tilde indica que todavía contienen impuestos e importaciones competitivas.
+
+## Importaciones competitivas e impuestos: planteamiento {#importaciones}
+
+Los coeficientes técnicos deben describir transacciones entre industrias nacionales. Si $\widetilde{\mathbf{U}}$ incluye compras a productores extranjeros e impuestos, un aumento de la demanda final aparecería como producción de industrias extranjeras con tecnología local. Eso no tiene sentido, y hay que quitar ambos elementos:
+
+$$
+\widetilde{\mathbf{U}} = \mathbf{U} + \mathbf{U}^m + \mathbf{U}^t
+$$
+
+$\mathbf{U}^m$ (importaciones) y $\mathbf{U}^t$ (impuestos menos subsidios a los productos) no se conocen. De los cuadros se conocen sus totales por producto: el vector de importaciones $\mathbf{m}$ y el vector de impuestos $\mathbf{t}$.
+
+## Importaciones competitivas e impuestos: estimación {#estimacion-m-t}
+
+Se supone que la fracción de cada producto que proviene de importaciones es la misma para todas las industrias y para la demanda final. Esa fracción es $r_i$, y de forma análoga $s_i$ para los impuestos:
+
+$$
+r_i = \frac{m_i}{\widetilde{u}_i + \widetilde{f}_i} \qquad\qquad s_i = \frac{t_i}{\widetilde{u}_i + \widetilde{f}_i}
+$$
+
+Con las fracciones en matrices diagonales $\widehat{\mathbf{r}}$ y $\widehat{\mathbf{s}}$, se restan de la utilización y de la demanda final [@millerblair2022]:
+
+$$
+\bbox[#B5E6A2,3px]{\mathbf{U}} = \widetilde{\mathbf{U}} - \widehat{\mathbf{r}}\widetilde{\mathbf{U}} - \widehat{\mathbf{s}}\widetilde{\mathbf{U}} \qquad\qquad \bbox[#F2CEEF,3px]{\mathbf{f}} = \widetilde{\mathbf{f}} - \widehat{\mathbf{r}}\widetilde{\mathbf{f}} - \widehat{\mathbf{s}}\widetilde{\mathbf{f}}
+$$
+
+Las importaciones no competitivas (productos que el país no produce) suelen tratarse como producción de una industria adicional sin insumos, y se descuentan en la demanda final.
+
+## El punto de partida: el modelo con matriz cuadrada {#modelo-cuadrado}
+
+Con una matriz de flujos $\mathbf{Z}$ entre industrias, un vector de demanda final $\mathbf{f}$ y un vector de producto $\mathbf{x}$ [@millerblair2022]:
+
+$$
+\mathbf{x} = \mathbf{Z}\mathbf{i} + \mathbf{f} \qquad \mathbf{A} = \mathbf{Z}\widehat{\mathbf{x}}^{-1} \qquad \mathbf{x} = (\mathbf{I} - \mathbf{A})^{-1}\mathbf{f} = \mathbf{L}\mathbf{f}
+$$
+
+Los coeficientes técnicos $a_{ij}$ dicen cuánto compra la industria $j$ a la industria $i$ por unidad de producción, y $\mathbf{L}$ dice cuánto debe producir cada industria, directa e indirectamente, para satisfacer la demanda final.
+
+Con matrices rectangulares hay que encontrar un equivalente de cada elemento.
+
+## Coeficientes de insumo por producto: la matriz B {#matriz-b}
+
+El primer paso es reemplazar $\mathbf{Z}$ por la matriz de utilización [$\mathbf{U}$]{.bg-Z}. El coeficiente equivalente es $b_{ij} = u_{ij}/x_j$: el valor del producto $i$ que usa la industria $j$ por unidad de su producción.
+
+$$
+\mathbf{B} = \bbox[#B5E6A2,3px]{\mathbf{U}}\bbox[#A6C9EC,3px]{\widehat{\mathbf{x}}}^{-1}
+$$
+
+$\mathbf{B}$ es de productos por industrias, igual que [$\mathbf{U}$]{.bg-Z}. Con $\mathbf{U}\mathbf{i} = \mathbf{B}\mathbf{x}$ (igual que $\mathbf{Z}\mathbf{i} = \mathbf{A}\mathbf{x}$), la identidad de los productos queda:
+
+$$
+\bbox[#A6C9EC,3px]{\mathbf{q}} = \mathbf{B}\bbox[#A6C9EC,3px]{\mathbf{x}} + \bbox[#F2CEEF,3px]{\mathbf{f}}
+$$
+
+## El problema: dos clasificaciones en una ecuación {#problema}
+
+En $\mathbf{q} = \mathbf{B}\mathbf{x} + \mathbf{f}$, el lado izquierdo está en términos de productos ($\mathbf{q}$) y el derecho mezcla industrias ($\mathbf{x}$) con productos ($\mathbf{f}$).
+
+No se puede factorizar ni invertir de la misma forma que en el modelo cuadrado. Hay que pasar el producto de las industrias a productos, o la demanda final a términos de industrias.
+
+Para ello se necesita saber qué fracción de cada producto fabrica cada industria.
+
+## La matriz de participación de mercado: D {#matriz-d}
+
+El elemento $d_{ij} = v_{ij}/q_j$ es la fracción del producto $j$ que fabrica la industria $i$:
+
+$$
+\mathbf{D} = \bbox[#FFF0A6,3px]{\mathbf{V}}\bbox[#A6C9EC,3px]{\widehat{\mathbf{q}}}^{-1}
+$$
+
+$\mathbf{D}$ es de industrias por productos. Por definición, cada columna suma 1.
+
+Despejando, $\mathbf{D}\widehat{\mathbf{q}} = \mathbf{V}$. Posmultiplicando ambos lados por $\mathbf{i}$, y recordando que $\widehat{\mathbf{q}}\mathbf{i} = \mathbf{q}$ y $\mathbf{V}\mathbf{i} = \mathbf{x}$:
+
+$$
+\mathbf{D}\widehat{\mathbf{q}}\mathbf{i} = \mathbf{V}\mathbf{i} \quad \Rightarrow \quad \mathbf{D}\bbox[#A6C9EC,3px]{\mathbf{q}} = \bbox[#A6C9EC,3px]{\mathbf{x}}
+$$
+
+## Un solo sistema con dos ecuaciones {#sistema}
+
+Dos relaciones conectan a $\mathbf{x}$ y $\mathbf{q}$:
+
+$$
+\mathbf{x} - \mathbf{D}\mathbf{q} = \mathbf{0} \qquad\qquad -\mathbf{B}\mathbf{x} + \mathbf{q} = \mathbf{f}
+$$
+
+Se pueden escribir como un sistema particionado de ecuaciones lineales, que se resolvería con la inversa de la matriz de coeficientes:
+
+$$
+\begin{bmatrix} \mathbf{I} & -\mathbf{D} \\ -\mathbf{B} & \mathbf{I} \end{bmatrix}
+\begin{bmatrix} \mathbf{x} \\ \mathbf{q} \end{bmatrix} = 
+\begin{bmatrix} \mathbf{0} \\ \mathbf{f} \end{bmatrix}
+$$
+
+Con una sustitución se llega a una expresión más compacta.
+
+## La matriz de requerimientos totales: despeje {#despeje}
+
+Se premultiplica $\mathbf{q} = \mathbf{B}\mathbf{x} + \mathbf{f}$ por $\mathbf{D}$:
+
+$$
+\mathbf{D}\mathbf{q} = \mathbf{D}\mathbf{B}\mathbf{x} + \mathbf{D}\mathbf{f}
+$$
+
+Como $\mathbf{D}\mathbf{q} = \mathbf{x}$, el lado izquierdo es $\mathbf{x}$, y la ecuación queda en una sola clasificación, la de industrias:
+
+$$
+\mathbf{x} = \mathbf{D}\mathbf{B}\mathbf{x} + \mathbf{D}\mathbf{f}
+$$
+
+Igual que en el modelo cuadrado, se pasa $\mathbf{D}\mathbf{B}\mathbf{x}$ restando, se usa $\mathbf{x} = \mathbf{I}\mathbf{x}$ para factorizar, y se premultiplica por la inversa:
+
+$$
+(\mathbf{I} - \mathbf{D}\mathbf{B})\mathbf{x} = \mathbf{D}\mathbf{f} \quad \Rightarrow \quad \bbox[#A6C9EC,3px]{\mathbf{x}} = \bbox[#F7C7AC,3px]{(\mathbf{I} - \mathbf{D}\mathbf{B})^{-1}\mathbf{D}}\bbox[#F2CEEF,3px]{\mathbf{f}}
+$$
+
+## La matriz de requerimientos totales: interpretación {#interpretacion}
+
+$$
+\bbox[#F7C7AC,3px]{\mathbf{T}} = (\mathbf{I} - \mathbf{D}\mathbf{B})^{-1}\mathbf{D} \qquad\qquad \mathbf{x} = \mathbf{T}\mathbf{f}
+$$
+
+[$\mathbf{T}$]{.bg-L} es la matriz de requerimientos totales de industrias por productos, el equivalente de $\mathbf{L}$ del modelo cuadrado [@millerblair2022]. Cada elemento dice cuántas unidades de producción de la industria de la fila se requieren, directa e indirectamente, para entregar una unidad de demanda final del producto de la columna.
+
+Es rectangular: tiene tantas filas como industrias y tantas columnas como productos. La demanda final se expresa por producto y la producción resultante se obtiene por industria.
+
+## Paso 1: la matriz B en la práctica {#practica-b}
+
+:::::: columns
+:::: {.column width="50%"}
+[Notación]{.emphasis}
+
+$$
+\mathbf{B} = \bbox[#B5E6A2,3px]{\mathbf{U}}\bbox[#A6C9EC,3px]{\widehat{\mathbf{x}}}^{-1}
+$$
+
+Es de 8 × 5, igual que $\mathbf{U}$.
+
+[En Excel]{.emphasis}
+
+Insertar captura de pantalla de Excel aquí.
+::::
+
+::: {.column width="50%"}
+[En R]{.emphasis}
+
+```{r}
+B <- U %*% solve(diag(c(x)))
+dimnames(B) <- dimnames(U)
+round(B, 3)
+```
+:::
+::::::
+
+## Paso 2: la matriz D en la práctica {#practica-d}
+
+:::::: columns
+:::: {.column width="50%"}
+[Notación]{.emphasis}
+
+$$
+\mathbf{D} = \bbox[#FFF0A6,3px]{\mathbf{V}}\bbox[#A6C9EC,3px]{\widehat{\mathbf{q}}}^{-1}
+$$
+
+Es de 5 × 8, igual que $\mathbf{V}$, y cada columna suma 1.
+
+[En Excel]{.emphasis}
+
+Insertar captura de pantalla de Excel aquí.
+::::
+
+::: {.column width="50%"}
+[En R]{.emphasis}
+
+```{r}
+D <- V %*% solve(diag(c(q)))
+dimnames(D) <- dimnames(V)
+round(D, 3)
+
+# Cada columna suma 1
+colSums(D)
+```
+:::
+::::::
+
+## Paso 3: DB e I menos DB {#practica-db}
+
+$\mathbf{D}\mathbf{B}$ es de 5 × 5 (industrias por industrias), por lo que ya se le puede restar una identidad y, si el sistema es consistente, invertir.
+
+:::::: columns
+:::: {.column width="50%"}
+[Notación]{.emphasis}
+
+$$
+\mathbf{D}\mathbf{B} \qquad\qquad \mathbf{I} - \mathbf{D}\mathbf{B}
+$$
+
+[En Excel]{.emphasis}
+
+Insertar captura de pantalla de Excel aquí.
+::::
+
+::: {.column width="50%"}
+[En R]{.emphasis}
+
+```{r}
+DB <- D %*% B
+dim(DB)
+
+IDB <- diag(nrow(DB)) - DB
+round(IDB, 3)
+```
+:::
+::::::
+
+## Paso 4: la matriz de requerimientos totales {#practica-t}
+
+:::::: columns
+:::: {.column width="50%"}
+[Notación]{.emphasis}
+
+$$
+\bbox[#F7C7AC,3px]{\mathbf{T}} = (\mathbf{I} - \mathbf{D}\mathbf{B})^{-1}\mathbf{D}
+$$
+
+Es de 5 × 8.
+
+[En Excel]{.emphasis}
+
+Insertar captura de pantalla de Excel aquí.
+::::
+
+::: {.column width="50%"}
+[En R]{.emphasis}
+
+```{r}
+Treq <- solve(IDB) %*% D
+dimnames(Treq) <- dimnames(V)
+round(Treq, 3)
+```
+:::
+::::::
+
+## Calibración del modelo {#calibracion}
+
+Si $\mathbf{T}\mathbf{f}$ devuelve el producto total observado de las industrias, el modelo es consistente con los cuadros originales.
+
+:::::: columns
+:::: {.column width="50%"}
+[Notación]{.emphasis}
+
+$$
+\bbox[#F7C7AC,3px]{\mathbf{T}}\bbox[#F2CEEF,3px]{\mathbf{f}} = \begin{bmatrix} 210 \\ 1100 \\ 280 \\ 360 \\ 100 \end{bmatrix} = \bbox[#A6C9EC,3px]{\mathbf{x}}
+$$
+
+[En Excel]{.emphasis}
+
+Insertar captura de pantalla de Excel aquí.
+::::
+
+::: {.column width="50%"}
+[En R]{.emphasis}
+
+```{r}
+Treq %*% f
+
+# Comparación con x
+isTRUE(all.equal(c(Treq %*% f), c(x)))
+```
+:::
+::::::
+
+## Un escenario de demanda final {#escenario}
+
+La demanda final de autos aumenta en 100 unidades monetarias. La matriz [$\mathbf{T}$]{.bg-L} no cambia: la tecnología es la misma y cambia solo la demanda.
+
+:::::: columns
+:::: {.column width="50%"}
+[Notación]{.emphasis}
+
+$$
+\Delta\mathbf{f} = \begin{bmatrix} 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 100 \\ 0 \end{bmatrix} \quad \Rightarrow \quad \Delta\mathbf{x} = \bbox[#F7C7AC,3px]{\mathbf{T}}\Delta\mathbf{f}
+$$
+
+[En Excel]{.emphasis}
+
+Insertar captura de pantalla de Excel aquí.
+::::
+
+::: {.column width="50%"}
+[En R]{.emphasis}
+
+```{r}
+deltaf <- c(0, 0, 0, 0, 0, 0, 100, 0)
+
+deltax <- Treq %*% deltaf
+round(deltax, 2)
+```
+:::
+::::::
+
+## Qué pasó con el escenario {#lectura-escenario}
+
+El estímulo es un solo número, pero la producción cambia en las cinco industrias. Los autos los fabrica la industria de manufacturas, y el aumento de su producción excede la demanda adicional porque necesita insumos (acero, combustible) que ella misma produce o que compra a otras industrias.
+
+- **Manufacturas (179.74):** producen los 100 de autos y los insumos que ellas mismas consumen para hacerlos, incluido el acero.
+- **Minas (112.55):** abastecen el combustible que usan manufacturas y las demás industrias.
+- **Servicios (27.43):** venden publicidad a las demás industrias.
+- **Granjas (8.36) y alimentos (3.34):** reciben el efecto indirecto más pequeño.
+
+El resultado se lee por industria aunque el estímulo se defina por producto. Esa es la ventaja del enfoque rectangular.
+
+## Extensión ambiental {#extension}
+
+Una extensión ambiental asigna a cada industria una intensidad de emisiones por unidad de producción, $\boldsymbol{\varepsilon}'$ (1 × 5). El ejercicio usa valores ilustrativos.
+
+:::::: columns
+:::: {.column width="50%"}
+[Notación]{.emphasis}
+
+$$
+\boldsymbol{\varepsilon}'\mathbf{x} \qquad\qquad \boldsymbol{\varepsilon}'\bbox[#F7C7AC,3px]{\mathbf{T}}
+$$
+
+El segundo producto es un vector de 1 × 8: las emisiones, directas e indirectas, por unidad de demanda final de cada producto.
+
+[En Excel]{.emphasis}
+
+Insertar captura de pantalla de Excel aquí.
+::::
+
+::: {.column width="50%"}
+[En R]{.emphasis}
+
+```{r}
+epsilon <- c(0.5, 0.8, 0.3, 0.4, 0.1)
+
+# Emisiones totales
+sum(epsilon * x)
+
+# Multiplicadores por producto
+round(epsilon %*% Treq, 3)
+```
+:::
+::::::
+
+## Multiplicadores: por qué salen por producto {#multiplicadores-producto}
+
+Las dimensiones de $\mathbf{T}$ explican el resultado: tiene industrias en las filas y productos en las columnas.
+
+- **Filas (industrias):** la producción, y con ella las emisiones, ocurre en las industrias. Por eso $\boldsymbol{\varepsilon}'$ es un vector de 1 × 5.
+- **Columnas (productos):** la demanda final compra productos, no producción de industrias. Por eso $\mathbf{f}$ es un vector de 8 × 1.
+
+Al multiplicar $\boldsymbol{\varepsilon}'$ (1 × 5) por $\mathbf{T}$ (5 × 8), las industrias se suman y quedan los productos: un multiplicador (1 × 8) por cada producto que se demanda.
+
+La matriz $\mathbf{D}$ hace el traslado. Una unidad de demanda del producto $j$ se reparte entre las industrias que lo fabrican, según su participación de mercado $d_{ij}$, y cada una de ellas activa su propia cadena de insumos. En el modelo cuadrado, producto e industria son la misma lista y esta distinción desaparece.
+
+## Multiplicadores: cálculo {#multiplicadores-calculo}
+
+El multiplicador de un producto es la cantidad de emisiones que se genera, directa e indirectamente, en toda la economía por cada unidad monetaria de demanda final de ese producto. El multiplicador directo incluye solo las emisiones de las industrias que lo fabrican.
+
+:::::: columns
+:::: {.column width="50%"}
+[Notación]{.emphasis}
+
+$$
+\text{directo} = \boldsymbol{\varepsilon}'\mathbf{D}
+$$
+
+$$
+\text{total} = \boldsymbol{\varepsilon}'\bbox[#F7C7AC,3px]{\mathbf{T}}
+$$
+
+$$
+\text{indirecto} = \text{total} - \text{directo}
+$$
+
+[En Excel]{.emphasis}
+
+Insertar captura de pantalla de Excel aquí.
+::::
+
+::: {.column width="50%"}
+[En R]{.emphasis}
+
+```{r}
+directo <- c(epsilon %*% D)
+total <- c(epsilon %*% Treq)
+
+data.frame(
+  producto = productos,
+  directo = round(directo, 3),
+  total = round(total, 3),
+  indirecto = round(total - directo, 3))
+```
+:::
+::::::
+
+## Multiplicadores: qué significan y cómo se comparan {#multiplicadores-lectura}
+
+- **El orden cambia.** Hierro y combustible tienen el mayor efecto directo (0.80), porque los produce la industria más intensiva (minas), pero su total es de los más bajos (cerca de 1.03). Acero y autos tienen un efecto directo de 0.40 y el mayor total (1.70).
+- **Lo indirecto domina en cadenas largas.** Acero y autos dependen de insumos intensivos en emisiones (combustible, producido por minas), y el 76% de su multiplicador es indirecto. En publicidad, de intensidad directa baja (0.10), el 91% es indirecto.
+- **Mismos fabricantes, mismo multiplicador.** Acero y autos solo los produce la industria de manufacturas, y $\mathbf{T}$ trata igual a todo lo que produce una industria. Si se quieren distinguir, hace falta información que separe las tecnologías de cada producto.
+
+Comparar solo la intensidad directa subestima los productos con cadenas de insumos largas.
+
+## Bibliografía {.theme-content}
+
+::: {#refs}
+:::
+
+##  {.theme-blank .center}
+
+:::::::: columns
+::: {.column width="15%"}
+:::
+
+::::: {.column width="70%"}
+:::: {style="text-align: center"}
+
+[¡Gracias!]{style="font-size:1.8em;color:#204B92;"}
+
+[renatovargas.com](https://renatovargas.com/){style="font-size:1.2em; color:#F47A32;"}
+
+[Anexo: una matriz cuadrada equivalente](#anexo){style="font-size:0.7em;"}
+
+::::
+:::::
+
+::: {.column width="15%"}
+:::
+::::::::
+
+## Anexo: una matriz cuadrada equivalente {#anexo .theme-content}
+
+Los mismos resultados se obtienen con una sola matriz cuadrada que pone industrias y productos juntos, en ese orden, en filas y columnas. Los cuadrantes de industria con industria y de producto con producto son ceros:
+
+$$
+\mathbf{Z}^* = \begin{bmatrix} \mathbf{0} & \bbox[#FFF0A6,3px]{\mathbf{V}} \\ \bbox[#B5E6A2,3px]{\mathbf{U}} & \mathbf{0} \end{bmatrix} \qquad \mathbf{f}^* = \begin{bmatrix} \mathbf{0} \\ \bbox[#F2CEEF,3px]{\mathbf{f}} \end{bmatrix} \qquad \mathbf{x}^* = \begin{bmatrix} \bbox[#A6C9EC,3px]{\mathbf{x}} \\ \bbox[#A6C9EC,3px]{\mathbf{q}} \end{bmatrix}
+$$
+
+Con el modelo de siempre, $\mathbf{A}^* = \mathbf{Z}^*\widehat{\mathbf{x}^*}^{-1}$, que resulta ser la matriz de coeficientes del sistema particionado:
+
+$$
+\mathbf{I} - \mathbf{A}^* = \begin{bmatrix} \mathbf{I} & -\mathbf{D} \\ -\mathbf{B} & \mathbf{I} \end{bmatrix} \qquad (\mathbf{I} - \mathbf{A}^*)^{-1} = \begin{bmatrix} (\mathbf{I}-\mathbf{D}\mathbf{B})^{-1} & \bbox[#F7C7AC,3px]{(\mathbf{I}-\mathbf{D}\mathbf{B})^{-1}\mathbf{D}} \\ \mathbf{B}(\mathbf{I}-\mathbf{D}\mathbf{B})^{-1} & \mathbf{I} + \mathbf{B}(\mathbf{I}-\mathbf{D}\mathbf{B})^{-1}\mathbf{D} \end{bmatrix}
+$$
+
+El bloque superior derecho es [$\mathbf{T}$]{.bg-L}. Al multiplicar por $\mathbf{f}^*$ salen $\mathbf{x}$ y también $\mathbf{q}$.
+
+## Anexo: verificación en R {#anexo-r}
+
+Se arma $\mathbf{Z}^*$ por bloques, se aplica el modelo de siempre y se compara el bloque superior derecho con [$\mathbf{T}$]{.bg-L}.
+
+```{r}
+nI <- nrow(V)
+nP <- ncol(V)
+
+Zs <- rbind(
+  cbind(matrix(0, nI, nI), V),
+  cbind(U, matrix(0, nP, nP)))
+
+fs <- c(rep(0, nI), f)
+xs <- c(x, q)
+
+As <- Zs %*% solve(diag(xs))
+Ls <- solve(diag(nI + nP) - As)
+
+# El bloque superior derecho es T
+Tbloque <- Ls[1:nI, (nI + 1):(nI + nP)]
+isTRUE(all.equal(unname(Tbloque), unname(Treq)))
+
+# Reproduce x y q
+isTRUE(all.equal(c(Ls %*% fs), xs))
+```
+
+Hay que cuidar al agregar: $\mathbf{x}^*$ mezcla producción de industrias y de productos, así que sumarlo cuenta dos veces.

@@ -1,0 +1,318 @@
+/*-- scss:defaults --*/
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100..900&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+$presentation-font-family: "Roboto", sans-serif;
+
+$presentation-heading-font: "Oswald", sans-serif;
+$font-family-sans-serif: $presentation-font-family;
+$font-family-monospace: "Noto Sans", monospace;
+
+
+
+/*-- named colors --*/
+$theme-darkteal: #063F42; 
+$theme-teal: #008080;
+$theme-lightteal: #67B8B3;
+$theme-lightorange: #FFD0A6;
+$theme-cream: #f5ece5;
+$theme-orange: #F47A32;
+$theme-purple: purple;
+$theme-brightorange: #FFA500;
+$theme-black: #000000;
+$theme-link: #3367A8;
+$theme-IMFwhite: white;
+$theme-IMFblue: #204B92;
+$theme-IMFlightblue: #009CDE;
+$theme-IMFyellow: #FFCE5E;
+$theme-IMFgrey: #7F7F7F;
+
+$body-bg: $theme-IMFwhite;
+$body-color: $theme-black;
+$presentation-heading-color: $theme-IMFblue;
+$link-color: $theme-link;
+$link-decoration: underline; 
+$code-color: $theme-IMFblue;
+$code-bg: #cbe4e4;
+// $text-emphasis-color: $theme-orange; 
+
+/* 2. Create a class that uses that variable */
+.emphasis {
+  color: $theme-orange;
+  // font-weight: bold; /* Optional: adds extra punch to the emphasis */
+}
+
+$presentation-font-size-root: 25px;
+$code-block-font-size: 0.5em;
+
+/*-- scss:rules --*/
+
+@mixin background-full {
+    background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.reveal {
+  h2 {
+    padding: 12px 2px;
+    border-bottom: 6px solid $theme-IMFblue;
+  }
+}
+
+.theme-blank {
+  &:is(.slide-background) {
+    // background-image: url('../../assets/section4.svg');
+    @include background-full;
+  }
+  h3, h4, h5, p, pre, li {
+    margin-left: 15%;
+    width: 75%;
+  }
+  h2 {
+    font-size: 2em;
+    border-bottom: none;
+  }
+  h3 {
+    font-size: 1.5em;
+  }
+}
+
+// Portada: panel azul a la izquierda, logo arriba a la derecha y banda azul en el borde derecho
+.theme-title {
+  &:is(.slide-background) {
+    background-color: white;
+    background-image:
+      url('../../../../assets/imf-statistics-logo.svg'),
+      linear-gradient(
+        to right,
+        $theme-IMFblue 0%,
+        $theme-IMFblue 40.5%,
+        white 40.5%,
+        white 98.5%,
+        $theme-IMFblue 98.5%,
+        $theme-IMFblue 100%
+      );
+    background-repeat: no-repeat;
+    background-size: 22% auto, 100% 100%;
+    background-position: 56% 11%, 0 0;
+  }
+  // Un solo margen izquierdo en los contenedores; los elementos internos no lo repiten
+  h1, h2, h3, h4, p.subtitle, .quarto-title-authors {
+    margin-left: 43%;
+    width: 52%;
+    text-align: left;
+  }
+  // Autores en columna: el colaborador queda debajo del autor principal
+  .reveal & .quarto-title-authors {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .reveal & .quarto-title-authors .quarto-title-author:nth-child(n + 2) .quarto-title-author-name {
+    font-size: 0.65em;
+    font-style: italic;
+  }
+  // Más específico que las reglas de Quarto, que centran y rellenan a los autores
+  .reveal & .quarto-title-authors,
+  &.quarto-title-block .quarto-title-authors {
+    justify-content: flex-start;
+    .quarto-title-author {
+      padding-left: 0;
+      padding-right: 2em;
+      text-align: left;
+      .quarto-title-author-name {
+        color: $theme-IMFgrey;
+        font-size: 0.85em;
+      }
+      .quarto-title-affiliation {
+        color: $theme-IMFgrey;
+        font-size: 0.65em;
+      }
+    }
+  }
+  h1 {
+    color: $theme-IMFblue;
+    font-size: 2.2em;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  .subtitle {
+    color: $theme-IMFblue;
+    font-size: 0.75em;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+}
+
+// Contenido: fondo azul claro, texto blanco y viñetas cuadradas
+.theme-content {
+  &:is(.slide-background) {
+    background-color: $theme-IMFlightblue;
+  }
+  color: white;
+  h2 {
+    color: white;
+    font-weight: 700;
+    border-bottom: none;
+    text-align: left;
+  }
+  ul {
+    list-style-type: square;
+  }
+  li::marker {
+    color: white;
+  }
+  strong, .emphasis {
+    color: $theme-IMFyellow;
+  }
+  a {
+    color: $theme-IMFyellow;
+  }
+}
+
+
+.reveal .footer {
+  // placement, this is what makes it a bar
+  bottom: 0 !important;
+  padding: 0.35em 1.5em !important;
+  // Quarto fija width: 100%; sin border-box el padding lateral desborda la barra a la derecha
+  box-sizing: border-box;
+
+  // looks, change freely
+  background-color: $theme-IMFblue !important;
+  color: $theme-IMFwhite;
+  font-size: 16px !important;
+  text-align: center !important;
+
+  a {
+    color: #f0b429 !important;
+  }
+
+  // Tres columnas: marca a la izquierda, footer del YAML al centro, derecha libre
+  display: grid !important;
+  grid-template-columns: 15% 70% 15%;
+  align-items: center;
+
+  &::before {
+    content: "IMF | Statistics";
+    grid-column: 1;
+    text-align: left;
+    font-size: 0.75em;
+    font-weight: 700;
+  }
+  > p {
+    grid-column: 2;
+    text-align: center;
+  }
+  &::after {
+    content: "Renato Vargas";
+    grid-column: 3;
+    text-align: right;
+    font-size: 0.75em;
+    color: $theme-IMFgrey;
+  }
+}
+
+// Reveal agrega la clase de data-state mientras la diapositiva está activa
+.sin-footer .reveal .footer,
+.reveal.sin-footer .footer {
+  display: none !important;
+}
+
+.reveal .slide-menu-button {
+  bottom: 2.5em !important;
+}
+
+.captura {
+  border: 3px dashed $theme-lightteal;
+  border-radius: 8px;
+  min-height: 9em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: $theme-teal;
+  font-size: 0.7em;
+}
+
+// Resaltado de matrices y vectores (tabla de flujos y su notación)
+.bg-Z,
+.bg-f,
+.bg-x,
+.bg-L,
+.bg-V,
+.bg-va {
+  padding: 0.05em 0.3em;
+  border-radius: 4px;
+}
+
+.bg-V {
+  background-color: #FFF0A6;
+}
+
+.bg-va {
+  background-color: #D9D6F0;
+}
+
+// Diagrama de bloques del sistema producto por industria
+.diagrama {
+  margin: 0 auto;
+  border-collapse: separate;
+  border-spacing: 6px;
+  font-size: 0.6em;
+  text-align: center;
+
+  th {
+    font-weight: normal;
+    padding: 0.2em 0.6em;
+  }
+
+  td {
+    min-width: 7.5em;
+    height: 3.2em;
+    padding: 0.2em 0.4em;
+    border: none;
+    border-radius: 6px;
+  }
+
+  td.vacio {
+    background: none;
+  }
+
+  small {
+    font-size: 0.7em;
+    opacity: 0.75;
+  }
+}
+
+.bg-Z {
+  background-color: #B5E6A2;
+}
+
+.bg-f {
+  background-color: #F2CEEF;
+}
+
+.bg-x {
+  background-color: #A6C9EC;
+}
+
+.bg-L {
+  background-color: #F7C7AC;
+}
+
+.reveal a.button {
+  display: inline-block;
+  padding: 0.5em 1.2em;
+  background-color: $theme-IMFblue;
+  color: $theme-cream;
+  font-family: $presentation-heading-font;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: $theme-orange;
+    color: $theme-cream;
+  }
+}

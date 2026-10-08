@@ -1,0 +1,18 @@
+---
+title: "El modelo de insumo-producto"
+subtitle: "Modelo básico, coeficientes y escenarios de demanda"
+---
+
+::::{.slide-embed}
+<iframe class="slide-deck" src="../../slides/02-modelo-insumo-producto/index.html" title="El modelo de insumo-producto" loading="lazy"></iframe>
+::::
+
+::::{.slide-links}
+[⛶ Pantalla completa](../../slides/02-modelo-insumo-producto/index.html){target="_blank"}
+::::
+
+## Objetivos
+
+- Plantear el modelo básico de insumo-producto
+- Calcular coeficientes técnicos y la matriz de Leontief
+- Simular cambios en la demanda final

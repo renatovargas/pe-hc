@@ -1,0 +1,19 @@
+---
+title: "Álgebra matricial para insumo-producto"
+subtitle: "Operaciones matemáticas de los modelos ambientalmente extendidos"
+---
+
+::::{.slide-embed}
+<iframe class="slide-deck" src="../../slides/01-intro-algebra/index.html" title="Álgebra matricial para insumo-producto" loading="lazy"></iframe>
+::::
+
+::::{.slide-links}
+[⛶ Pantalla completa](../../slides/01-intro-algebra/index.html){target="_blank"}
+::::
+
+## Objetivos
+
+- Dominar las definiciones y la notación básica de matrices
+- Realizar sumas, restas, multiplicaciones y transposiciones
+- Resolver sistemas de ecuaciones lineales
+- Usar matrices diagonales y vectores sumatorios

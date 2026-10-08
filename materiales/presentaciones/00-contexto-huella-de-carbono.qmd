@@ -1,0 +1,20 @@
+---
+title: "Huellas de carbono"
+subtitle: "Qué son, cómo se calculan y qué han hecho otros países"
+---
+
+::::{.slide-embed}
+<iframe class="slide-deck" src="../../slides/00-contexto-huella-de-carbono/index.html" title="Huellas de carbono" loading="lazy"></iframe>
+::::
+
+::::{.slide-links}
+[⛶ Pantalla completa](../../slides/00-contexto-huella-de-carbono/index.html){target="_blank"}
+::::
+
+## Objetivos
+
+- Entender de quién son las emisiones de lo que consumimos
+- Conocer cómo se calcula una huella de carbono nacional
+- Revisar qué dicen los datos globales y de América Latina
+- Aprender de las experiencias de otros países
+- Ubicar el contexto de la misión en Perú

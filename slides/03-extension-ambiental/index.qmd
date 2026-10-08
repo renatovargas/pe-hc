@@ -1,0 +1,526 @@
+---
+title: "Extensión ambiental y multiplicadores"
+subtitle: "Emisiones de dióxido de carbono en el modelo de insumo-producto"
+author: 
+  - name: "Renato Vargas"
+    affiliations: 
+      - name: Economista / Consultor FMI
+lang: es
+bibliography: refs.bib
+csl: ../../assets/apa-es.csl
+format: 
+  revealjs:
+    theme: [simple, ../pstyles.scss]
+    # Escala de las fórmulas (MathJax 2); se define antes de que cargue MathJax
+    include-in-header:
+      - text: |
+          <script>
+            window.MathJax = {
+              "HTML-CSS": { scale: 80 }
+            };
+          </script>
+    footer: "Extensión ambiental y multiplicadores"
+    title-slide-attributes:
+      class: theme-title
+      data-state: sin-footer
+execute:
+  echo: true
+---
+
+## Temas a tratar {.theme-content}
+
+1.  La extensión ambiental básica.
+2.  Multiplicadores de producto.
+3.  Multiplicadores de emisiones.
+
+##  {.theme-blank .center}
+
+::: {style="text-align: center"}
+Descargar el archivo de ejemplo:
+
+[modelo-insumo-producto.xlsx](../datos/ejemplos/modelo-insumo-producto.xlsx){.button download="modelo-insumo-producto.xlsx"}
+:::
+
+## El modelo básico con emisiones {#modelo-basico}
+
+Una economía de dos sectores, agricultura y manufacturas, se describe con un cuadro de flujos entre industrias [@millerblair2022]. Cada fila muestra a quién vende un sector; cada columna muestra qué compra para producir. Se agrega una fila con las emisiones de dióxido de carbono ($CO_2$) de cada sector, en toneladas.
+
+|                  | Agricultura | Manufacturas | Demanda final | Producto total |
+|------------------|------------:|-------------:|--------------:|---------------:|
+| Agricultura      | [150]{.bg-Z} | [500]{.bg-Z} | [350]{.bg-f} | [1000]{.bg-x} |
+| Manufacturas     | [200]{.bg-Z} | [100]{.bg-Z} | [1700]{.bg-f} | [2000]{.bg-x} |
+| Pagos a factores |         650 |         1400 |          1100 |                |
+| Total insumos    | [1000]{.bg-x} | [2000]{.bg-x} |          3150 |                |
+| Emisiones de $CO_2$ (t) |  300 |          500 |               |                |
+
+- Los flujos entre industrias forman la matriz [$\mathbf{Z}$]{.bg-Z}.
+- La demanda final forma el vector [$\mathbf{f}$]{.bg-f}.
+- El producto total forma el vector [$\mathbf{x}$]{.bg-x}, que aparece como columna y también como fila.
+- Las emisiones por sector forman el vector $\mathbf{e}$, que es la extensión ambiental del modelo.
+
+## Recordemos el modelo de insumo-producto {#recordatorio}
+
+Para cada sector, el producto total es lo que se vende a otros sectores más la demanda final, con $\mathbf{i}$ un vector de unos que suma las filas de $\mathbf{Z}$:
+
+$$
+\bbox[#A6C9EC,3px]{\mathbf{x}} = \mathbf{Z}\mathbf{i} + \bbox[#F2CEEF,3px]{\mathbf{f}}
+$$
+
+Los coeficientes técnicos son la compra por unidad de producto del sector comprador, $\mathbf{A} = \mathbf{Z}\widehat{\mathbf{x}}^{-1}$, con $\widehat{\mathbf{x}}$ la matriz diagonal de $\mathbf{x}$. Con ellos el modelo se resuelve para el producto:
+
+$$
+\bbox[#A6C9EC,3px]{\mathbf{x}} = \bbox[#F7C7AC,3px]{\mathbf{L}}\bbox[#F2CEEF,3px]{\mathbf{f}} \qquad \text{con} \qquad \bbox[#F7C7AC,3px]{\mathbf{L}} = (\mathbf{I} - \mathbf{A})^{-1}
+$$
+
+[$\mathbf{L}$]{.bg-L} es la matriz inversa de Leontief: dice cuánto debe producir cada sector, directa e indirectamente, para satisfacer la demanda final. En el ejemplo:
+
+$$
+\mathbf{A} = \begin{bmatrix} 0.15 & 0.25 \\ 0.20 & 0.05 \end{bmatrix} \qquad \bbox[#F7C7AC,3px]{\mathbf{L}} = \begin{bmatrix} 1.2541 & 0.3300 \\ 0.2640 & 1.1221 \end{bmatrix}
+$$
+
+## Implementación del modelo
+
+:::::: columns
+:::: {.column width="50%"}
+[En Excel]{.emphasis}
+
+Insertar captura de pantalla de Excel aquí.
+::::
+
+::: {.column width="50%"}
+[En R]{.emphasis}
+
+```{r}
+sectores <- c("Agricultura", "Manufacturas")
+
+Z <- matrix(c(150, 500, 200, 100), nrow = 2, byrow = TRUE)
+colnames(Z) <- sectores
+rownames(Z) <- sectores
+
+x <- c(1000, 2000)
+f <- c(350, 1700)
+
+A <- Z %*% solve(diag(x))
+L <- solve(diag(dim(A)[1]) - A)
+L
+
+# Comprobación: L por f devuelve el producto total
+L %*% f
+```
+:::
+::::::
+
+## La extensión ambiental básica {#extension-ambiental}
+
+Otros impactos, como el uso de agua o las emisiones, se pueden obtener a través de coeficientes, del mismo modo que los coeficientes técnicos [@millerblair2022].
+
+La idea es que cada sector emite una cantidad proporcional a lo que produce, igual que compra insumos en proporción a lo que produce.
+
+Si $\mathbf{e}$ es el vector de emisiones directas de cada sector (las que ocurren dentro del propio sector), el coeficiente de emisiones es la cantidad emitida por unidad monetaria de producto. También se le llama intensidad de emisiones: mide qué tan intensivo en emisiones es cada sector.
+
+$$
+\varepsilon_j = \frac{e_j}{x_j} \qquad \Longleftrightarrow \qquad \boldsymbol{\varepsilon}' = \mathbf{e}'\widehat{\mathbf{x}}^{-1}
+$$
+
+## Emisiones totales y matriz diagonal de coeficientes {#emisiones-totales}
+
+Despejando $\mathbf{e}$ del coeficiente, las emisiones son el coeficiente de cada sector por su producto. Para escribirlo en forma matricial se convierte el vector de coeficientes en una matriz diagonal, $\widehat{\boldsymbol{\varepsilon}}$, de modo que cada sector conserve su propia fila:
+
+$$
+\mathbf{e} = \widehat{\boldsymbol{\varepsilon}}\,\bbox[#A6C9EC,3px]{\mathbf{x}}
+\quad \Rightarrow \quad
+\begin{pmatrix} e_1 \\ e_2 \end{pmatrix} =
+\begin{bmatrix} \varepsilon_1 & 0 \\ 0 & \varepsilon_2 \end{bmatrix}
+\begin{pmatrix} x_1 \\ x_2 \end{pmatrix} =
+\begin{pmatrix} \varepsilon_1 x_1 \\ \varepsilon_2 x_2 \end{pmatrix}
+$$
+
+Esta ecuación parte del producto, pero las preguntas de política suelen partir de la demanda final. Para eso hace falta pasar de $\mathbf{x}$ a $\mathbf{f}$.
+
+## Emisiones a partir de la demanda final {#emisiones-demanda}
+
+Como sabemos que $\mathbf{x} = \mathbf{L}\mathbf{f}$, se sustituye en la ecuación anterior:
+
+$$
+\begin{pmatrix} e_1 \\ e_2 \end{pmatrix} =
+\begin{bmatrix} \varepsilon_1 & 0 \\ 0 & \varepsilon_2 \end{bmatrix}
+\bbox[#F7C7AC,3px]{\begin{bmatrix} l_{11} & l_{12} \\ l_{21} & l_{22} \end{bmatrix}}
+\bbox[#F2CEEF,3px]{\begin{pmatrix} f_1 \\ f_2 \end{pmatrix}}
+$$
+
+Premultiplicar por una matriz diagonal multiplica cada fila $i$ de [$\mathbf{L}$]{.bg-L} por el coeficiente $\varepsilon_i$ [@millerblair2022]:
+
+$$
+\begin{pmatrix} e_1 \\ e_2 \end{pmatrix} =
+\begin{bmatrix} \varepsilon_1 l_{11} & \varepsilon_1 l_{12} \\ \varepsilon_2 l_{21} & \varepsilon_2 l_{22} \end{bmatrix}
+\bbox[#F2CEEF,3px]{\begin{pmatrix} f_1 \\ f_2 \end{pmatrix}}
+\qquad \Longleftrightarrow \qquad
+\mathbf{e} = \widehat{\boldsymbol{\varepsilon}}\,\bbox[#F7C7AC,3px]{\mathbf{L}}\,\mathbf{f}
+$$
+
+El impacto se calcula a partir de la demanda final, porque [$\mathbf{L}$]{.bg-L}$\mathbf{f}$ es el producto que la economía debe generar para satisfacerla.
+
+## Emisiones de dióxido de carbono por sector
+
+Imaginemos que las emisiones de dióxido de carbono ($CO_2$), en toneladas, son 300 para agricultura y 500 para manufacturas.
+
+:::::: columns
+:::: {.column width="50%"}
+[Notación]{.emphasis}
+
+$$
+\mathbf{e}' = \begin{bmatrix} 300 & 500 \end{bmatrix}
+$$
+
+[En Excel]{.emphasis}
+
+Insertar captura de pantalla de Excel aquí.
+::::
+
+::: {.column width="50%"}
+[En R]{.emphasis}
+
+```{r}
+eprima <- c(300, 500)
+names(eprima) <- sectores
+eprima
+```
+:::
+::::::
+
+## Coeficientes de emisiones
+
+El coeficiente se mide en toneladas de $CO_2$ por unidad monetaria de producto.
+
+:::::: columns
+:::: {.column width="50%"}
+[Notación]{.emphasis}
+
+$$
+\boldsymbol{\varepsilon}' = \mathbf{e}'\widehat{\mathbf{x}}^{-1} = \begin{bmatrix} 0.30 & 0.25 \end{bmatrix}
+$$
+
+[En Excel]{.emphasis}
+
+Insertar captura de pantalla de Excel aquí.
+::::
+
+::: {.column width="50%"}
+[En R]{.emphasis}
+
+En álgebra matricial se transpone el vector de emisiones y se posmultiplica por la inversa de la diagonal de $\mathbf{x}$.
+
+```{r}
+epsilon <- t(as.matrix(eprima)) %*% solve(diag(x))
+epsilon
+```
+
+También se puede usar la regla de reciclaje de R y dividir directamente:
+
+```{r}
+eprima / x
+```
+:::
+::::::
+
+## Emisiones calculadas desde la demanda final
+
+Con los coeficientes y la matriz de Leontief, la demanda final reproduce las emisiones del cuadro. El resultado es el vector de emisiones de cada sector productor, sin importar para qué demanda se producen.
+
+:::::: columns
+:::: {.column width="50%"}
+[Notación]{.emphasis}
+
+$$
+\mathbf{e} = \widehat{\boldsymbol{\varepsilon}}\,\bbox[#F7C7AC,3px]{\mathbf{L}}\,\bbox[#F2CEEF,3px]{\mathbf{f}} = \begin{bmatrix} 300 \\ 500 \end{bmatrix}
+$$
+
+[En Excel]{.emphasis}
+
+Insertar captura de pantalla de Excel aquí.
+::::
+
+::: {.column width="50%"}
+[En R]{.emphasis}
+
+```{r}
+e <- diag(c(epsilon)) %*% L %*% f
+rownames(e) <- sectores
+colnames(e) <- "Toneladas de CO2"
+e
+```
+:::
+::::::
+
+## Multiplicadores: definición {#multiplicadores}
+
+Un multiplicador responde una pregunta simple: qué pasa en toda la economía cuando la demanda final de un solo sector sube una unidad. El multiplicador responde una pregunta más simple: qué pasa en toda la economía cuando la demanda final de un solo sector sube una unidad.
+
+El multiplicador de producto del sector $j$ es el valor de producción, en todos los sectores de la economía, que se necesita para satisfacer una unidad monetaria de demanda final de los productos de ese sector [@millerblair2022].
+
+El multiplicador simple compara dos cambios en el producto:
+
+- El cambio directo es la unidad monetaria adicional de demanda final del sector $j$.
+- El cambio indirecto es la producción adicional, en todos los sectores, que hace falta para que circulen los insumos entre sectores.
+
+El multiplicador es la razón entre el cambio total en el producto y el cambio directo. Como numerador y denominador están en dinero, no tiene unidades de medida.
+
+## Multiplicadores: un sector a la vez
+
+Partimos de los resultados que ya tenemos:
+
+$$
+\mathbf{A} = \begin{bmatrix} 0.15 & 0.25 \\ 0.20 & 0.05 \end{bmatrix} \qquad \bbox[#F7C7AC,3px]{\mathbf{L}} = \begin{bmatrix} 1.2541 & 0.3300 \\ 0.2640 & 1.1221 \end{bmatrix}
+$$
+
+Para aislar un sector se usa un vector de demanda adicional con un 1 en ese sector y ceros en los demás. Primero, la demanda adicional de solo el primer sector:
+
+:::::: columns
+:::: {.column width="50%"}
+[Notación]{.emphasis}
+
+$$
+\Delta\mathbf{f}_1 = \begin{bmatrix} 1 \\ 0 \end{bmatrix} \qquad \Delta\mathbf{x}_1 = \bbox[#F7C7AC,3px]{\mathbf{L}}\,\Delta\mathbf{f}_1 = \begin{bmatrix} 1.2541 \\ 0.2640 \end{bmatrix}
+$$
+
+[En Excel]{.emphasis}
+
+Insertar captura de pantalla de Excel aquí.
+::::
+
+::: {.column width="50%"}
+[En R]{.emphasis}
+
+```{r}
+L
+deltaf1 <- c(1, 0)
+L %*% deltaf1
+```
+:::
+::::::
+
+## Multiplicadores: interpretación
+
+En el primer caso hay una producción adicional de USD 1.254 del sector 1 y de USD 0.264 del sector 2.
+
+- El 1 en el 1.254 es lo que se necesita para satisfacer la demanda; los USD 0.254 restantes sirven para mover los insumos entre sectores.
+- Los USD 0.264 del sector 2 son para compras entre sectores exclusivamente.
+
+El multiplicador del sector 1 es la suma de los elementos de la columna $\Delta\mathbf{x}_1$, dividida entre la unidad adicional de demanda:
+
+$$
+m_{o1} = \frac{1.254 + 0.264}{1} = \frac{\text{USD } 1.518}{\text{USD } 1} = 1.518
+$$
+
+## Multiplicadores: el segundo sector
+
+:::::: columns
+:::: {.column width="50%"}
+[Notación]{.emphasis}
+
+$$
+\Delta\mathbf{f}_2 = \begin{bmatrix} 0 \\ 1 \end{bmatrix} \qquad \Delta\mathbf{x}_2 = \bbox[#F7C7AC,3px]{\mathbf{L}}\,\Delta\mathbf{f}_2 = \begin{bmatrix} 0.3300 \\ 1.1221 \end{bmatrix}
+$$
+
+$$
+m_{o2} = 0.330 + 1.122 = 1.452
+$$
+
+[En Excel]{.emphasis}
+
+Insertar captura de pantalla de Excel aquí.
+::::
+
+::: {.column width="50%"}
+[En R]{.emphasis}
+
+```{r}
+deltaf2 <- c(0, 1)
+L %*% deltaf2
+```
+:::
+::::::
+
+## Multiplicadores para todos los sectores: vectores sumatorios
+
+Sumar la columna de [$\mathbf{L}$]{.bg-L} de cada sector, uno por uno, no escala a economías con decenas de sectores. Para hacerlo con todos a la vez se usa un vector sumatorio $\mathbf{i}$: un vector de unos que, al premultiplicar una matriz, suma sus columnas.
+
+$$
+\mathbf{m}_o' = \mathbf{i}'\bbox[#F7C7AC,3px]{\mathbf{L}}, \qquad m_{oj} = \sum_{i=1}^{n} l_{ij}
+$$
+
+Estos multiplicadores son muy útiles porque indican en qué sectores una inversión tiene mayor impacto en la economía.
+
+## Multiplicadores: en la práctica
+
+:::::: columns
+:::: {.column width="50%"}
+[Notación]{.emphasis}
+
+$$
+\mathbf{i}' = \begin{bmatrix} 1 & 1 \end{bmatrix} \qquad \mathbf{m}_o' = \mathbf{i}'\bbox[#F7C7AC,3px]{\mathbf{L}} = \begin{bmatrix} 1.518 & 1.452 \end{bmatrix}
+$$
+
+[En Excel]{.emphasis}
+
+Insertar captura de pantalla de Excel aquí.
+::::
+
+::: {.column width="50%"}
+[En R]{.emphasis}
+
+```{r}
+# Dimensiones de L
+dim(L)
+
+# Vector sumatorio de largo apropiado
+i <- rep(1, dim(L)[1])
+
+# Multiplicadores
+mo <- i %*% L
+mo
+```
+:::
+::::::
+
+## Multiplicadores de emisiones: planteamiento {#multiplicadores-emisiones}
+
+Los multiplicadores de producto miden dinero. Para medir emisiones se aplica la misma idea a la matriz $\widehat{\boldsymbol{\varepsilon}}\mathbf{L}$ de la sección anterior. La llamamos $\mathbf{M}_e$:
+
+$$
+\begin{pmatrix} e_1 \\ e_2 \end{pmatrix} =
+\bbox[#E8E8E8,3px]{\begin{bmatrix} m^e_{11} & m^e_{12} \\ m^e_{21} & m^e_{22} \end{bmatrix}}
+\bbox[#F2CEEF,3px]{\begin{pmatrix} f_1 \\ f_2 \end{pmatrix}}
+\qquad \text{con} \qquad m^e_{ij} = \varepsilon_i\, l_{ij}
+$$
+
+$$
+\mathbf{M}_e = \widehat{\boldsymbol{\varepsilon}}\,\bbox[#F7C7AC,3px]{\mathbf{L}} \qquad \Longrightarrow \qquad \mathbf{e} = \mathbf{M}_e\,\mathbf{f}
+$$
+
+El elemento $m^e_{ij}$ muestra las toneladas de $CO_2$ que se emiten en el sector $i$, directa e indirectamente, cuando se necesita una unidad monetaria adicional de producto del sector $j$ para satisfacer la demanda final.
+
+## Multiplicadores de emisiones: interpretación
+
+$\mathbf{M}_e$ es interesante por sí misma, porque muestra qué sectores generan más o menos emisiones por unidad de demanda final.
+
+- Cada columna $j$ de $\mathbf{M}_e$ reparte entre los sectores las emisiones que provoca una unidad monetaria de demanda final del sector $j$.
+- La suma de esa columna es el multiplicador de emisiones del sector $j$: las emisiones totales, en toda la economía, por unidad monetaria de demanda final de sus productos. En notación matricial es $\mathbf{i}'\mathbf{M}_e = \mathbf{i}'\widehat{\boldsymbol{\varepsilon}}\mathbf{L} = \boldsymbol{\varepsilon}'\mathbf{L}$, porque sumar las filas de una matriz diagonal devuelve su diagonal.
+
+A diferencia de $\mathbf{m}_o$, este multiplicador sí tiene unidades de medida: toneladas de $CO_2$ por unidad monetaria. Es la huella de carbono por unidad monetaria de demanda final de cada sector, y sirve para compararlos entre sí.
+
+## Multiplicadores de emisiones y huella de carbono
+
+Sumar las emisiones asociadas a la demanda final de un país, dondequiera que ocurran, da su huella de carbono.
+
+- Las cuentas de emisiones atmosféricas registran las emisiones de las unidades residentes de una economía, sin importar dónde ocurran, con los mismos principios y sectores que las cuentas nacionales [@eurostat2015].
+- Los modelos de insumo-producto trasladan esas emisiones a la demanda final que las origina, lo que distingue las emisiones basadas en la producción de las basadas en la demanda final [@yamano2020].
+
+## Huella de carbono: alcance del ejemplo
+
+* Nuestro ejemplo es de un solo país y no incluye importaciones. 
+* Con él se puede medir la huella de carbono de la demanda final de productos de sectores específicos, agricultura y manufacturas, con las emisiones que su producción genera, directa e indirectamente, dentro de la economía.
+* En un ejemplo real (como el de la MIP de Perú), la demanda final se desagrega, por ejemplo en consumo, inversión y exportaciones, y hay una fila de importaciones. 
+* Con las exportaciones se separan las emisiones incorporadas en la demanda interna de las incorporadas en las exportaciones, sin identificar el destino. 
+* Las importaciones suelen estimarse suponiendo que se producen con la tecnología del propio país, un supuesto que debe interpretarse con cautela [@eurostat2015]; la alternativa es contar con datos del exterior.
+
+## Multiplicadores de emisiones: en la práctica
+
+:::::: columns
+:::: {.column width="50%"}
+[Notación]{.emphasis}
+
+$$
+\mathbf{M}_e = \widehat{\boldsymbol{\varepsilon}}\,\bbox[#F7C7AC,3px]{\mathbf{L}} = \begin{bmatrix} 0.3762 & 0.0990 \\ 0.0660 & 0.2805 \end{bmatrix}
+$$
+
+$$
+\mathbf{i}'\mathbf{M}_e = \begin{bmatrix} 0.4422 & 0.3795 \end{bmatrix}
+$$
+
+[En Excel]{.emphasis}
+
+Insertar captura de pantalla de Excel aquí.
+::::
+
+::: {.column width="50%"}
+[En R]{.emphasis}
+
+```{r}
+Me <- diag(c(epsilon)) %*% L
+rownames(Me) <- sectores
+colnames(Me) <- sectores
+Me
+
+# Multiplicadores de emisiones
+colSums(Me)
+```
+
+Las emisiones por unidad monetaria de demanda final son algo mayores para agricultura que para manufacturas.
+:::
+::::::
+
+## Huella de carbono en toneladas {#huella-toneladas}
+
+El multiplicador de emisiones está por unidad monetaria. Para obtener la huella total de cada sector, en toneladas, se multiplica por su demanda final [$\mathbf{f}$]{.bg-f}. Manufacturas tiene un multiplicador menor que agricultura, pero su huella total es mayor porque su demanda final también lo es.
+
+:::::: columns
+:::: {.column width="50%"}
+[Notación]{.emphasis}
+
+$$
+h_j = \left(\boldsymbol{\varepsilon}'\bbox[#F7C7AC,3px]{\mathbf{L}}\right)_j \bbox[#F2CEEF,3px]{f_j}
+$$
+
+$$
+\mathbf{h}' = \boldsymbol{\varepsilon}'\bbox[#F7C7AC,3px]{\mathbf{L}}\,\widehat{\mathbf{f}} = \begin{bmatrix} 154.79 & 645.21 \end{bmatrix}
+$$
+
+[En Excel]{.emphasis}
+
+Insertar captura de pantalla de Excel aquí.
+::::
+
+::: {.column width="50%"}
+[En R]{.emphasis}
+
+```{r}
+huella <- epsilon %*% L %*% diag(f)
+colnames(huella) <- sectores
+huella
+
+# Equivale a multiplicar elemento por elemento
+colSums(Me) * f
+
+# La suma es el total de emisiones del cuadro
+sum(huella)
+```
+:::
+::::::
+
+
+
+## Bibliografía {.theme-content}
+
+::: {#refs}
+:::
+
+##  {.theme-blank .center}
+
+:::::::: columns
+::: {.column width="15%"}
+:::
+
+::::: {.column width="70%"}
+:::: {style="text-align: center"}
+
+[¡Gracias!]{style="font-size:1.8em;color:#204B92;"}
+
+[renatovargas.com](https://renatovargas.com/){style="font-size:1.2em; color:#F47A32;"}
+
+::::
+:::::
+
+::: {.column width="15%"}
+:::
+::::::::

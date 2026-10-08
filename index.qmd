@@ -1,15 +1,21 @@
 ---
-title: "Perú HC"
+title: "Huellas de carbono en Perú"
 ---
 
-# Implementación de Huellas de Carbono en Perú
+Este sitio reúne los materiales de apoyo a la implementación de la huella de carbono en Perú, un trabajo del Instituto Nacional de Estadística e Informática (INEI) con asistencia técnica del Fondo Monetario Internacional (FMI). Los materiales se publican a medida que avanza la misión.
 
-El Instituto Nacional de Estadística e Informática de Perú, con acompañamiento del Fondo Monetario Internacional implementa la metodología de Huellas de Carbono en Perú. Aquí se recopila una serie de materiales útiles para este proceso.
+# Contenido
+
+Todo el material está en la sección [Materiales](materiales/documentos/contexto-huella-de-carbono-peru/index.qmd), que se divide en dos grupos.
+
+**Documentos.** Notas escritas para consulta y lectura detallada. Por ahora el sitio incluye una nota de contexto sobre el concepto de huella de carbono, el método de insumo-producto ambientalmente extendido y las experiencias de otros países.
+
+**Presentaciones.** Diapositivas que se pueden ver dentro de cada página o en pantalla completa. Cubren el contexto de las huellas de carbono y, conforme se agreguen, el álgebra matricial, el modelo de insumo-producto, la extensión ambiental y las matrices rectangulares de oferta y utilización. Cada página indica los objetivos de la presentación.
 
 # Objetivos
 
-* Que los participantes se familiaricen con el álgebra matricial y su notación.
-* Que los participantes se familiaricen con la metodología de insumo-producto ambientalmente extendido.
-* Que los participantes implementen la metodología de huella de carbono de manera práctica.
-* Que los participantes se familiaricen con el diseño de flujo de análisis de datos.
-
+* Presentar el concepto de huella de carbono y las experiencias internacionales.
+* Introducir el álgebra matricial y su notación.
+* Explicar la metodología de insumo-producto ambientalmente extendido.
+* Mostrar cómo implementar el cálculo de la huella de carbono de manera práctica.
+* Proponer un flujo ordenado para el análisis de los datos.

@@ -2,8 +2,19 @@ project:
   type: website
   output-dir: docs
   execute-dir: project
+  render:
+    - "*.qmd"
+    - "materiales/**/*.qmd"
+    - "slides/**/*.qmd"
+    - "!refs/"
+    # Páginas de presentaciones aún no publicadas; quitar la exclusión al activarlas
+    # - "!materiales/presentaciones/01-*.qmd"
+    # - "!materiales/presentaciones/02-*.qmd"
+    # - "!materiales/presentaciones/03-*.qmd"
+    # - "!materiales/presentaciones/04-*.qmd"
   resources:
     - datos/
+    - assets/
 
 website:
   title: "Perú HC"
@@ -12,11 +23,32 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - href: materiales/documentos/contexto-huella-de-carbono-peru/index.qmd
+        text: Materiales
+      - href: about.qmd
+        text: Acerca de
+  sidebar:
+    - title: Materiales
+      style: docked
+      search: false
+      contents:
+        - section: Documentos
+          contents:
+            - text: "Huellas de carbono"
+              href: materiales/documentos/contexto-huella-de-carbono-peru/index.qmd
+        - section: Presentaciones
+          contents:
+            - materiales/presentaciones/00-contexto-huella-de-carbono.qmd
+            - materiales/presentaciones/01-intro-algebra.qmd
+            - materiales/presentaciones/02-modelo-insumo-producto.qmd
+            - materiales/presentaciones/03-extension-ambiental.qmd
+            - materiales/presentaciones/04-matrices-rectangulares.qmd
 
 format:
   html:
     theme:
       - yeti
-      - brand
+      - styles.scss
+      # - brand
     css: styles.css
     toc: true

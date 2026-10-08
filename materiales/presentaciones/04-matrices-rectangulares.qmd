@@ -1,0 +1,19 @@
+---
+title: "Matrices rectangulares de insumo-producto"
+subtitle: "De los cuadros de oferta y utilización al modelo de producto por industria"
+---
+
+::::{.slide-embed}
+<iframe class="slide-deck" src="../../slides/04-matrices-rectangulares/index.html" title="Matrices rectangulares de insumo-producto" loading="lazy"></iframe>
+::::
+
+::::{.slide-links}
+[⛶ Pantalla completa](../../slides/04-matrices-rectangulares/index.html){target="_blank"}
+::::
+
+## Objetivos
+
+- Entender por qué se usan matrices rectangulares
+- Conocer la estructura del sistema producto por industria
+- Pasar de precios de comprador a precios de productor
+- Aplicar el modelo con matrices rectangulares en un ejercicio numérico

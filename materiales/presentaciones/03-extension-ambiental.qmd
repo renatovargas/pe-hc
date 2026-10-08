@@ -1,0 +1,18 @@
+---
+title: "Extensión ambiental y multiplicadores"
+subtitle: "Emisiones de dióxido de carbono en el modelo de insumo-producto"
+---
+
+::::{.slide-embed}
+<iframe class="slide-deck" src="../../slides/03-extension-ambiental/index.html" title="Extensión ambiental y multiplicadores" loading="lazy"></iframe>
+::::
+
+::::{.slide-links}
+[⛶ Pantalla completa](../../slides/03-extension-ambiental/index.html){target="_blank"}
+::::
+
+## Objetivos
+
+- Incorporar emisiones de CO2 al modelo
+- Calcular multiplicadores de producto
+- Calcular multiplicadores de emisiones
