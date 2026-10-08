@@ -40,7 +40,7 @@ execute:
 ::: {style="text-align: center"}
 Descargar el archivo de ejemplo:
 
-[operaciones-matriciales.xlsx](../datos/ejemplos/operaciones-matriciales.xlsx){.button download="operaciones-matriciales.xlsx"}
+[operaciones-matriciales.xlsx](../../datos/ejemplos/operaciones-matriciales.xlsx){.button download="operaciones-matriciales.xlsx"}
 :::
 
 ## Definición de una matriz

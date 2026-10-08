@@ -42,8 +42,8 @@ execute:
 | | |
 | :--- | :----------: |
 | | |
-| [Excel:]{.emphasis} | [modelo-insumo-producto.xlsx](datos/ejemplos/modelo-insumo-producto.xlsx){.button download="modelo-insumo-producto.xlsx"} |
-| [R:]{.emphasis} | [modelo-insumo-producto.R](datos/ejemplos/modelo-insumo-producto.R){.button download="modelo-insumo-producto.R"} |
+| [Excel:]{.emphasis} | [modelo-insumo-producto.xlsx](../../datos/ejemplos/modelo-insumo-producto.xlsx){.button download="modelo-insumo-producto.xlsx"} |
+| [R:]{.emphasis} | [modelo-insumo-producto.R](../../datos/ejemplos/modelo-insumo-producto.R){.button download="modelo-insumo-producto.R"} |
 | | |
 :::
 
