@@ -250,8 +250,27 @@ Renato Vargas
 <section id="section" class="slide level2 theme-blank center">
 <h2></h2>
 <div style="text-align: center">
-<p>Descargar el archivo de ejemplo:</p>
-<p><a href="../datos/ejemplos/modelo-insumo-producto.xlsx" class="button" download="modelo-insumo-producto.xlsx">modelo-insumo-producto.xlsx</a></p>
+<p><strong>Descargar los archivos de ejemplo:</strong></p>
+<table class="caption-top">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="emphasis">Excel:</span></td>
+<td style="text-align: center;"><a href="datos/ejemplos/modelo-insumo-producto.xlsx" class="button" download="modelo-insumo-producto.xlsx">modelo-insumo-producto.xlsx</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="emphasis">R:</span></td>
+<td style="text-align: center;"><a href="datos/ejemplos/modelo-insumo-producto.R" class="button" download="modelo-insumo-producto.R">modelo-insumo-producto.R</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="modelo-basico" class="slide level2">
@@ -259,11 +278,11 @@ Renato Vargas
 <p>Una economía de dos sectores, agricultura y manufacturas, se describe con un cuadro de flujos entre industrias <span class="citation" data-cites="millerblair2022">(<a href="#/bibliografía" role="doc-biblioref" onclick="">Miller y Blair, 2022</a>)</span>. Cada fila muestra a quién vende un sector; cada columna muestra qué compra para producir.</p>
 <table class="caption-top">
 <colgroup>
-<col style="width: 23%">
-<col style="width: 17%">
-<col style="width: 18%">
-<col style="width: 19%">
-<col style="width: 21%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -322,21 +341,12 @@ Renato Vargas
 \bbox[#B5E6A2,3px]{\mathbf{Z}} = \begin{bmatrix} 150 &amp; 500 \\ 200 &amp; 100 \end{bmatrix}
 \]</span></p>
 <p><span class="emphasis">En Excel</span></p>
-<p>Insertar captura de pantalla de Excel aquí.</p>
+<p><img data-src="images/paste-1.png"></p>
 </div><div class="column" style="width:50%;">
 <p><span class="emphasis">En R</span></p>
-<p>Primero creamos el cuadro de flujos y luego identificamos los sectores en filas y columnas.</p>
+<p>Primero creamos el cuadro de flujos.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a>Z <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb1-2"><a aria-label="2"></a>  <span class="fu">c</span>(<span class="dv">150</span>, <span class="dv">500</span>, <span class="dv">200</span>, <span class="dv">100</span>), </span>
-<span id="cb1-3"><a aria-label="3"></a>  <span class="at">nrow =</span> <span class="dv">2</span>, </span>
-<span id="cb1-4"><a aria-label="4"></a>  <span class="at">ncol =</span> <span class="dv">2</span>, </span>
-<span id="cb1-5"><a aria-label="5"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-6"><a aria-label="6"></a></span>
-<span id="cb1-7"><a aria-label="7"></a>sectores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Agricultura"</span>, <span class="st">"Manufacturas"</span>)</span>
-<span id="cb1-8"><a aria-label="8"></a><span class="fu">colnames</span>(Z) <span class="ot">&lt;-</span> sectores</span>
-<span id="cb1-9"><a aria-label="9"></a><span class="fu">rownames</span>(Z) <span class="ot">&lt;-</span> sectores</span>
-<span id="cb1-10"><a aria-label="10"></a>Z</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a>Z</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             Agricultura Manufacturas
 Agricultura          150          500
@@ -355,7 +365,7 @@ Manufacturas         200          100</code></pre>
 \bbox[#F2CEEF,3px]{\mathbf{f}} = \begin{bmatrix} 350 \\ 1700 \end{bmatrix} \qquad \bbox[#A6C9EC,3px]{\mathbf{x}} = \begin{bmatrix} 1000 \\ 2000 \end{bmatrix}
 \]</span></p>
 <p><span class="emphasis">En Excel</span></p>
-<p>Insertar captura de pantalla de Excel aquí.</p>
+<p><img data-src="images/paste-2.png"></p>
 </div><div class="column" style="width:50%;">
 <p><span class="emphasis">En R</span></p>
 <div class="cell">
@@ -376,7 +386,7 @@ Manufacturas         200          100</code></pre>
 </section>
 <section id="matriz-diagonal-de-producto" class="slide level2">
 <h2>Matriz diagonal de producto</h2>
-<p>Para pasar de flujos a coeficientes se necesita una matriz diagonal con el producto total <span class="bg-x"><span class="math inline">\(\mathbf{x}\)</span></span> de cada sector, <span class="math inline">\(\widehat{\mathbf{x}}\)</span>, como las que vimos en la presentación de álgebra matricial.</p>
+<p>Para pasar de flujos a coeficientes se necesita una matriz diagonal con el producto total <span class="bg-x"><span class="math inline">\(\mathbf{x}\)</span></span> de cada sector, <span class="math inline">\(\widehat{\mathbf{x}}\)</span>.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><span class="emphasis">Notación</span></p>
@@ -384,7 +394,7 @@ Manufacturas         200          100</code></pre>
 \bbox[#A6C9EC,3px]{\widehat{\mathbf{x}}} = \begin{bmatrix} 1000 &amp; 0 \\ 0 &amp; 2000 \end{bmatrix}
 \]</span></p>
 <p><span class="emphasis">En Excel</span></p>
-<p>Insertar captura de pantalla de Excel aquí.</p>
+<p><img data-src="images/paste-3.png"></p>
 </div><div class="column" style="width:50%;">
 <p><span class="emphasis">En R</span></p>
 <div class="cell">
@@ -436,7 +446,7 @@ a_{ij} = \frac{\bbox[#B5E6A2,3px]{z_{ij}}}{\bbox[#A6C9EC,3px]{x_j}} \qquad \Long
 \mathbf{A} = \bbox[#B5E6A2,3px]{\mathbf{Z}}\bbox[#A6C9EC,3px]{\widehat{\mathbf{x}}}^{-1} = \begin{bmatrix} 0.15 &amp; 0.25 \\ 0.20 &amp; 0.05 \end{bmatrix}
 \]</span></p>
 <p><span class="emphasis">En Excel</span></p>
-<p>Insertar captura de pantalla de Excel aquí.</p>
+<p><img data-src="images/paste-4.png"></p>
 </div><div class="column" style="width:50%;">
 <p><span class="emphasis">En R</span></p>
 <div class="cell">
@@ -498,7 +508,7 @@ Manufacturas 0.20 0.05</code></pre>
 \mathbf{I} - \mathbf{A} = \begin{bmatrix} 0.85 &amp; -0.25 \\ -0.20 &amp; 0.95 \end{bmatrix}
 \]</span></p>
 <p><span class="emphasis">En Excel</span></p>
-<p>Insertar captura de pantalla de Excel aquí.</p>
+<p><img data-src="images/paste-7.png"></p>
 </div><div class="column" style="width:50%;">
 <p><span class="emphasis">En R</span></p>
 <div class="cell">
@@ -533,7 +543,7 @@ Manufacturas -0.20  0.95</code></pre>
 \bbox[#F7C7AC,3px]{\mathbf{L}} = (\mathbf{I} - \mathbf{A})^{-1} = \begin{bmatrix} 1.2541 &amp; 0.3300 \\ 0.2640 &amp; 1.1221 \end{bmatrix}
 \]</span></p>
 <p><span class="emphasis">En Excel</span></p>
-<p>Insertar captura de pantalla de Excel aquí.</p>
+<p><img data-src="images/paste-8.png"></p>
 </div><div class="column" style="width:50%;">
 <p><span class="emphasis">En R</span></p>
 <div class="cell">
@@ -557,7 +567,7 @@ Manufacturas -0.20  0.95</code></pre>
 \bbox[#F7C7AC,3px]{\mathbf{L}}\bbox[#F2CEEF,3px]{\mathbf{f}} = \begin{bmatrix} 1000 \\ 2000 \end{bmatrix} = \bbox[#A6C9EC,3px]{\mathbf{x}}
 \]</span></p>
 <p><span class="emphasis">En Excel</span></p>
-<p>Insertar captura de pantalla de Excel aquí.</p>
+<p><img data-src="images/paste-17.png"></p>
 </div><div class="column" style="width:50%;">
 <p><span class="emphasis">En R</span></p>
 <div class="cell">
@@ -588,7 +598,7 @@ Manufacturas -0.20  0.95</code></pre>
 \bbox[#A6C9EC,3px]{\mathbf{x}_{nueva}} = \bbox[#F7C7AC,3px]{\mathbf{L}}\bbox[#F2CEEF,3px]{\mathbf{f}_{nueva}} = \begin{bmatrix} 1247.53 \\ 1841.58 \end{bmatrix}
 \]</span></p>
 <p><span class="emphasis">En Excel</span></p>
-<p>Insertar captura de pantalla de Excel aquí.</p>
+<p><img data-src="images/paste-10.png"></p>
 </div><div class="column" style="width:50%;">
 <p><span class="emphasis">En R</span></p>
 <div class="cell">
@@ -604,29 +614,6 @@ Manufacturas -0.20  0.95</code></pre>
 </div>
 </div></div>
 </section>
-<section id="el-nuevo-cuadro-de-flujos-un-error-común" class="slide level2">
-<h2>El nuevo cuadro de flujos: un error común</h2>
-<p>De la definición de coeficientes, <span class="math inline">\(\mathbf{Z} = \mathbf{A}\widehat{\mathbf{x}}\)</span>, obtenemos el nuevo cuadro <span class="bg-Z"><span class="math inline">\(\mathbf{Z}_{nueva}\)</span></span> con la nueva producción.</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><span class="emphasis">Notación</span></p>
-<p><span class="math display">\[
-\bbox[#B5E6A2,3px]{\mathbf{Z}_{nueva}} = \mathbf{A}\bbox[#A6C9EC,3px]{\widehat{\mathbf{x}_{nueva}}}
-\]</span></p>
-<p><span class="emphasis">En Excel</span></p>
-<p>Insertar captura de pantalla de Excel aquí.</p>
-</div><div class="column" style="width:50%;">
-<p><span class="emphasis">En R</span></p>
-<p>R da un error porque <code>xnueva</code> es una matriz de una columna y no un vector. Con una matriz, <code>diag()</code> extrae la diagonal en lugar de construir una.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-label="1"></a>Znueva <span class="ot">&lt;-</span> A <span class="sc">%*%</span> <span class="fu">diag</span>(xnueva)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in `A %*% diag(xnueva)`:
-! non-conformable arguments</code></pre>
-</div>
-</div>
-</div></div>
-</section>
 <section id="el-nuevo-cuadro-de-flujos-la-solución" class="slide level2">
 <h2>El nuevo cuadro de flujos: la solución</h2>
 <div class="columns">
@@ -636,23 +623,19 @@ Manufacturas -0.20  0.95</code></pre>
 \bbox[#B5E6A2,3px]{\mathbf{Z}_{nueva}} = \begin{bmatrix} 187.13 &amp; 460.40 \\ 249.51 &amp; 92.08 \end{bmatrix}
 \]</span></p>
 <p><span class="emphasis">En Excel</span></p>
-<p>Insertar captura de pantalla de Excel aquí.</p>
+<p><img data-src="images/paste-12.png"></p>
 </div><div class="column" style="width:50%;">
 <p><span class="emphasis">En R</span></p>
-<p>Se convierte <code>xnueva</code> en vector con <code>c()</code> o con <code>as.vector()</code>.</p>
+<p>Se convierte <code>xnueva</code> en vector con <code>c()</code> o con <code>as.vector()</code> para no cometer el error común por las diferentes formas enlas que funciona <code>diag()</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-label="1"></a>Znueva <span class="ot">&lt;-</span> A <span class="sc">%*%</span> <span class="fu">diag</span>(<span class="fu">c</span>(xnueva))</span>
-<span id="cb25-2"><a aria-label="2"></a>Znueva <span class="ot">&lt;-</span> A <span class="sc">%*%</span> <span class="fu">diag</span>(<span class="fu">as.vector</span>(xnueva))</span>
-<span id="cb25-3"><a aria-label="3"></a>Znueva</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-label="1"></a>Znueva <span class="ot">&lt;-</span> A <span class="sc">%*%</span> <span class="fu">diag</span>(<span class="fu">c</span>(xnueva))</span>
+<span id="cb23-2"><a aria-label="2"></a>Znueva <span class="ot">&lt;-</span> A <span class="sc">%*%</span> <span class="fu">diag</span>(<span class="fu">as.vector</span>(xnueva))</span>
+<span id="cb23-3"><a aria-label="3"></a>Znueva</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                 [,1]      [,2]
 Agricultura  187.1287 460.39604
 Manufacturas 249.5050  92.07921</code></pre>
 </div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-label="1"></a><span class="fu">help</span>(<span class="st">"diag"</span>)</span>
-<span id="cb27-2"><a aria-label="2"></a><span class="fu">help</span>(<span class="st">"as.vector"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div></div>
 </section>
@@ -662,11 +645,11 @@ Manufacturas 249.5050  92.07921</code></pre>
 <div style="font-size: 0.85em">
 <table class="caption-top">
 <colgroup>
-<col style="width: 23%">
-<col style="width: 17%">
-<col style="width: 18%">
-<col style="width: 19%">
-<col style="width: 21%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -712,12 +695,12 @@ Manufacturas 249.5050  92.07921</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><span class="emphasis">En Excel</span></p>
-<p>Insertar captura de pantalla de Excel aquí.</p>
+<p><img data-src="images/paste-13.png"></p>
 </div><div class="column" style="width:50%;">
 <p><span class="emphasis">En R</span></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-label="1"></a><span class="co"># Pagos a factores por sector</span></span>
-<span id="cb28-2"><a aria-label="2"></a>xnueva <span class="sc">-</span> <span class="fu">colSums</span>(Znueva)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-label="1"></a><span class="co"># Pagos a factores por sector</span></span>
+<span id="cb25-2"><a aria-label="2"></a>xnueva <span class="sc">-</span> <span class="fu">colSums</span>(Znueva)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          [,1]
 [1,]  810.8911
@@ -739,27 +722,27 @@ Manufacturas 249.5050  92.07921</code></pre>
 \Delta\mathbf{x} = \bbox[#A6C9EC,3px]{\mathbf{x}_{nueva}} - \bbox[#A6C9EC,3px]{\mathbf{x}} = \begin{bmatrix} 247.52 \\ -158.42 \end{bmatrix}
 \]</span></p>
 <p><span class="emphasis">En Excel</span></p>
-<p>Insertar captura de pantalla de Excel aquí.</p>
+<p><img data-src="images/paste-14.png"></p>
 </div><div class="column" style="width:50%;">
 <p><span class="emphasis">En R</span></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-label="1"></a><span class="co"># Cambios en demanda</span></span>
-<span id="cb30-2"><a aria-label="2"></a>deltaf <span class="ot">&lt;-</span> fnueva <span class="sc">-</span> f</span>
-<span id="cb30-3"><a aria-label="3"></a>deltaf</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-label="1"></a><span class="co"># Cambios en demanda</span></span>
+<span id="cb27-2"><a aria-label="2"></a>deltaf <span class="ot">&lt;-</span> fnueva <span class="sc">-</span> f</span>
+<span id="cb27-3"><a aria-label="3"></a>deltaf</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  250 -200</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-label="1"></a><span class="co"># Cambios en producto</span></span>
-<span id="cb32-2"><a aria-label="2"></a>deltax <span class="ot">&lt;-</span> xnueva <span class="sc">-</span> x</span>
-<span id="cb32-3"><a aria-label="3"></a>deltax</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-label="1"></a><span class="co"># Cambios en producto</span></span>
+<span id="cb29-2"><a aria-label="2"></a>deltax <span class="ot">&lt;-</span> xnueva <span class="sc">-</span> x</span>
+<span id="cb29-3"><a aria-label="3"></a>deltax</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          [,1]
 [1,]  247.5248
 [2,] -158.4158</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-label="1"></a><span class="co"># Cambios en toda la tabla Z</span></span>
-<span id="cb34-2"><a aria-label="2"></a>deltaZ <span class="ot">&lt;-</span> Znueva <span class="sc">-</span> Z</span>
-<span id="cb34-3"><a aria-label="3"></a>deltaZ</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-label="1"></a><span class="co"># Cambios en toda la tabla Z</span></span>
+<span id="cb31-2"><a aria-label="2"></a>deltaZ <span class="ot">&lt;-</span> Znueva <span class="sc">-</span> Z</span>
+<span id="cb31-3"><a aria-label="3"></a>deltaZ</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                 [,1]       [,2]
 Agricultura  37.12871 -39.603960
@@ -768,8 +751,8 @@ Manufacturas 49.50495  -7.920792</code></pre>
 </div>
 </div></div>
 </section>
-<section id="qué-pasó-con-el-caso" class="slide level2">
-<h2>Qué pasó con el caso</h2>
+<section id="análisis-final" class="slide level2">
+<h2>Análisis final</h2>
 <p>El escenario cambió la demanda final, no la tecnología. El modelo traduce esos cambios en ajustes de la producción y de las compras entre sectores.</p>
 <p><span class="math display">\[
 \Delta\mathbf{f} = \begin{bmatrix} 250 \\ -200 \end{bmatrix} \quad \Rightarrow \quad \Delta\mathbf{x} = \begin{bmatrix} 247.52 \\ -158.42 \end{bmatrix} \quad \Rightarrow \quad \Delta\mathbf{Z} = \begin{bmatrix} 37.13 &amp; -39.60 \\ 49.50 &amp; -7.92 \end{bmatrix}
@@ -782,35 +765,34 @@ Manufacturas 49.50495  -7.920792</code></pre>
 </section>
 <section id="conversión-a-moneda-local" class="slide level2">
 <h2>Conversión a moneda local</h2>
-<p>Es la multiplicación por un escalar que vimos en la presentación anterior. Con un tipo de cambio de 7.70 unidades de moneda local por 1 USD:</p>
+<p>Es la multiplicación por un escalar que vimos en la presentación anterior. Con un tipo de cambio de 3.44 unidades de moneda local por 1 USD:</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><span class="emphasis">Notación</span></p>
 <p><span class="math display">\[
-\Delta\mathbf{f}_{ML} = 7.70 \, \Delta\mathbf{f}
+\Delta\mathbf{f}_{ML} = 3.44 \, \Delta\mathbf{f}
 \]</span></p>
 <p><span class="emphasis">En Excel</span></p>
-<p>Insertar captura de pantalla de Excel aquí.</p>
+<p><img data-src="images/paste-15.png"></p>
 </div><div class="column" style="width:50%;">
 <p><span class="emphasis">En R</span></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a aria-label="1"></a>tc <span class="ot">&lt;-</span> <span class="fl">7.70</span></span>
-<span id="cb36-2"><a aria-label="2"></a></span>
-<span id="cb36-3"><a aria-label="3"></a>deltaf <span class="sc">*</span> tc</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-label="1"></a>tc <span class="ot">&lt;-</span> <span class="fl">3.44</span></span>
+<span id="cb33-2"><a aria-label="2"></a>deltaf <span class="sc">*</span> tc</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  1925 -1540</code></pre>
+<pre><code>[1]  860 -688</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a aria-label="1"></a>deltax <span class="sc">*</span> tc</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a aria-label="1"></a>deltax <span class="sc">*</span> tc</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          [,1]
-[1,]  1905.941
-[2,] -1219.802</code></pre>
+[1,]  851.4851
+[2,] -544.9505</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a aria-label="1"></a>deltaZ <span class="sc">*</span> tc</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a aria-label="1"></a>deltaZ <span class="sc">*</span> tc</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                 [,1]      [,2]
-Agricultura  285.8911 -304.9505
-Manufacturas 381.1881  -60.9901</code></pre>
+<pre><code>                 [,1]       [,2]
+Agricultura  127.7228 -136.23762
+Manufacturas 170.2970  -27.24752</code></pre>
 </div>
 </div>
 </div></div>
@@ -830,8 +812,9 @@ Miller, R. E. y Blair, P. D. (2022). <em>Input-Output Analysis: Foundations and 
 
 </div><div class="column" style="width:70%;">
 <div style="text-align: center">
-<p><span style="font-size:1.8em;color:#204B92;">¡Gracias!</span></p>
-<p><a href="https://renatovargas.com/" style="font-size:1.2em; color:#F47A32;">renatovargas.com</a></p>
+<p><span style="font-size:2.2em;color:#204B92;">¡Gracias!</span></p>
+<p><span style="font-size:1.2em;"><strong>Renato Vargas</strong></span></p>
+<p><span style="font-size:0.9em;"><a href="https://renatovargas.com/">LinkedIn</a> | <a href="https://renatovargas.com/">website</a></span></p>
 </div>
 </div><div class="column" style="width:15%;">
 

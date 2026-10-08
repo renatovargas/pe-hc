@@ -256,7 +256,7 @@
     "href": "slides/04-matrices-rectangulares/index.html#section",
     "title": "Matrices rectangulares de insumo-producto",
     "section": "",
-    "text": "¡Gracias!\nrenatovargas.com\nAnexo: una matriz cuadrada equivalente"
+    "text": "¡Gracias!\nRenato Vargas\nLinkedIn | website"
   },
   {
     "objectID": "slides/04-matrices-rectangulares/index.html#anexo",
@@ -284,7 +284,7 @@
     "href": "slides/02-modelo-insumo-producto/index.html#section",
     "title": "El modelo de insumo-producto",
     "section": "",
-    "text": "Descargar el archivo de ejemplo:\nmodelo-insumo-producto.xlsx"
+    "text": "Descargar los archivos de ejemplo:\n\n\n\n\n\n\n\nExcel:\nmodelo-insumo-producto.xlsx\n\n\nR:\nmodelo-insumo-producto.R"
   },
   {
     "objectID": "slides/02-modelo-insumo-producto/index.html#modelo-basico",
@@ -298,21 +298,21 @@
     "href": "slides/02-modelo-insumo-producto/index.html#cuadro-de-flujos-entre-industrias",
     "title": "El modelo de insumo-producto",
     "section": "Cuadro de flujos entre industrias",
-    "text": "Cuadro de flujos entre industrias\nEl elemento \\(z_{ij}\\) de la matriz \\(\\mathbf{Z}\\) muestra las ventas que hace la fila \\(i\\) a la columna \\(j\\), o bien las compras que hace la columna \\(j\\) a la fila \\(i\\).\n\n\nNotación\n\\[\n\\bbox[#B5E6A2,3px]{\\mathbf{Z}} = \\begin{bmatrix} 150 & 500 \\\\ 200 & 100 \\end{bmatrix}\n\\]\nEn Excel\nInsertar captura de pantalla de Excel aquí.\n\nEn R\nPrimero creamos el cuadro de flujos y luego identificamos los sectores en filas y columnas.\n\nZ &lt;- matrix(\n  c(150, 500, 200, 100), \n  nrow = 2, \n  ncol = 2, \n  byrow = TRUE)\n\nsectores &lt;- c(\"Agricultura\", \"Manufacturas\")\ncolnames(Z) &lt;- sectores\nrownames(Z) &lt;- sectores\nZ\n\n             Agricultura Manufacturas\nAgricultura          150          500\nManufacturas         200          100"
+    "text": "Cuadro de flujos entre industrias\nEl elemento \\(z_{ij}\\) de la matriz \\(\\mathbf{Z}\\) muestra las ventas que hace la fila \\(i\\) a la columna \\(j\\), o bien las compras que hace la columna \\(j\\) a la fila \\(i\\).\n\n\nNotación\n\\[\n\\bbox[#B5E6A2,3px]{\\mathbf{Z}} = \\begin{bmatrix} 150 & 500 \\\\ 200 & 100 \\end{bmatrix}\n\\]\nEn Excel\n\n\nEn R\nPrimero creamos el cuadro de flujos.\n\nZ\n\n             Agricultura Manufacturas\nAgricultura          150          500\nManufacturas         200          100"
   },
   {
     "objectID": "slides/02-modelo-insumo-producto/index.html#demanda-final-y-producto-total",
     "href": "slides/02-modelo-insumo-producto/index.html#demanda-final-y-producto-total",
     "title": "El modelo de insumo-producto",
     "section": "Demanda final y producto total",
-    "text": "Demanda final y producto total\nLa demanda final del cuadro forma el vector \\(\\mathbf{f}\\) y el producto total forma el vector \\(\\mathbf{x}\\).\n\n\nNotación\n\\[\n\\bbox[#F2CEEF,3px]{\\mathbf{f}} = \\begin{bmatrix} 350 \\\\ 1700 \\end{bmatrix} \\qquad \\bbox[#A6C9EC,3px]{\\mathbf{x}} = \\begin{bmatrix} 1000 \\\\ 2000 \\end{bmatrix}\n\\]\nEn Excel\nInsertar captura de pantalla de Excel aquí.\n\nEn R\n\n# Demanda final, según el cuadro\nf &lt;- c(350, 1700)\nf\n\n[1]  350 1700\n\n# Producto total\nx &lt;- c(1000, 2000)\nx\n\n[1] 1000 2000"
+    "text": "Demanda final y producto total\nLa demanda final del cuadro forma el vector \\(\\mathbf{f}\\) y el producto total forma el vector \\(\\mathbf{x}\\).\n\n\nNotación\n\\[\n\\bbox[#F2CEEF,3px]{\\mathbf{f}} = \\begin{bmatrix} 350 \\\\ 1700 \\end{bmatrix} \\qquad \\bbox[#A6C9EC,3px]{\\mathbf{x}} = \\begin{bmatrix} 1000 \\\\ 2000 \\end{bmatrix}\n\\]\nEn Excel\n\n\nEn R\n\n# Demanda final, según el cuadro\nf &lt;- c(350, 1700)\nf\n\n[1]  350 1700\n\n# Producto total\nx &lt;- c(1000, 2000)\nx\n\n[1] 1000 2000"
   },
   {
     "objectID": "slides/02-modelo-insumo-producto/index.html#matriz-diagonal-de-producto",
     "href": "slides/02-modelo-insumo-producto/index.html#matriz-diagonal-de-producto",
     "title": "El modelo de insumo-producto",
     "section": "Matriz diagonal de producto",
-    "text": "Matriz diagonal de producto\nPara pasar de flujos a coeficientes se necesita una matriz diagonal con el producto total \\(\\mathbf{x}\\) de cada sector, \\(\\widehat{\\mathbf{x}}\\), como las que vimos en la presentación de álgebra matricial.\n\n\nNotación\n\\[\n\\bbox[#A6C9EC,3px]{\\widehat{\\mathbf{x}}} = \\begin{bmatrix} 1000 & 0 \\\\ 0 & 2000 \\end{bmatrix}\n\\]\nEn Excel\nInsertar captura de pantalla de Excel aquí.\n\nEn R\n\nxhat &lt;- diag(x)\nxhat\n\n     [,1] [,2]\n[1,] 1000    0\n[2,]    0 2000"
+    "text": "Matriz diagonal de producto\nPara pasar de flujos a coeficientes se necesita una matriz diagonal con el producto total \\(\\mathbf{x}\\) de cada sector, \\(\\widehat{\\mathbf{x}}\\).\n\n\nNotación\n\\[\n\\bbox[#A6C9EC,3px]{\\widehat{\\mathbf{x}}} = \\begin{bmatrix} 1000 & 0 \\\\ 0 & 2000 \\end{bmatrix}\n\\]\nEn Excel\n\n\nEn R\n\nxhat &lt;- diag(x)\nxhat\n\n     [,1] [,2]\n[1,] 1000    0\n[2,]    0 2000"
   },
   {
     "objectID": "slides/02-modelo-insumo-producto/index.html#coeficientes",
@@ -326,7 +326,7 @@
     "href": "slides/02-modelo-insumo-producto/index.html#coeficientes-técnicos-en-la-práctica",
     "title": "El modelo de insumo-producto",
     "section": "Coeficientes técnicos: en la práctica",
-    "text": "Coeficientes técnicos: en la práctica\n\n\nNotación\n\\[\n\\mathbf{A} = \\bbox[#B5E6A2,3px]{\\mathbf{Z}}\\bbox[#A6C9EC,3px]{\\widehat{\\mathbf{x}}}^{-1} = \\begin{bmatrix} 0.15 & 0.25 \\\\ 0.20 & 0.05 \\end{bmatrix}\n\\]\nEn Excel\nInsertar captura de pantalla de Excel aquí.\n\nEn R\n\nA &lt;- Z %*% solve(xhat)\nA\n\n             [,1] [,2]\nAgricultura  0.15 0.25\nManufacturas 0.20 0.05"
+    "text": "Coeficientes técnicos: en la práctica\n\n\nNotación\n\\[\n\\mathbf{A} = \\bbox[#B5E6A2,3px]{\\mathbf{Z}}\\bbox[#A6C9EC,3px]{\\widehat{\\mathbf{x}}}^{-1} = \\begin{bmatrix} 0.15 & 0.25 \\\\ 0.20 & 0.05 \\end{bmatrix}\n\\]\nEn Excel\n\n\nEn R\n\nA &lt;- Z %*% solve(xhat)\nA\n\n             [,1] [,2]\nAgricultura  0.15 0.25\nManufacturas 0.20 0.05"
   },
   {
     "objectID": "slides/02-modelo-insumo-producto/index.html#leontief",
@@ -354,21 +354,21 @@
     "href": "slides/02-modelo-insumo-producto/index.html#la-identidad-y-la-resta-de-i-menos-a",
     "title": "El modelo de insumo-producto",
     "section": "La identidad y la resta de I menos A",
-    "text": "La identidad y la resta de I menos A\nPara restar \\(\\mathbf{A}\\) necesitamos una identidad de la misma dimensión.\n\n\nNotación\n\\[\n\\mathbf{I} - \\mathbf{A} = \\begin{bmatrix} 0.85 & -0.25 \\\\ -0.20 & 0.95 \\end{bmatrix}\n\\]\nEn Excel\nInsertar captura de pantalla de Excel aquí.\n\nEn R\n\n# Dimensiones de A\ndim(A)\n\n[1] 2 2\n\n# Identidad de tamaño apropiado\nI &lt;- diag(dim(A)[1])\nI\n\n     [,1] [,2]\n[1,]    1    0\n[2,]    0    1\n\nI - A\n\n              [,1]  [,2]\nAgricultura   0.85 -0.25\nManufacturas -0.20  0.95"
+    "text": "La identidad y la resta de I menos A\nPara restar \\(\\mathbf{A}\\) necesitamos una identidad de la misma dimensión.\n\n\nNotación\n\\[\n\\mathbf{I} - \\mathbf{A} = \\begin{bmatrix} 0.85 & -0.25 \\\\ -0.20 & 0.95 \\end{bmatrix}\n\\]\nEn Excel\n\n\nEn R\n\n# Dimensiones de A\ndim(A)\n\n[1] 2 2\n\n# Identidad de tamaño apropiado\nI &lt;- diag(dim(A)[1])\nI\n\n     [,1] [,2]\n[1,]    1    0\n[2,]    0    1\n\nI - A\n\n              [,1]  [,2]\nAgricultura   0.85 -0.25\nManufacturas -0.20  0.95"
   },
   {
     "objectID": "slides/02-modelo-insumo-producto/index.html#la-matriz-de-leontief-en-la-práctica",
     "href": "slides/02-modelo-insumo-producto/index.html#la-matriz-de-leontief-en-la-práctica",
     "title": "El modelo de insumo-producto",
     "section": "La matriz de Leontief: en la práctica",
-    "text": "La matriz de Leontief: en la práctica\n\n\nNotación\n\\[\n\\bbox[#F7C7AC,3px]{\\mathbf{L}} = (\\mathbf{I} - \\mathbf{A})^{-1} = \\begin{bmatrix} 1.2541 & 0.3300 \\\\ 0.2640 & 1.1221 \\end{bmatrix}\n\\]\nEn Excel\nInsertar captura de pantalla de Excel aquí.\n\nEn R\n\nL &lt;- solve(I - A)\nL\n\n     Agricultura Manufacturas\n[1,]   1.2541254     0.330033\n[2,]   0.2640264     1.122112"
+    "text": "La matriz de Leontief: en la práctica\n\n\nNotación\n\\[\n\\bbox[#F7C7AC,3px]{\\mathbf{L}} = (\\mathbf{I} - \\mathbf{A})^{-1} = \\begin{bmatrix} 1.2541 & 0.3300 \\\\ 0.2640 & 1.1221 \\end{bmatrix}\n\\]\nEn Excel\n\n\nEn R\n\nL &lt;- solve(I - A)\nL\n\n     Agricultura Manufacturas\n[1,]   1.2541254     0.330033\n[2,]   0.2640264     1.122112"
   },
   {
     "objectID": "slides/02-modelo-insumo-producto/index.html#calibración-del-modelo",
     "href": "slides/02-modelo-insumo-producto/index.html#calibración-del-modelo",
     "title": "El modelo de insumo-producto",
     "section": "Calibración del modelo",
-    "text": "Calibración del modelo\nUn modelo está calibrado cuando reproduce los datos con los que se construyó. Si \\(\\mathbf{L}\\)\\(\\mathbf{f}\\) devuelve el producto total observado \\(\\mathbf{x}\\), la matriz \\(\\mathbf{A}\\) y la matriz \\(\\mathbf{L}\\) son consistentes con el cuadro original.\n\n\nNotación\n\\[\n\\bbox[#F7C7AC,3px]{\\mathbf{L}}\\bbox[#F2CEEF,3px]{\\mathbf{f}} = \\begin{bmatrix} 1000 \\\\ 2000 \\end{bmatrix} = \\bbox[#A6C9EC,3px]{\\mathbf{x}}\n\\]\nEn Excel\nInsertar captura de pantalla de Excel aquí.\n\nEn R\n\nL %*% f\n\n     [,1]\n[1,] 1000\n[2,] 2000"
+    "text": "Calibración del modelo\nUn modelo está calibrado cuando reproduce los datos con los que se construyó. Si \\(\\mathbf{L}\\)\\(\\mathbf{f}\\) devuelve el producto total observado \\(\\mathbf{x}\\), la matriz \\(\\mathbf{A}\\) y la matriz \\(\\mathbf{L}\\) son consistentes con el cuadro original.\n\n\nNotación\n\\[\n\\bbox[#F7C7AC,3px]{\\mathbf{L}}\\bbox[#F2CEEF,3px]{\\mathbf{f}} = \\begin{bmatrix} 1000 \\\\ 2000 \\end{bmatrix} = \\bbox[#A6C9EC,3px]{\\mathbf{x}}\n\\]\nEn Excel\n\n\nEn R\n\nL %*% f\n\n     [,1]\n[1,] 1000\n[2,] 2000"
   },
   {
     "objectID": "slides/02-modelo-insumo-producto/index.html#cambio-demanda",
@@ -382,49 +382,42 @@
     "href": "slides/02-modelo-insumo-producto/index.html#cambios-en-la-demanda-final-en-la-práctica",
     "title": "El modelo de insumo-producto",
     "section": "Cambios en la demanda final: en la práctica",
-    "text": "Cambios en la demanda final: en la práctica\n\n\nNotación\n\\[\n\\bbox[#A6C9EC,3px]{\\mathbf{x}_{nueva}} = \\bbox[#F7C7AC,3px]{\\mathbf{L}}\\bbox[#F2CEEF,3px]{\\mathbf{f}_{nueva}} = \\begin{bmatrix} 1247.53 \\\\ 1841.58 \\end{bmatrix}\n\\]\nEn Excel\nInsertar captura de pantalla de Excel aquí.\n\nEn R\n\nfnueva &lt;- c(600, 1500)\n\nxnueva &lt;- L %*% fnueva\nxnueva\n\n         [,1]\n[1,] 1247.525\n[2,] 1841.584"
-  },
-  {
-    "objectID": "slides/02-modelo-insumo-producto/index.html#el-nuevo-cuadro-de-flujos-un-error-común",
-    "href": "slides/02-modelo-insumo-producto/index.html#el-nuevo-cuadro-de-flujos-un-error-común",
-    "title": "El modelo de insumo-producto",
-    "section": "El nuevo cuadro de flujos: un error común",
-    "text": "El nuevo cuadro de flujos: un error común\nDe la definición de coeficientes, \\(\\mathbf{Z} = \\mathbf{A}\\widehat{\\mathbf{x}}\\), obtenemos el nuevo cuadro \\(\\mathbf{Z}_{nueva}\\) con la nueva producción.\n\n\nNotación\n\\[\n\\bbox[#B5E6A2,3px]{\\mathbf{Z}_{nueva}} = \\mathbf{A}\\bbox[#A6C9EC,3px]{\\widehat{\\mathbf{x}_{nueva}}}\n\\]\nEn Excel\nInsertar captura de pantalla de Excel aquí.\n\nEn R\nR da un error porque xnueva es una matriz de una columna y no un vector. Con una matriz, diag() extrae la diagonal en lugar de construir una.\n\nZnueva &lt;- A %*% diag(xnueva)\n\nError in `A %*% diag(xnueva)`:\n! non-conformable arguments"
+    "text": "Cambios en la demanda final: en la práctica\n\n\nNotación\n\\[\n\\bbox[#A6C9EC,3px]{\\mathbf{x}_{nueva}} = \\bbox[#F7C7AC,3px]{\\mathbf{L}}\\bbox[#F2CEEF,3px]{\\mathbf{f}_{nueva}} = \\begin{bmatrix} 1247.53 \\\\ 1841.58 \\end{bmatrix}\n\\]\nEn Excel\n\n\nEn R\n\nfnueva &lt;- c(600, 1500)\n\nxnueva &lt;- L %*% fnueva\nxnueva\n\n         [,1]\n[1,] 1247.525\n[2,] 1841.584"
   },
   {
     "objectID": "slides/02-modelo-insumo-producto/index.html#el-nuevo-cuadro-de-flujos-la-solución",
     "href": "slides/02-modelo-insumo-producto/index.html#el-nuevo-cuadro-de-flujos-la-solución",
     "title": "El modelo de insumo-producto",
     "section": "El nuevo cuadro de flujos: la solución",
-    "text": "El nuevo cuadro de flujos: la solución\n\n\nNotación\n\\[\n\\bbox[#B5E6A2,3px]{\\mathbf{Z}_{nueva}} = \\begin{bmatrix} 187.13 & 460.40 \\\\ 249.51 & 92.08 \\end{bmatrix}\n\\]\nEn Excel\nInsertar captura de pantalla de Excel aquí.\n\nEn R\nSe convierte xnueva en vector con c() o con as.vector().\n\nZnueva &lt;- A %*% diag(c(xnueva))\nZnueva &lt;- A %*% diag(as.vector(xnueva))\nZnueva\n\n                 [,1]      [,2]\nAgricultura  187.1287 460.39604\nManufacturas 249.5050  92.07921\n\n\n\nhelp(\"diag\")\nhelp(\"as.vector\")"
+    "text": "El nuevo cuadro de flujos: la solución\n\n\nNotación\n\\[\n\\bbox[#B5E6A2,3px]{\\mathbf{Z}_{nueva}} = \\begin{bmatrix} 187.13 & 460.40 \\\\ 249.51 & 92.08 \\end{bmatrix}\n\\]\nEn Excel\n\n\nEn R\nSe convierte xnueva en vector con c() o con as.vector() para no cometer el error común por las diferentes formas enlas que funciona diag().\n\nZnueva &lt;- A %*% diag(c(xnueva))\nZnueva &lt;- A %*% diag(as.vector(xnueva))\nZnueva\n\n                 [,1]      [,2]\nAgricultura  187.1287 460.39604\nManufacturas 249.5050  92.07921"
   },
   {
     "objectID": "slides/02-modelo-insumo-producto/index.html#el-nuevo-cuadro-completo",
     "href": "slides/02-modelo-insumo-producto/index.html#el-nuevo-cuadro-completo",
     "title": "El modelo de insumo-producto",
     "section": "El nuevo cuadro completo",
-    "text": "El nuevo cuadro completo\nLos pagos a factores se obtienen como residuo: el producto de cada sector menos lo que compra a otros sectores.\n\n\n\n\n\n\n\n\n\n\n\n\nAgricultura\nManufacturas\nDemanda final\nProducto total\n\n\n\n\nAgricultura\n187.13\n460.40\n600\n1247.53\n\n\nManufacturas\n249.51\n92.08\n1500\n1841.58\n\n\nPagos a factores\n810.89\n1289.11\n1100\n\n\n\nTotal insumos\n1247.53\n1841.58\n3200\n\n\n\n\n\n\n\nEn Excel\nInsertar captura de pantalla de Excel aquí.\n\nEn R\n\n# Pagos a factores por sector\nxnueva - colSums(Znueva)\n\n          [,1]\n[1,]  810.8911\n[2,] 1289.1089"
+    "text": "El nuevo cuadro completo\nLos pagos a factores se obtienen como residuo: el producto de cada sector menos lo que compra a otros sectores.\n\n\n\n\n\n\n\n\n\n\n\n\nAgricultura\nManufacturas\nDemanda final\nProducto total\n\n\n\n\nAgricultura\n187.13\n460.40\n600\n1247.53\n\n\nManufacturas\n249.51\n92.08\n1500\n1841.58\n\n\nPagos a factores\n810.89\n1289.11\n1100\n\n\n\nTotal insumos\n1247.53\n1841.58\n3200\n\n\n\n\n\n\n\nEn Excel\n\n\nEn R\n\n# Pagos a factores por sector\nxnueva - colSums(Znueva)\n\n          [,1]\n[1,]  810.8911\n[2,] 1289.1089"
   },
   {
     "objectID": "slides/02-modelo-insumo-producto/index.html#cambios-en-lugar-de-niveles",
     "href": "slides/02-modelo-insumo-producto/index.html#cambios-en-lugar-de-niveles",
     "title": "El modelo de insumo-producto",
     "section": "Cambios en lugar de niveles",
-    "text": "Cambios en lugar de niveles\nA veces interesan los cambios y no los nuevos niveles. Se restan los valores originales a los nuevos.\n\n\nNotación\n\\[\n\\Delta\\mathbf{f} = \\bbox[#F2CEEF,3px]{\\mathbf{f}_{nueva}} - \\bbox[#F2CEEF,3px]{\\mathbf{f}} = \\begin{bmatrix} 250 \\\\ -200 \\end{bmatrix}\n\\]\n\\[\n\\Delta\\mathbf{x} = \\bbox[#A6C9EC,3px]{\\mathbf{x}_{nueva}} - \\bbox[#A6C9EC,3px]{\\mathbf{x}} = \\begin{bmatrix} 247.52 \\\\ -158.42 \\end{bmatrix}\n\\]\nEn Excel\nInsertar captura de pantalla de Excel aquí.\n\nEn R\n\n# Cambios en demanda\ndeltaf &lt;- fnueva - f\ndeltaf\n\n[1]  250 -200\n\n# Cambios en producto\ndeltax &lt;- xnueva - x\ndeltax\n\n          [,1]\n[1,]  247.5248\n[2,] -158.4158\n\n# Cambios en toda la tabla Z\ndeltaZ &lt;- Znueva - Z\ndeltaZ\n\n                 [,1]       [,2]\nAgricultura  37.12871 -39.603960\nManufacturas 49.50495  -7.920792"
+    "text": "Cambios en lugar de niveles\nA veces interesan los cambios y no los nuevos niveles. Se restan los valores originales a los nuevos.\n\n\nNotación\n\\[\n\\Delta\\mathbf{f} = \\bbox[#F2CEEF,3px]{\\mathbf{f}_{nueva}} - \\bbox[#F2CEEF,3px]{\\mathbf{f}} = \\begin{bmatrix} 250 \\\\ -200 \\end{bmatrix}\n\\]\n\\[\n\\Delta\\mathbf{x} = \\bbox[#A6C9EC,3px]{\\mathbf{x}_{nueva}} - \\bbox[#A6C9EC,3px]{\\mathbf{x}} = \\begin{bmatrix} 247.52 \\\\ -158.42 \\end{bmatrix}\n\\]\nEn Excel\n\n\nEn R\n\n# Cambios en demanda\ndeltaf &lt;- fnueva - f\ndeltaf\n\n[1]  250 -200\n\n# Cambios en producto\ndeltax &lt;- xnueva - x\ndeltax\n\n          [,1]\n[1,]  247.5248\n[2,] -158.4158\n\n# Cambios en toda la tabla Z\ndeltaZ &lt;- Znueva - Z\ndeltaZ\n\n                 [,1]       [,2]\nAgricultura  37.12871 -39.603960\nManufacturas 49.50495  -7.920792"
   },
   {
-    "objectID": "slides/02-modelo-insumo-producto/index.html#qué-pasó-con-el-caso",
-    "href": "slides/02-modelo-insumo-producto/index.html#qué-pasó-con-el-caso",
+    "objectID": "slides/02-modelo-insumo-producto/index.html#análisis-final",
+    "href": "slides/02-modelo-insumo-producto/index.html#análisis-final",
     "title": "El modelo de insumo-producto",
-    "section": "Qué pasó con el caso",
-    "text": "Qué pasó con el caso\nEl escenario cambió la demanda final, no la tecnología. El modelo traduce esos cambios en ajustes de la producción y de las compras entre sectores.\n\\[\n\\Delta\\mathbf{f} = \\begin{bmatrix} 250 \\\\ -200 \\end{bmatrix} \\quad \\Rightarrow \\quad \\Delta\\mathbf{x} = \\begin{bmatrix} 247.52 \\\\ -158.42 \\end{bmatrix} \\quad \\Rightarrow \\quad \\Delta\\mathbf{Z} = \\begin{bmatrix} 37.13 & -39.60 \\\\ 49.50 & -7.92 \\end{bmatrix}\n\\]\n\nAgricultura: su demanda final sube USD 250 y su producción sube USD 247.52. Sube algo menos que la demanda porque manufacturas, que reduce su producción, le compra menos insumos.\nManufacturas: su demanda final baja USD 200 y su producción baja USD 158.42. Baja menos que la demanda porque agricultura, al producir más, le compra más insumos.\nCompras entre sectores: cada columna de \\(\\Delta\\mathbf{Z}\\) sigue el cambio de producción del sector comprador, con sus coeficientes técnicos. Agricultura produce más y aumenta sus compras en USD 37.13 a sí misma y en USD 49.50 a manufacturas. Manufacturas produce menos y reduce sus compras en USD 39.60 a agricultura y en USD 7.92 a sí misma."
+    "section": "Análisis final",
+    "text": "Análisis final\nEl escenario cambió la demanda final, no la tecnología. El modelo traduce esos cambios en ajustes de la producción y de las compras entre sectores.\n\\[\n\\Delta\\mathbf{f} = \\begin{bmatrix} 250 \\\\ -200 \\end{bmatrix} \\quad \\Rightarrow \\quad \\Delta\\mathbf{x} = \\begin{bmatrix} 247.52 \\\\ -158.42 \\end{bmatrix} \\quad \\Rightarrow \\quad \\Delta\\mathbf{Z} = \\begin{bmatrix} 37.13 & -39.60 \\\\ 49.50 & -7.92 \\end{bmatrix}\n\\]\n\nAgricultura: su demanda final sube USD 250 y su producción sube USD 247.52. Sube algo menos que la demanda porque manufacturas, que reduce su producción, le compra menos insumos.\nManufacturas: su demanda final baja USD 200 y su producción baja USD 158.42. Baja menos que la demanda porque agricultura, al producir más, le compra más insumos.\nCompras entre sectores: cada columna de \\(\\Delta\\mathbf{Z}\\) sigue el cambio de producción del sector comprador, con sus coeficientes técnicos. Agricultura produce más y aumenta sus compras en USD 37.13 a sí misma y en USD 49.50 a manufacturas. Manufacturas produce menos y reduce sus compras en USD 39.60 a agricultura y en USD 7.92 a sí misma."
   },
   {
     "objectID": "slides/02-modelo-insumo-producto/index.html#conversión-a-moneda-local",
     "href": "slides/02-modelo-insumo-producto/index.html#conversión-a-moneda-local",
     "title": "El modelo de insumo-producto",
     "section": "Conversión a moneda local",
-    "text": "Conversión a moneda local\nEs la multiplicación por un escalar que vimos en la presentación anterior. Con un tipo de cambio de 7.70 unidades de moneda local por 1 USD:\n\n\nNotación\n\\[\n\\Delta\\mathbf{f}_{ML} = 7.70 \\, \\Delta\\mathbf{f}\n\\]\nEn Excel\nInsertar captura de pantalla de Excel aquí.\n\nEn R\n\ntc &lt;- 7.70\n\ndeltaf * tc\n\n[1]  1925 -1540\n\ndeltax * tc\n\n          [,1]\n[1,]  1905.941\n[2,] -1219.802\n\ndeltaZ * tc\n\n                 [,1]      [,2]\nAgricultura  285.8911 -304.9505\nManufacturas 381.1881  -60.9901"
+    "text": "Conversión a moneda local\nEs la multiplicación por un escalar que vimos en la presentación anterior. Con un tipo de cambio de 3.44 unidades de moneda local por 1 USD:\n\n\nNotación\n\\[\n\\Delta\\mathbf{f}_{ML} = 3.44 \\, \\Delta\\mathbf{f}\n\\]\nEn Excel\n\n\nEn R\n\ntc &lt;- 3.44\ndeltaf * tc\n\n[1]  860 -688\n\ndeltax * tc\n\n          [,1]\n[1,]  851.4851\n[2,] -544.9505\n\ndeltaZ * tc\n\n                 [,1]       [,2]\nAgricultura  127.7228 -136.23762\nManufacturas 170.2970  -27.24752"
   },
   {
     "objectID": "slides/02-modelo-insumo-producto/index.html#bibliografía",
@@ -438,7 +431,7 @@
     "href": "slides/02-modelo-insumo-producto/index.html#section-1",
     "title": "El modelo de insumo-producto",
     "section": "",
-    "text": "¡Gracias!\nrenatovargas.com"
+    "text": "¡Gracias!\nRenato Vargas\nLinkedIn | website"
   },
   {
     "objectID": "slides/00-contexto-huella-de-carbono/index.html#temas-a-tratar",
@@ -684,6 +677,13 @@
     "title": "Huellas de carbono",
     "section": "Referencias",
     "text": "Referencias\n\n\nCachola, C. da S. y Pacca, S. A. (2021). The carbon footprint of Brazilian households through the Consumer Expenditure Survey (POF). Revista Kawsaypacha: Sociedad y Medio Ambiente, 7, 11-27. https://doi.org/10.18800/kawsaypacha.202101.001\n\n\nDavis, S. J. y Caldeira, K. (2010). Consumption-based accounting of CO\\(_2\\) emissions. Proceedings of the National Academy of Sciences, 107(12), 5687-5692. https://doi.org/10.1073/pnas.0906974107\n\n\nDepartment for Environment, Food and Rural Affairs. (2026). UK and England’s carbon footprint to 2023 [Estad{\\'i}sticas oficiales]. GOV.UK. https://www.gov.uk/government/statistics/uks-carbon-footprint\n\n\nEora Global Supply Chain Database. (2026). Eora global supply chain database [Base de datos]. Eora. https://worldmrio.com/\n\n\nEurostat. (2015). Manual for air emissions accounts. Publications Office of the European Union. https://doi.org/10.2785/527552\n\n\nEurostat. (2026). Greenhouse gas emission footprints (FIGARO application) (env_ac_ghgfp) [Base de datos y metadatos]. Eurostat. https://ec.europa.eu/eurostat/cache/metadata/en/env_ac_ghgfp_esms.htm\n\n\nFrohmann, A. y Olmos, X. (2013). Huella de carbono, exportaciones y estrategias empresariales frente al cambio climático (Documentos de proyectos LC/W.559/Rev.1). Comisión Económica para América Latina y el Caribe. http://hdl.handle.net/11362/4101\n\n\nHernández, G. (2021). Emisiones de gases de efecto invernadero y sectores clave en Colombia. El Trimestre Económico, 88(350), 523-550. https://doi.org/10.20430/ete.v88i350.857\n\n\nMalerba, D., Roscioli, F., Gaentzsch, A. y Ward, H. (2024). Changing carbon footprints and the consequent impacts of carbon taxes and cash transfers on poverty and inequality across years: A Peruvian case study. Energy Policy, 192, 114246. https://doi.org/10.1016/j.enpol.2024.114246\n\n\nMiller, R. E. y Blair, P. D. (2022). Input-Output Analysis: Foundations and Extensions (3.ª ed.). Cambridge University Press. https://doi.org/10.1017/9781108676212\n\n\nOECD. (2025). Greenhouse gas footprints (GHGFP), edición 2025: Principal indicators [Conjunto de datos]. OECD. https://sdmx.oecd.org/public/rest/dataflow/OECD.STI.PIE/DSD_ICIO_GHG_MAIN_2025@DF_ICIO_GHG_MAIN_2025/1.0\n\n\nOwen, A. (2026). Consumption-based accounts for the UK, 1990 to 2023: Summary of methods. Universidad de Leeds para el Department for Environment, Food and Rural Affairs. https://assets.publishing.service.gov.uk/media/6a3ce626eaee00074150f449/UK_and_England_s_Carbon_Footprint_Summary_of_Methods_2026.pdf\n\n\nPeters, G. P., Minx, J. C., Weber, C. L. y Edenhofer, O. (2011). Growth in emission transfers via international trade from 1990 to 2008. Proceedings of the National Academy of Sciences, 108(21), 8903-8908. https://doi.org/10.1073/pnas.1006388108\n\n\nRenner, S. (2018). Poverty and distributional effects of a carbon tax in Mexico. Energy Policy, 112, 98-110. https://doi.org/10.1016/j.enpol.2017.10.011\n\n\nRivas, L. y Gomes, A. (2025). Peru: Report on the Physical Energy Flow and Air Emissions Accounts Mission (February 3–7, 2025) [Technical Assistance Report]. Fondo Monetario Internacional, Departamento de Estadística.\n\n\nRomán-Collado, R., Sanz-Díaz, M. T. y Loja Pacheco, C. (2021). Towards the decarbonisation of Ecuador: A multisectoral and multiregional analysis of its carbon footprint. Environmental Science and Pollution Research, 28, 53412-53431. https://doi.org/10.1007/s11356-021-14521-1\n\n\nStadler, K., Wood, R., Bulavskaya, T., Södersten, C.-J., Simas, M., Schmidt, S., Usubiaga, A., Acosta-Fernández, J., Kuenen, J., Bruckner, M., Giljum, S., Lutter, S., Merciai, S., Schmidt, J. H., Theurl, M. C., Plutzar, C., Kastner, T., Eisenmenger, N., Erb, K.-H., … Tukker, A. (2018). EXIOBASE 3: Developing a time series of detailed environmentally extended multi-regional input-output tables. Journal of Industrial Ecology, 22(3), 502-515. https://doi.org/10.1111/jiec.12715\n\n\nStanger, M. y Guilhoto, J. (2024). Peru: Report of the Diagnostic Mission on Macro-relevant Climate Change Statistics (July 10–14, 2023) [Technical Assistance Report]. Fondo Monetario Internacional, Departamento de Estadística.\n\n\nUnited Nations. (2014). System of Environmental-Economic Accounting 2012: Central Framework. United Nations.\n\n\nWang, Z., Peng, H., Meng, J., Zheng, H., Li, J., Huo, J., Chen, Y., Wen, Q., Ma, X. y Guan, D. (2024). Enormous inter-country inequality of embodied carbon emissions and its driving forces in South America. Global Environmental Change, 89, 102944. https://doi.org/10.1016/j.gloenvcha.2024.102944\n\n\nYamano, N. y Guilhoto, J. (2020). CO2 emissions embodied in international trade and domestic final demand: Methodology and results using the OECD Inter-Country Input-Output Database (OECD Science, Technology and Industry Working Papers 2020/11). OECD. https://doi.org/10.1787/8f2963b8-en\n\n\nZhong, H., Feng, K., Sun, L., Cheng, L. y Hubacek, K. (2020). Household carbon and energy inequality in Latin American and Caribbean countries. Journal of Environmental Management, 273, 110979. https://doi.org/10.1016/j.jenvman.2020.110979"
+  },
+  {
+    "objectID": "slides/00-contexto-huella-de-carbono/index.html#section",
+    "href": "slides/00-contexto-huella-de-carbono/index.html#section",
+    "title": "Huellas de carbono",
+    "section": "",
+    "text": "¡Gracias!\nRenato Vargas\nLinkedIn | website"
   },
   {
     "objectID": "materiales/presentaciones/03-extension-ambiental.html#objetivos",
@@ -1122,7 +1122,7 @@
     "href": "slides/01-intro-algebra/index.html#section-1",
     "title": "Álgebra matricial para insumo-producto",
     "section": "",
-    "text": "¡Gracias!\nrenatovargas.com"
+    "text": "¡Gracias!\nRenato Vargas\nLinkedIn | website"
   },
   {
     "objectID": "slides/03-extension-ambiental/index.html#temas-a-tratar",
@@ -1297,6 +1297,6 @@
     "href": "slides/03-extension-ambiental/index.html#section-1",
     "title": "Extensión ambiental y multiplicadores",
     "section": "",
-    "text": "¡Gracias!\nrenatovargas.com"
+    "text": "¡Gracias!\nRenato Vargas\nLinkedIn | website"
   }
 ]

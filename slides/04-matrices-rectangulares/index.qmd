@@ -693,25 +693,24 @@ Comparar solo la intensidad directa subestima los productos con cadenas de insum
 
 ##  {.theme-blank .center}
 
-:::::::: columns
+::::::: columns
 ::: {.column width="15%"}
 :::
 
-::::: {.column width="70%"}
-:::: {style="text-align: center"}
+:::: {.column width="70%"}
+::: {style="text-align: center"}
+[¡Gracias!]{style="font-size:2.2em;color:#204B92;"}
 
-[¡Gracias!]{style="font-size:1.8em;color:#204B92;"}
+[**Renato Vargas**]{style="font-size:1.2em;"}
 
-[renatovargas.com](https://renatovargas.com/){style="font-size:1.2em; color:#F47A32;"}
-
-[Anexo: una matriz cuadrada equivalente](#anexo){style="font-size:0.7em;"}
-
+[[LinkedIn](https://renatovargas.com/) | [website](https://renatovargas.com/)]{style="font-size:0.9em;"}
+:::
 ::::
-:::::
 
 ::: {.column width="15%"}
 :::
-::::::::
+:::::::
+
 
 ## Anexo: una matriz cuadrada equivalente {#anexo .theme-content}
 
