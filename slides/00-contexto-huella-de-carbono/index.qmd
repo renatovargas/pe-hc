@@ -42,29 +42,119 @@ oecd <- data.frame(
 
 ## Temas a tratar {.theme-content}
 
-1.  La idea: de quién son las emisiones de lo que consumimos.
-2.  Cómo se calcula una huella de carbono nacional.
-3.  Qué dicen los datos globales y de América Latina.
-4.  Qué han hecho otros países y qué aprendemos.
-5.  El contexto de la misión en Perú.
+1.  Qué es una huella de carbono y cómo se calcula.
+2.  Qué dicen los datos globales y de América Latina.
+3.  Experiencias internacionales: Reino Unido, Unión Europea, OCDE, bases multirregionales y América Latina.
+4.  Lecciones y decisiones de diseño.
+5.  Anexo: el contexto de la misión en Perú.
 
-# La idea
+# Qué es una huella de carbono
 
-## ¿De quién son las emisiones de una laptop?
+## ¿De quién son las emisiones de un hogar peruano?
 
-Una laptop comprada en Lima genera emisiones en muchos lugares y momentos:
+Imaginemos una familia en Lima. Su moto consume gasolina, cocina con gas, usa electricidad, y compra un televisor y ropa importados.
+
+:::::: columns
+:::: {.column width="33%"}
+[Directas, en Perú]{.emphasis}
+
+La gasolina de la moto y el gas de la cocina.
+::::
+
+:::: {.column width="33%"}
+[Indirectas, en Perú]{.emphasis}
+
+La electricidad, los alimentos y los servicios producidos en el país.
+::::
+
+:::: {.column width="33%"}
+[Indirectas, en el exterior]{.emphasis}
+
+La fabricación del televisor y de la ropa importados.
+::::
+::::::
+
+Un inventario nacional cuenta solo lo que ocurre dentro de Perú. La **huella de carbono** suma las tres partes. Los estudios sobre hogares peruanos encuentran que el combustible de transporte y la electricidad pesan mucho [@malerba2024].
+
+## Tres formas de contar las emisiones {.smaller}
+
+| Enfoque | ¿Qué cuenta? | Para Perú sería... |
+|:-------------|:----------------------------|:----------------------------|
+| Territorial | Lo que se emite en el territorio, lo haga quien lo haga | Todo lo que se emite dentro de las fronteras peruanas |
+| Producción (residencia) | Lo que emiten las industrias y los hogares residentes, dentro o fuera del país | Lo que emiten las empresas y familias peruanas, incluida una aerolínea peruana en un vuelo al exterior |
+| [Demanda final (huella)]{.emphasis} | Lo que se emite en toda la cadena para satisfacer lo que consumen, invierten o exportan los residentes | Lo que se emite, aquí y fuera, para lo que consumen, invierten y exportan los peruanos |
+
+Fuente: [@yamano2020].
+
+## Territorio y residencia: el caso de un vuelo
+
+:::::: columns
+:::: {.column width="50%"}
+Una aerolínea residente en Irlanda opera un vuelo entre Fráncfort y Nueva York.
+
+El inventario territorial no lo cuenta en Irlanda, porque el vuelo no ocurre allí. La cuenta de emisiones sí, porque la utilidad del vuelo contribuye al PIB de Irlanda [@eurostat2015].
+
+La diferencia entre ambos totales se muestra en las **partidas puente**. El transporte internacional es su fuente principal.
+::::
+
+:::: {.column width="50%"}
+Insertar la Figura 3 del manual de Eurostat (2015), "Geographic and economic (resident) definition of a country" (sección 2.2.2).
+::::
+::::::
+
+## Un término, dos significados
+
+:::::: columns
+:::: {.column width="50%"}
+[De producto u organización]{.emphasis}
+
+Mide las emisiones de una empresa o de un producto a lo largo de su vida útil. Usa el análisis de ciclo de vida y referencias como el GHG Protocol o la PAS 2050 [@frohmann2013].
+
+Es preciso para un producto definido, pero corta la cadena en un límite arbitrario [@espindola2012].
+::::
+
+:::: {.column width="50%"}
+[Nacional]{.emphasis}
+
+Mide las emisiones asociadas con la demanda final de todo un país, con tablas de insumo-producto. Es la que publican las oficinas de estadística, como la del Reino Unido [@defra2026].
+
+Cubre toda la economía, pero usa promedios sectoriales. Esta presentación trata de la segunda.
+::::
+::::::
+
+## Tres insumos, un modelo
 
 ```{mermaid}
 flowchart LR
-  A["Minería de metales"] --> B["Fábrica en el exterior"]
-  B --> C["Transporte marítimo y aéreo"]
-  C --> D["Tienda en Lima"]
-  D --> E["Hogar peruano"]
+  A["Cuadros de oferta y utilización"] --> D["Modelo de insumo-producto"]
+  B["Cuentas de emisiones atmosféricas"] --> D
+  C["Importaciones: base multirregional o supuesto"] --> D
+  D --> E["Huella por producto y por categoría de demanda"]
 ```
 
-Un inventario cuenta cada emisión en el país donde ocurre. Una **huella de carbono** las asigna al país de quien compra el producto: aquí, Perú.
+Las cuentas de emisiones usan las mismas clasificaciones que las cuentas nacionales. Por eso las emisiones de una industria pueden compararse con su producción [@eurostat2015; @seea2014].
 
-## Por qué importa
+## Tres pasos para llegar a la huella
+
+1.  **Cuánto emite cada industria** por cada unidad que produce: su coeficiente de emisión. Solo recoge lo directo.
+2.  **Seguir la cadena completa.** Producir un televisor requiere acero, y el acero requiere energía. El modelo de insumo-producto suma todas esas rondas [@millerblair2022].
+3.  **Multiplicar por lo que se consume** (hogares, gobierno, inversión y exportaciones) y sumar las emisiones directas de los hogares.
+
+La notación matricial se desarrolla en las presentaciones 02 a 04.
+
+## Las importaciones: dos caminos {.smaller}
+
+| | Supuesto de tecnología doméstica | Tabla multirregional |
+|:-------------|:----------------------------|:----------------------------|
+| Idea | Los bienes importados se producen como en casa | Cada país y cada industria de la cadena tiene sus propias emisiones |
+| Qué mide | Las emisiones que se evitarían si el país produjera lo que importa | Las emisiones incorporadas en las importaciones |
+| Costo | Bajo: usa la tabla nacional | Alto: exige una base externa o mucha información |
+
+Fuente: [@eurostat2015].
+
+# Qué dicen los datos
+
+## Entre 20% y 27% de las emisiones cruza fronteras
 
 ```{r}
 #| fig-height: 3.9
@@ -84,137 +174,7 @@ ggplot(glob, aes(x = estudio, y = pct)) +
   theme_minimal(base_size = 14)
 ```
 
-Entre una quinta parte y más de una cuarta parte de las emisiones mundiales de CO2 se asocia con bienes que cruzan fronteras. Son estudios con bases distintas, no una serie homogénea [@davis2010; @peters2011; @yamano2020].
-
-## Qué se esconde detrás de una meta territorial
-
-Si un país reduce sus emisiones territoriales porque trasladó una fábrica al exterior, las emisiones no desaparecen: regresan en forma de importaciones.
-
-Este fenómeno se llama **fuga de carbono** y es uno de los motivos por los que la OCDE compara las emisiones de producción con las de consumo [@yamano2020].
-
-La huella permite ver esa parte que un inventario no muestra.
-
-## Tres formas de contar las emisiones {.smaller}
-
-| Enfoque | ¿Qué país se queda con la emisión? | Ejemplo: la laptop | Fuente típica |
-|:--------------|:--------------------|:--------------------|:--------------------|
-| Territorial | Donde ocurre | País de la fábrica | Inventarios de la CMNUCC |
-| Producción (residencia) | De la industria o el hogar residente que emite | País de la empresa que opera la fábrica | Cuentas de emisiones (SEEA) |
-| [Demanda final (huella)]{.emphasis} | De quien consume, invierte o exporta | País del comprador | Cuentas de emisiones y tablas de insumo-producto |
-
-Fuente: [@yamano2020].
-
-## Residencia: el caso de un vuelo
-
-:::::: columns
-:::: {.column width="50%"}
-Una aerolínea residente en Irlanda opera un vuelo entre Fráncfort y Nueva York.
-
-El inventario territorial no lo cuenta en Irlanda, porque el vuelo no ocurre allí. La cuenta de emisiones sí, porque la utilidad del vuelo contribuye al PIB de Irlanda [@eurostat2015].
-
-La diferencia entre ambos totales se muestra en las llamadas **partidas puente**. El transporte internacional es su fuente principal.
-::::
-
-:::: {.column width="50%"}
-Insertar la Figura 3 del manual de Eurostat (2015), "Geographic and economic (resident) definition of a country" (sección 2.2.2).
-::::
-::::::
-
-## Un término, dos significados
-
-:::::: columns
-:::: {.column width="50%"}
-[De producto u organización]{.emphasis}
-
-Mide las emisiones de una empresa o de un producto a lo largo de su vida útil. Usa el análisis de ciclo de vida y referencias como el GHG Protocol, la PAS 2050 o las normas ISO 14040 y 14044 [@frohmann2013].
-::::
-
-:::: {.column width="50%"}
-[Nacional]{.emphasis}
-
-Mide las emisiones asociadas con la demanda final de todo un país, con las tablas de insumo-producto. Es la que publican las oficinas de estadística, como la del Reino Unido [@defra2026].
-
-Esta presentación trata de la segunda.
-::::
-::::::
-
-# Cómo se calcula
-
-## Tres insumos, un modelo
-
-```{mermaid}
-flowchart LR
-  A["Cuadros de oferta y utilización"] --> D["Modelo de insumo-producto"]
-  B["Cuentas de emisiones atmosféricas"] --> D
-  C["Importaciones: base multirregional o supuesto"] --> D
-  D --> E["Huella por producto y por categoría de demanda"]
-```
-
-Las cuentas de emisiones usan las mismas clasificaciones que las cuentas nacionales. Por eso las emisiones de una industria pueden compararse con su producción [@eurostat2015; @seea2014].
-
-## Paso 1: cuánto emite cada industria
-
-Se divide lo que emite cada industria entre lo que produce. El resultado es su **coeficiente de emisión**: las emisiones por cada unidad de producto.
-
-Una central eléctrica a carbón tendrá un coeficiente alto; una oficina de servicios, uno bajo.
-
-Este coeficiente solo recoge las emisiones **directas**. Falta lo que emiten los proveedores.
-
-## Paso 2: seguir la cadena completa
-
-Producir un televisor requiere acero, plástico y electricidad. El acero requiere mineral y energía. La energía requiere combustibles.
-
-El modelo de insumo-producto suma todas esas rondas de producción [@millerblair2022]. Así, la emisión del acero que está dentro del televisor se le atribuye al televisor.
-
-El resultado es, para cada producto, las emisiones totales (directas e indirectas) por unidad demandada.
-
-## Paso 3: multiplicar por lo que se consume
-
-Se toma la demanda final de cada producto (lo que compran los hogares y el gobierno, lo que se invierte y lo que se exporta) y se multiplica por sus emisiones totales por unidad.
-
-A eso se suman las emisiones directas de los hogares, como el combustible del auto o la cocina.
-
-La suma es la **huella de carbono**. Si se separa por categoría de demanda, se ve cuánto se debe al consumo, a la inversión y a las exportaciones [@eurostat2015; @yamano2020].
-
-La notación matricial de estos tres pasos se desarrolla en las presentaciones 02 a 04.
-
-## Las importaciones: dos caminos {.smaller}
-
-| | Supuesto de tecnología doméstica | Tabla multirregional |
-|:-------------|:----------------------------|:----------------------------|
-| Idea | Los bienes importados se producen como en casa | Cada país y cada industria de la cadena tiene sus propias emisiones |
-| Qué mide | Las emisiones que se evitarían si el país produjera lo que importa | Las emisiones incorporadas en las importaciones |
-| Costo | Bajo: usa la tabla nacional | Alto: exige una base externa o mucha información |
-
-Fuente: [@eurostat2015].
-
-## Qué se puede responder
-
--   ¿Qué productos tienen más emisiones incorporadas, aunque no se produzcan en el país?
--   ¿Cuántas emisiones activa el consumo, la inversión y, sobre todo, las exportaciones?
--   ¿Está el país desacoplando sus emisiones del crecimiento, o las está trasladando al exterior?
--   ¿Cuánto PIB se genera por unidad de CO2 vista desde la demanda?
--   ¿Cómo cambió la huella por la intensidad de las industrias, por la tecnología o por la estructura de la demanda?
-
-Preguntas planteadas en [@eurostat2015; @yamano2020].
-
-# Qué dicen los datos
-
-## OCDE: el CO2 en el comercio y la demanda final
-
-:::::: columns
-::: {.column width="30%"}
-Insertar miniatura de la portada de Yamano y Guilhoto (2020), OECD Science, Technology and Industry Working Papers 2020/11. Disponible en <https://doi.org/10.1787/8f2963b8-en>.
-:::
-
-:::: {.column width="70%"}
-Estima las emisiones incorporadas en la demanda final y en el comercio bruto de 65 economías entre 2005 y 2015, con las tablas ICIO y las estadísticas de combustión de la AIE. Separa los enfoques territorial, de producción y de demanda final, y asigna a los residentes el combustible que compran en el exterior. En 2015, cerca de 27% del CO2 de combustión mundial estuvo ligado al comercio internacional.
-
-::: {style="text-align: right"}
-[@yamano2020]
-:::
-::::
-::::::
+Son estudios con bases distintas, no una serie homogénea. Si un país traslada una fábrica al exterior, sus emisiones territoriales bajan, pero las emisiones regresan como importaciones: es la **fuga de carbono** [@davis2010; @peters2011; @yamano2020].
 
 ## Perú: la huella crece más que la producción
 
@@ -239,12 +199,12 @@ ggplot(peru, aes(x = anio, y = valor, fill = base)) +
   theme(legend.position = "top")
 ```
 
-En 2015, el CO2 de combustión asociado con el consumo peruano superó en 14.4 Mt al emitido por su producción. Entre 2005 y 2015, la producción creció [71%]{.emphasis} y la huella, [103%]{.emphasis} [@yamano2020].
+Entre 2005 y 2015, el CO2 de combustión de la producción peruana creció [71%]{.emphasis} y el asociado con su consumo, [103%]{.emphasis}. En 2015 el consumo superó a la producción en 14.4 Mt [@yamano2020].
 
 ## Cuánto se emite en el exterior
 
 ```{r}
-#| fig-height: 4.1
+#| fig-height: 4
 #| fig-align: center
 ext <- data.frame(
   pais = rep(oecd$pais, times = 2),
@@ -262,15 +222,18 @@ ggplot(ext, aes(y = pais, x = valor, fill = anio)) +
   theme(legend.position = "top")
 ```
 
-Cómo leerlo: de cada 100 toneladas asociadas con el consumo de un país, cuántas se emitieron fuera de sus fronteras [@yamano2020].
+De cada 100 toneladas asociadas con el consumo de un país, estas son las que se emitieron fuera. Cuidado: la serie solo incluye CO2 de combustión, y el signo del saldo depende de la base y del período [@yamano2020].
 
-## Cuidado con las cifras
+# Experiencias internacionales
 
--   Las cifras de la OCDE incluyen solo el CO2 de combustión. En países con mucha agricultura o cambio de uso de suelo, esas fuentes quedan fuera.
--   El signo del saldo depende de la base y del período. Brasil es importador neto según la OCDE en 2005 y 2015, y único exportador neto entre nueve países sudamericanos en 2015-2019 según @wang2024.
--   Por eso una huella nacional debe documentar siempre su alcance, su base de datos y su año.
+## Qué revisamos
 
-# Qué han hecho otros
+Cuatro conjuntos de experiencias, cada uno con sus datos, hallazgos, retos y lecciones:
+
+1.  **Oficinas de estadística que publican huellas:** Reino Unido y Unión Europea.
+2.  **Referencias de la OCDE y de la literatura científica:** el método y las cifras globales.
+3.  **Bases multirregionales** que hacen posible el cálculo de las importaciones.
+4.  **América Latina:** Perú, Ecuador, Colombia, México, Brasil y el estudio regional de diez países.
 
 ## Reino Unido: una serie oficial anual
 
@@ -280,43 +243,61 @@ Insertar miniatura de la publicación estadística "UK and England's carbon foot
 :::
 
 :::: {.column width="70%"}
-El Departamento de Medio Ambiente del Reino Unido (Defra) publica cada año, desde 2012, la huella de carbono del país y de Inglaterra.
+El Departamento de Medio Ambiente del Reino Unido (Defra) publica cada año, desde 2012, la huella de carbono del país y de Inglaterra. La construye un equipo de la Universidad de Leeds, y su nota metodológica de 31 páginas es pública.
 
-En la edición más reciente, la huella de 2023 fue de 699 millones de toneladas de CO2 equivalente. Eso es 4% menos que en 2022 y cerca de 10 toneladas por persona. Más de la mitad proviene de bienes importados.
-
-La serie muestra por qué conviene mirar ambos enfoques: entre 1996 y 2023 la huella cayó 15%, pero las emisiones territoriales cayeron 50%. La razón es que las emisiones asociadas con importaciones subieron 43% en ese período, mientras que las de bienes producidos y consumidos dentro del país bajaron 49%.
+Es el caso mejor documentado de una huella como estadística oficial, y por eso sirve de modelo para quien empieza.
 
 ::: {style="text-align: right"}
-[@defra2026]
+[@defra2026; @owen2026]
 :::
 ::::
 ::::::
 
-## Reino Unido: cómo lo hacen y qué problemas reconocen {.smaller}
+## Reino Unido: qué encuentra {.smaller}
+
+-   En 2023 la huella fue de **699 millones de toneladas de CO2 equivalente**, 4% menos que en 2022 y 10 toneladas por persona (el máximo fue de 16 en 2004).
+-   Las importaciones explican **53%** de la huella, frente a 31% en 1996. China aporta 25% de lo importado.
+-   Entre 1996 y 2023 la huella cayó 15%, mientras que las emisiones territoriales cayeron 50%. La brecha existe porque las emisiones asociadas con importaciones subieron 43% y las de bienes producidos y consumidos en el país bajaron 49%.
+-   Por gasto de los hogares pesan el transporte (150 Mt), la electricidad y los combustibles (113 Mt) y los alimentos (75 Mt).
+-   Defra advierte que la caída reciente puede reflejar descarbonización, pero también menos gasto o un gasto distinto.
+
+Fuente: [@defra2026].
+
+## Reino Unido: cómo lo construye {.smaller}
+
+-   **Modelo.** Una tabla de insumo-producto multirregional con 11 regiones y 112 sectores.
+-   **Datos nacionales.** Cuadros de oferta y utilización de la oficina de estadística. Las *tablas analíticas* separan lo que viene de producción nacional de lo importado, y permiten pasar a precios básicos (el precio que recibe el productor).
+-   **Resto del mundo.** EXIOBASE hasta 2009 y FIGARO desde 2010.
+-   **Conciliación.** El método RAS ajusta filas y columnas hasta que las tablas cuadran con totales conocidos.
+-   **Emisiones.** Siete gases de Kioto en CO2 equivalente, más las emisiones directas de los hogares. No incluye el uso de suelo.
+-   **Calendario.** Se publica con unos dos años y medio de rezago, y cada edición revisa toda la serie.
+
+Fuente: [@owen2026].
+
+## Reino Unido: retos y qué rescatar {.smaller}
 
 :::::: columns
 :::: {.column width="50%"}
-[Cómo lo hacen]{.emphasis}
+[Retos que reconocen]{.emphasis}
 
--   Modelo multirregional de 11 regiones y 112 sectores.
--   Cuadros de oferta y utilización de la oficina de estadística, a precios básicos.
--   Resto del mundo: EXIOBASE hasta 2009 y FIGARO desde 2010.
--   Siete gases de Kioto, más emisiones directas de los hogares; sin uso de suelo.
--   Rezago de unos dos años y medio; cada edición revisa toda la serie.
+-   Faltan tablas analíticas: se interpola y se reutiliza la de 2019 hasta 2023.
+-   Valores negativos o nulos: se corrigen o se sustituyen por un número muy pequeño.
+-   Los datos preliminares de EXIOBASE no reflejaron la caída de 2020.
+-   Un único tipo de cambio para todos los sectores.
+-   Las estimaciones de 1990 y 1991 son muy inciertas.
+-   La única cifra de incertidumbre es de una investigación previa: 3.3% a 5.5% de error para el total anual.
 ::::
 
 :::: {.column width="50%"}
-[Qué problemas reconocen]{.emphasis}
+[Qué rescatar]{.emphasis}
 
--   Faltan tablas analíticas: la de 2019 se reutiliza hasta 2023.
--   Datos preliminares que no reflejan la caída de 2020.
--   Un único tipo de cambio para todos los sectores.
--   Estimaciones muy inciertas para 1990 y 1991.
--   Valores negativos o nulos sustituidos por un número muy pequeño.
+-   Usar la tabla nacional como núcleo y tomar de una base global solo el comercio y las emisiones del exterior.
+-   Contar con tablas analíticas, o un sustituto documentado.
+-   Elegir la base global también por la disponibilidad de datos recientes.
+-   Publicar la política de revisiones.
+-   Vincular la encuesta de gasto con las cuentas para descomponer la huella por grupo de hogares y región.
 ::::
 ::::::
-
-Fuente: [@owen2026].
 
 ## Unión Europea: cuentas y huellas
 
@@ -326,11 +307,9 @@ Insertar miniatura de la portada del Manual for air emissions accounts, edición
 :::
 
 :::: {.column width="70%"}
-El manual de Eurostat es la guía que usan los países europeos para armar sus cuentas de emisiones. Explica el principio de residencia, cómo conciliar las cuentas con los inventarios mediante las partidas puente, y por qué se necesita el desglose completo por actividad económica para poder estimar huellas.
+Eurostat tiene dos piezas: un manual para compilar cuentas de emisiones atmosféricas, que explica el principio de residencia, las partidas puente y el desglose por actividad, y una serie de huellas de gases de efecto invernadero para 2010 a 2023.
 
-A partir de esas cuentas, Eurostat publica huellas de gases de efecto invernadero para 2010 a 2023, calculadas con la base FIGARO y con 64 ramas de actividad.
-
-Como referencia, el manual señala que en 2011 el uso final de los residentes de la UE-27 implicó 7.8 toneladas de CO2 por habitante, emitidas dentro y fuera de la región.
+Como referencia, el manual señala que en 2011 el uso final de los residentes de la UE-27 implicó 7.8 toneladas de CO2 por habitante, dentro y fuera de la región.
 
 ::: {style="text-align: right"}
 [@eurostat2015; @eurostatghgfp]
@@ -338,23 +317,100 @@ Como referencia, el manual señala que en 2011 el uso final de los residentes de
 ::::
 ::::::
 
-## Bases multirregionales: de dónde salen las importaciones {.smaller}
+## Unión Europea: la serie y cómo compilar la cuenta {.smaller}
 
-| Base | Cobertura | Acceso | Para América Latina |
+:::::: columns
+:::: {.column width="50%"}
+[La serie de huellas]{.emphasis}
+
+-   Se modela con las tablas FIGARO y las cuentas de emisiones de cada país; para los no europeos, Eurostat estima las emisiones con EDGAR.
+-   46 entidades, 64 ramas de actividad y cinco categorías de demanda final.
+-   Las emisiones directas de los hogares se suman al resultado.
+-   La ficha advierte que el error es mayor que en los inventarios y que hay que leer con cautela los niveles detallados.
+-   Se reestima toda la serie cada año y se publica con dos años de rezago.
+::::
+
+:::: {.column width="50%"}
+[El manual: compilar la cuenta]{.emphasis}
+
+-   Dos rutas: partir del inventario o partir de las estadísticas de energía, ya en base de residencia.
+-   Priorizar las partidas grandes del ajuste por residencia.
+-   El transporte por carretera es una de las partes más difíciles.
+-   Un desglose incompleto por actividad, o celdas marcadas como confidenciales, puede impedir calcular huellas.
+::::
+::::::
+
+Fuentes: [@eurostatghgfp; @eurostat2015].
+
+## OCDE: el CO2 en el comercio y la demanda final
+
+:::::: columns
+::: {.column width="30%"}
+Insertar miniatura de la portada de Yamano y Guilhoto (2020), OECD Science, Technology and Industry Working Papers 2020/11. Disponible en <https://doi.org/10.1787/8f2963b8-en>.
+:::
+
+:::: {.column width="70%"}
+Es el trabajo más útil para una oficina de estadística, porque explica cómo se pasa de un inventario territorial a emisiones de residentes y luego a huella. Cubre 65 economías entre 2005 y 2015, con las tablas ICIO de la OCDE y los datos de CO2 de la Agencia Internacional de Energía.
+
+En 2015, cerca de 27% del CO2 de combustión mundial estuvo ligado al comercio internacional. La parte del CO2 de la demanda final que se emite en el exterior va de 8% en China a 65% en Suiza.
+
+::: {style="text-align: right"}
+[@yamano2020]
+:::
+::::
+::::::
+
+## OCDE: los casos difíciles {.smaller}
+
+Casi todos los retos son estadísticos, y son los mismos que enfrentará cualquier oficina [@yamano2020]:
+
+-   **Flujos que corresponden a varias industrias.** De los 34 flujos de energía, 11 se relacionan con varias industrias. Los gases de carbón de los autoproductores se asignan a la siderurgia.
+-   **Transporte por carretera.** El flujo mezcla industrias y hogares; se separa con tablas de uso o con proporciones de referencia, y se usan las partidas de viajes de la balanza de pagos.
+-   **Aviación internacional.** Se reasigna la nacionalidad de la aerolínea y se supone igual número de vuelos por ruta.
+-   **Transporte marítimo.** El combustible cargado no coincide con el viaje: 10% se asigna al transporte por agua nacional y el resto según las compras de petróleo.
+
+Qué rescatar: fijar las tres definiciones antes de calcular, documentar la correspondencia entre energía e industrias, y atender primero el transporte.
+
+## Dos artículos que fijaron las cifras globales {.smaller}
+
+:::::: columns
+:::: {.column width="50%"}
+[Davis y Caldeira (2010)]{.emphasis}
+
+-   Modelo multirregional con GTAP (113 regiones, 57 sectores) para 2004.
+-   6.2 Gt de CO2, 23% del total fósil, se emitieron produciendo bienes consumidos en otro país.
+-   Las importaciones netas son 10.8% de las emisiones de consumo de Estados Unidos y entre 20% y 50% en las grandes economías de Europa occidental.
+-   Límites: la calidad de GTAP, un solo año y solo CO2 fósil. Luxemburgo aparece sobrestimado por sus trabajadores transfronterizos.
+::::
+
+:::: {.column width="50%"}
+[Peters et al. (2011)]{.emphasis}
+
+-   Serie de 1990 a 2008, construida a partir de pocos años de referencia.
+-   Emisiones comerciadas: de 4.3 Gt (20%) a 7.8 Gt (26%).
+-   La transferencia neta a países con metas de Kioto pasó de 0.4 a 1.6 Gt, más de cinco veces su reducción real.
+-   Límites: más incertidumbre a mayor detalle, y la inversión se trata como consumo interno.
+::::
+::::::
+
+Fuentes: [@davis2010; @peters2011].
+
+## Bases multirregionales para las importaciones {.smaller}
+
+| Base | Cobertura | Acceso | Perú |
 |:-------------|:---------------------------|:--------------|:-------------------|
-| OCDE: ICIO y huellas [@oecdghgfp2025] | 1995 a 2022; incluye Perú, Chile, Colombia, Costa Rica, México, Brasil y Argentina | Datos abiertos | Buena cobertura |
-| EXIOBASE 3 [@stadler2018] | 44 países y 5 regiones | Licencia abierta | Perú no es economía individual |
-| Eora [@eora2026] | 190 países | Gratuita solo para uso académico | Verificar licencia para publicar |
+| OCDE: ICIO y huellas [@oecdghgfp2025] | 1995 a 2022; Perú, Chile, Colombia, Costa Rica, México, Brasil y Argentina | Datos abiertos | Economía individual |
+| EXIOBASE 3 [@stadler2018] | 44 países y 5 regiones del resto del mundo; 163 industrias | Licencia abierta | No es economía individual |
+| Eora [@eora2026] | 190 países | Gratuita solo para uso académico | Verificar cobertura y licencia |
 
-## América Latina: lo que se ha hecho
+EXIOBASE se construye de arriba hacia abajo desde las cuentas nacionales, privilegia la coherencia de la serie sobre la coincidencia con los cuadros de cada país, y supone que cada usuario compra a cada exportador en las mismas proporciones [@stadler2018].
 
-En la región, las huellas nacionales y de hogares provienen sobre todo de la academia y de organismos multilaterales.
+## América Latina: el contexto
 
-No se identificaron estadísticas oficiales de huella de carbono con acceso abierto verificable en los institutos de estadística de la región.
-
-Casi todos los estudios combinan tres piezas: una tabla de insumo-producto (nacional o multirregional), un inventario de emisiones y una encuesta de gasto de los hogares.
-
-Las siguientes diapositivas resumen los más útiles.
+-   La región emite cerca de 5% del CO2 mundial. El cambio de uso de suelo explica 34% de sus gases de efecto invernadero, la energía 33% y la agricultura 24%. Las emisiones por persona (2.9 toneladas en 2008) están por debajo del promedio mundial (4.8) [@frohmann2013].
+-   El 52% de sus exportaciones de 2011 fue a Estados Unidos y a la Unión Europea, donde la huella de los productos importados es un tema creciente [@frohmann2013].
+-   No se identificaron estadísticas oficiales de huella con acceso abierto verificable en los institutos de estadística de la región.
+-   Los estudios son académicos y siguen tres enfoques: **huellas de hogares** con encuestas de gasto (Perú, México, Brasil, región), **huella nacional** con una base abierta (Ecuador) y **multiplicadores** con tablas nacionales (Colombia).
 
 ## Perú: huellas de los hogares
 
@@ -364,15 +420,35 @@ Insertar miniatura del artículo de Malerba et al. (2024), Energy Policy 192, 11
 :::
 
 :::: {.column width="70%"}
-Los autores estiman cuántas emisiones provoca el consumo de los hogares peruanos en 2004, 2007 y 2011. Para eso toman lo que cada hogar gasta, según la encuesta ENAHO, y lo multiplican por las emisiones de cada sector, calculadas con la base multirregional GTAP 9.
+Los autores preguntan cómo cambió la huella de los hogares peruanos en 2004, 2007 y 2011, y cómo habría afectado a la pobreza un impuesto al carbono con transferencias en efectivo.
 
-En sus resultados, la huella de los hogares crece con el tiempo, y más rápido en los más pobres: hasta casi 60% en los tres primeros deciles. También simulan un impuesto de 50 dólares por tonelada de CO2: elevaría la pobreza entre 0.8 y 1.1 puntos porcentuales, según el año.
-
-Una dificultad que reconocen: no pudieron usar una tabla de correspondencia entre el gasto y los sectores, por falta de detalle en la información oficial.
+Para responder toman el gasto de cada hogar de la encuesta ENAHO (324 rubros) y lo multiplican por las emisiones de cada sector, calculadas con la base multirregional GTAP 9 (140 regiones y 57 sectores).
 
 ::: {style="text-align: right"}
 [@malerba2024]
 :::
+::::
+::::::
+
+## Perú: hallazgos y lecciones {.smaller}
+
+:::::: columns
+:::: {.column width="50%"}
+[Qué encuentran]{.emphasis}
+
+-   La huella de los hogares creció hasta casi 60% en los tres primeros deciles entre 2004 y 2011, y la desigualdad de la huella bajó.
+-   Calefacción y electricidad es el rubro mayor; el combustible de transporte se multiplicó por cinco en el segundo decil, por las motos y los autos.
+-   Un impuesto de 50 dólares por tonelada elevaría la pobreza entre 0.8 y 1.1 puntos porcentuales, y recaudaría cerca de 1.5% del PIB.
+-   Los programas de transferencias reducen la pobreza mucho más en 2007 que en 2004, y su focalización es débil.
+::::
+
+:::: {.column width="50%"}
+[Retos y qué rescatar]{.emphasis}
+
+-   No existía una tabla de correspondencia entre rubros de gasto y sectores: los autores la hicieron.
+-   El gasto de la encuesta no se escala a las cuentas, y el análisis es estático.
+-   **Lección:** publicar la correspondencia gasto a sector elimina el paso más costoso.
+-   Contar con encuestas y tablas de años coincidentes, y aclarar si la huella incluye importaciones.
 ::::
 ::::::
 
@@ -384,15 +460,153 @@ Insertar miniatura del artículo de Román-Collado et al. (2021), Environmental 
 :::
 
 :::: {.column width="70%"}
-Los autores calculan la huella de Ecuador entre 2000 y 2015 a través de Eora26, una base multirregional abierta con 26 sectores y 187 países.
+Los autores calculan la huella de Ecuador en 2000, 2008 y 2015 con Eora26, una base multirregional abierta con 26 sectores y 187 países. Comparan la huella con las emisiones de producción y con el saldo comercial de emisiones, y separan lo directo, lo indirecto nacional y lo indirecto importado.
 
-En sus resultados, la huella del país creció 145% en esos años. Las emisiones incorporadas en las importaciones pasaron de 4,514 a 12,183 gigagramos de CO2, y el saldo comercial de emisiones cambió de superávit a déficit: Ecuador pasó a importar más emisiones de las que exporta.
-
-Las cifras provienen de la versión preliminar del artículo.
+No usan encuestas de hogares ni separan las categorías de demanda final.
 
 ::: {style="text-align: right"}
 [@romancollado2021]
 :::
+::::
+::::::
+
+## Ecuador: hallazgos y lecciones {.smaller}
+
+:::::: columns
+:::: {.column width="50%"}
+[Qué encuentran]{.emphasis}
+
+-   La huella creció 145% entre 2000 y 2015, de 18,554 a 45,506 gigagramos de CO2.
+-   Pasó de estar 5% por debajo de las emisiones de producción a estar 9% por encima.
+-   El saldo comercial de emisiones pasó de superávit a déficit.
+-   Entre 2008 y 2015 las importaciones crecieron 11% en valor y 34% en emisiones incorporadas.
+-   El transporte aporta 40% de la huella de 2015.
+::::
+
+:::: {.column width="50%"}
+[Retos y qué rescatar]{.emphasis}
+
+-   Sin sección de limitaciones; mezcla precios básicos y de comprador; solo tres años.
+-   No concilia con el inventario nacional ni prueba la calidad de Eora para Ecuador.
+-   **Lección:** una base abierta da una primera estimación, y comparar emisiones con valor monetario aporta información extra.
+-   Las cifras son de la versión preliminar.
+::::
+::::::
+
+## Colombia: multiplicadores y sectores clave
+
+:::::: columns
+::: {.column width="30%"}
+Insertar miniatura del artículo de Hernández (2021), El Trimestre Económico 88(350). Disponible en <https://doi.org/10.20430/ete.v88i350.857>.
+:::
+
+:::: {.column width="70%"}
+Este estudio pregunta qué sectores colombianos tienen más efecto sobre las emisiones por sus vínculos con el resto de la economía. No es una huella por demanda final: usa solo la tabla nacional de 2012, con 61 sectores, y excluye las importaciones.
+
+El inventario del IDEAM (220 Mt de CO2 equivalente, 59% de agricultura y uso de suelo) se asigna a los sectores con una correspondencia que construyó el autor, porque la cuenta del DANE cubre solo energía.
+
+::: {style="text-align: right"}
+[@hernandez2021]
+:::
+::::
+::::::
+
+## Colombia: hallazgos y lecciones {.smaller}
+
+:::::: columns
+:::: {.column width="50%"}
+[Qué encuentra]{.emphasis}
+
+-   De 61 sectores, 16 son clave. Los 14 de enclave generan casi la mitad del valor agregado.
+-   De 59 sectores, 35 emiten por debajo del promedio, aportan 69.1% del producto y solo 14.3% de las emisiones.
+-   Los 18 mayores emisores concentran 69.9% de las emisiones.
+-   La electricidad aporta 6.9% de las emisiones pese a la energía hidroeléctrica, porque el consumo depende del petróleo y el gas.
+-   Si domina lo directo, conviene una política sectorial; si domina lo indirecto hacia delante, una transversal; si lo indirecto hacia atrás, una de demanda.
+::::
+
+:::: {.column width="50%"}
+[Retos y qué rescatar]{.emphasis}
+
+-   La correspondencia inventario a cuentas reparte emisiones con un supuesto de ponderación.
+-   Excluir las importaciones impide medir una huella de consumo; es un solo año.
+-   **Lección:** publicar la correspondencia entre el inventario y las cuentas, usar el inventario completo y no solo la energía, y tratar la producción secundaria de forma explícita.
+::::
+::::::
+
+## México: quién paga el impuesto al carbono
+
+:::::: columns
+::: {.column width="30%"}
+Insertar miniatura del artículo de Renner (2018), Energy Policy 112, 98-110. Disponible en <https://doi.org/10.1016/j.enpol.2017.10.011>.
+:::
+
+:::: {.column width="70%"}
+México introdujo un impuesto al carbono en 2014 sin evidencia sobre quién asumiría el costo. El autor simula tres escenarios de base impositiva y tasa con las tablas WIOD (34 sectores, CO2, CH4 y N2O) y la encuesta ENIGH 2014 (cerca de 20,000 hogares y 744 rubros).
+
+Supone que el impuesto se traslada íntegramente a los consumidores, por lo que sirve para cambios pequeños y de corto plazo. Se revisó el documento de trabajo; conviene confirmar con el artículo.
+
+::: {style="text-align: right"}
+[@renner2018]
+:::
+::::
+::::::
+
+## México: hallazgos y lecciones {.smaller}
+
+:::::: columns
+:::: {.column width="50%"}
+[Qué encuentra]{.emphasis}
+
+-   El impuesto vigente equivale a 3.4 dólares por tonelada y pesa menos de 0.2% del gasto.
+-   A 50 dólares, gravar solo el CO2 de energía eleva la pobreza entre 0.6 y 0.9 puntos porcentuales; con todos los gases, entre 1.5 y 1.8.
+-   Es progresivo si solo se grava la energía, y regresivo si se agregan CH4 y N2O, porque los alimentos pesan más en el gasto de los pobres.
+-   La pobreza rural sube más que la urbana. Devolver la recaudación por PROSPERA deja de lado a hogares urbanos cercanos a la pobreza.
+::::
+
+:::: {.column width="50%"}
+[Retos y qué rescatar]{.emphasis}
+
+-   El consumo de las cuentas es 2.8 veces el de la encuesta.
+-   Las emisiones llegan a 2009 y la encuesta es de 2014; la correspondencia de 744 rubros no está publicada.
+-   **Lección:** publicar la correspondencia, conciliar la encuesta con las cuentas, alinear los años y mantener la separación por gas, porque la base impositiva cambia el signo distributivo.
+::::
+::::::
+
+## Brasil: huellas por nivel de ingreso
+
+:::::: columns
+::: {.column width="30%"}
+Insertar miniatura del artículo de Cachola y Pacca (2021), Revista Kawsaypacha 7, 11-27. Disponible en <https://doi.org/10.18800/kawsaypacha.202101.001>.
+:::
+
+:::: {.column width="70%"}
+Los autores estiman cuánto CO2 equivalente emiten los hogares brasileños según su ingreso. Multiplican el gasto de la encuesta POF 2008-09 (55,970 hogares, seis tramos de ingreso) por la matriz de Leontief de IBGE de 2010 (67 actividades) y por coeficientes del inventario ambiental WIOD de 2009. Las emisiones directas se calculan dividiendo el gasto en combustibles entre su precio.
+
+::: {style="text-align: right"}
+[@cachola2021]
+:::
+::::
+::::::
+
+## Brasil: hallazgos y lecciones {.smaller}
+
+:::::: columns
+:::: {.column width="50%"}
+[Qué encuentran]{.emphasis}
+
+-   El tramo más bajo emite menos de 1.5 toneladas al año y el más alto, unas 18.5: casi 12 veces más.
+-   Los hogares más pobres son más de 20% del total y emiten 7%; los más ricos son 4% y emiten 16%.
+-   La huella crece casi linealmente con el ingreso.
+-   Con el ingreso, bajan los alimentos y suben los servicios; el transporte pesa más en todos los tramos.
+-   Los hogares emiten 77% del total nacional según WIOD.
+::::
+
+:::: {.column width="50%"}
+[Retos y qué rescatar]{.emphasis}
+
+-   Resultados promedio para todo Brasil; no hay análisis de incertidumbre ni se discute el comercio.
+-   Hay desfases entre emisiones (2009), matriz (2010) y encuesta (2008-09), y las concordancias no se muestran.
+-   **Lección:** una tabla nacional, un inventario y una encuesta bastan para una primera estimación; tabulaciones oportunas de la encuesta facilitan actualizarla.
 ::::
 ::::::
 
@@ -404,9 +618,11 @@ Insertar miniatura del artículo de Zhong et al. (2020), Journal of Environmenta
 :::
 
 :::: {.column width="70%"}
-Los autores estiman la huella de diez países de la región, entre ellos Perú, combinando la base GTAP v10 para 2014 con los patrones de consumo por nivel de ingreso de la Base de Datos Global de Consumo del Banco Mundial.
+Los autores estiman la huella de diez países, entre ellos Perú, con GTAP v10 para 2014 y los perfiles de consumo por ingreso del Banco Mundial.
 
-En sus resultados, la huella promedio por persona va de 0.53 toneladas de CO2 equivalente en Honduras a 2.21 en México. Dentro de cada país la brecha también es grande: el 10% de mayores ingresos explica 29.1% de la huella regional.
+El 10% de mayores ingresos explica 29.1% de la huella regional, y su huella por persona es unas 12 veces la del 10% más pobre. El promedio va de 0.53 toneladas en Honduras a 2.21 en México. Solo Jamaica, Nicaragua y Honduras tienen más desigualdad en la huella que en el consumo.
+
+Limitaciones: la correspondencia entre 33 y 65 sectores genera traslapes, y se supone la misma mezcla de energía en todos los grupos de ingreso [@wang2024; @sanguinet2022].
 
 ::: {style="text-align: right"}
 [@zhong2020]
@@ -414,23 +630,51 @@ En sus resultados, la huella promedio por persona va de 0.53 toneladas de CO2 eq
 ::::
 ::::::
 
-## Colombia, México y Brasil {.smaller}
+## Ocho lecciones comunes {.smaller}
 
-**Colombia.** @hernandez2021 usa los cuadros de oferta y utilización de 2012 del DANE, convertidos a una tabla de 61 sectores, para calcular cuánto contribuye cada sector a las emisiones. Su trabajo central fue construir la correspondencia entre el inventario del IDEAM y las cuentas nacionales. No es una huella por demanda final, porque deja fuera las importaciones.
+1.  **Tres insumos:** tabla de insumo-producto, cuenta de emisiones y, para hogares, encuesta de gasto.
+2.  **Concordancias:** el paso más laborioso; publicarlas beneficia a todos.
+3.  **Importaciones:** las bases multirregionales las cubren; con la tabla nacional se excluyen o se supone tecnología doméstica.
+4.  **Residencia y transporte:** concentran la conciliación con el inventario.
+5.  **Años de referencia:** los desfases obligan a supuestos.
+6.  **Revisión y calendario:** las prácticas oficiales revisan la serie completa cada año, con dos a tres años de rezago.
+7.  **Sensibilidad:** los resultados dependen del alcance de gases, de la base de datos y del período.
+8.  **Incertidumbre:** casi nadie la cuantifica; conviene comunicar rangos entre bases alternativas.
 
-**México.** @renner2018 combina tablas WIOD con la encuesta de gasto ENIGH 2014 para estimar cómo afectaría un impuesto al carbono a los hogares. Reconoce una limitación: la tabla es de 2014, pero las emisiones llegan solo hasta 2009. Los años de cada fuente deben coincidir.
+## Siete decisiones de diseño {.smaller}
 
-**Brasil.** @cachola2021 cruzan la matriz de IBGE de 2010, el inventario WIOD de 2009 y la encuesta de gasto POF 2008-09. Encuentran que los hogares de mayores ingresos emiten unas 12 veces más que los de menores ingresos. Su mayor dificultad fue hacer corresponder las clasificaciones de actividades de ambas fuentes.
+1.  **Alcance de gases y uso de suelo:** CO2 de combustión o CO2 equivalente.
+2.  **Importaciones:** tecnología doméstica, base multirregional o una combinación, contrastada con una referencia independiente.
+3.  **Concordancias:** publicar las correspondencias entre industrias, inventario y gasto.
+4.  **Residencia y transporte:** atender primero las partidas grandes y documentar las partidas puente.
+5.  **Años y revisiones:** alinear años, reestimar la serie completa y declarar la política de revisión.
+6.  **Hogares:** conciliar la encuesta con las cuentas y reportar las emisiones directas por separado.
+7.  **Incertidumbre y metadatos:** nota metodológica pública, rangos entre bases y huella junto al inventario territorial.
 
-## Cinco lecciones comunes
+Una secuencia prudente: empezar simple, comparar con referencias externas y refinar en ciclos posteriores.
 
-1.  Hacen falta tres insumos: tabla de insumo-producto, cuenta de emisiones y, para los hogares, encuesta de gasto.
-2.  Las concordancias entre clasificaciones son el paso más laborioso.
-3.  Las importaciones exigen una base multirregional o un supuesto explícito.
-4.  Las prácticas oficiales revisan toda la serie cada año.
-5.  Los resultados dependen del alcance, de la base de datos y del período.
+## Referencias {.smaller .scrollable}
 
-# El contexto de la misión en Perú
+::: {#refs}
+:::
+
+##  {.center}
+
+::: {style="text-align: center"}
+
+::: {style="padding: 0.7em 1em; background-color: #204B92; color: white;"}
+
+[Gracias]{style="font-size:1.8em;"}
+
+[renatovargas.com](https://renatovargas.com/){style="font-size:1.2em; color: #FFCE5E;"}
+
+:::
+
+[El contexto de la misión en Perú](#contexto-mision)
+
+:::
+
+# El contexto de la misión en Perú {#contexto-mision}
 
 ## El camino recorrido {.smaller}
 
@@ -503,28 +747,3 @@ Fuentes: [@stanger2024; @rivas2025].
 5.  Categorías de demanda y huella por producto.
 6.  Funciones del INEI y del MINAM, y protocolo de datos.
 7.  Política de revisiones y nota metodológica.
-
-## Referencias {.smaller .scrollable}
-
-::: {#refs}
-:::
-
-##  {.theme-blank .center}
-
-::::::: columns
-::: {.column width="15%"}
-:::
-
-:::: {.column width="70%"}
-::: {style="text-align: center"}
-[¡Gracias!]{style="font-size:2.2em;color:#204B92;"}
-
-[**Renato Vargas**]{style="font-size:1.2em;"}
-
-[[LinkedIn](https://renatovargas.com/) | [website](https://renatovargas.com/)]{style="font-size:0.9em;"}
-:::
-::::
-
-::: {.column width="15%"}
-:::
-:::::::

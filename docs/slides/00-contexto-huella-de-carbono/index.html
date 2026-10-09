@@ -179,97 +179,76 @@ Renato Vargas
 <section id="temas-a-tratar" class="slide level2 theme-content">
 <h2>Temas a tratar</h2>
 <ol type="1">
-<li>La idea: de quién son las emisiones de lo que consumimos.</li>
-<li>Cómo se calcula una huella de carbono nacional.</li>
+<li>Qué es una huella de carbono y cómo se calcula.</li>
 <li>Qué dicen los datos globales y de América Latina.</li>
-<li>Qué han hecho otros países y qué aprendemos.</li>
-<li>El contexto de la misión en Perú.</li>
+<li>Experiencias internacionales: Reino Unido, Unión Europea, OCDE, bases multirregionales y América Latina.</li>
+<li>Lecciones y decisiones de diseño.</li>
+<li>Anexo: el contexto de la misión en Perú.</li>
 </ol>
 </section>
 <section>
-<section id="la-idea" class="title-slide slide level1 center">
-<h1>La idea</h1>
+<section id="qué-es-una-huella-de-carbono" class="title-slide slide level1 center">
+<h1>Qué es una huella de carbono</h1>
 
 </section>
-<section id="de-quién-son-las-emisiones-de-una-laptop" class="slide level2">
-<h2>¿De quién son las emisiones de una laptop?</h2>
-<p>Una laptop comprada en Lima genera emisiones en muchos lugares y momentos:</p>
-<div class="cell" data-reveal="true" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-  A["Minería de metales"] --&gt; B["Fábrica en el exterior"]
-  B --&gt; C["Transporte marítimo y aéreo"]
-  C --&gt; D["Tienda en Lima"]
-  D --&gt; E["Hogar peruano"]
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<p>Un inventario cuenta cada emisión en el país donde ocurre. Una <strong>huella de carbono</strong> las asigna al país de quien compra el producto: aquí, Perú.</p>
-</section>
-<section id="por-qué-importa" class="slide level2">
-<h2>Por qué importa</h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p>Entre una quinta parte y más de una cuarta parte de las emisiones mundiales de CO2 se asocia con bienes que cruzan fronteras. Son estudios con bases distintas, no una serie homogénea <span class="citation" data-cites="davis2010 peters2011 yamano2020">(<a href="#/referencias" role="doc-biblioref" onclick="">Davis y Caldeira, 2010</a>; <a href="#/referencias" role="doc-biblioref" onclick="">Peters et&nbsp;al., 2011</a>; <a href="#/referencias" role="doc-biblioref" onclick="">Yamano y Guilhoto, 2020</a>)</span>.</p>
-</section>
-<section id="qué-se-esconde-detrás-de-una-meta-territorial" class="slide level2">
-<h2>Qué se esconde detrás de una meta territorial</h2>
-<p>Si un país reduce sus emisiones territoriales porque trasladó una fábrica al exterior, las emisiones no desaparecen: regresan en forma de importaciones.</p>
-<p>Este fenómeno se llama <strong>fuga de carbono</strong> y es uno de los motivos por los que la OCDE compara las emisiones de producción con las de consumo <span class="citation" data-cites="yamano2020">(<a href="#/referencias" role="doc-biblioref" onclick="">Yamano y Guilhoto, 2020</a>)</span>.</p>
-<p>La huella permite ver esa parte que un inventario no muestra.</p>
+<section id="de-quién-son-las-emisiones-de-un-hogar-peruano" class="slide level2">
+<h2>¿De quién son las emisiones de un hogar peruano?</h2>
+<p>Imaginemos una familia en Lima. Su moto consume gasolina, cocina con gas, usa electricidad, y compra un televisor y ropa importados.</p>
+<div class="columns">
+<div class="column" style="width:33%;">
+<p><span class="emphasis">Directas, en Perú</span></p>
+<p>La gasolina de la moto y el gas de la cocina.</p>
+</div><div class="column" style="width:33%;">
+<p><span class="emphasis">Indirectas, en Perú</span></p>
+<p>La electricidad, los alimentos y los servicios producidos en el país.</p>
+</div><div class="column" style="width:33%;">
+<p><span class="emphasis">Indirectas, en el exterior</span></p>
+<p>La fabricación del televisor y de la ropa importados.</p>
+</div></div>
+<p>Un inventario nacional cuenta solo lo que ocurre dentro de Perú. La <strong>huella de carbono</strong> suma las tres partes. Los estudios sobre hogares peruanos encuentran que el combustible de transporte y la electricidad pesan mucho <span class="citation" data-cites="malerba2024">(<a href="#/referencias" role="doc-biblioref" onclick="">Malerba et&nbsp;al., 2024</a>)</span>.</p>
 </section>
 <section id="tres-formas-de-contar-las-emisiones" class="slide level2 smaller">
 <h2>Tres formas de contar las emisiones</h2>
 <table class="caption-top">
 <colgroup>
 <col style="width: 19%">
-<col style="width: 26%">
-<col style="width: 26%">
-<col style="width: 26%">
+<col style="width: 40%">
+<col style="width: 40%">
 </colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Enfoque</th>
-<th style="text-align: left;">¿Qué país se queda con la emisión?</th>
-<th style="text-align: left;">Ejemplo: la laptop</th>
-<th style="text-align: left;">Fuente típica</th>
+<th style="text-align: left;">¿Qué cuenta?</th>
+<th style="text-align: left;">Para Perú sería…</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Territorial</td>
-<td style="text-align: left;">Donde ocurre</td>
-<td style="text-align: left;">País de la fábrica</td>
-<td style="text-align: left;">Inventarios de la CMNUCC</td>
+<td style="text-align: left;">Lo que se emite en el territorio, lo haga quien lo haga</td>
+<td style="text-align: left;">Todo lo que se emite dentro de las fronteras peruanas</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Producción (residencia)</td>
-<td style="text-align: left;">De la industria o el hogar residente que emite</td>
-<td style="text-align: left;">País de la empresa que opera la fábrica</td>
-<td style="text-align: left;">Cuentas de emisiones (SEEA)</td>
+<td style="text-align: left;">Lo que emiten las industrias y los hogares residentes, dentro o fuera del país</td>
+<td style="text-align: left;">Lo que emiten las empresas y familias peruanas, incluida una aerolínea peruana en un vuelo al exterior</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="emphasis">Demanda final (huella)</span></td>
-<td style="text-align: left;">De quien consume, invierte o exporta</td>
-<td style="text-align: left;">País del comprador</td>
-<td style="text-align: left;">Cuentas de emisiones y tablas de insumo-producto</td>
+<td style="text-align: left;">Lo que se emite en toda la cadena para satisfacer lo que consumen, invierten o exportan los residentes</td>
+<td style="text-align: left;">Lo que se emite, aquí y fuera, para lo que consumen, invierten y exportan los peruanos</td>
 </tr>
 </tbody>
 </table>
 <p>Fuente: <span class="citation" data-cites="yamano2020">(<a href="#/referencias" role="doc-biblioref" onclick="">Yamano y Guilhoto, 2020</a>)</span>.</p>
 </section>
-<section id="residencia-el-caso-de-un-vuelo" class="slide level2">
-<h2>Residencia: el caso de un vuelo</h2>
+<section id="territorio-y-residencia-el-caso-de-un-vuelo" class="slide level2">
+<h2>Territorio y residencia: el caso de un vuelo</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>Una aerolínea residente en Irlanda opera un vuelo entre Fráncfort y Nueva York.</p>
 <p>El inventario territorial no lo cuenta en Irlanda, porque el vuelo no ocurre allí. La cuenta de emisiones sí, porque la utilidad del vuelo contribuye al PIB de Irlanda <span class="citation" data-cites="eurostat2015">(<a href="#/referencias" role="doc-biblioref" onclick="">Eurostat, 2015</a>)</span>.</p>
-<p>La diferencia entre ambos totales se muestra en las llamadas <strong>partidas puente</strong>. El transporte internacional es su fuente principal.</p>
+<p>La diferencia entre ambos totales se muestra en las <strong>partidas puente</strong>. El transporte internacional es su fuente principal.</p>
 </div><div class="column" style="width:50%;">
 <p>Insertar la Figura 3 del manual de Eurostat (2015), “Geographic and economic (resident) definition of a country” (sección 2.2.2).</p>
 </div></div>
@@ -279,17 +258,13 @@ Renato Vargas
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><span class="emphasis">De producto u organización</span></p>
-<p>Mide las emisiones de una empresa o de un producto a lo largo de su vida útil. Usa el análisis de ciclo de vida y referencias como el GHG Protocol, la PAS 2050 o las normas ISO 14040 y 14044 <span class="citation" data-cites="frohmann2013">(<a href="#/referencias" role="doc-biblioref" onclick="">Frohmann y Olmos, 2013</a>)</span>.</p>
+<p>Mide las emisiones de una empresa o de un producto a lo largo de su vida útil. Usa el análisis de ciclo de vida y referencias como el GHG Protocol o la PAS 2050 <span class="citation" data-cites="frohmann2013">(<a href="#/referencias" role="doc-biblioref" onclick="">Frohmann y Olmos, 2013</a>)</span>.</p>
+<p>Es preciso para un producto definido, pero corta la cadena en un límite arbitrario <span class="citation" data-cites="espindola2012">(<a href="#/referencias" role="doc-biblioref" onclick="">Espíndola y Valderrama, 2012</a>)</span>.</p>
 </div><div class="column" style="width:50%;">
 <p><span class="emphasis">Nacional</span></p>
-<p>Mide las emisiones asociadas con la demanda final de todo un país, con las tablas de insumo-producto. Es la que publican las oficinas de estadística, como la del Reino Unido <span class="citation" data-cites="defra2026">(<a href="#/referencias" role="doc-biblioref" onclick="">Department for Environment, Food and Rural Affairs, 2026</a>)</span>.</p>
-<p>Esta presentación trata de la segunda.</p>
+<p>Mide las emisiones asociadas con la demanda final de todo un país, con tablas de insumo-producto. Es la que publican las oficinas de estadística, como la del Reino Unido <span class="citation" data-cites="defra2026">(<a href="#/referencias" role="doc-biblioref" onclick="">Department for Environment, Food and Rural Affairs, 2026</a>)</span>.</p>
+<p>Cubre toda la economía, pero usa promedios sectoriales. Esta presentación trata de la segunda.</p>
 </div></div>
-</section></section>
-<section>
-<section id="cómo-se-calcula" class="title-slide slide level1 center">
-<h1>Cómo se calcula</h1>
-
 </section>
 <section id="tres-insumos-un-modelo" class="slide level2">
 <h2>Tres insumos, un modelo</h2>
@@ -311,24 +286,14 @@ Renato Vargas
 </div>
 <p>Las cuentas de emisiones usan las mismas clasificaciones que las cuentas nacionales. Por eso las emisiones de una industria pueden compararse con su producción <span class="citation" data-cites="eurostat2015 seea2014">(<a href="#/referencias" role="doc-biblioref" onclick="">Eurostat, 2015</a>; <a href="#/referencias" role="doc-biblioref" onclick="">United Nations, 2014</a>)</span>.</p>
 </section>
-<section id="paso-1-cuánto-emite-cada-industria" class="slide level2">
-<h2>Paso 1: cuánto emite cada industria</h2>
-<p>Se divide lo que emite cada industria entre lo que produce. El resultado es su <strong>coeficiente de emisión</strong>: las emisiones por cada unidad de producto.</p>
-<p>Una central eléctrica a carbón tendrá un coeficiente alto; una oficina de servicios, uno bajo.</p>
-<p>Este coeficiente solo recoge las emisiones <strong>directas</strong>. Falta lo que emiten los proveedores.</p>
-</section>
-<section id="paso-2-seguir-la-cadena-completa" class="slide level2">
-<h2>Paso 2: seguir la cadena completa</h2>
-<p>Producir un televisor requiere acero, plástico y electricidad. El acero requiere mineral y energía. La energía requiere combustibles.</p>
-<p>El modelo de insumo-producto suma todas esas rondas de producción <span class="citation" data-cites="millerblair2022">(<a href="#/referencias" role="doc-biblioref" onclick="">Miller y Blair, 2022</a>)</span>. Así, la emisión del acero que está dentro del televisor se le atribuye al televisor.</p>
-<p>El resultado es, para cada producto, las emisiones totales (directas e indirectas) por unidad demandada.</p>
-</section>
-<section id="paso-3-multiplicar-por-lo-que-se-consume" class="slide level2">
-<h2>Paso 3: multiplicar por lo que se consume</h2>
-<p>Se toma la demanda final de cada producto (lo que compran los hogares y el gobierno, lo que se invierte y lo que se exporta) y se multiplica por sus emisiones totales por unidad.</p>
-<p>A eso se suman las emisiones directas de los hogares, como el combustible del auto o la cocina.</p>
-<p>La suma es la <strong>huella de carbono</strong>. Si se separa por categoría de demanda, se ve cuánto se debe al consumo, a la inversión y a las exportaciones <span class="citation" data-cites="eurostat2015 yamano2020">(<a href="#/referencias" role="doc-biblioref" onclick="">Eurostat, 2015</a>; <a href="#/referencias" role="doc-biblioref" onclick="">Yamano y Guilhoto, 2020</a>)</span>.</p>
-<p>La notación matricial de estos tres pasos se desarrolla en las presentaciones 02 a 04.</p>
+<section id="tres-pasos-para-llegar-a-la-huella" class="slide level2">
+<h2>Tres pasos para llegar a la huella</h2>
+<ol type="1">
+<li><strong>Cuánto emite cada industria</strong> por cada unidad que produce: su coeficiente de emisión. Solo recoge lo directo.</li>
+<li><strong>Seguir la cadena completa.</strong> Producir un televisor requiere acero, y el acero requiere energía. El modelo de insumo-producto suma todas esas rondas <span class="citation" data-cites="millerblair2022">(<a href="#/referencias" role="doc-biblioref" onclick="">Miller y Blair, 2022</a>)</span>.</li>
+<li><strong>Multiplicar por lo que se consume</strong> (hogares, gobierno, inversión y exportaciones) y sumar las emisiones directas de los hogares.</li>
+</ol>
+<p>La notación matricial se desarrolla en las presentaciones 02 a 04.</p>
 </section>
 <section id="las-importaciones-dos-caminos" class="slide level2 smaller">
 <h2>Las importaciones: dos caminos</h2>
@@ -364,57 +329,41 @@ Renato Vargas
 </tbody>
 </table>
 <p>Fuente: <span class="citation" data-cites="eurostat2015">(<a href="#/referencias" role="doc-biblioref" onclick="">Eurostat, 2015</a>)</span>.</p>
-</section>
-<section id="qué-se-puede-responder" class="slide level2">
-<h2>Qué se puede responder</h2>
-<ul>
-<li>¿Qué productos tienen más emisiones incorporadas, aunque no se produzcan en el país?</li>
-<li>¿Cuántas emisiones activa el consumo, la inversión y, sobre todo, las exportaciones?</li>
-<li>¿Está el país desacoplando sus emisiones del crecimiento, o las está trasladando al exterior?</li>
-<li>¿Cuánto PIB se genera por unidad de CO2 vista desde la demanda?</li>
-<li>¿Cómo cambió la huella por la intensidad de las industrias, por la tecnología o por la estructura de la demanda?</li>
-</ul>
-<p>Preguntas planteadas en <span class="citation" data-cites="eurostat2015 yamano2020">(<a href="#/referencias" role="doc-biblioref" onclick="">Eurostat, 2015</a>; <a href="#/referencias" role="doc-biblioref" onclick="">Yamano y Guilhoto, 2020</a>)</span>.</p>
 </section></section>
 <section>
 <section id="qué-dicen-los-datos" class="title-slide slide level1 center">
 <h1>Qué dicen los datos</h1>
 
 </section>
-<section id="ocde-el-co2-en-el-comercio-y-la-demanda-final" class="slide level2">
-<h2>OCDE: el CO2 en el comercio y la demanda final</h2>
-<div class="columns">
-<div class="column" style="width:30%;">
-<p>Insertar miniatura de la portada de Yamano y Guilhoto (2020), OECD Science, Technology and Industry Working Papers 2020/11. Disponible en <a href="https://doi.org/10.1787/8f2963b8-en" class="uri">https://doi.org/10.1787/8f2963b8-en</a>.</p>
-</div><div class="column" style="width:70%;">
-<p>Estima las emisiones incorporadas en la demanda final y en el comercio bruto de 65 economías entre 2005 y 2015, con las tablas ICIO y las estadísticas de combustión de la AIE. Separa los enfoques territorial, de producción y de demanda final, y asigna a los residentes el combustible que compran en el exterior. En 2015, cerca de 27% del CO2 de combustión mundial estuvo ligado al comercio internacional.</p>
-<div style="text-align: right">
-<p><span class="citation" data-cites="yamano2020">(<a href="#/referencias" role="doc-biblioref" onclick="">Yamano y Guilhoto, 2020</a>)</span></p>
-</div>
-</div></div>
+<section id="entre-20-y-27-de-las-emisiones-cruza-fronteras" class="slide level2">
+<h2>Entre 20% y 27% de las emisiones cruza fronteras</h2>
+
+<img data-src="index_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p>Son estudios con bases distintas, no una serie homogénea. Si un país traslada una fábrica al exterior, sus emisiones territoriales bajan, pero las emisiones regresan como importaciones: es la <strong>fuga de carbono</strong> <span class="citation" data-cites="davis2010 peters2011 yamano2020">(<a href="#/referencias" role="doc-biblioref" onclick="">Davis y Caldeira, 2010</a>; <a href="#/referencias" role="doc-biblioref" onclick="">Peters et&nbsp;al., 2011</a>; <a href="#/referencias" role="doc-biblioref" onclick="">Yamano y Guilhoto, 2020</a>)</span>.</p>
 </section>
 <section id="perú-la-huella-crece-más-que-la-producción" class="slide level2">
 <h2>Perú: la huella crece más que la producción</h2>
 
-<img data-src="index_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p>En 2015, el CO2 de combustión asociado con el consumo peruano superó en 14.4 Mt al emitido por su producción. Entre 2005 y 2015, la producción creció <span class="emphasis">71%</span> y la huella, <span class="emphasis">103%</span> <span class="citation" data-cites="yamano2020">(<a href="#/referencias" role="doc-biblioref" onclick="">Yamano y Guilhoto, 2020</a>)</span>.</p>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p>Entre 2005 y 2015, el CO2 de combustión de la producción peruana creció <span class="emphasis">71%</span> y el asociado con su consumo, <span class="emphasis">103%</span>. En 2015 el consumo superó a la producción en 14.4 Mt <span class="citation" data-cites="yamano2020">(<a href="#/referencias" role="doc-biblioref" onclick="">Yamano y Guilhoto, 2020</a>)</span>.</p>
 </section>
 <section id="cuánto-se-emite-en-el-exterior" class="slide level2">
 <h2>Cuánto se emite en el exterior</h2>
 
-<img data-src="index_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p>Cómo leerlo: de cada 100 toneladas asociadas con el consumo de un país, cuántas se emitieron fuera de sus fronteras <span class="citation" data-cites="yamano2020">(<a href="#/referencias" role="doc-biblioref" onclick="">Yamano y Guilhoto, 2020</a>)</span>.</p>
-</section>
-<section id="cuidado-con-las-cifras" class="slide level2">
-<h2>Cuidado con las cifras</h2>
-<ul>
-<li>Las cifras de la OCDE incluyen solo el CO2 de combustión. En países con mucha agricultura o cambio de uso de suelo, esas fuentes quedan fuera.</li>
-<li>El signo del saldo depende de la base y del período. Brasil es importador neto según la OCDE en 2005 y 2015, y único exportador neto entre nueve países sudamericanos en 2015-2019 según <span class="citation" data-cites="wang2024">Wang et&nbsp;al. (<a href="#/referencias" role="doc-biblioref" onclick="">2024</a>)</span>.</li>
-<li>Por eso una huella nacional debe documentar siempre su alcance, su base de datos y su año.</li>
-</ul>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p>De cada 100 toneladas asociadas con el consumo de un país, estas son las que se emitieron fuera. Cuidado: la serie solo incluye CO2 de combustión, y el signo del saldo depende de la base y del período <span class="citation" data-cites="yamano2020">(<a href="#/referencias" role="doc-biblioref" onclick="">Yamano y Guilhoto, 2020</a>)</span>.</p>
 </section></section>
 <section>
-<section id="qué-han-hecho-otros" class="title-slide slide level1 center">
-<h1>Qué han hecho otros</h1>
+<section id="experiencias-internacionales" class="title-slide slide level1 center">
+<h1>Experiencias internacionales</h1>
 
+</section>
+<section id="qué-revisamos" class="slide level2">
+<h2>Qué revisamos</h2>
+<p>Cuatro conjuntos de experiencias, cada uno con sus datos, hallazgos, retos y lecciones:</p>
+<ol type="1">
+<li><strong>Oficinas de estadística que publican huellas:</strong> Reino Unido y Unión Europea.</li>
+<li><strong>Referencias de la OCDE y de la literatura científica:</strong> el método y las cifras globales.</li>
+<li><strong>Bases multirregionales</strong> que hacen posible el cálculo de las importaciones.</li>
+<li><strong>América Latina:</strong> Perú, Ecuador, Colombia, México, Brasil y el estudio regional de diez países.</li>
+</ol>
 </section>
 <section id="reino-unido-una-serie-oficial-anual" class="slide level2">
 <h2>Reino Unido: una serie oficial anual</h2>
@@ -422,37 +371,59 @@ Renato Vargas
 <div class="column" style="width:30%;">
 <p>Insertar miniatura de la publicación estadística “UK and England’s carbon footprint to 2023” (Defra). Disponible en <a href="https://www.gov.uk/government/statistics/uks-carbon-footprint" class="uri">https://www.gov.uk/government/statistics/uks-carbon-footprint</a>.</p>
 </div><div class="column" style="width:70%;">
-<p>El Departamento de Medio Ambiente del Reino Unido (Defra) publica cada año, desde 2012, la huella de carbono del país y de Inglaterra.</p>
-<p>En la edición más reciente, la huella de 2023 fue de 699 millones de toneladas de CO2 equivalente. Eso es 4% menos que en 2022 y cerca de 10 toneladas por persona. Más de la mitad proviene de bienes importados.</p>
-<p>La serie muestra por qué conviene mirar ambos enfoques: entre 1996 y 2023 la huella cayó 15%, pero las emisiones territoriales cayeron 50%. La razón es que las emisiones asociadas con importaciones subieron 43% en ese período, mientras que las de bienes producidos y consumidos dentro del país bajaron 49%.</p>
+<p>El Departamento de Medio Ambiente del Reino Unido (Defra) publica cada año, desde 2012, la huella de carbono del país y de Inglaterra. La construye un equipo de la Universidad de Leeds, y su nota metodológica de 31 páginas es pública.</p>
+<p>Es el caso mejor documentado de una huella como estadística oficial, y por eso sirve de modelo para quien empieza.</p>
 <div style="text-align: right">
-<p><span class="citation" data-cites="defra2026">(<a href="#/referencias" role="doc-biblioref" onclick="">Department for Environment, Food and Rural Affairs, 2026</a>)</span></p>
+<p><span class="citation" data-cites="defra2026 owen2026">(<a href="#/referencias" role="doc-biblioref" onclick="">Department for Environment, Food and Rural Affairs, 2026</a>; <a href="#/referencias" role="doc-biblioref" onclick="">Owen, 2026</a>)</span></p>
 </div>
 </div></div>
 </section>
-<section id="reino-unido-cómo-lo-hacen-y-qué-problemas-reconocen" class="slide level2 smaller">
-<h2>Reino Unido: cómo lo hacen y qué problemas reconocen</h2>
+<section id="reino-unido-qué-encuentra" class="slide level2 smaller">
+<h2>Reino Unido: qué encuentra</h2>
+<ul>
+<li>En 2023 la huella fue de <strong>699 millones de toneladas de CO2 equivalente</strong>, 4% menos que en 2022 y 10 toneladas por persona (el máximo fue de 16 en 2004).</li>
+<li>Las importaciones explican <strong>53%</strong> de la huella, frente a 31% en 1996. China aporta 25% de lo importado.</li>
+<li>Entre 1996 y 2023 la huella cayó 15%, mientras que las emisiones territoriales cayeron 50%. La brecha existe porque las emisiones asociadas con importaciones subieron 43% y las de bienes producidos y consumidos en el país bajaron 49%.</li>
+<li>Por gasto de los hogares pesan el transporte (150 Mt), la electricidad y los combustibles (113 Mt) y los alimentos (75 Mt).</li>
+<li>Defra advierte que la caída reciente puede reflejar descarbonización, pero también menos gasto o un gasto distinto.</li>
+</ul>
+<p>Fuente: <span class="citation" data-cites="defra2026">(<a href="#/referencias" role="doc-biblioref" onclick="">Department for Environment, Food and Rural Affairs, 2026</a>)</span>.</p>
+</section>
+<section id="reino-unido-cómo-lo-construye" class="slide level2 smaller">
+<h2>Reino Unido: cómo lo construye</h2>
+<ul>
+<li><strong>Modelo.</strong> Una tabla de insumo-producto multirregional con 11 regiones y 112 sectores.</li>
+<li><strong>Datos nacionales.</strong> Cuadros de oferta y utilización de la oficina de estadística. Las <em>tablas analíticas</em> separan lo que viene de producción nacional de lo importado, y permiten pasar a precios básicos (el precio que recibe el productor).</li>
+<li><strong>Resto del mundo.</strong> EXIOBASE hasta 2009 y FIGARO desde 2010.</li>
+<li><strong>Conciliación.</strong> El método RAS ajusta filas y columnas hasta que las tablas cuadran con totales conocidos.</li>
+<li><strong>Emisiones.</strong> Siete gases de Kioto en CO2 equivalente, más las emisiones directas de los hogares. No incluye el uso de suelo.</li>
+<li><strong>Calendario.</strong> Se publica con unos dos años y medio de rezago, y cada edición revisa toda la serie.</li>
+</ul>
+<p>Fuente: <span class="citation" data-cites="owen2026">(<a href="#/referencias" role="doc-biblioref" onclick="">Owen, 2026</a>)</span>.</p>
+</section>
+<section id="reino-unido-retos-y-qué-rescatar" class="slide level2 smaller">
+<h2>Reino Unido: retos y qué rescatar</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><span class="emphasis">Cómo lo hacen</span></p>
+<p><span class="emphasis">Retos que reconocen</span></p>
 <ul>
-<li>Modelo multirregional de 11 regiones y 112 sectores.</li>
-<li>Cuadros de oferta y utilización de la oficina de estadística, a precios básicos.</li>
-<li>Resto del mundo: EXIOBASE hasta 2009 y FIGARO desde 2010.</li>
-<li>Siete gases de Kioto, más emisiones directas de los hogares; sin uso de suelo.</li>
-<li>Rezago de unos dos años y medio; cada edición revisa toda la serie.</li>
+<li>Faltan tablas analíticas: se interpola y se reutiliza la de 2019 hasta 2023.</li>
+<li>Valores negativos o nulos: se corrigen o se sustituyen por un número muy pequeño.</li>
+<li>Los datos preliminares de EXIOBASE no reflejaron la caída de 2020.</li>
+<li>Un único tipo de cambio para todos los sectores.</li>
+<li>Las estimaciones de 1990 y 1991 son muy inciertas.</li>
+<li>La única cifra de incertidumbre es de una investigación previa: 3.3% a 5.5% de error para el total anual.</li>
 </ul>
 </div><div class="column" style="width:50%;">
-<p><span class="emphasis">Qué problemas reconocen</span></p>
+<p><span class="emphasis">Qué rescatar</span></p>
 <ul>
-<li>Faltan tablas analíticas: la de 2019 se reutiliza hasta 2023.</li>
-<li>Datos preliminares que no reflejan la caída de 2020.</li>
-<li>Un único tipo de cambio para todos los sectores.</li>
-<li>Estimaciones muy inciertas para 1990 y 1991.</li>
-<li>Valores negativos o nulos sustituidos por un número muy pequeño.</li>
+<li>Usar la tabla nacional como núcleo y tomar de una base global solo el comercio y las emisiones del exterior.</li>
+<li>Contar con tablas analíticas, o un sustituto documentado.</li>
+<li>Elegir la base global también por la disponibilidad de datos recientes.</li>
+<li>Publicar la política de revisiones.</li>
+<li>Vincular la encuesta de gasto con las cuentas para descomponer la huella por grupo de hogares y región.</li>
 </ul>
 </div></div>
-<p>Fuente: <span class="citation" data-cites="owen2026">(<a href="#/referencias" role="doc-biblioref" onclick="">Owen, 2026</a>)</span>.</p>
 </section>
 <section id="unión-europea-cuentas-y-huellas" class="slide level2">
 <h2>Unión Europea: cuentas y huellas</h2>
@@ -460,16 +431,84 @@ Renato Vargas
 <div class="column" style="width:30%;">
 <p>Insertar miniatura de la portada del Manual for air emissions accounts, edición 2015 (Eurostat). Disponible en <a href="https://doi.org/10.2785/527552" class="uri">https://doi.org/10.2785/527552</a>.</p>
 </div><div class="column" style="width:70%;">
-<p>El manual de Eurostat es la guía que usan los países europeos para armar sus cuentas de emisiones. Explica el principio de residencia, cómo conciliar las cuentas con los inventarios mediante las partidas puente, y por qué se necesita el desglose completo por actividad económica para poder estimar huellas.</p>
-<p>A partir de esas cuentas, Eurostat publica huellas de gases de efecto invernadero para 2010 a 2023, calculadas con la base FIGARO y con 64 ramas de actividad.</p>
-<p>Como referencia, el manual señala que en 2011 el uso final de los residentes de la UE-27 implicó 7.8 toneladas de CO2 por habitante, emitidas dentro y fuera de la región.</p>
+<p>Eurostat tiene dos piezas: un manual para compilar cuentas de emisiones atmosféricas, que explica el principio de residencia, las partidas puente y el desglose por actividad, y una serie de huellas de gases de efecto invernadero para 2010 a 2023.</p>
+<p>Como referencia, el manual señala que en 2011 el uso final de los residentes de la UE-27 implicó 7.8 toneladas de CO2 por habitante, dentro y fuera de la región.</p>
 <div style="text-align: right">
 <p><span class="citation" data-cites="eurostat2015 eurostatghgfp">(<a href="#/referencias" role="doc-biblioref" onclick="">Eurostat, 2015</a>, <a href="#/referencias" role="doc-biblioref" onclick="">2026</a>)</span></p>
 </div>
 </div></div>
 </section>
-<section id="bases-multirregionales-de-dónde-salen-las-importaciones" class="slide level2 smaller">
-<h2>Bases multirregionales: de dónde salen las importaciones</h2>
+<section id="unión-europea-la-serie-y-cómo-compilar-la-cuenta" class="slide level2 smaller">
+<h2>Unión Europea: la serie y cómo compilar la cuenta</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="emphasis">La serie de huellas</span></p>
+<ul>
+<li>Se modela con las tablas FIGARO y las cuentas de emisiones de cada país; para los no europeos, Eurostat estima las emisiones con EDGAR.</li>
+<li>46 entidades, 64 ramas de actividad y cinco categorías de demanda final.</li>
+<li>Las emisiones directas de los hogares se suman al resultado.</li>
+<li>La ficha advierte que el error es mayor que en los inventarios y que hay que leer con cautela los niveles detallados.</li>
+<li>Se reestima toda la serie cada año y se publica con dos años de rezago.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><span class="emphasis">El manual: compilar la cuenta</span></p>
+<ul>
+<li>Dos rutas: partir del inventario o partir de las estadísticas de energía, ya en base de residencia.</li>
+<li>Priorizar las partidas grandes del ajuste por residencia.</li>
+<li>El transporte por carretera es una de las partes más difíciles.</li>
+<li>Un desglose incompleto por actividad, o celdas marcadas como confidenciales, puede impedir calcular huellas.</li>
+</ul>
+</div></div>
+<p>Fuentes: <span class="citation" data-cites="eurostatghgfp eurostat2015">(<a href="#/referencias" role="doc-biblioref" onclick="">Eurostat, 2015</a>, <a href="#/referencias" role="doc-biblioref" onclick="">2026</a>)</span>.</p>
+</section>
+<section id="ocde-el-co2-en-el-comercio-y-la-demanda-final" class="slide level2">
+<h2>OCDE: el CO2 en el comercio y la demanda final</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p>Insertar miniatura de la portada de Yamano y Guilhoto (2020), OECD Science, Technology and Industry Working Papers 2020/11. Disponible en <a href="https://doi.org/10.1787/8f2963b8-en" class="uri">https://doi.org/10.1787/8f2963b8-en</a>.</p>
+</div><div class="column" style="width:70%;">
+<p>Es el trabajo más útil para una oficina de estadística, porque explica cómo se pasa de un inventario territorial a emisiones de residentes y luego a huella. Cubre 65 economías entre 2005 y 2015, con las tablas ICIO de la OCDE y los datos de CO2 de la Agencia Internacional de Energía.</p>
+<p>En 2015, cerca de 27% del CO2 de combustión mundial estuvo ligado al comercio internacional. La parte del CO2 de la demanda final que se emite en el exterior va de 8% en China a 65% en Suiza.</p>
+<div style="text-align: right">
+<p><span class="citation" data-cites="yamano2020">(<a href="#/referencias" role="doc-biblioref" onclick="">Yamano y Guilhoto, 2020</a>)</span></p>
+</div>
+</div></div>
+</section>
+<section id="ocde-los-casos-difíciles" class="slide level2 smaller">
+<h2>OCDE: los casos difíciles</h2>
+<p>Casi todos los retos son estadísticos, y son los mismos que enfrentará cualquier oficina <span class="citation" data-cites="yamano2020">(<a href="#/referencias" role="doc-biblioref" onclick="">Yamano y Guilhoto, 2020</a>)</span>:</p>
+<ul>
+<li><strong>Flujos que corresponden a varias industrias.</strong> De los 34 flujos de energía, 11 se relacionan con varias industrias. Los gases de carbón de los autoproductores se asignan a la siderurgia.</li>
+<li><strong>Transporte por carretera.</strong> El flujo mezcla industrias y hogares; se separa con tablas de uso o con proporciones de referencia, y se usan las partidas de viajes de la balanza de pagos.</li>
+<li><strong>Aviación internacional.</strong> Se reasigna la nacionalidad de la aerolínea y se supone igual número de vuelos por ruta.</li>
+<li><strong>Transporte marítimo.</strong> El combustible cargado no coincide con el viaje: 10% se asigna al transporte por agua nacional y el resto según las compras de petróleo.</li>
+</ul>
+<p>Qué rescatar: fijar las tres definiciones antes de calcular, documentar la correspondencia entre energía e industrias, y atender primero el transporte.</p>
+</section>
+<section id="dos-artículos-que-fijaron-las-cifras-globales" class="slide level2 smaller">
+<h2>Dos artículos que fijaron las cifras globales</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="emphasis">Davis y Caldeira (2010)</span></p>
+<ul>
+<li>Modelo multirregional con GTAP (113 regiones, 57 sectores) para 2004.</li>
+<li>6.2 Gt de CO2, 23% del total fósil, se emitieron produciendo bienes consumidos en otro país.</li>
+<li>Las importaciones netas son 10.8% de las emisiones de consumo de Estados Unidos y entre 20% y 50% en las grandes economías de Europa occidental.</li>
+<li>Límites: la calidad de GTAP, un solo año y solo CO2 fósil. Luxemburgo aparece sobrestimado por sus trabajadores transfronterizos.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><span class="emphasis">Peters et al.&nbsp;(2011)</span></p>
+<ul>
+<li>Serie de 1990 a 2008, construida a partir de pocos años de referencia.</li>
+<li>Emisiones comerciadas: de 4.3 Gt (20%) a 7.8 Gt (26%).</li>
+<li>La transferencia neta a países con metas de Kioto pasó de 0.4 a 1.6 Gt, más de cinco veces su reducción real.</li>
+<li>Límites: más incertidumbre a mayor detalle, y la inversión se trata como consumo interno.</li>
+</ul>
+</div></div>
+<p>Fuentes: <span class="citation" data-cites="davis2010 peters2011">(<a href="#/referencias" role="doc-biblioref" onclick="">Davis y Caldeira, 2010</a>; <a href="#/referencias" role="doc-biblioref" onclick="">Peters et&nbsp;al., 2011</a>)</span>.</p>
+</section>
+<section id="bases-multirregionales-para-las-importaciones" class="slide level2 smaller">
+<h2>Bases multirregionales para las importaciones</h2>
 <table class="caption-top" style="width:100%;">
 <colgroup>
 <col style="width: 18%">
@@ -482,37 +521,40 @@ Renato Vargas
 <th style="text-align: left;">Base</th>
 <th style="text-align: left;">Cobertura</th>
 <th style="text-align: left;">Acceso</th>
-<th style="text-align: left;">Para América Latina</th>
+<th style="text-align: left;">Perú</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">OCDE: ICIO y huellas <span class="citation" data-cites="oecdghgfp2025">(<a href="#/referencias" role="doc-biblioref" onclick="">OECD, 2025</a>)</span></td>
-<td style="text-align: left;">1995 a 2022; incluye Perú, Chile, Colombia, Costa Rica, México, Brasil y Argentina</td>
+<td style="text-align: left;">1995 a 2022; Perú, Chile, Colombia, Costa Rica, México, Brasil y Argentina</td>
 <td style="text-align: left;">Datos abiertos</td>
-<td style="text-align: left;">Buena cobertura</td>
+<td style="text-align: left;">Economía individual</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">EXIOBASE 3 <span class="citation" data-cites="stadler2018">(<a href="#/referencias" role="doc-biblioref" onclick="">Stadler et&nbsp;al., 2018</a>)</span></td>
-<td style="text-align: left;">44 países y 5 regiones</td>
+<td style="text-align: left;">44 países y 5 regiones del resto del mundo; 163 industrias</td>
 <td style="text-align: left;">Licencia abierta</td>
-<td style="text-align: left;">Perú no es economía individual</td>
+<td style="text-align: left;">No es economía individual</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Eora <span class="citation" data-cites="eora2026">(<a href="#/referencias" role="doc-biblioref" onclick="">Eora Global Supply Chain Database, 2026</a>)</span></td>
 <td style="text-align: left;">190 países</td>
 <td style="text-align: left;">Gratuita solo para uso académico</td>
-<td style="text-align: left;">Verificar licencia para publicar</td>
+<td style="text-align: left;">Verificar cobertura y licencia</td>
 </tr>
 </tbody>
 </table>
+<p>EXIOBASE se construye de arriba hacia abajo desde las cuentas nacionales, privilegia la coherencia de la serie sobre la coincidencia con los cuadros de cada país, y supone que cada usuario compra a cada exportador en las mismas proporciones <span class="citation" data-cites="stadler2018">(<a href="#/referencias" role="doc-biblioref" onclick="">Stadler et&nbsp;al., 2018</a>)</span>.</p>
 </section>
-<section id="américa-latina-lo-que-se-ha-hecho" class="slide level2">
-<h2>América Latina: lo que se ha hecho</h2>
-<p>En la región, las huellas nacionales y de hogares provienen sobre todo de la academia y de organismos multilaterales.</p>
-<p>No se identificaron estadísticas oficiales de huella de carbono con acceso abierto verificable en los institutos de estadística de la región.</p>
-<p>Casi todos los estudios combinan tres piezas: una tabla de insumo-producto (nacional o multirregional), un inventario de emisiones y una encuesta de gasto de los hogares.</p>
-<p>Las siguientes diapositivas resumen los más útiles.</p>
+<section id="américa-latina-el-contexto" class="slide level2">
+<h2>América Latina: el contexto</h2>
+<ul>
+<li>La región emite cerca de 5% del CO2 mundial. El cambio de uso de suelo explica 34% de sus gases de efecto invernadero, la energía 33% y la agricultura 24%. Las emisiones por persona (2.9 toneladas en 2008) están por debajo del promedio mundial (4.8) <span class="citation" data-cites="frohmann2013">(<a href="#/referencias" role="doc-biblioref" onclick="">Frohmann y Olmos, 2013</a>)</span>.</li>
+<li>El 52% de sus exportaciones de 2011 fue a Estados Unidos y a la Unión Europea, donde la huella de los productos importados es un tema creciente <span class="citation" data-cites="frohmann2013">(<a href="#/referencias" role="doc-biblioref" onclick="">Frohmann y Olmos, 2013</a>)</span>.</li>
+<li>No se identificaron estadísticas oficiales de huella con acceso abierto verificable en los institutos de estadística de la región.</li>
+<li>Los estudios son académicos y siguen tres enfoques: <strong>huellas de hogares</strong> con encuestas de gasto (Perú, México, Brasil, región), <strong>huella nacional</strong> con una base abierta (Ecuador) y <strong>multiplicadores</strong> con tablas nacionales (Colombia).</li>
+</ul>
 </section>
 <section id="perú-huellas-de-los-hogares" class="slide level2">
 <h2>Perú: huellas de los hogares</h2>
@@ -520,12 +562,32 @@ Renato Vargas
 <div class="column" style="width:30%;">
 <p>Insertar miniatura del artículo de Malerba et al.&nbsp;(2024), Energy Policy 192, 114246. Disponible en <a href="https://doi.org/10.1016/j.enpol.2024.114246" class="uri">https://doi.org/10.1016/j.enpol.2024.114246</a>.</p>
 </div><div class="column" style="width:70%;">
-<p>Los autores estiman cuántas emisiones provoca el consumo de los hogares peruanos en 2004, 2007 y 2011. Para eso toman lo que cada hogar gasta, según la encuesta ENAHO, y lo multiplican por las emisiones de cada sector, calculadas con la base multirregional GTAP 9.</p>
-<p>En sus resultados, la huella de los hogares crece con el tiempo, y más rápido en los más pobres: hasta casi 60% en los tres primeros deciles. También simulan un impuesto de 50 dólares por tonelada de CO2: elevaría la pobreza entre 0.8 y 1.1 puntos porcentuales, según el año.</p>
-<p>Una dificultad que reconocen: no pudieron usar una tabla de correspondencia entre el gasto y los sectores, por falta de detalle en la información oficial.</p>
+<p>Los autores preguntan cómo cambió la huella de los hogares peruanos en 2004, 2007 y 2011, y cómo habría afectado a la pobreza un impuesto al carbono con transferencias en efectivo.</p>
+<p>Para responder toman el gasto de cada hogar de la encuesta ENAHO (324 rubros) y lo multiplican por las emisiones de cada sector, calculadas con la base multirregional GTAP 9 (140 regiones y 57 sectores).</p>
 <div style="text-align: right">
 <p><span class="citation" data-cites="malerba2024">(<a href="#/referencias" role="doc-biblioref" onclick="">Malerba et&nbsp;al., 2024</a>)</span></p>
 </div>
+</div></div>
+</section>
+<section id="perú-hallazgos-y-lecciones" class="slide level2 smaller">
+<h2>Perú: hallazgos y lecciones</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="emphasis">Qué encuentran</span></p>
+<ul>
+<li>La huella de los hogares creció hasta casi 60% en los tres primeros deciles entre 2004 y 2011, y la desigualdad de la huella bajó.</li>
+<li>Calefacción y electricidad es el rubro mayor; el combustible de transporte se multiplicó por cinco en el segundo decil, por las motos y los autos.</li>
+<li>Un impuesto de 50 dólares por tonelada elevaría la pobreza entre 0.8 y 1.1 puntos porcentuales, y recaudaría cerca de 1.5% del PIB.</li>
+<li>Los programas de transferencias reducen la pobreza mucho más en 2007 que en 2004, y su focalización es débil.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><span class="emphasis">Retos y qué rescatar</span></p>
+<ul>
+<li>No existía una tabla de correspondencia entre rubros de gasto y sectores: los autores la hicieron.</li>
+<li>El gasto de la encuesta no se escala a las cuentas, y el análisis es estático.</li>
+<li><strong>Lección:</strong> publicar la correspondencia gasto a sector elimina el paso más costoso.</li>
+<li>Contar con encuestas y tablas de años coincidentes, y aclarar si la huella incluye importaciones.</li>
+</ul>
 </div></div>
 </section>
 <section id="ecuador-una-huella-con-base-abierta" class="slide level2">
@@ -534,12 +596,133 @@ Renato Vargas
 <div class="column" style="width:30%;">
 <p>Insertar miniatura del artículo de Román-Collado et al.&nbsp;(2021), Environmental Science and Pollution Research 28. Disponible en <a href="https://doi.org/10.1007/s11356-021-14521-1" class="uri">https://doi.org/10.1007/s11356-021-14521-1</a>.</p>
 </div><div class="column" style="width:70%;">
-<p>Los autores calculan la huella de Ecuador entre 2000 y 2015 a través de Eora26, una base multirregional abierta con 26 sectores y 187 países.</p>
-<p>En sus resultados, la huella del país creció 145% en esos años. Las emisiones incorporadas en las importaciones pasaron de 4,514 a 12,183 gigagramos de CO2, y el saldo comercial de emisiones cambió de superávit a déficit: Ecuador pasó a importar más emisiones de las que exporta.</p>
-<p>Las cifras provienen de la versión preliminar del artículo.</p>
+<p>Los autores calculan la huella de Ecuador en 2000, 2008 y 2015 con Eora26, una base multirregional abierta con 26 sectores y 187 países. Comparan la huella con las emisiones de producción y con el saldo comercial de emisiones, y separan lo directo, lo indirecto nacional y lo indirecto importado.</p>
+<p>No usan encuestas de hogares ni separan las categorías de demanda final.</p>
 <div style="text-align: right">
 <p><span class="citation" data-cites="romancollado2021">(<a href="#/referencias" role="doc-biblioref" onclick="">Román-Collado et&nbsp;al., 2021</a>)</span></p>
 </div>
+</div></div>
+</section>
+<section id="ecuador-hallazgos-y-lecciones" class="slide level2 smaller">
+<h2>Ecuador: hallazgos y lecciones</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="emphasis">Qué encuentran</span></p>
+<ul>
+<li>La huella creció 145% entre 2000 y 2015, de 18,554 a 45,506 gigagramos de CO2.</li>
+<li>Pasó de estar 5% por debajo de las emisiones de producción a estar 9% por encima.</li>
+<li>El saldo comercial de emisiones pasó de superávit a déficit.</li>
+<li>Entre 2008 y 2015 las importaciones crecieron 11% en valor y 34% en emisiones incorporadas.</li>
+<li>El transporte aporta 40% de la huella de 2015.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><span class="emphasis">Retos y qué rescatar</span></p>
+<ul>
+<li>Sin sección de limitaciones; mezcla precios básicos y de comprador; solo tres años.</li>
+<li>No concilia con el inventario nacional ni prueba la calidad de Eora para Ecuador.</li>
+<li><strong>Lección:</strong> una base abierta da una primera estimación, y comparar emisiones con valor monetario aporta información extra.</li>
+<li>Las cifras son de la versión preliminar.</li>
+</ul>
+</div></div>
+</section>
+<section id="colombia-multiplicadores-y-sectores-clave" class="slide level2">
+<h2>Colombia: multiplicadores y sectores clave</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p>Insertar miniatura del artículo de Hernández (2021), El Trimestre Económico 88(350). Disponible en <a href="https://doi.org/10.20430/ete.v88i350.857" class="uri">https://doi.org/10.20430/ete.v88i350.857</a>.</p>
+</div><div class="column" style="width:70%;">
+<p>Este estudio pregunta qué sectores colombianos tienen más efecto sobre las emisiones por sus vínculos con el resto de la economía. No es una huella por demanda final: usa solo la tabla nacional de 2012, con 61 sectores, y excluye las importaciones.</p>
+<p>El inventario del IDEAM (220 Mt de CO2 equivalente, 59% de agricultura y uso de suelo) se asigna a los sectores con una correspondencia que construyó el autor, porque la cuenta del DANE cubre solo energía.</p>
+<div style="text-align: right">
+<p><span class="citation" data-cites="hernandez2021">(<a href="#/referencias" role="doc-biblioref" onclick="">Hernández, 2021</a>)</span></p>
+</div>
+</div></div>
+</section>
+<section id="colombia-hallazgos-y-lecciones" class="slide level2 smaller">
+<h2>Colombia: hallazgos y lecciones</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="emphasis">Qué encuentra</span></p>
+<ul>
+<li>De 61 sectores, 16 son clave. Los 14 de enclave generan casi la mitad del valor agregado.</li>
+<li>De 59 sectores, 35 emiten por debajo del promedio, aportan 69.1% del producto y solo 14.3% de las emisiones.</li>
+<li>Los 18 mayores emisores concentran 69.9% de las emisiones.</li>
+<li>La electricidad aporta 6.9% de las emisiones pese a la energía hidroeléctrica, porque el consumo depende del petróleo y el gas.</li>
+<li>Si domina lo directo, conviene una política sectorial; si domina lo indirecto hacia delante, una transversal; si lo indirecto hacia atrás, una de demanda.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><span class="emphasis">Retos y qué rescatar</span></p>
+<ul>
+<li>La correspondencia inventario a cuentas reparte emisiones con un supuesto de ponderación.</li>
+<li>Excluir las importaciones impide medir una huella de consumo; es un solo año.</li>
+<li><strong>Lección:</strong> publicar la correspondencia entre el inventario y las cuentas, usar el inventario completo y no solo la energía, y tratar la producción secundaria de forma explícita.</li>
+</ul>
+</div></div>
+</section>
+<section id="méxico-quién-paga-el-impuesto-al-carbono" class="slide level2">
+<h2>México: quién paga el impuesto al carbono</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p>Insertar miniatura del artículo de Renner (2018), Energy Policy 112, 98-110. Disponible en <a href="https://doi.org/10.1016/j.enpol.2017.10.011" class="uri">https://doi.org/10.1016/j.enpol.2017.10.011</a>.</p>
+</div><div class="column" style="width:70%;">
+<p>México introdujo un impuesto al carbono en 2014 sin evidencia sobre quién asumiría el costo. El autor simula tres escenarios de base impositiva y tasa con las tablas WIOD (34 sectores, CO2, CH4 y N2O) y la encuesta ENIGH 2014 (cerca de 20,000 hogares y 744 rubros).</p>
+<p>Supone que el impuesto se traslada íntegramente a los consumidores, por lo que sirve para cambios pequeños y de corto plazo. Se revisó el documento de trabajo; conviene confirmar con el artículo.</p>
+<div style="text-align: right">
+<p><span class="citation" data-cites="renner2018">(<a href="#/referencias" role="doc-biblioref" onclick="">Renner, 2018</a>)</span></p>
+</div>
+</div></div>
+</section>
+<section id="méxico-hallazgos-y-lecciones" class="slide level2 smaller">
+<h2>México: hallazgos y lecciones</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="emphasis">Qué encuentra</span></p>
+<ul>
+<li>El impuesto vigente equivale a 3.4 dólares por tonelada y pesa menos de 0.2% del gasto.</li>
+<li>A 50 dólares, gravar solo el CO2 de energía eleva la pobreza entre 0.6 y 0.9 puntos porcentuales; con todos los gases, entre 1.5 y 1.8.</li>
+<li>Es progresivo si solo se grava la energía, y regresivo si se agregan CH4 y N2O, porque los alimentos pesan más en el gasto de los pobres.</li>
+<li>La pobreza rural sube más que la urbana. Devolver la recaudación por PROSPERA deja de lado a hogares urbanos cercanos a la pobreza.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><span class="emphasis">Retos y qué rescatar</span></p>
+<ul>
+<li>El consumo de las cuentas es 2.8 veces el de la encuesta.</li>
+<li>Las emisiones llegan a 2009 y la encuesta es de 2014; la correspondencia de 744 rubros no está publicada.</li>
+<li><strong>Lección:</strong> publicar la correspondencia, conciliar la encuesta con las cuentas, alinear los años y mantener la separación por gas, porque la base impositiva cambia el signo distributivo.</li>
+</ul>
+</div></div>
+</section>
+<section id="brasil-huellas-por-nivel-de-ingreso" class="slide level2">
+<h2>Brasil: huellas por nivel de ingreso</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p>Insertar miniatura del artículo de Cachola y Pacca (2021), Revista Kawsaypacha 7, 11-27. Disponible en <a href="https://doi.org/10.18800/kawsaypacha.202101.001" class="uri">https://doi.org/10.18800/kawsaypacha.202101.001</a>.</p>
+</div><div class="column" style="width:70%;">
+<p>Los autores estiman cuánto CO2 equivalente emiten los hogares brasileños según su ingreso. Multiplican el gasto de la encuesta POF 2008-09 (55,970 hogares, seis tramos de ingreso) por la matriz de Leontief de IBGE de 2010 (67 actividades) y por coeficientes del inventario ambiental WIOD de 2009. Las emisiones directas se calculan dividiendo el gasto en combustibles entre su precio.</p>
+<div style="text-align: right">
+<p><span class="citation" data-cites="cachola2021">(<a href="#/referencias" role="doc-biblioref" onclick="">Cachola y Pacca, 2021</a>)</span></p>
+</div>
+</div></div>
+</section>
+<section id="brasil-hallazgos-y-lecciones" class="slide level2 smaller">
+<h2>Brasil: hallazgos y lecciones</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="emphasis">Qué encuentran</span></p>
+<ul>
+<li>El tramo más bajo emite menos de 1.5 toneladas al año y el más alto, unas 18.5: casi 12 veces más.</li>
+<li>Los hogares más pobres son más de 20% del total y emiten 7%; los más ricos son 4% y emiten 16%.</li>
+<li>La huella crece casi linealmente con el ingreso.</li>
+<li>Con el ingreso, bajan los alimentos y suben los servicios; el transporte pesa más en todos los tramos.</li>
+<li>Los hogares emiten 77% del total nacional según WIOD.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><span class="emphasis">Retos y qué rescatar</span></p>
+<ul>
+<li>Resultados promedio para todo Brasil; no hay análisis de incertidumbre ni se discute el comercio.</li>
+<li>Hay desfases entre emisiones (2009), matriz (2010) y encuesta (2008-09), y las concordancias no se muestran.</li>
+<li><strong>Lección:</strong> una tabla nacional, un inventario y una encuesta bastan para una primera estimación; tabulaciones oportunas de la encuesta facilitan actualizarla.</li>
+</ul>
 </div></div>
 </section>
 <section id="américa-latina-y-el-caribe-desigualdad-de-la-huella" class="slide level2">
@@ -548,31 +731,129 @@ Renato Vargas
 <div class="column" style="width:30%;">
 <p>Insertar miniatura del artículo de Zhong et al.&nbsp;(2020), Journal of Environmental Management 273, 110979. Disponible en <a href="https://doi.org/10.1016/j.jenvman.2020.110979" class="uri">https://doi.org/10.1016/j.jenvman.2020.110979</a>.</p>
 </div><div class="column" style="width:70%;">
-<p>Los autores estiman la huella de diez países de la región, entre ellos Perú, combinando la base GTAP v10 para 2014 con los patrones de consumo por nivel de ingreso de la Base de Datos Global de Consumo del Banco Mundial.</p>
-<p>En sus resultados, la huella promedio por persona va de 0.53 toneladas de CO2 equivalente en Honduras a 2.21 en México. Dentro de cada país la brecha también es grande: el 10% de mayores ingresos explica 29.1% de la huella regional.</p>
+<p>Los autores estiman la huella de diez países, entre ellos Perú, con GTAP v10 para 2014 y los perfiles de consumo por ingreso del Banco Mundial.</p>
+<p>El 10% de mayores ingresos explica 29.1% de la huella regional, y su huella por persona es unas 12 veces la del 10% más pobre. El promedio va de 0.53 toneladas en Honduras a 2.21 en México. Solo Jamaica, Nicaragua y Honduras tienen más desigualdad en la huella que en el consumo.</p>
+<p>Limitaciones: la correspondencia entre 33 y 65 sectores genera traslapes, y se supone la misma mezcla de energía en todos los grupos de ingreso <span class="citation" data-cites="wang2024 sanguinet2022">(<a href="#/referencias" role="doc-biblioref" onclick="">Sanguinet et&nbsp;al., 2022</a>; <a href="#/referencias" role="doc-biblioref" onclick="">Wang et&nbsp;al., 2024</a>)</span>.</p>
 <div style="text-align: right">
 <p><span class="citation" data-cites="zhong2020">(<a href="#/referencias" role="doc-biblioref" onclick="">Zhong et&nbsp;al., 2020</a>)</span></p>
 </div>
 </div></div>
 </section>
-<section id="colombia-méxico-y-brasil" class="slide level2 smaller">
-<h2>Colombia, México y Brasil</h2>
-<p><strong>Colombia.</strong> <span class="citation" data-cites="hernandez2021">Hernández (<a href="#/referencias" role="doc-biblioref" onclick="">2021</a>)</span> usa los cuadros de oferta y utilización de 2012 del DANE, convertidos a una tabla de 61 sectores, para calcular cuánto contribuye cada sector a las emisiones. Su trabajo central fue construir la correspondencia entre el inventario del IDEAM y las cuentas nacionales. No es una huella por demanda final, porque deja fuera las importaciones.</p>
-<p><strong>México.</strong> <span class="citation" data-cites="renner2018">Renner (<a href="#/referencias" role="doc-biblioref" onclick="">2018</a>)</span> combina tablas WIOD con la encuesta de gasto ENIGH 2014 para estimar cómo afectaría un impuesto al carbono a los hogares. Reconoce una limitación: la tabla es de 2014, pero las emisiones llegan solo hasta 2009. Los años de cada fuente deben coincidir.</p>
-<p><strong>Brasil.</strong> <span class="citation" data-cites="cachola2021">Cachola y Pacca (<a href="#/referencias" role="doc-biblioref" onclick="">2021</a>)</span> cruzan la matriz de IBGE de 2010, el inventario WIOD de 2009 y la encuesta de gasto POF 2008-09. Encuentran que los hogares de mayores ingresos emiten unas 12 veces más que los de menores ingresos. Su mayor dificultad fue hacer corresponder las clasificaciones de actividades de ambas fuentes.</p>
-</section>
-<section id="cinco-lecciones-comunes" class="slide level2">
-<h2>Cinco lecciones comunes</h2>
+<section id="ocho-lecciones-comunes" class="slide level2 smaller">
+<h2>Ocho lecciones comunes</h2>
 <ol type="1">
-<li>Hacen falta tres insumos: tabla de insumo-producto, cuenta de emisiones y, para los hogares, encuesta de gasto.</li>
-<li>Las concordancias entre clasificaciones son el paso más laborioso.</li>
-<li>Las importaciones exigen una base multirregional o un supuesto explícito.</li>
-<li>Las prácticas oficiales revisan toda la serie cada año.</li>
-<li>Los resultados dependen del alcance, de la base de datos y del período.</li>
+<li><strong>Tres insumos:</strong> tabla de insumo-producto, cuenta de emisiones y, para hogares, encuesta de gasto.</li>
+<li><strong>Concordancias:</strong> el paso más laborioso; publicarlas beneficia a todos.</li>
+<li><strong>Importaciones:</strong> las bases multirregionales las cubren; con la tabla nacional se excluyen o se supone tecnología doméstica.</li>
+<li><strong>Residencia y transporte:</strong> concentran la conciliación con el inventario.</li>
+<li><strong>Años de referencia:</strong> los desfases obligan a supuestos.</li>
+<li><strong>Revisión y calendario:</strong> las prácticas oficiales revisan la serie completa cada año, con dos a tres años de rezago.</li>
+<li><strong>Sensibilidad:</strong> los resultados dependen del alcance de gases, de la base de datos y del período.</li>
+<li><strong>Incertidumbre:</strong> casi nadie la cuantifica; conviene comunicar rangos entre bases alternativas.</li>
 </ol>
+</section>
+<section id="siete-decisiones-de-diseño" class="slide level2 smaller">
+<h2>Siete decisiones de diseño</h2>
+<ol type="1">
+<li><strong>Alcance de gases y uso de suelo:</strong> CO2 de combustión o CO2 equivalente.</li>
+<li><strong>Importaciones:</strong> tecnología doméstica, base multirregional o una combinación, contrastada con una referencia independiente.</li>
+<li><strong>Concordancias:</strong> publicar las correspondencias entre industrias, inventario y gasto.</li>
+<li><strong>Residencia y transporte:</strong> atender primero las partidas grandes y documentar las partidas puente.</li>
+<li><strong>Años y revisiones:</strong> alinear años, reestimar la serie completa y declarar la política de revisión.</li>
+<li><strong>Hogares:</strong> conciliar la encuesta con las cuentas y reportar las emisiones directas por separado.</li>
+<li><strong>Incertidumbre y metadatos:</strong> nota metodológica pública, rangos entre bases y huella junto al inventario territorial.</li>
+</ol>
+<p>Una secuencia prudente: empezar simple, comparar con referencias externas y refinar en ciclos posteriores.</p>
+</section>
+<section id="referencias" class="slide level2 smaller scrollable">
+<h2>Referencias</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-cachola2021" class="csl-entry" role="listitem">
+Cachola, C. da S. y Pacca, S. A. (2021). The carbon footprint of <span>B</span>razilian households through the <span>C</span>onsumer <span>E</span>xpenditure <span>S</span>urvey (<span>POF</span>). <em>Revista Kawsaypacha: Sociedad y Medio Ambiente</em>, <em>7</em>, 11-27. <a href="https://doi.org/10.18800/kawsaypacha.202101.001">https://doi.org/10.18800/kawsaypacha.202101.001</a>
+</div>
+<div id="ref-davis2010" class="csl-entry" role="listitem">
+Davis, S. J. y Caldeira, K. (2010). Consumption-based accounting of <span>CO<span class="math inline">\(_2\)</span></span> emissions. <em>Proceedings of the National Academy of Sciences</em>, <em>107</em>(12), 5687-5692. <a href="https://doi.org/10.1073/pnas.0906974107">https://doi.org/10.1073/pnas.0906974107</a>
+</div>
+<div id="ref-defra2026" class="csl-entry" role="listitem">
+Department for Environment, Food and Rural Affairs. (2026). <em><span>UK and England’s carbon footprint to 2023</span></em> [Estad{\'i}sticas oficiales]. GOV.UK. <a href="https://www.gov.uk/government/statistics/uks-carbon-footprint">https://www.gov.uk/government/statistics/uks-carbon-footprint</a>
+</div>
+<div id="ref-eora2026" class="csl-entry" role="listitem">
+Eora Global Supply Chain Database. (2026). <em>Eora global supply chain database</em> [Base de datos]. Eora. <a href="https://worldmrio.com/">https://worldmrio.com/</a>
+</div>
+<div id="ref-espindola2012" class="csl-entry" role="listitem">
+Espíndola, C. y Valderrama, J. O. (2012). Huella del carbono. <span>P</span>arte 1: Conceptos, m<span>é</span>todos de estimaci<span>ó</span>n y complejidades metodol<span>ó</span>gicas. <em>Informaci<span class="nocase">ó</span>n Tecnol<span class="nocase">ó</span>gica</em>, <em>23</em>(1), 163-176. <a href="https://doi.org/10.4067/S0718-07642012000100017">https://doi.org/10.4067/S0718-07642012000100017</a>
+</div>
+<div id="ref-eurostat2015" class="csl-entry" role="listitem">
+Eurostat. (2015). <em>Manual for air emissions accounts</em>. Publications Office of the European Union. <a href="https://doi.org/10.2785/527552">https://doi.org/10.2785/527552</a>
+</div>
+<div id="ref-eurostatghgfp" class="csl-entry" role="listitem">
+Eurostat. (2026). <em>Greenhouse gas emission footprints (<span>FIGARO</span> application) (<span>env_ac_ghgfp</span>)</em> [Base de datos y metadatos]. Eurostat. <a href="https://ec.europa.eu/eurostat/cache/metadata/en/env_ac_ghgfp_esms.htm">https://ec.europa.eu/eurostat/cache/metadata/en/env_ac_ghgfp_esms.htm</a>
+</div>
+<div id="ref-frohmann2013" class="csl-entry" role="listitem">
+Frohmann, A. y Olmos, X. (2013). <em>Huella de carbono, exportaciones y estrategias empresariales frente al cambio clim<span>á</span>tico</em> (Documentos de proyectos LC/W.559/Rev.1). Comisi<span>ó</span>n Econ<span>ó</span>mica para Am<span>é</span>rica Latina y el Caribe. <a href="http://hdl.handle.net/11362/4101">http://hdl.handle.net/11362/4101</a>
+</div>
+<div id="ref-hernandez2021" class="csl-entry" role="listitem">
+Hernández, G. (2021). Emisiones de gases de efecto invernadero y sectores clave en <span>C</span>olombia. <em>El Trimestre Econ<span class="nocase">ó</span>mico</em>, <em>88</em>(350), 523-550. <a href="https://doi.org/10.20430/ete.v88i350.857">https://doi.org/10.20430/ete.v88i350.857</a>
+</div>
+<div id="ref-malerba2024" class="csl-entry" role="listitem">
+Malerba, D., Roscioli, F., Gaentzsch, A. y Ward, H. (2024). Changing carbon footprints and the consequent impacts of carbon taxes and cash transfers on poverty and inequality across years: A <span>P</span>eruvian case study. <em>Energy Policy</em>, <em>192</em>, 114246. <a href="https://doi.org/10.1016/j.enpol.2024.114246">https://doi.org/10.1016/j.enpol.2024.114246</a>
+</div>
+<div id="ref-millerblair2022" class="csl-entry" role="listitem">
+Miller, R. E. y Blair, P. D. (2022). <em>Input-Output Analysis: Foundations and Extensions</em> (3.ª ed.). Cambridge University Press. <a href="https://doi.org/10.1017/9781108676212">https://doi.org/10.1017/9781108676212</a>
+</div>
+<div id="ref-oecdghgfp2025" class="csl-entry" role="listitem">
+OECD. (2025). <em>Greenhouse gas footprints (<span>GHGFP</span>), edici<span>ó</span>n 2025: Principal indicators</em> [Conjunto de datos]. OECD. <a href="https://sdmx.oecd.org/public/rest/dataflow/OECD.STI.PIE/DSD_ICIO_GHG_MAIN_2025@DF_ICIO_GHG_MAIN_2025/1.0">https://sdmx.oecd.org/public/rest/dataflow/OECD.STI.PIE/DSD_ICIO_GHG_MAIN_2025@DF_ICIO_GHG_MAIN_2025/1.0</a>
+</div>
+<div id="ref-owen2026" class="csl-entry" role="listitem">
+Owen, A. (2026). <em>Consumption-based accounts for the <span>UK</span>, 1990 to 2023: Summary of methods</em>. <span>Universidad de Leeds para el Department for Environment, Food and Rural Affairs</span>. <a href="https://assets.publishing.service.gov.uk/media/6a3ce626eaee00074150f449/UK_and_England_s_Carbon_Footprint_Summary_of_Methods_2026.pdf">https://assets.publishing.service.gov.uk/media/6a3ce626eaee00074150f449/UK_and_England_s_Carbon_Footprint_Summary_of_Methods_2026.pdf</a>
+</div>
+<div id="ref-peters2011" class="csl-entry" role="listitem">
+Peters, G. P., Minx, J. C., Weber, C. L. y Edenhofer, O. (2011). Growth in emission transfers via international trade from 1990 to 2008. <em>Proceedings of the National Academy of Sciences</em>, <em>108</em>(21), 8903-8908. <a href="https://doi.org/10.1073/pnas.1006388108">https://doi.org/10.1073/pnas.1006388108</a>
+</div>
+<div id="ref-renner2018" class="csl-entry" role="listitem">
+Renner, S. (2018). Poverty and distributional effects of a carbon tax in <span>M</span>exico. <em>Energy Policy</em>, <em>112</em>, 98-110. <a href="https://doi.org/10.1016/j.enpol.2017.10.011">https://doi.org/10.1016/j.enpol.2017.10.011</a>
+</div>
+<div id="ref-rivas2025" class="csl-entry" role="listitem">
+Rivas, L. y Gomes, A. (2025). <em>Peru: Report on the Physical Energy Flow and Air Emissions Accounts Mission (February 3–7, 2025)</em> [Technical Assistance Report]. Fondo Monetario Internacional, Departamento de Estad<span>í</span>stica.
+</div>
+<div id="ref-romancollado2021" class="csl-entry" role="listitem">
+Román-Collado, R., Sanz-Díaz, M. T. y Loja Pacheco, C. (2021). Towards the decarbonisation of <span>E</span>cuador: A multisectoral and multiregional analysis of its carbon footprint. <em>Environmental Science and Pollution Research</em>, <em>28</em>, 53412-53431. <a href="https://doi.org/10.1007/s11356-021-14521-1">https://doi.org/10.1007/s11356-021-14521-1</a>
+</div>
+<div id="ref-sanguinet2022" class="csl-entry" role="listitem">
+Sanguinet, E. R., Azzoni, C. R. y Alvim, A. M. (2022). Resource-based industries and <span>CO2</span> emissions embedded in value chains: A regional analysis for selected countries in <span>L</span>atin <span>A</span>merica. <em>Atmosphere</em>, <em>13</em>(6), 856. <a href="https://doi.org/10.3390/atmos13060856">https://doi.org/10.3390/atmos13060856</a>
+</div>
+<div id="ref-stadler2018" class="csl-entry" role="listitem">
+Stadler, K., Wood, R., Bulavskaya, T., Södersten, C.-J., Simas, M., Schmidt, S., Usubiaga, A., Acosta-Fernández, J., Kuenen, J., Bruckner, M., Giljum, S., Lutter, S., Merciai, S., Schmidt, J. H., Theurl, M. C., Plutzar, C., Kastner, T., Eisenmenger, N., Erb, K.-H., … Tukker, A. (2018). <span>EXIOBASE</span> 3: Developing a time series of detailed environmentally extended multi-regional input-output tables. <em>Journal of Industrial Ecology</em>, <em>22</em>(3), 502-515. <a href="https://doi.org/10.1111/jiec.12715">https://doi.org/10.1111/jiec.12715</a>
+</div>
+<div id="ref-stanger2024" class="csl-entry" role="listitem">
+Stanger, M. y Guilhoto, J. (2024). <em>Peru: Report of the Diagnostic Mission on Macro-relevant Climate Change Statistics (July 10–14, 2023)</em> [Technical Assistance Report]. Fondo Monetario Internacional, Departamento de Estad<span>í</span>stica.
+</div>
+<div id="ref-seea2014" class="csl-entry" role="listitem">
+United Nations. (2014). <em>System of Environmental-Economic Accounting 2012: Central Framework</em>. United Nations.
+</div>
+<div id="ref-wang2024" class="csl-entry" role="listitem">
+Wang, Z., Peng, H., Meng, J., Zheng, H., Li, J., Huo, J., Chen, Y., Wen, Q., Ma, X. y Guan, D. (2024). Enormous inter-country inequality of embodied carbon emissions and its driving forces in <span>S</span>outh <span>A</span>merica. <em>Global Environmental Change</em>, <em>89</em>, 102944. <a href="https://doi.org/10.1016/j.gloenvcha.2024.102944">https://doi.org/10.1016/j.gloenvcha.2024.102944</a>
+</div>
+<div id="ref-yamano2020" class="csl-entry" role="listitem">
+Yamano, N. y Guilhoto, J. (2020). <em><span>CO2</span> emissions embodied in international trade and domestic final demand: Methodology and results using the <span>OECD</span> Inter-Country Input-Output Database</em> (OECD Science, Technology and Industry Working Papers 2020/11). OECD. <a href="https://doi.org/10.1787/8f2963b8-en">https://doi.org/10.1787/8f2963b8-en</a>
+</div>
+<div id="ref-zhong2020" class="csl-entry" role="listitem">
+Zhong, H., Feng, K., Sun, L., Cheng, L. y Hubacek, K. (2020). Household carbon and energy inequality in <span>L</span>atin <span>A</span>merican and <span>C</span>aribbean countries. <em>Journal of Environmental Management</em>, <em>273</em>, 110979. <a href="https://doi.org/10.1016/j.jenvman.2020.110979">https://doi.org/10.1016/j.jenvman.2020.110979</a>
+</div>
+</div>
+</section>
+<section id="section" class="slide level2 center">
+<h2></h2>
+<div style="text-align: center">
+<div style="padding: 0.7em 1em; background-color: #204B92; color: white;">
+<p><span style="font-size:1.8em;">Gracias</span></p>
+<p><a href="https://renatovargas.com/" style="font-size:1.2em; color: #FFCE5E;">renatovargas.com</a></p>
+</div>
+<p><a href="#/contexto-mision">El contexto de la misión en Perú</a></p>
+</div>
 </section></section>
 <section>
-<section id="el-contexto-de-la-misión-en-perú" class="title-slide slide level1 center">
+<section id="contexto-mision" class="title-slide slide level1 center">
 <h1>El contexto de la misión en Perú</h1>
 
 </section>
@@ -739,92 +1020,6 @@ Renato Vargas
 <li>Funciones del INEI y del MINAM, y protocolo de datos.</li>
 <li>Política de revisiones y nota metodológica.</li>
 </ol>
-</section>
-<section id="referencias" class="slide level2 smaller scrollable">
-<h2>Referencias</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
-<div id="ref-cachola2021" class="csl-entry" role="listitem">
-Cachola, C. da S. y Pacca, S. A. (2021). The carbon footprint of <span>B</span>razilian households through the <span>C</span>onsumer <span>E</span>xpenditure <span>S</span>urvey (<span>POF</span>). <em>Revista Kawsaypacha: Sociedad y Medio Ambiente</em>, <em>7</em>, 11-27. <a href="https://doi.org/10.18800/kawsaypacha.202101.001">https://doi.org/10.18800/kawsaypacha.202101.001</a>
-</div>
-<div id="ref-davis2010" class="csl-entry" role="listitem">
-Davis, S. J. y Caldeira, K. (2010). Consumption-based accounting of <span>CO<span class="math inline">\(_2\)</span></span> emissions. <em>Proceedings of the National Academy of Sciences</em>, <em>107</em>(12), 5687-5692. <a href="https://doi.org/10.1073/pnas.0906974107">https://doi.org/10.1073/pnas.0906974107</a>
-</div>
-<div id="ref-defra2026" class="csl-entry" role="listitem">
-Department for Environment, Food and Rural Affairs. (2026). <em><span>UK and England’s carbon footprint to 2023</span></em> [Estad{\'i}sticas oficiales]. GOV.UK. <a href="https://www.gov.uk/government/statistics/uks-carbon-footprint">https://www.gov.uk/government/statistics/uks-carbon-footprint</a>
-</div>
-<div id="ref-eora2026" class="csl-entry" role="listitem">
-Eora Global Supply Chain Database. (2026). <em>Eora global supply chain database</em> [Base de datos]. Eora. <a href="https://worldmrio.com/">https://worldmrio.com/</a>
-</div>
-<div id="ref-eurostat2015" class="csl-entry" role="listitem">
-Eurostat. (2015). <em>Manual for air emissions accounts</em>. Publications Office of the European Union. <a href="https://doi.org/10.2785/527552">https://doi.org/10.2785/527552</a>
-</div>
-<div id="ref-eurostatghgfp" class="csl-entry" role="listitem">
-Eurostat. (2026). <em>Greenhouse gas emission footprints (<span>FIGARO</span> application) (<span>env_ac_ghgfp</span>)</em> [Base de datos y metadatos]. Eurostat. <a href="https://ec.europa.eu/eurostat/cache/metadata/en/env_ac_ghgfp_esms.htm">https://ec.europa.eu/eurostat/cache/metadata/en/env_ac_ghgfp_esms.htm</a>
-</div>
-<div id="ref-frohmann2013" class="csl-entry" role="listitem">
-Frohmann, A. y Olmos, X. (2013). <em>Huella de carbono, exportaciones y estrategias empresariales frente al cambio clim<span>á</span>tico</em> (Documentos de proyectos LC/W.559/Rev.1). Comisi<span>ó</span>n Econ<span>ó</span>mica para Am<span>é</span>rica Latina y el Caribe. <a href="http://hdl.handle.net/11362/4101">http://hdl.handle.net/11362/4101</a>
-</div>
-<div id="ref-hernandez2021" class="csl-entry" role="listitem">
-Hernández, G. (2021). Emisiones de gases de efecto invernadero y sectores clave en <span>C</span>olombia. <em>El Trimestre Econ<span class="nocase">ó</span>mico</em>, <em>88</em>(350), 523-550. <a href="https://doi.org/10.20430/ete.v88i350.857">https://doi.org/10.20430/ete.v88i350.857</a>
-</div>
-<div id="ref-malerba2024" class="csl-entry" role="listitem">
-Malerba, D., Roscioli, F., Gaentzsch, A. y Ward, H. (2024). Changing carbon footprints and the consequent impacts of carbon taxes and cash transfers on poverty and inequality across years: A <span>P</span>eruvian case study. <em>Energy Policy</em>, <em>192</em>, 114246. <a href="https://doi.org/10.1016/j.enpol.2024.114246">https://doi.org/10.1016/j.enpol.2024.114246</a>
-</div>
-<div id="ref-millerblair2022" class="csl-entry" role="listitem">
-Miller, R. E. y Blair, P. D. (2022). <em>Input-Output Analysis: Foundations and Extensions</em> (3.ª ed.). Cambridge University Press. <a href="https://doi.org/10.1017/9781108676212">https://doi.org/10.1017/9781108676212</a>
-</div>
-<div id="ref-oecdghgfp2025" class="csl-entry" role="listitem">
-OECD. (2025). <em>Greenhouse gas footprints (<span>GHGFP</span>), edici<span>ó</span>n 2025: Principal indicators</em> [Conjunto de datos]. OECD. <a href="https://sdmx.oecd.org/public/rest/dataflow/OECD.STI.PIE/DSD_ICIO_GHG_MAIN_2025@DF_ICIO_GHG_MAIN_2025/1.0">https://sdmx.oecd.org/public/rest/dataflow/OECD.STI.PIE/DSD_ICIO_GHG_MAIN_2025@DF_ICIO_GHG_MAIN_2025/1.0</a>
-</div>
-<div id="ref-owen2026" class="csl-entry" role="listitem">
-Owen, A. (2026). <em>Consumption-based accounts for the <span>UK</span>, 1990 to 2023: Summary of methods</em>. <span>Universidad de Leeds para el Department for Environment, Food and Rural Affairs</span>. <a href="https://assets.publishing.service.gov.uk/media/6a3ce626eaee00074150f449/UK_and_England_s_Carbon_Footprint_Summary_of_Methods_2026.pdf">https://assets.publishing.service.gov.uk/media/6a3ce626eaee00074150f449/UK_and_England_s_Carbon_Footprint_Summary_of_Methods_2026.pdf</a>
-</div>
-<div id="ref-peters2011" class="csl-entry" role="listitem">
-Peters, G. P., Minx, J. C., Weber, C. L. y Edenhofer, O. (2011). Growth in emission transfers via international trade from 1990 to 2008. <em>Proceedings of the National Academy of Sciences</em>, <em>108</em>(21), 8903-8908. <a href="https://doi.org/10.1073/pnas.1006388108">https://doi.org/10.1073/pnas.1006388108</a>
-</div>
-<div id="ref-renner2018" class="csl-entry" role="listitem">
-Renner, S. (2018). Poverty and distributional effects of a carbon tax in <span>M</span>exico. <em>Energy Policy</em>, <em>112</em>, 98-110. <a href="https://doi.org/10.1016/j.enpol.2017.10.011">https://doi.org/10.1016/j.enpol.2017.10.011</a>
-</div>
-<div id="ref-rivas2025" class="csl-entry" role="listitem">
-Rivas, L. y Gomes, A. (2025). <em>Peru: Report on the Physical Energy Flow and Air Emissions Accounts Mission (February 3–7, 2025)</em> [Technical Assistance Report]. Fondo Monetario Internacional, Departamento de Estad<span>í</span>stica.
-</div>
-<div id="ref-romancollado2021" class="csl-entry" role="listitem">
-Román-Collado, R., Sanz-Díaz, M. T. y Loja Pacheco, C. (2021). Towards the decarbonisation of <span>E</span>cuador: A multisectoral and multiregional analysis of its carbon footprint. <em>Environmental Science and Pollution Research</em>, <em>28</em>, 53412-53431. <a href="https://doi.org/10.1007/s11356-021-14521-1">https://doi.org/10.1007/s11356-021-14521-1</a>
-</div>
-<div id="ref-stadler2018" class="csl-entry" role="listitem">
-Stadler, K., Wood, R., Bulavskaya, T., Södersten, C.-J., Simas, M., Schmidt, S., Usubiaga, A., Acosta-Fernández, J., Kuenen, J., Bruckner, M., Giljum, S., Lutter, S., Merciai, S., Schmidt, J. H., Theurl, M. C., Plutzar, C., Kastner, T., Eisenmenger, N., Erb, K.-H., … Tukker, A. (2018). <span>EXIOBASE</span> 3: Developing a time series of detailed environmentally extended multi-regional input-output tables. <em>Journal of Industrial Ecology</em>, <em>22</em>(3), 502-515. <a href="https://doi.org/10.1111/jiec.12715">https://doi.org/10.1111/jiec.12715</a>
-</div>
-<div id="ref-stanger2024" class="csl-entry" role="listitem">
-Stanger, M. y Guilhoto, J. (2024). <em>Peru: Report of the Diagnostic Mission on Macro-relevant Climate Change Statistics (July 10–14, 2023)</em> [Technical Assistance Report]. Fondo Monetario Internacional, Departamento de Estad<span>í</span>stica.
-</div>
-<div id="ref-seea2014" class="csl-entry" role="listitem">
-United Nations. (2014). <em>System of Environmental-Economic Accounting 2012: Central Framework</em>. United Nations.
-</div>
-<div id="ref-wang2024" class="csl-entry" role="listitem">
-Wang, Z., Peng, H., Meng, J., Zheng, H., Li, J., Huo, J., Chen, Y., Wen, Q., Ma, X. y Guan, D. (2024). Enormous inter-country inequality of embodied carbon emissions and its driving forces in <span>S</span>outh <span>A</span>merica. <em>Global Environmental Change</em>, <em>89</em>, 102944. <a href="https://doi.org/10.1016/j.gloenvcha.2024.102944">https://doi.org/10.1016/j.gloenvcha.2024.102944</a>
-</div>
-<div id="ref-yamano2020" class="csl-entry" role="listitem">
-Yamano, N. y Guilhoto, J. (2020). <em><span>CO2</span> emissions embodied in international trade and domestic final demand: Methodology and results using the <span>OECD</span> Inter-Country Input-Output Database</em> (OECD Science, Technology and Industry Working Papers 2020/11). OECD. <a href="https://doi.org/10.1787/8f2963b8-en">https://doi.org/10.1787/8f2963b8-en</a>
-</div>
-<div id="ref-zhong2020" class="csl-entry" role="listitem">
-Zhong, H., Feng, K., Sun, L., Cheng, L. y Hubacek, K. (2020). Household carbon and energy inequality in <span>L</span>atin <span>A</span>merican and <span>C</span>aribbean countries. <em>Journal of Environmental Management</em>, <em>273</em>, 110979. <a href="https://doi.org/10.1016/j.jenvman.2020.110979">https://doi.org/10.1016/j.jenvman.2020.110979</a>
-</div>
-</div>
-</section>
-<section id="section" class="slide level2 theme-blank center">
-<h2></h2>
-<div class="columns">
-<div class="column" style="width:15%;">
-
-</div><div class="column" style="width:70%;">
-<div style="text-align: center">
-<p><span style="font-size:2.2em;color:#204B92;">¡Gracias!</span></p>
-<p><span style="font-size:1.2em;"><strong>Renato Vargas</strong></span></p>
-<p><span style="font-size:0.9em;"><a href="https://renatovargas.com/">LinkedIn</a> | <a href="https://renatovargas.com/">website</a></span></p>
-</div>
-</div><div class="column" style="width:15%;">
-
-</div></div>
 
 
 </section></section>
