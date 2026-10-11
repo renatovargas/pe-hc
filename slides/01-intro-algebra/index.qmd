@@ -2,9 +2,9 @@
 title: "Álgebra matricial para insumo-producto"
 subtitle: "Operaciones matemáticas de los modelos ambientalmente extendidos"
 author: 
-  - name: "Renato Vargas"
+  - name: "Fondo Monetario Internacional"
     affiliations: 
-      - name: Economista / Consultor FMI
+      - name: Departamento de Estadística
 lang: es
 bibliography: refs.bib
 csl: ../../assets/apa-es.csl
@@ -974,10 +974,6 @@ rowSums(M)
 :::: {.column width="70%"}
 ::: {style="text-align: center"}
 [¡Gracias!]{style="font-size:2.2em;color:#204B92;"}
-
-[**Renato Vargas**]{style="font-size:1.2em;"}
-
-[[LinkedIn](https://renatovargas.com/) | [website](https://renatovargas.com/)]{style="font-size:0.9em;"}
 :::
 ::::
 

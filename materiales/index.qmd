@@ -1,0 +1,34 @@
+---
+title: "Materiales"
+subtitle: "Documentos y presentaciones de apoyo a la huella de carbono en Perú"
+toc: false
+---
+
+:::: {.grid}
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card .h-100 .shadow-sm}
+::: {.card-body}
+### Documentos
+
+Notas escritas para consulta y lectura detallada: el contexto de la misión y el concepto, el método y las experiencias internacionales de huellas de carbono.
+
+[Ver documentos](documentos/contexto-asistencia-tecnica/index.qmd){.btn .btn-primary}
+
+:::
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card .h-100 .shadow-sm}
+::: {.card-body}
+### Presentaciones
+
+Diapositivas que se pueden ver en la página o en pantalla completa.
+
+[Ver presentaciones](presentaciones/00-contexto-huella-de-carbono.qmd){.btn .btn-primary}
+:::
+:::
+:::
+
+::::

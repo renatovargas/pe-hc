@@ -2,9 +2,9 @@
 title: "Extensión ambiental y multiplicadores"
 subtitle: "Emisiones de dióxido de carbono en el modelo de insumo-producto"
 author: 
-  - name: "Renato Vargas"
+  - name: "Fondo Monetario Internacional"
     affiliations: 
-      - name: Economista / Consultor FMI
+      - name: Departamento de Estadística
 lang: es
 bibliography: refs.bib
 csl: ../../assets/apa-es.csl
@@ -45,13 +45,13 @@ Descargar el archivo de ejemplo:
 
 Una economía de dos sectores, agricultura y manufacturas, se describe con un cuadro de flujos entre industrias [@millerblair2022]. Cada fila muestra a quién vende un sector; cada columna muestra qué compra para producir. Se agrega una fila con las emisiones de dióxido de carbono ($CO_2$) de cada sector, en toneladas.
 
-|                  | Agricultura | Manufacturas | Demanda final | Producto total |
-|------------------|------------:|-------------:|--------------:|---------------:|
-| Agricultura      | [150]{.bg-Z} | [500]{.bg-Z} | [350]{.bg-f} | [1000]{.bg-x} |
-| Manufacturas     | [200]{.bg-Z} | [100]{.bg-Z} | [1700]{.bg-f} | [2000]{.bg-x} |
-| Pagos a factores |         650 |         1400 |          1100 |                |
-| Total insumos    | [1000]{.bg-x} | [2000]{.bg-x} |          3150 |                |
-| Emisiones de $CO_2$ (t) |  300 |          500 |               |                |
+|   | Agricultura | Manufacturas | Demanda final | Producto total |
+|---------------|--------------:|--------------:|--------------:|--------------:|
+| Agricultura | [150]{.bg-Z} | [500]{.bg-Z} | [350]{.bg-f} | [1000]{.bg-x} |
+| Manufacturas | [200]{.bg-Z} | [100]{.bg-Z} | [1700]{.bg-f} | [2000]{.bg-x} |
+| Pagos a factores | 650 | 1400 | 1100 |  |
+| Total insumos | [1000]{.bg-x} | [2000]{.bg-x} | 3150 |  |
+| Emisiones de $CO_2$ (t) | 300 | 500 |  |  |
 
 - Los flujos entre industrias forman la matriz [$\mathbf{Z}$]{.bg-Z}.
 - La demanda final forma el vector [$\mathbf{f}$]{.bg-f}.
@@ -80,12 +80,12 @@ $$
 
 ## Implementación del modelo
 
-:::::: columns
-:::: {.column width="50%"}
+::::: columns
+::: {.column width="50%"}
 [En Excel]{.emphasis}
 
-Insertar captura de pantalla de Excel aquí.
-::::
+![](images/paste-1.png)
+:::
 
 ::: {.column width="50%"}
 [En R]{.emphasis}
@@ -108,7 +108,7 @@ L
 L %*% f
 ```
 :::
-::::::
+:::::
 
 ## La extensión ambiental básica {#extension-ambiental}
 
@@ -164,8 +164,8 @@ El impacto se calcula a partir de la demanda final, porque [$\mathbf{L}$]{.bg-L}
 
 Imaginemos que las emisiones de dióxido de carbono ($CO_2$), en toneladas, son 300 para agricultura y 500 para manufacturas.
 
-:::::: columns
-:::: {.column width="50%"}
+::::: columns
+::: {.column width="50%"}
 [Notación]{.emphasis}
 
 $$
@@ -175,7 +175,7 @@ $$
 [En Excel]{.emphasis}
 
 Insertar captura de pantalla de Excel aquí.
-::::
+:::
 
 ::: {.column width="50%"}
 [En R]{.emphasis}
@@ -186,14 +186,14 @@ names(eprima) <- sectores
 eprima
 ```
 :::
-::::::
+:::::
 
 ## Coeficientes de emisiones
 
 El coeficiente se mide en toneladas de $CO_2$ por unidad monetaria de producto.
 
-:::::: columns
-:::: {.column width="50%"}
+::::: columns
+::: {.column width="50%"}
 [Notación]{.emphasis}
 
 $$
@@ -203,7 +203,7 @@ $$
 [En Excel]{.emphasis}
 
 Insertar captura de pantalla de Excel aquí.
-::::
+:::
 
 ::: {.column width="50%"}
 [En R]{.emphasis}
@@ -221,14 +221,14 @@ También se puede usar la regla de reciclaje de R y dividir directamente:
 eprima / x
 ```
 :::
-::::::
+:::::
 
 ## Emisiones calculadas desde la demanda final
 
 Con los coeficientes y la matriz de Leontief, la demanda final reproduce las emisiones del cuadro. El resultado es el vector de emisiones de cada sector productor, sin importar para qué demanda se producen.
 
-:::::: columns
-:::: {.column width="50%"}
+::::: columns
+::: {.column width="50%"}
 [Notación]{.emphasis}
 
 $$
@@ -238,7 +238,7 @@ $$
 [En Excel]{.emphasis}
 
 Insertar captura de pantalla de Excel aquí.
-::::
+:::
 
 ::: {.column width="50%"}
 [En R]{.emphasis}
@@ -250,7 +250,7 @@ colnames(e) <- "Toneladas de CO2"
 e
 ```
 :::
-::::::
+:::::
 
 ## Multiplicadores: definición {#multiplicadores}
 
@@ -275,8 +275,8 @@ $$
 
 Para aislar un sector se usa un vector de demanda adicional con un 1 en ese sector y ceros en los demás. Primero, la demanda adicional de solo el primer sector:
 
-:::::: columns
-:::: {.column width="50%"}
+::::: columns
+::: {.column width="50%"}
 [Notación]{.emphasis}
 
 $$
@@ -286,7 +286,7 @@ $$
 [En Excel]{.emphasis}
 
 Insertar captura de pantalla de Excel aquí.
-::::
+:::
 
 ::: {.column width="50%"}
 [En R]{.emphasis}
@@ -297,7 +297,7 @@ deltaf1 <- c(1, 0)
 L %*% deltaf1
 ```
 :::
-::::::
+:::::
 
 ## Multiplicadores: interpretación
 
@@ -314,8 +314,8 @@ $$
 
 ## Multiplicadores: el segundo sector
 
-:::::: columns
-:::: {.column width="50%"}
+::::: columns
+::: {.column width="50%"}
 [Notación]{.emphasis}
 
 $$
@@ -329,7 +329,7 @@ $$
 [En Excel]{.emphasis}
 
 Insertar captura de pantalla de Excel aquí.
-::::
+:::
 
 ::: {.column width="50%"}
 [En R]{.emphasis}
@@ -339,7 +339,7 @@ deltaf2 <- c(0, 1)
 L %*% deltaf2
 ```
 :::
-::::::
+:::::
 
 ## Multiplicadores para todos los sectores: vectores sumatorios
 
@@ -353,8 +353,8 @@ Estos multiplicadores son muy útiles porque indican en qué sectores una invers
 
 ## Multiplicadores: en la práctica
 
-:::::: columns
-:::: {.column width="50%"}
+::::: columns
+::: {.column width="50%"}
 [Notación]{.emphasis}
 
 $$
@@ -364,7 +364,7 @@ $$
 [En Excel]{.emphasis}
 
 Insertar captura de pantalla de Excel aquí.
-::::
+:::
 
 ::: {.column width="50%"}
 [En R]{.emphasis}
@@ -381,7 +381,7 @@ mo <- i %*% L
 mo
 ```
 :::
-::::::
+:::::
 
 ## Multiplicadores de emisiones: planteamiento {#multiplicadores-emisiones}
 
@@ -418,16 +418,16 @@ Sumar las emisiones asociadas a la demanda final de un país, dondequiera que oc
 
 ## Huella de carbono: alcance del ejemplo
 
-* Nuestro ejemplo es de un solo país y no incluye importaciones. 
-* Con él se puede medir la huella de carbono de la demanda final de productos de sectores específicos, agricultura y manufacturas, con las emisiones que su producción genera, directa e indirectamente, dentro de la economía.
-* En un ejemplo real (como el de la MIP de Perú), la demanda final se desagrega, por ejemplo en consumo, inversión y exportaciones, y hay una fila de importaciones. 
-* Con las exportaciones se separan las emisiones incorporadas en la demanda interna de las incorporadas en las exportaciones, sin identificar el destino. 
-* Las importaciones suelen estimarse suponiendo que se producen con la tecnología del propio país, un supuesto que debe interpretarse con cautela [@eurostat2015]; la alternativa es contar con datos del exterior.
+- Nuestro ejemplo es de un solo país y no incluye importaciones.
+- Con él se puede medir la huella de carbono de la demanda final de productos de sectores específicos, agricultura y manufacturas, con las emisiones que su producción genera, directa e indirectamente, dentro de la economía.
+- En un ejemplo real (como el de la MIP de Perú), la demanda final se desagrega, por ejemplo en consumo, inversión y exportaciones, y hay una fila de importaciones.
+- Con las exportaciones se separan las emisiones incorporadas en la demanda interna de las incorporadas en las exportaciones, sin identificar el destino.
+- Las importaciones suelen estimarse suponiendo que se producen con la tecnología del propio país, un supuesto que debe interpretarse con cautela [@eurostat2015]; la alternativa es contar con datos del exterior.
 
 ## Multiplicadores de emisiones: en la práctica
 
-:::::: columns
-:::: {.column width="50%"}
+::::: columns
+::: {.column width="50%"}
 [Notación]{.emphasis}
 
 $$
@@ -441,7 +441,7 @@ $$
 [En Excel]{.emphasis}
 
 Insertar captura de pantalla de Excel aquí.
-::::
+:::
 
 ::: {.column width="50%"}
 [En R]{.emphasis}
@@ -458,14 +458,14 @@ colSums(Me)
 
 Las emisiones por unidad monetaria de demanda final son algo mayores para agricultura que para manufacturas.
 :::
-::::::
+:::::
 
 ## Huella de carbono en toneladas {#huella-toneladas}
 
 El multiplicador de emisiones está por unidad monetaria. Para obtener la huella total de cada sector, en toneladas, se multiplica por su demanda final [$\mathbf{f}$]{.bg-f}. Manufacturas tiene un multiplicador menor que agricultura, pero su huella total es mayor porque su demanda final también lo es.
 
-:::::: columns
-:::: {.column width="50%"}
+::::: columns
+::: {.column width="50%"}
 [Notación]{.emphasis}
 
 $$
@@ -479,7 +479,7 @@ $$
 [En Excel]{.emphasis}
 
 Insertar captura de pantalla de Excel aquí.
-::::
+:::
 
 ::: {.column width="50%"}
 [En R]{.emphasis}
@@ -496,9 +496,7 @@ colSums(Me) * f
 sum(huella)
 ```
 :::
-::::::
-
-
+:::::
 
 ## Bibliografía {.theme-content}
 
@@ -514,10 +512,6 @@ sum(huella)
 :::: {.column width="70%"}
 ::: {style="text-align: center"}
 [¡Gracias!]{style="font-size:2.2em;color:#204B92;"}
-
-[**Renato Vargas**]{style="font-size:1.2em;"}
-
-[[LinkedIn](https://renatovargas.com/) | [website](https://renatovargas.com/)]{style="font-size:0.9em;"}
 :::
 ::::
 

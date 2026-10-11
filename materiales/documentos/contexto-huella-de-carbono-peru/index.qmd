@@ -10,7 +10,7 @@ author:
       - name: Economista Senior FMI
 lang: es
 abstract: |
-  Las huellas de carbono nacionales miden las emisiones que provoca la demanda final de un país, sin importar dónde ocurren. Esta nota explica el concepto, describe el método de insumo-producto ambientalmente extendido que las sustenta y revisa la evidencia global y las experiencias de oficinas de estadística, organismos internacionales e investigadores, con atención a América Latina. Concluye con los problemas habituales de compilación y con las decisiones de diseño que enfrenta una oficina que inicia el trabajo. Dos anexos incluyen un glosario de términos técnicos y el contexto de la asistencia técnica a Perú que motivó el documento.
+  Las huellas de carbono nacionales miden las emisiones que provoca la demanda final de un país, sin importar dónde ocurren. Esta nota explica el concepto, describe el método de insumo-producto ambientalmente extendido que las sustenta y revisa la evidencia global y las experiencias de oficinas de estadística, organismos internacionales e investigadores, con atención a América Latina. Concluye con los problemas habituales de compilación y con las decisiones de diseño que enfrenta una oficina que inicia el trabajo. Un anexo incluye un glosario de términos técnicos.
 bibliography: refs.bib
 csl: ../../../assets/apa-es.csl
 format:
@@ -18,6 +18,7 @@ format:
     toc: true
     toc-depth: 3
     number-sections: true
+    css: ../estilos.css
   # Salidas en PDF y Word, desactivadas por ahora. Para activarlas, quitar
   # el comentario; falta crear assets/plantilla-referencia.docx.
   # pdf:
@@ -75,7 +76,7 @@ La magnitud de esa diferencia es considerable. Estudios de referencia estiman qu
 
 La huella de carbono nacional responde a esa pregunta. Es una estadística que asigna a la demanda final de los residentes de un país las emisiones generadas en toda la cadena de producción, dentro y fuera de su territorio. Varias oficinas de estadística y organismos internacionales la publican de forma regular, entre ellos el Departamento de Medio Ambiente del Reino Unido y Eurostat [@defra2026; @eurostatghgfp]. Su cálculo descansa en las cuentas de emisiones atmosféricas del Marco Central del SEEA, que comparten la estructura de los cuadros de oferta y utilización de las cuentas nacionales y pueden, por tanto, combinarse con ellos en un modelo de insumo-producto [@eurostat2015; @seea2014].
 
-Esta nota ofrece una introducción al tema para quienes compilan o utilizan estas estadísticas. La sección 2 aclara el concepto y lo distingue de otros usos del término. La sección 3 describe el método, y la sección 4 resume los usos de política. La sección 5 presenta la evidencia global y la posición de América Latina, y la sección 6 revisa las experiencias de oficinas de estadística, de bases de datos multirregionales y de estudios latinoamericanos. La sección 7 reúne las consideraciones de diseño. El documento se limita a la huella nacional basada en la demanda final; las huellas de producto y de organización se mencionan solo para evitar confusiones. Dos anexos completan el documento: el anexo A ofrece un glosario de términos técnicos, y el anexo B describe el contexto de la asistencia técnica del FMI al Instituto Nacional de Estadística e Informática (INEI) de Perú, que motivó la preparación de esta nota.
+Esta nota ofrece una introducción al tema para quienes compilan o utilizan estas estadísticas. La sección 2 aclara el concepto y lo distingue de otros usos del término. La sección 3 describe el método, y la sección 4 resume los usos de política. La sección 5 presenta la evidencia global y la posición de América Latina, y la sección 6 revisa las experiencias de oficinas de estadística, de bases de datos multirregionales y de estudios latinoamericanos. La sección 7 reúne las consideraciones de diseño. El documento se limita a la huella nacional basada en la demanda final; las huellas de producto y de organización se mencionan solo para evitar confusiones. Un anexo ofrece un glosario de términos técnicos. El contexto de la asistencia técnica del FMI al Instituto Nacional de Estadística e Informática (INEI) de Perú, que motivó la preparación de esta nota, se describe en un documento aparte: [Contexto de la asistencia técnica](../contexto-asistencia-tecnica/index.qmd).
 
 ## El concepto de huella de carbono
 
@@ -97,7 +98,7 @@ Para entender qué mide la huella conviene situarla frente a otras dos formas de
 | Producción (residencia) | Emisiones de industrias y hogares residentes, dentro y fuera del territorio | Cuentas de emisiones atmosféricas (SEEA) | ¿Qué actividades económicas emiten? |
 | Demanda final (huella) | Emisiones de todas las etapas de producción asociadas con la demanda final de los residentes | Cuentas de emisiones y tablas de insumo-producto | ¿Qué consumo, inversión o exportación provoca las emisiones? |
 
-: Enfoques de asignación de emisiones
+: Enfoques de asignación de emisiones {#tbl-enfoques}
 
 Los tres enfoques son consistentes entre sí. A escala mundial, las emisiones basadas en la demanda y las basadas en la producción suman lo mismo; la diferencia aparece entre países, como resultado del comercio [@yamano2020]. Un país cuyo consumo depende de bienes importados intensivos en emisiones tendrá una huella mayor que sus emisiones de producción, y lo contrario ocurre en un país exportador de esos bienes.
 
@@ -160,7 +161,7 @@ Las experiencias revisadas en este documento coinciden en un conjunto de dificul
 | Revisiones y rezago | Las series se revisan en cada edición y se publican con varios años de rezago | @owen2026 |
 | Gasto de hogares | Escalar la encuesta de gasto a los totales de las cuentas nacionales sigue siendo un tema abierto | @malerba2024 |
 
-: Problemas habituales en la compilación de huellas
+: Problemas habituales en la compilación de huellas {#tbl-problemas-gen}
 
 ## Usos de política
 
@@ -182,11 +183,113 @@ Tres estudios de referencia, con bases y años distintos, cuantifican la parte d
 | @peters2011 | 1990 y 2008 | Emisiones incorporadas en bienes comerciados: 4.3 Gt (20%) en 1990 y 7.8 Gt (26%) en 2008; la transferencia neta de países en desarrollo a desarrollados pasó de 0.4 a 1.6 Gt | 113 países, 57 sectores |
 | @yamano2020 | 2015 | 8.8 Gt, cerca de 27% del CO2 de combustión, ligado al comercio internacional | ICIO de la OCDE, 65 economías |
 
-: Emisiones de CO2 asociadas con el comercio internacional
+: Emisiones de CO2 asociadas con el comercio internacional {#tbl-global}
 
 Los resultados de la OCDE añaden detalle sectorial y por grupo de países. Siete grupos de industrias explican cerca de dos tercios del CO2 incorporado en las exportaciones de 2015, con los productos químicos y minerales no metálicos (18.2%) y los metales básicos (16.1%) a la cabeza [@yamano2020]. Entre los países miembros de la OCDE, las emisiones de producción cayeron 9% entre 2005 y 2015 y las basadas en el consumo, 11%; entre las economías no miembros subieron 47% y 61%, respectivamente [@yamano2020]. La @fig-oecd-etapas muestra cómo se distribuyen las emisiones entre las etapas de producción y por qué la huella de demanda final difiere de la de comercio bruto.
 
-![Emisiones incorporadas en el comercio y en la demanda final. Fuente: Yamano y Guilhoto (2020), figura 2.1.](images/paste-2.png){#fig-oecd-etapas}
+```{r}
+#| label: fig-oecd-etapas
+#| fig-cap: "Emisiones incorporadas en el comercio y en la demanda final. Adaptado de Yamano y Guilhoto (2020), figura 2.1."
+#| fig-height: 8.5
+#| fig-width: 7
+
+paneles <- c(
+  "i) Demanda final del país A",
+  "ii) Exportaciones del país A",
+  "iii) Importaciones del país A"
+)
+cols_ind <- c(A = "#C8501E", B = "#4E8A3C", C = "#2266A8")
+c_azul <- "#2F5597"
+c_marron <- "#8C3B14"
+ind <- c("A", "B", "C")
+ypos <- c(A = 3, B = 2, C = 1)
+xpos <- 1:4 * 1.5
+w <- 0.5
+
+barras <- expand.grid(ind = ind, col = 1:4, panel = paneles, stringsAsFactors = FALSE)
+barras$x <- xpos[barras$col]
+barras$y <- ypos[barras$ind]
+barras$panel <- factor(barras$panel, levels = paneles)
+
+# Flechas entre columnas: etapa 1 a 3 (de la columna `etapa` a la siguiente)
+flechas <- function(panel, etapa, de, a) {
+  g <- expand.grid(de = de, a = a, stringsAsFactors = FALSE)
+  data.frame(panel = panel, etapa = etapa, de = g$de, a = g$a)
+}
+completar <- function(d) {
+  d$panel <- factor(d$panel, levels = paneles)
+  d$x <- xpos[d$etapa] + w / 2 + 0.05
+  d$xend <- xpos[d$etapa + 1] - w / 2 - 0.05
+  d$y <- ypos[d$de]
+  d$yend <- ypos[d$a]
+  d
+}
+
+azules <- rbind(
+  flechas(paneles[1], 1, ind, ind),
+  flechas(paneles[1], 2, ind, ind),
+  flechas(paneles[2], 1, ind, c("A", "B")),
+  flechas(paneles[2], 2, ind, c("A", "B", "C")),
+  flechas(paneles[3], 1, ind, ind),
+  flechas(paneles[3], 2, ind, ind)
+) |> completar()
+
+marrones <- rbind(
+  flechas(paneles[1], 3, ind, "A"),
+  flechas(paneles[2], 1, "A", c("B", "C")),
+  flechas(paneles[2], 2, "A", c("B", "C")),
+  flechas(paneles[2], 3, "A", c("B", "C")),
+  flechas(paneles[3], 1, c("B", "C"), "A"),
+  flechas(paneles[3], 2, "C", "B"),
+  flechas(paneles[3], 3, c("B", "C"), "A")
+) |> completar()
+
+encabezados <- data.frame(
+  x = xpos,
+  label = c("Industria\nemisora", "Productor\nintermedio", "Productor del\nproducto final", "Demanda final")
+)
+
+leyenda <- data.frame(
+  panel = factor(paneles, levels = paneles),
+  texto_m = c("Demanda final del país A", "Exportaciones del país A", "Importaciones del país A"),
+  texto_a = c("Emisiones asociadas con la demanda final de A",
+              "Emisiones asociadas con las exportaciones de A",
+              "Emisiones asociadas con las importaciones de A"),
+  y = 0
+)
+
+flecha <- arrow(length = unit(1.6, "mm"), type = "closed")
+
+ggplot() +
+  geom_segment(data = azules, aes(x, y, xend = xend, yend = yend),
+               colour = c_azul, linetype = "dotted", linewidth = 0.4, arrow = flecha) +
+  geom_segment(data = marrones, aes(x, y, xend = xend, yend = yend),
+               colour = c_marron, linewidth = 0.4, arrow = flecha) +
+  geom_tile(data = barras, aes(x, y, fill = ind), width = w, height = 0.4) +
+  geom_text(data = barras, aes(x, y, label = ind), colour = "white", size = 2.8) +
+  geom_text(data = encabezados, aes(x, y = 3.7, label = label),
+            vjust = 0, size = 2.9, lineheight = 0.9) +
+  geom_segment(data = leyenda, aes(x = 0.8, xend = 1.3, y = y, yend = y),
+               colour = c_marron, linewidth = 0.4, arrow = flecha) +
+  geom_text(data = leyenda, aes(x = 1.35, y = y, label = texto_m),
+            hjust = 0, size = 2.6) +
+  geom_segment(data = leyenda, aes(x = 3.4, xend = 3.9, y = y, yend = y),
+               colour = c_azul, linetype = "dotted", linewidth = 0.4, arrow = flecha) +
+  geom_text(data = leyenda, aes(x = 3.95, y = y, label = texto_a),
+            hjust = 0, size = 2.6) +
+  scale_fill_manual(values = cols_ind, guide = "none") +
+  scale_x_continuous(limits = c(0.6, 7.9), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(-0.5, 4.8), expand = c(0, 0)) +
+  facet_wrap(vars(panel), ncol = 1) +
+  theme_void(base_size = 10) +
+  theme(
+    strip.text = element_text(hjust = 0, size = 9, margin = margin(4, 0, 3, 2)),
+    panel.border = element_rect(colour = "black", fill = NA, linewidth = 0.5),
+    panel.spacing = unit(4, "mm"),
+    plot.margin = margin(4, 4, 4, 4)
+  )
+```
+
 
 ### América Latina en las cifras de la OCDE
 
@@ -356,7 +459,7 @@ Como se explicó en la sección 3.3, las importaciones requieren una base multir
 | EXIOBASE 3 [@stadler2018] | 44 países y 5 regiones del resto del mundo; 163 industrias y 200 productos; 1995 a 2011 en el artículo | Licencia abierta | Entre los países latinoamericanos, Perú no figura como economía individual |
 | Eora [@eora2026] | 190 países; versión Eora26 con 26 sectores | Gratuita solo para uso académico; los informes requieren licencia comercial | Verificar la cobertura y la licencia antes de una publicación oficial |
 
-: Bases multirregionales de acceso abierto o restringido
+: Bases multirregionales de acceso abierto o restringido {#tbl-bases}
 
 EXIOBASE 3 merece una descripción más detallada, porque es la base abierta de uso más extendido y la que usa, por ejemplo, el modelo británico [@stadler2018]. Se construye de arriba hacia abajo: parte de los agregados de cuentas nacionales de Naciones Unidas, y desarrolla cuadros de oferta y utilización rectangulares (con más productos que industrias) para 44 países, 28 de la Unión Europea y 16 grandes economías, más cinco regiones del resto del mundo. El comercio se obtiene de BACI (Naciones Unidas) y de datos de la AIE, y los márgenes de transporte se estiman con un modelo. Cada año se equilibra por separado con un programa cuadrático de mínimos cuadrados ponderados que altera lo menos posible la tabla inicial. Para las emisiones, los gases de combustión se calculan de abajo hacia arriba con los balances de energía de la AIE y factores de emisión de modelos europeos, y se reasignan al criterio de residencia con modelos de transporte para la pesca internacional, la aviación y la navegación. La base incluye 27 contaminantes, además de agua, materiales, tierra, residuos y empleo [@stadler2018].
 
@@ -377,7 +480,7 @@ La revisión no identificó estadísticas oficiales de huella de carbono basadas
 | Brasil | @cachola2021 | Matriz de IBGE 2010 (67 actividades); inventario WIOD 2009; encuesta POF 2008-09 | Los hogares del tramo más alto de ingreso emiten unas 12 veces más que los del más bajo | Tabla, inventario y encuesta bastan para una primera estimación por hogar |
 | Región | @zhong2020 | GTAP v10 para 2014; Base de Datos Global de Consumo del Banco Mundial | Entre 0.53 y 2.21 tCO2e per cápita en diez países | La huella por nivel de ingreso exige microdatos de encuesta |
 
-: Experiencias latinoamericanas de huellas de carbono
+: Experiencias latinoamericanas de huellas de carbono {#tbl-latam}
 
 #### Perú
 
@@ -512,7 +615,7 @@ Una secuencia prudente es empezar con una versión sencilla (CO2 equivalente, ta
 ::: {#refs}
 :::
 
-## Anexo A. Glosario {.unnumbered}
+## Anexo. Glosario {.unnumbered}
 
 | Término | Significado |
 |:----------------------|:------------------------------------------------|
@@ -542,53 +645,3 @@ Una secuencia prudente es empezar con una versión sencilla (CO2 equivalente, ta
 | Gini | Índice de desigualdad entre 0 (igualdad total) y 1 (desigualdad máxima) |
 | Sector clave | Sector con encadenamientos hacia atrás y hacia delante superiores al promedio de la economía |
 | Encadenamiento hacia atrás y hacia delante | Cuánto compra un sector a sus proveedores y a cuántos sectores abastece |
-
-## Anexo B. Contexto de la asistencia técnica del FMI a Perú {.unnumbered}
-
-Este anexo resume el contexto que motivó la preparación de la nota y aplica a Perú las consideraciones de las secciones anteriores. Se basa en los informes de las misiones del Departamento de Estadística del FMI de julio de 2023 y febrero de 2025 [@stanger2024; @rivas2025].
-
-### Antecedentes {.unnumbered}
-
-El Gobierno de Perú estableció su marco legal de cambio climático con la Ley N.° 30754 y, en 2020, elevó su meta de mitigación de 30% a 40% respecto del escenario de referencia a 2030, con un límite absoluto de 179 MtCO2e [@stanger2024; @rivas2025]. El monitoreo de las medidas cubre cinco sectores: energía, residuos, procesos industriales, agricultura y cambio de uso de suelo [@stanger2024]. Dos de ellos, la agricultura y el cambio de uso de suelo, quedan fuera de las series de CO2 por combustión de la sección 5, lo que subraya la conveniencia de una huella en CO2 equivalente.
-
-El Departamento de Estadística del FMI, con apoyo de la Secretaría de Estado de Asuntos Económicos de Suiza, lanzó en marzo de 2023 un programa de estadísticas ambientales y de cambio climático. La misión diagnóstica de julio de 2023 recomendó tres productos con fecha meta de diciembre de 2024: cuentas de flujos de energía, cuentas de emisiones atmosféricas con cambio de uso de suelo y huellas de carbono domésticas, estas últimas a cargo del Ministerio del Ambiente (MINAM) y del INEI [@stanger2024]. La misión de febrero de 2025 revisó las cuentas físicas de energía y de emisiones del año 2019, fijó abril de 2025 como meta para su publicación experimental y propuso incluir la huella de carbono entre los usos de la cuenta de emisiones para su difusión [@rivas2025].
-
-El INEI compila y difunde cuadros de oferta y utilización anuales de 2007 a 2021, con 101 industrias y 365 productos, sobre la base 2007; el cambio a la base 2019 estaba en curso [@stanger2024]. La misión de 2023 concluyó que, con cuentas de emisiones y cuadros actualizados, Perú estaría en buena posición para iniciar la compilación de huellas nacionales, y señaló sus usos: identificar industrias de alta y baja emisión y los productos cuyo consumo genera más emisiones, comparar las emisiones de alcance 1, 2 y 3 de una empresa con el promedio de su industria, y alimentar un modelo de precios del carbono para evaluar, por ejemplo, el efecto de un impuesto sobre la inflación [@stanger2024, párr. 36, 37 y 45]. La misión de 2025 agregó el apoyo a las decisiones sobre impuestos o precios del carbono y la comprensión de los efectos de los ajustes de carbono en frontera [@rivas2025, párr. 3].
-
-Perú cuenta además con una plataforma de huella de organización: la Huella de Carbono Perú del MINAM, donde organizaciones públicas y privadas declaran sus emisiones a nivel de empresa [@stanger2024, apéndice A]. Es una huella del tipo descrito en la sección 2.1 y no sustituye a la huella nacional.
-
-### Disponibilidad de datos {.unnumbered}
-
-El @tbl-datos resume el estado de las fuentes según las dos misiones.
-
-| Insumo | Institución y estado | Observación |
-|:-----------------|:--------------------------|:--------------------------|
-| Cuadros de oferta y utilización | INEI; anuales de 2007 a 2021, 101 industrias y 365 productos, base 2007; cambio a la base 2019 en curso [@stanger2024] | El proyecto dispone de los cuadros de 2019 a precios corrientes, con 365 productos y 101 industrias |
-| Inventario nacional de gases de efecto invernadero | MINAM; último año publicado 2019 | Difundido por INFOCARBONO; se usó una correspondencia uno a uno con las industrias para la mayoría de las clases [@rivas2025] |
-| Balance nacional de energía | Ministerio de Energía y Minas (MINEM); último año 2021, con series desde 1965 | El consumo se presenta para siete industrias y siete grupos de productos; solo se publica en PDF, sin base de datos descargable [@stanger2024] |
-| Datos agropecuarios | Ministerio de Desarrollo Agrario y Riego (MIDAGRI) | Insumo de las emisiones agropecuarias y de cambio de uso de suelo [@stanger2024] |
-| Cuentas físicas de energía y de emisiones 2019 | INEI; versión experimental con ajustes por residencia | Meta de publicación: abril de 2025 [@rivas2025] |
-| Fuentes para ajustes por residencia | Estadísticas de transporte, balanza de pagos, comercio exterior, turismo y Autoridad Portuaria | La misión recomendó solicitar oficialmente los datos de transporte marítimo [@rivas2025] |
-| Encuesta de hogares | INEI (ENAHO) | Necesaria para huellas por hogar o decil [@malerba2024] |
-| Base multirregional | Externa (@tbl-bases) | Para las emisiones incorporadas en las importaciones |
-
-: Fuentes de datos para una huella de carbono en Perú
-
-Las fuentes de energía y de emisiones están muy agregadas para el detalle por actividad que exige la cuenta; los datos de las cuentas nacionales y la información auxiliar permiten desagregarlas [@rivas2025, párr. 5 y 25]. Los ajustes por residencia revisados en la misión de 2025 cubren el transporte acuático, aéreo y por carretera, las embarcaciones pesqueras, el turismo (no residentes en el territorio y residentes en el exterior) y el transporte por ductos [@rivas2025, párr. 32]. La pandemia afectó la disponibilidad y oportunidad de las fuentes [@rivas2025, párr. 1].
-
-### Secuencia de compilación sugerida {.unnumbered}
-
-La secuencia sigue el orden de las presentaciones 02 a 04 de este proyecto, que desarrollan el álgebra de insumo-producto, y las recomendaciones de las misiones:
-
-1.  Completar y validar las cuentas de emisiones de 2019, con la clasificación alineada a las 101 industrias de los cuadros.
-2.  Preparar los cuadros de oferta y utilización de 2019: márgenes de comercio y transporte, importaciones competitivas e impuestos, e importaciones no competitivas. Verificar los balances de productos y de industrias antes de continuar.
-3.  Calcular los coeficientes de emisión y la matriz de requerimientos totales.
-4.  Decidir el tratamiento de las importaciones (@tbl-bases).
-5.  Calcular la huella por categoría de demanda final y por producto, y conciliarla con la cuenta de emisiones de producción mediante las partidas puente.
-6.  Documentar los metadatos y fijar el calendario de revisiones.
-
-### Problemas específicos y decisiones {.unnumbered}
-
-Además de los problemas generales del @tbl-problemas-gen, las misiones señalan tres aspectos propios de la situación peruana. El primero es la agregación de las fuentes: el balance de energía y el inventario tienen menos detalle que las cuentas nacionales [@rivas2025]. El segundo es la coordinación entre agencias: los datos ambientales están dispersos, en formatos distintos y sin un protocolo formal de intercambio, por lo que se propone un centro único de datos a cargo del INEI o del MINAM [@stanger2024; @rivas2025]. El tercero es la oportunidad: el inventario más reciente corresponde a 2019 y el balance de energía a 2021, de modo que las fuentes no coinciden en el año.
-
-Las decisiones de diseño de la sección 7 se concretan para Perú en cuatro puntos que conviene acordar con el INEI y el MINAM: el alcance de gases y el tratamiento del cambio de uso de suelo; el tratamiento de las importaciones, con una comparación frente a la referencia de la OCDE, que incluye a Perú como economía individual; el año 2019 como punto de partida, con un calendario para extender la serie; y el reparto de funciones entre ambas instituciones, con un protocolo de intercambio de datos en el marco del comité interinstitucional de estadísticas y cuentas ambientales y económicas.

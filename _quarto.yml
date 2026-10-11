@@ -23,7 +23,7 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: materiales/documentos/contexto-huella-de-carbono-peru/index.qmd
+      - href: materiales/index.qmd
         text: Materiales
       - href: about.qmd
         text: Acerca de
@@ -32,8 +32,12 @@ website:
       style: docked
       search: false
       contents:
+        - text: "Materiales"
+          href: materiales/index.qmd
         - section: Documentos
           contents:
+            - text: "Contexto de la misión"
+              href: materiales/documentos/contexto-asistencia-tecnica/index.qmd
             - text: "Huellas de carbono"
               href: materiales/documentos/contexto-huella-de-carbono-peru/index.qmd
         - section: Presentaciones

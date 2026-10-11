@@ -1,0 +1,82 @@
+---
+title: "Contexto de la asistencia técnica del FMI a Perú"
+subtitle: "Antecedentes, disponibilidad de datos y secuencia de compilación de la huella de carbono"
+author:
+  - name: "Renato Vargas"
+    affiliations:
+      - name: Economista / Consultor FMI
+  - name: "Lisbeth Rivas"
+    affiliations:
+      - name: Economista Senior FMI
+lang: es
+abstract: |
+  Esta nota resume el contexto que motivó la preparación de los materiales de este sitio y aplica a Perú las consideraciones de diseño de la [nota sobre huellas de carbono](../contexto-huella-de-carbono-peru/index.qmd). Se basa en los informes de las misiones del Departamento de Estadística del FMI de julio de 2023 y febrero de 2025.
+bibliography: refs.bib
+csl: ../../../assets/apa-es.csl
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    css: ../estilos.css
+crossref:
+  tbl-prefix: "Cuadro"
+execute:
+  echo: false
+  warning: false
+---
+
+## Introducción
+
+Este documento complementa la [nota sobre huellas de carbono nacionales](../contexto-huella-de-carbono-peru/index.qmd). Las referencias a secciones y cuadros de esa nota enlazan directamente a ella. Se basa en los informes de las misiones del Departamento de Estadística del FMI de julio de 2023 y febrero de 2025 [@stanger2024; @rivas2025].
+
+## Antecedentes
+
+El Gobierno de Perú estableció su marco legal de cambio climático con la Ley N.° 30754 y, en 2020, elevó su meta de mitigación de 30% a 40% respecto del escenario de referencia a 2030, con un límite absoluto de 179 MtCO2e [@stanger2024; @rivas2025]. El monitoreo de las medidas cubre cinco sectores: energía, residuos, procesos industriales, agricultura y cambio de uso de suelo [@stanger2024]. Dos de ellos, la agricultura y el cambio de uso de suelo, quedan fuera de las series de CO2 por combustión de la [sección 5 de la nota sobre huellas de carbono](../contexto-huella-de-carbono-peru/index.qmd#evidencia-global-y-posición-de-américa-latina), lo que subraya la conveniencia de una huella en CO2 equivalente.
+
+El Departamento de Estadística del FMI, con apoyo de la Secretaría de Estado de Asuntos Económicos de Suiza, lanzó en marzo de 2023 un programa de estadísticas ambientales y de cambio climático. La misión diagnóstica de julio de 2023 recomendó tres productos con fecha meta de diciembre de 2024: cuentas de flujos de energía, cuentas de emisiones atmosféricas con cambio de uso de suelo y huellas de carbono domésticas, estas últimas a cargo del Ministerio del Ambiente (MINAM) y del Instituto Nacional de Estadística e Informática (INEI) [@stanger2024]. La misión de febrero de 2025 revisó las cuentas físicas de energía y de emisiones del año 2019, fijó abril de 2025 como meta para su publicación experimental y propuso incluir la huella de carbono entre los usos de la cuenta de emisiones para su difusión [@rivas2025].
+
+El INEI compila y difunde cuadros de oferta y utilización anuales de 2007 a 2021, con 101 industrias y 365 productos, sobre la base 2007; el cambio a la base 2019 estaba en curso [@stanger2024]. La misión de 2023 concluyó que, con cuentas de emisiones y cuadros actualizados, Perú estaría en buena posición para iniciar la compilación de huellas nacionales, y señaló sus usos: identificar industrias de alta y baja emisión y los productos cuyo consumo genera más emisiones, comparar las emisiones de alcance 1, 2 y 3 de una empresa con el promedio de su industria, y alimentar un modelo de precios del carbono para evaluar, por ejemplo, el efecto de un impuesto sobre la inflación [@stanger2024, párr. 36, 37 y 45]. La misión de 2025 agregó el apoyo a las decisiones sobre impuestos o precios del carbono y la comprensión de los efectos de los ajustes de carbono en frontera [@rivas2025, párr. 3].
+
+Perú cuenta además con una plataforma de huella de organización: la Huella de Carbono Perú del MINAM, donde organizaciones públicas y privadas declaran sus emisiones a nivel de empresa [@stanger2024, apéndice A]. Es una huella del tipo descrito en la [sección 2.1 de la nota sobre huellas de carbono](../contexto-huella-de-carbono-peru/index.qmd#un-término-con-varios-significados) y no sustituye a la huella nacional.
+
+## Disponibilidad de datos
+
+El @tbl-datos resume el estado de las fuentes según las dos misiones.
+
+| Insumo | Institución y estado | Observación |
+|:-----------------|:--------------------------|:--------------------------|
+| Cuadros de oferta y utilización | INEI; anuales de 2007 a 2021, 101 industrias y 365 productos, base 2007; cambio a la base 2019 en curso [@stanger2024] | El proyecto dispone de los cuadros de 2019 a precios corrientes, con 365 productos y 101 industrias |
+| Inventario nacional de gases de efecto invernadero | MINAM; último año publicado 2019 | Difundido por INFOCARBONO; se usó una correspondencia uno a uno con las industrias para la mayoría de las clases [@rivas2025] |
+| Balance nacional de energía | Ministerio de Energía y Minas (MINEM); último año 2021, con series desde 1965 | El consumo se presenta para siete industrias y siete grupos de productos; solo se publica en PDF, sin base de datos descargable [@stanger2024] |
+| Datos agropecuarios | Ministerio de Desarrollo Agrario y Riego (MIDAGRI) | Insumo de las emisiones agropecuarias y de cambio de uso de suelo [@stanger2024] |
+| Cuentas físicas de energía y de emisiones 2019 | INEI; versión experimental con ajustes por residencia | Meta de publicación: abril de 2025 [@rivas2025] |
+| Fuentes para ajustes por residencia | Estadísticas de transporte, balanza de pagos, comercio exterior, turismo y Autoridad Portuaria | La misión recomendó solicitar oficialmente los datos de transporte marítimo [@rivas2025] |
+| Encuesta de hogares | INEI (ENAHO) | Necesaria para huellas por hogar o decil [@malerba2024] |
+| Base multirregional | Externa (ver el [cuadro de bases multirregionales](../contexto-huella-de-carbono-peru/index.qmd#tbl-bases)) | Para las emisiones incorporadas en las importaciones |
+
+: Fuentes de datos para una huella de carbono en Perú {#tbl-datos}
+
+Las fuentes de energía y de emisiones están muy agregadas para el detalle por actividad que exige la cuenta; los datos de las cuentas nacionales y la información auxiliar permiten desagregarlas [@rivas2025, párr. 5 y 25]. Los ajustes por residencia revisados en la misión de 2025 cubren el transporte acuático, aéreo y por carretera, las embarcaciones pesqueras, el turismo (no residentes en el territorio y residentes en el exterior) y el transporte por ductos [@rivas2025, párr. 32]. La pandemia afectó la disponibilidad y oportunidad de las fuentes [@rivas2025, párr. 1].
+
+## Secuencia de compilación sugerida
+
+La secuencia sigue el orden de las presentaciones 02 a 04 de este proyecto, que desarrollan el álgebra de insumo-producto, y las recomendaciones de las misiones:
+
+1.  Completar y validar las cuentas de emisiones de 2019, con la clasificación alineada a las 101 industrias de los cuadros.
+2.  Preparar los cuadros de oferta y utilización de 2019: márgenes de comercio y transporte, importaciones competitivas e impuestos, e importaciones no competitivas. Verificar los balances de productos y de industrias antes de continuar.
+3.  Calcular los coeficientes de emisión y la matriz de requerimientos totales.
+4.  Decidir el tratamiento de las importaciones (ver el [cuadro de bases multirregionales](../contexto-huella-de-carbono-peru/index.qmd#tbl-bases)).
+5.  Calcular la huella por categoría de demanda final y por producto, y conciliarla con la cuenta de emisiones de producción mediante las partidas puente.
+6.  Documentar los metadatos y fijar el calendario de revisiones.
+
+## Problemas específicos y decisiones
+
+Además de los [problemas generales de compilación](../contexto-huella-de-carbono-peru/index.qmd#tbl-problemas-gen), las misiones señalan tres aspectos propios de la situación peruana. El primero es la agregación de las fuentes: el balance de energía y el inventario tienen menos detalle que las cuentas nacionales [@rivas2025]. El segundo es la coordinación entre agencias: los datos ambientales están dispersos, en formatos distintos y sin un protocolo formal de intercambio, por lo que se propone un centro único de datos a cargo del INEI o del MINAM [@stanger2024; @rivas2025]. El tercero es la oportunidad: el inventario más reciente corresponde a 2019 y el balance de energía a 2021, de modo que las fuentes no coinciden en el año.
+
+Las [consideraciones de diseño](../contexto-huella-de-carbono-peru/index.qmd#consideraciones-de-diseño) de la nota sobre huellas de carbono se concretan para Perú en cuatro puntos que conviene acordar con el INEI y el MINAM: el alcance de gases y el tratamiento del cambio de uso de suelo; el tratamiento de las importaciones, con una comparación frente a la referencia de la OCDE, que incluye a Perú como economía individual; el año 2019 como punto de partida, con un calendario para extender la serie; y el reparto de funciones entre ambas instituciones, con un protocolo de intercambio de datos en el marco del comité interinstitucional de estadísticas y cuentas ambientales y económicas.
+
+## Referencias {.unnumbered}
+
+::: {#refs}
+:::

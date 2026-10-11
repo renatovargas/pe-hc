@@ -2,10 +2,9 @@
 title: "Matrices rectangulares de insumo-producto"
 subtitle: "De los cuadros de oferta y utilización al modelo de producto por industria"
 author: 
-  - name: "Renato Vargas"
+  - name: "Fondo Monetario Internacional"
     affiliations: 
-      - name: Economista / Consultor FMI
-  - name: "Con ejemplos de Joe St. Lawrence, consultor FMI"
+      - name: Departamento de Estadística
 lang: es
 bibliography: refs.bib
 csl: ../../assets/apa-es.csl
@@ -700,10 +699,6 @@ Comparar solo la intensidad directa subestima los productos con cadenas de insum
 :::: {.column width="70%"}
 ::: {style="text-align: center"}
 [¡Gracias!]{style="font-size:2.2em;color:#204B92;"}
-
-[**Renato Vargas**]{style="font-size:1.2em;"}
-
-[[LinkedIn](https://renatovargas.com/) | [website](https://renatovargas.com/)]{style="font-size:0.9em;"}
 :::
 ::::
 

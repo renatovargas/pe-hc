@@ -6,7 +6,7 @@ Este sitio reúne los materiales de apoyo a la implementación de la huella de c
 
 # Contenido
 
-Todo el material está en la sección [Materiales](materiales/documentos/contexto-huella-de-carbono-peru/index.qmd), que se divide en dos grupos.
+Todo el material está en la sección [Materiales](materiales/index.qmd), que se divide en dos grupos.
 
 **Documentos.** Notas escritas para consulta y lectura detallada. Por ahora el sitio incluye una nota de contexto sobre el concepto de huella de carbono, el método de insumo-producto ambientalmente extendido y las experiencias de otros países.
 
