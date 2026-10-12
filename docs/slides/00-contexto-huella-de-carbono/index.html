@@ -287,21 +287,15 @@ Fondo Monetario Internacional
 </section>
 <section id="territorio-y-residencia-el-caso-de-un-vuelo" class="slide level2 smaller">
 <h2>Territorio y residencia: el caso de un vuelo</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
 <p>Las cuentas de emisiones registran las emisiones de las unidades residentes, sin importar dónde ocurren. Los inventarios de la CMNUCC registran lo emitido en el territorio, sin importar quién lo emite <span class="citation" data-cites="eurostat2015">(<a href="#/referencias" role="doc-biblioref" onclick="">Eurostat, 2015</a>)</span>.</p>
 <p>Una aerolínea residente en Irlanda opera un vuelo entre Fráncfort y Nueva York. La cuenta lo registra en Irlanda, porque la utilidad del vuelo contribuye a su PIB. El inventario territorial no.</p>
 <p>Lo mismo vale para embarcaciones pesqueras, camiones de carga y turistas que conducen en el extranjero. En economías pequeñas, con mucho tránsito internacional, las diferencias pueden ser grandes <span class="citation" data-cites="eurostat2015">(<a href="#/referencias" role="doc-biblioref" onclick="">Eurostat, 2015</a>)</span>.</p>
 <p>La conciliación se muestra en las <strong>partidas puente</strong>. El transporte internacional es su fuente principal.</p>
-</div><div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/eurostat-figura-3.png"></p>
-<figcaption>Definición geográfica y económica (de residencia) de un país. Fuente: Eurostat (2015), figura 3.</figcaption>
-</figure>
-</div>
-</div></div>
 </section>
+<section id="territorio-y-residencia-definición-geográfica-y-económica" class="slide level2">
+<h2>Territorio y residencia: definición geográfica y económica</h2>
+
+<img data-src="images/eurostat-figura-3.png" class="r-stretch quarto-figure-center"><p class="caption">Definición geográfica y económica (de residencia) de un país. Fuente: Eurostat (2015), figura 3.</p></section>
 <section id="gases-y-unidad-de-medida" class="slide level2">
 <h2>Gases y unidad de medida</h2>
 <p>Las cuentas cubren seis gases de efecto invernadero: CO2, N2O, CH4, HFC, PFC y SF6, con el NF3 incorporado recientemente. Se expresan en <span class="emphasis">CO2 equivalente</span> mediante potenciales de calentamiento global <span class="citation" data-cites="eurostat2015">(<a href="#/referencias" role="doc-biblioref" onclick="">Eurostat, 2015</a>)</span>.</p>
@@ -446,7 +440,118 @@ F = \boldsymbol{\varepsilon}'\,\mathbf{T}\,\mathbf{f} + e_h
 </tr>
 </tbody>
 </table>
-</section></section>
+</section>
+<section id="efectos-de-la-agregación" class="slide level2 smaller">
+<h2>Efectos de la agregación</h2>
+<p>El nivel de detalle del modelo cambia las emisiones que se atribuyen a cada categoría de demanda final. La tabla compara dos versiones del mismo cálculo, una detallada (modelo D) y otra a nivel resumen (modelo S), en kt de CO2. El ejemplo viene de la agricultura de Colombia: en una industria agregada se aplica la intensidad promedio de emisiones, y eso cambia los resultados, en especial el saldo neto (por ejemplo, el azúcar). Cada modelo tiene tres columnas:</p>
+<ul>
+<li><strong>Total:</strong> el cálculo completo, con las importaciones tratadas con la tecnología nacional.</li>
+<li><strong>Doméstico:</strong> requerimientos nacionales, sin la parte que viene de importaciones.</li>
+<li><strong>Fugas (leakages):</strong> emisiones incorporadas en las importaciones, netas de las que se exportan. La fila de existencias (INVW) queda vacía porque la variación de existencias no genera emisiones en el período.</li>
+</ul>
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Categoría</th>
+<th style="text-align: right;">D: total</th>
+<th style="text-align: right;">D: doméstico</th>
+<th style="text-align: right;">D: fugas</th>
+<th style="text-align: right;">S: total</th>
+<th style="text-align: right;">S: doméstico</th>
+<th style="text-align: right;">S: fugas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Consumo de hogares (PE)</td>
+<td style="text-align: right;">248,125</td>
+<td style="text-align: right;">148,084</td>
+<td style="text-align: right;">145,821</td>
+<td style="text-align: right;">271,762</td>
+<td style="text-align: right;">155,297</td>
+<td style="text-align: right;">151,488</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Instituciones sin fines de lucro (NPISH)</td>
+<td style="text-align: right;">6,935</td>
+<td style="text-align: right;">5,376</td>
+<td style="text-align: right;">5,343</td>
+<td style="text-align: right;">6,770</td>
+<td style="text-align: right;">5,266</td>
+<td style="text-align: right;">5,240</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gobierno (GOV)</td>
+<td style="text-align: right;">55,567</td>
+<td style="text-align: right;">39,260</td>
+<td style="text-align: right;">38,976</td>
+<td style="text-align: right;">56,246</td>
+<td style="text-align: right;">39,510</td>
+<td style="text-align: right;">39,255</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Formación de capital (FCF)</td>
+<td style="text-align: right;">146,264</td>
+<td style="text-align: right;">74,528</td>
+<td style="text-align: right;">72,310</td>
+<td style="text-align: right;">159,940</td>
+<td style="text-align: right;">77,107</td>
+<td style="text-align: right;">75,124</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Exportaciones (EXP)</td>
+<td style="text-align: right;">332,668</td>
+<td style="text-align: right;">233,069</td>
+<td style="text-align: right;">226,080</td>
+<td style="text-align: right;">315,186</td>
+<td style="text-align: right;">223,466</td>
+<td style="text-align: right;">217,422</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Importaciones (IMP)</td>
+<td style="text-align: right;">-282,353</td>
+<td style="text-align: right;">-171,610</td>
+<td style="text-align: right;">-168,410</td>
+<td style="text-align: right;">-315,462</td>
+<td style="text-align: right;">-218,394</td>
+<td style="text-align: right;">-216,164</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Existencias (INVW)</td>
+<td style="text-align: right;">-18,677</td>
+<td style="text-align: right;">-11,788</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">-17,637</td>
+<td style="text-align: right;">-12,117</td>
+<td style="text-align: right;">-</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Exportaciones menos importaciones</td>
+<td style="text-align: right;">50,315</td>
+<td style="text-align: right;">61,459</td>
+<td style="text-align: right;">57,670</td>
+<td style="text-align: right;">-277</td>
+<td style="text-align: right;">5,071</td>
+<td style="text-align: right;">1,257</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="efectos-de-la-agregación-las-intensidades" class="slide level2 smaller">
+<h2>Efectos de la agregación: las intensidades</h2>
+<p>Las cifras por categoría cambian con el nivel de agregación, y el efecto no tiene un solo signo: el consumo de los hogares sube en la versión agregada y las exportaciones bajan. El saldo de exportaciones menos importaciones del total pasa de 50,315 a -277 kt, así que la agregación puede cambiar incluso la lectura del comercio de emisiones. Conviene compilar con el mayor detalle disponible y declarar el nivel usado.</p>
+<p>Esto tiene que ver con las diferencias de intensidades. Al agregar, todos los productos de una industria reciben la intensidad promedio de emisiones de esa industria. Si un producto muy intensivo pesa poco en la industria, pero pesa mucho en las exportaciones (o en las importaciones), la intensidad promedio lo subestima, y el resultado del comercio cambia. El gráfico es ilustrativo, con valores aproximados.</p>
+
+<img data-src="index_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section></section>
 <section>
 <section id="para-qué-sirve" class="title-slide slide level1 center">
 <h1>Para qué sirve</h1>
@@ -479,17 +584,17 @@ F = \boldsymbol{\varepsilon}'\,\mathbf{T}\,\mathbf{f} + e_h
 <section id="entre-20-y-27-de-las-emisiones-cruza-fronteras" class="slide level2">
 <h2>Entre 20% y 27% de las emisiones cruza fronteras</h2>
 
-<img data-src="index_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p>Son estudios con bases distintas, no una serie homogénea. Si un país traslada una fábrica al exterior, sus emisiones territoriales bajan, pero las emisiones regresan como importaciones: es la <strong>fuga de carbono</strong> <span class="citation" data-cites="davis2010 peters2011 yamano2020">(<a href="#/referencias" role="doc-biblioref" onclick="">Davis y Caldeira, 2010</a>; <a href="#/referencias" role="doc-biblioref" onclick="">Peters et&nbsp;al., 2011</a>; <a href="#/referencias" role="doc-biblioref" onclick="">Yamano y Guilhoto, 2020</a>)</span>.</p>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p>Son estudios con bases distintas, no una serie homogénea. Si un país traslada una fábrica al exterior, sus emisiones territoriales bajan, pero las emisiones regresan como importaciones: es la <strong>fuga de carbono</strong> <span class="citation" data-cites="davis2010 peters2011 yamano2020">(<a href="#/referencias" role="doc-biblioref" onclick="">Davis y Caldeira, 2010</a>; <a href="#/referencias" role="doc-biblioref" onclick="">Peters et&nbsp;al., 2011</a>; <a href="#/referencias" role="doc-biblioref" onclick="">Yamano y Guilhoto, 2020</a>)</span>.</p>
 </section>
 <section id="perú-la-huella-crece-más-que-la-producción" class="slide level2">
 <h2>Perú: la huella crece más que la producción</h2>
 
-<img data-src="index_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p>Entre 2005 y 2015, el CO2 de combustión de la producción peruana creció <span class="emphasis">71%</span> y el asociado con su consumo, <span class="emphasis">103%</span>. En 2015 el consumo superó a la producción en 14.4 Mt <span class="citation" data-cites="yamano2020">(<a href="#/referencias" role="doc-biblioref" onclick="">Yamano y Guilhoto, 2020</a>)</span>.</p>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p>Entre 2005 y 2015, el CO2 de combustión de la producción peruana creció <span class="emphasis">71%</span> y el asociado con su consumo, <span class="emphasis">103%</span>. En 2015 el consumo superó a la producción en 14.4 Mt <span class="citation" data-cites="yamano2020">(<a href="#/referencias" role="doc-biblioref" onclick="">Yamano y Guilhoto, 2020</a>)</span>.</p>
 </section>
 <section id="cuánto-se-emite-en-el-exterior" class="slide level2">
 <h2>Cuánto se emite en el exterior</h2>
 
-<img data-src="index_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p>De cada 100 toneladas asociadas con el consumo de un país, estas son las que se emitieron fuera. Cuidado: la serie solo incluye CO2 de combustión, y el signo del saldo depende de la base y del período <span class="citation" data-cites="yamano2020">(<a href="#/referencias" role="doc-biblioref" onclick="">Yamano y Guilhoto, 2020</a>)</span>.</p>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p>De cada 100 toneladas asociadas con el consumo de un país, estas son las que se emitieron fuera. Cuidado: la serie solo incluye CO2 de combustión, y el signo del saldo depende de la base y del período <span class="citation" data-cites="yamano2020">(<a href="#/referencias" role="doc-biblioref" onclick="">Yamano y Guilhoto, 2020</a>)</span>.</p>
 </section></section>
 <section>
 <section id="experiencias-internacionales" class="title-slide slide level1 center">
@@ -630,7 +735,7 @@ F = \boldsymbol{\varepsilon}'\,\mathbf{T}\,\mathbf{f} + e_h
 <section id="emisiones-incorporadas-en-el-comercio-y-en-la-demanda-final" class="slide level2">
 <h2>Emisiones incorporadas en el comercio y en la demanda final</h2>
 
-<img data-src="index_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1056"><p>Adaptado de <span class="citation" data-cites="yamano2020">(<a href="#/referencias" role="doc-biblioref" onclick="">Yamano y Guilhoto, 2020</a>)</span>, figura 2.1.</p>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1056"><p>Adaptado de <span class="citation" data-cites="yamano2020">(<a href="#/referencias" role="doc-biblioref" onclick="">Yamano y Guilhoto, 2020</a>)</span>, figura 2.1.</p>
 </section>
 <section id="ocde-los-casos-difíciles" class="slide level2 smaller">
 <h2>OCDE: los casos difíciles</h2>
@@ -701,9 +806,16 @@ F = \boldsymbol{\varepsilon}'\,\mathbf{T}\,\mathbf{f} + e_h
 <td style="text-align: left;">Gratuita solo para uso académico</td>
 <td style="text-align: left;">Verificar cobertura y licencia</td>
 </tr>
+<tr class="even">
+<td style="text-align: left;">IMF-MARIO <span class="citation" data-cites="guilhoto2025">(<a href="#/referencias" role="doc-biblioref" onclick="">Guilhoto et&nbsp;al., 2025</a>)</span></td>
+<td style="text-align: left;">212 economías, 145 industrias y 179 productos; 1990 a 2023</td>
+<td style="text-align: left;">En desarrollo (versión preliminar de 2025); acceso por confirmar</td>
+<td style="text-align: left;">Verificar la cobertura de Perú y la disponibilidad</td>
+</tr>
 </tbody>
 </table>
 <p>EXIOBASE se construye de arriba hacia abajo desde las cuentas nacionales, privilegia la coherencia de la serie sobre la coincidencia con los cuadros de cada país, y supone que cada usuario compra a cada exportador en las mismas proporciones <span class="citation" data-cites="stadler2018">(<a href="#/referencias" role="doc-biblioref" onclick="">Stadler et&nbsp;al., 2018</a>)</span>.</p>
+<p>IMF-MARIO es el modelo multirregional del Fondo Monetario Internacional. Se construye a partir de FIGARO, ICIO, GLORIA, EXIOBASE y las bases del BAD y de la CEPAL, y de los cuadros de oferta y utilización oficiales que el FMI recoge de sus países miembros <span class="citation" data-cites="guilhoto2025">(<a href="#/referencias" role="doc-biblioref" onclick="">Guilhoto et&nbsp;al., 2025</a>)</span>. Una presentación aparte lo describe en detalle.</p>
 </section>
 <section id="américa-latina-el-contexto" class="slide level2">
 <h2>América Latina: el contexto</h2>
@@ -949,6 +1061,9 @@ Eurostat. (2026). <em>Greenhouse gas emission footprints (<span>FIGARO</span> ap
 </div>
 <div id="ref-frohmann2013" class="csl-entry" role="listitem">
 Frohmann, A. y Olmos, X. (2013). <em>Huella de carbono, exportaciones y estrategias empresariales frente al cambio clim<span>á</span>tico</em> (Documentos de proyectos LC/W.559/Rev.1). Comisi<span>ó</span>n Econ<span>ó</span>mica para Am<span>é</span>rica Latina y el Caribe. <a href="http://hdl.handle.net/11362/4101">http://hdl.handle.net/11362/4101</a>
+</div>
+<div id="ref-guilhoto2025" class="csl-entry" role="listitem">
+Guilhoto, J., Legoff, G. y Alfieri, A. (2025). <em>The <span>IMF-MARIO</span> project: Multi-analytical regional input-output model</em> [Documento de trabajo]. International Monetary Fund, Statistics Department.
 </div>
 <div id="ref-hernandez2021" class="csl-entry" role="listitem">
 Hernández, G. (2021). Emisiones de gases de efecto invernadero y sectores clave en <span>C</span>olombia. <em>El Trimestre Econ<span class="nocase">ó</span>mico</em>, <em>88</em>(350), 523-550. <a href="https://doi.org/10.20430/ete.v88i350.857">https://doi.org/10.20430/ete.v88i350.857</a>

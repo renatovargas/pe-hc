@@ -35,6 +35,20 @@ execute:
 4.  El modelo de insumo-producto con matrices rectangulares.
 5.  Ejercicio numérico.
 
+##  {.theme-blank .center}
+
+::: {style="text-align: center"}
+
+**Descargar los archivos de ejemplo:**
+
+| | |
+| :--- | :----------: |
+| | |
+| [Excel:]{.emphasis} | [matrices-rectangulares.xlsx](../../datos/ejemplos/matrices-rectangulares.xlsx){.button download="matrices-rectangulares.xlsx"} |
+| [R:]{.emphasis} | [matrices-rectangulares.R](../../datos/ejemplos/matrices-rectangulares.R){.button download="matrices-rectangulares.R"} |
+| | |
+:::
+
 ## El flujo circular de la economía {#flujo-circular}
 
 Las cuentas nacionales organizan la información económica con base en la idea del flujo circular [@sna2009]. En su forma más simple:
@@ -306,6 +320,21 @@ $$
 $$
 
 Las importaciones no competitivas (productos que el país no produce) suelen tratarse como producción de una industria adicional sin insumos, y se descuentan en la demanda final.
+
+## Requerimientos nacionales y tecnología nacional {#requerimientos-nacionales}
+
+Los coeficientes de insumo de la utilización ya sin importaciones describen solo compras a productores nacionales. Para una huella hay dos lecturas posibles:
+
+- **Requerimientos nacionales.** Se excluyen del cálculo las importaciones, las existencias y los desechos o sobrantes, y se miden solo los efectos internos y corrientes. Las matrices $\mathbf{B}$ y $\mathbf{D}$ se construyen con el uso intermedio y la demanda final que quedan después de descontar esos elementos.
+- **Requerimientos totales.** Se conservan las importaciones, y el modelo calcula la producción necesaria con independencia del origen de los insumos. Esto supone que los bienes importados se producen con la misma tecnología que los nacionales: la hipótesis de tecnología nacional.
+
+La forma de los requerimientos nacionales usa tres vectores $\boldsymbol{\mu}$, $\boldsymbol{\beta}$ y $\boldsymbol{\gamma}$, que deducen del uso intermedio y de la demanda final la parte que proviene de importaciones, existencias y desechos o sobrantes:
+
+$$
+\mathbf{x} = \left(\mathbf{I} - \mathbf{D}\,(\mathbf{I} - \widehat{\boldsymbol{\mu}} - \widehat{\boldsymbol{\beta}} - \widehat{\boldsymbol{\gamma}})\,\mathbf{B}\right)^{-1}\mathbf{D}\,(\mathbf{I} - \widehat{\boldsymbol{\mu}} - \widehat{\boldsymbol{\beta}} - \widehat{\boldsymbol{\gamma}})\,\mathbf{f}
+$$
+
+El tratamiento de importaciones e impuestos con $\widehat{\mathbf{r}}$ y $\widehat{\mathbf{s}}$ de la diapositiva anterior cumple el mismo papel: quitar de la matriz lo que no es producción nacional. (En otros textos las variables pueden aparecer con otra notación; ver el [Anexo de equivalencia de notación](#anexo-notacion).)
 
 ## El punto de partida: el modelo con matriz cuadrada {#modelo-cuadrado}
 
@@ -685,6 +714,33 @@ data.frame(
 
 Comparar solo la intensidad directa subestima los productos con cadenas de insumos largas.
 
+## Emisiones por categoría de demanda final {#atribucion-demanda}
+
+La demanda final no es una sola. Se compone de categorías de uso, como el consumo de los hogares, el consumo del gobierno, la formación de capital y las exportaciones. Cada una tiene su propio vector de demanda por producto, y todos tienen el mismo largo que $\mathbf{f}$:
+
+$$
+\bbox[#F2CEEF,3px]{\mathbf{f}} = \mathbf{f}_{hogares} + \mathbf{f}_{gobierno} + \mathbf{f}_{capital} + \mathbf{f}_{exportaciones}
+$$
+
+Como el modelo es lineal, las emisiones de cada categoría se calculan con el mismo procedimiento que se aplicó a $\mathbf{f}$, solo que con su propio vector $\mathbf{f}_k$:
+
+$$
+\boldsymbol{\varepsilon}'\bbox[#F7C7AC,3px]{\mathbf{T}}\,\mathbf{f}_k
+$$
+
+La suma de los resultados de todas las categorías es igual a las emisiones asociadas con la demanda final completa, $\boldsymbol{\varepsilon}'\mathbf{T}\mathbf{f}$.
+
+## Emisiones por categoría: lectura {#atribucion-lectura}
+
+En la práctica es como tener varios vectores $\mathbf{f}$ y repetir el cálculo con cada uno; la matriz $\mathbf{T}$ y el vector $\boldsymbol{\varepsilon}'$ no cambian.
+
+- **Hogares.** Con la demanda de hogares se obtiene la huella de carbono de los hogares: las emisiones, directas e indirectas, que activa su consumo.
+- **Formación de capital.** Conviene incluirla, porque es una demanda que también activa producción y emisiones en la cadena.
+- **Exportaciones.** Sus emisiones son las que genera la producción para el resto del mundo.
+- **Un mismo $\mathbf{T}$ para todas.** Cada categoría compra una canasta distinta de productos, y por eso sus emisiones difieren aunque los multiplicadores por producto sean los mismos.
+
+El ejercicio de esta presentación tiene un solo vector $\mathbf{f}$, por lo que no incluye cifras por categoría.
+
 ## Bibliografía {.theme-content}
 
 ::: {#refs}
@@ -722,6 +778,21 @@ $$
 $$
 
 El bloque superior derecho es [$\mathbf{T}$]{.bg-L}. Al multiplicar por $\mathbf{f}^*$ salen $\mathbf{x}$ y también $\mathbf{q}$.
+
+## Anexo: equivalencia de notación {#anexo-notacion .theme-content}
+
+Otros textos usan símbolos distintos para los mismos elementos:
+
+| Esta presentación | Otros textos |
+|:------------------------------|:------------------------------|
+| $\mathbf{x}$, producto por industria | $\mathbf{g}$ |
+| $\mathbf{f}$, demanda final | $\mathbf{e}$ |
+| $\boldsymbol{\varepsilon}$, intensidad de emisiones por industria | $\mathbf{i} = \mathbf{E}/\mathbf{g}$ |
+| $\mathbf{T} = (\mathbf{I}-\mathbf{D}\mathbf{B})^{-1}\mathbf{D}$ | $(\mathbf{I}-\mathbf{D}\mathbf{B})^{-1}\mathbf{D}$ |
+| $\widehat{\mathbf{r}}$, fracción de importaciones | $\widehat{\boldsymbol{\mu}}$ |
+| $\boldsymbol{\varepsilon}'\mathbf{T}$, multiplicador por producto | $\mathbf{i}'(\mathbf{I}-\mathbf{D}\mathbf{B})^{-1}$, multiplicador por industria |
+
+El multiplicador por producto tiene un elemento por cada producto demandado; el multiplicador por industria usa $(\mathbf{I}-\mathbf{D}\mathbf{B})^{-1}$ sin el paso por $\mathbf{D}$ y tiene un elemento por cada industria.
 
 ## Anexo: verificación en R {#anexo-r}
 

@@ -250,8 +250,27 @@ Fondo Monetario Internacional
 <section id="section" class="slide level2 theme-blank center">
 <h2></h2>
 <div style="text-align: center">
-<p>Descargar el archivo de ejemplo:</p>
-<p><a href="../datos/ejemplos/modelo-insumo-producto.xlsx" class="button" download="modelo-insumo-producto.xlsx">modelo-insumo-producto.xlsx</a></p>
+<p><strong>Descargar los archivos de ejemplo:</strong></p>
+<table class="caption-top">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="emphasis">Excel:</span></td>
+<td style="text-align: center;"><a href="../../datos/ejemplos/insumo-producto-ambiental.xlsx" class="button" download="insumo-producto-ambiental.xlsx">insumo-producto-ambiental.xlsx</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="emphasis">R:</span></td>
+<td style="text-align: center;"><a href="../../datos/ejemplos/insumo-producto-ambiental.R" class="button" download="insumo-producto-ambiental.R">insumo-producto-ambiental.R</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="modelo-basico" class="slide level2">
@@ -421,7 +440,7 @@ Fondo Monetario Internacional
 \mathbf{e}' = \begin{bmatrix} 300 &amp; 500 \end{bmatrix}
 \]</span></p>
 <p><span class="emphasis">En Excel</span></p>
-<p>Insertar captura de pantalla de Excel aquí.</p>
+<p><img data-src="images/paste-2.png"></p>
 </div><div class="column" style="width:50%;">
 <p><span class="emphasis">En R</span></p>
 <div class="cell">
@@ -445,7 +464,7 @@ Fondo Monetario Internacional
 \boldsymbol{\varepsilon}' = \mathbf{e}'\widehat{\mathbf{x}}^{-1} = \begin{bmatrix} 0.30 &amp; 0.25 \end{bmatrix}
 \]</span></p>
 <p><span class="emphasis">En Excel</span></p>
-<p>Insertar captura de pantalla de Excel aquí.</p>
+<p><img data-src="images/paste-3.png"></p>
 </div><div class="column" style="width:50%;">
 <p><span class="emphasis">En R</span></p>
 <p>En álgebra matricial se transpone el vector de emisiones y se posmultiplica por la inversa de la diagonal de <span class="math inline">\(\mathbf{x}\)</span>.</p>
@@ -477,7 +496,7 @@ Fondo Monetario Internacional
 \mathbf{e} = \widehat{\boldsymbol{\varepsilon}}\,\bbox[#F7C7AC,3px]{\mathbf{L}}\,\bbox[#F2CEEF,3px]{\mathbf{f}} = \begin{bmatrix} 300 \\ 500 \end{bmatrix}
 \]</span></p>
 <p><span class="emphasis">En Excel</span></p>
-<p>Insertar captura de pantalla de Excel aquí.</p>
+<p><img data-src="images/paste-4.png"></p>
 </div><div class="column" style="width:50%;">
 <p><span class="emphasis">En R</span></p>
 <div class="cell">
@@ -518,7 +537,7 @@ Manufacturas              500</code></pre>
 \Delta\mathbf{f}_1 = \begin{bmatrix} 1 \\ 0 \end{bmatrix} \qquad \Delta\mathbf{x}_1 = \bbox[#F7C7AC,3px]{\mathbf{L}}\,\Delta\mathbf{f}_1 = \begin{bmatrix} 1.2541 \\ 0.2640 \end{bmatrix}
 \]</span></p>
 <p><span class="emphasis">En Excel</span></p>
-<p>Insertar captura de pantalla de Excel aquí.</p>
+<p><img data-src="images/paste-5.png"></p>
 </div><div class="column" style="width:50%;">
 <p><span class="emphasis">En R</span></p>
 <div class="cell">
@@ -562,7 +581,7 @@ m_{o1} = \frac{1.254 + 0.264}{1} = \frac{\text{USD } 1.518}{\text{USD } 1} = 1.5
 m_{o2} = 0.330 + 1.122 = 1.452
 \]</span></p>
 <p><span class="emphasis">En Excel</span></p>
-<p>Insertar captura de pantalla de Excel aquí.</p>
+<p><img data-src="images/paste-6.png"></p>
 </div><div class="column" style="width:50%;">
 <p><span class="emphasis">En R</span></p>
 <div class="cell">
@@ -593,7 +612,7 @@ m_{o2} = 0.330 + 1.122 = 1.452
 \mathbf{i}' = \begin{bmatrix} 1 &amp; 1 \end{bmatrix} \qquad \mathbf{m}_o' = \mathbf{i}'\bbox[#F7C7AC,3px]{\mathbf{L}} = \begin{bmatrix} 1.518 &amp; 1.452 \end{bmatrix}
 \]</span></p>
 <p><span class="emphasis">En Excel</span></p>
-<p>Insertar captura de pantalla de Excel aquí.</p>
+<p><img data-src="images/paste-7.png"></p>
 </div><div class="column" style="width:50%;">
 <p><span class="emphasis">En R</span></p>
 <div class="cell">
@@ -668,7 +687,7 @@ m_{o2} = 0.330 + 1.122 = 1.452
 \mathbf{i}'\mathbf{M}_e = \begin{bmatrix} 0.4422 &amp; 0.3795 \end{bmatrix}
 \]</span></p>
 <p><span class="emphasis">En Excel</span></p>
-<p>Insertar captura de pantalla de Excel aquí.</p>
+<p><img data-src="images/paste-8.png"></p>
 </div><div class="column" style="width:50%;">
 <p><span class="emphasis">En R</span></p>
 <div class="cell">
@@ -704,7 +723,7 @@ h_j = \left(\boldsymbol{\varepsilon}'\bbox[#F7C7AC,3px]{\mathbf{L}}\right)_j \bb
 \mathbf{h}' = \boldsymbol{\varepsilon}'\bbox[#F7C7AC,3px]{\mathbf{L}}\,\widehat{\mathbf{f}} = \begin{bmatrix} 154.79 &amp; 645.21 \end{bmatrix}
 \]</span></p>
 <p><span class="emphasis">En Excel</span></p>
-<p>Insertar captura de pantalla de Excel aquí.</p>
+<p><img data-src="images/paste-9.png"></p>
 </div><div class="column" style="width:50%;">
 <p><span class="emphasis">En R</span></p>
 <div class="cell">

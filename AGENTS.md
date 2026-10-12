@@ -2,7 +2,18 @@
 
 ## Rutas en código de R
 
-El archivo `_quarto.yml` del sitio define `execute-dir: project`. Los paths en código de R son relativos a la raíz del proyecto. Nunca usar `here::here()` ni funciones similares.
+El sitio es un proyecto Quarto de tipo website. El bloque `project` de `_quarto.yml` es:
+
+```yaml
+project:
+  type: website
+  output-dir: docs
+  execute-dir: project
+```
+
+`execute-dir: project` solo afecta al código ejecutable: los paths en código de R son relativos a la raíz del proyecto, sin importar dónde esté el `.qmd`. Nunca usar `here::here()` ni funciones similares.
+
+Los enlaces y las imágenes del texto (markdown o HTML) no dependen de `execute-dir`; se resuelven relativos al `.qmd`. Desde `slides/<nombre>/index.qmd` los archivos de `datos/` se enlazan con `../../datos/ejemplos/archivo`. La carpeta `datos/` está en `resources` de `_quarto.yml`, y Quarto la copia a `docs/datos/` al renderizar el proyecto completo.
 
 ## Entorno de trabajo
 

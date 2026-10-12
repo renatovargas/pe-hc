@@ -36,9 +36,15 @@ execute:
 ##  {.theme-blank .center}
 
 ::: {style="text-align: center"}
-Descargar el archivo de ejemplo:
 
-[modelo-insumo-producto.xlsx](../datos/ejemplos/modelo-insumo-producto.xlsx){.button download="modelo-insumo-producto.xlsx"}
+**Descargar los archivos de ejemplo:**
+
+| | |
+| :--- | :----------: |
+| | |
+| [Excel:]{.emphasis} | [insumo-producto-ambiental.xlsx](../../datos/ejemplos/insumo-producto-ambiental.xlsx){.button download="insumo-producto-ambiental.xlsx"} |
+| [R:]{.emphasis} | [insumo-producto-ambiental.R](../../datos/ejemplos/insumo-producto-ambiental.R){.button download="insumo-producto-ambiental.R"} |
+| | |
 :::
 
 ## El modelo básico con emisiones {#modelo-basico}
@@ -174,7 +180,7 @@ $$
 
 [En Excel]{.emphasis}
 
-Insertar captura de pantalla de Excel aquí.
+![](images/paste-2.png)
 :::
 
 ::: {.column width="50%"}
@@ -202,7 +208,7 @@ $$
 
 [En Excel]{.emphasis}
 
-Insertar captura de pantalla de Excel aquí.
+![](images/paste-3.png)
 :::
 
 ::: {.column width="50%"}
@@ -237,7 +243,7 @@ $$
 
 [En Excel]{.emphasis}
 
-Insertar captura de pantalla de Excel aquí.
+![](images/paste-4.png)
 :::
 
 ::: {.column width="50%"}
@@ -285,7 +291,7 @@ $$
 
 [En Excel]{.emphasis}
 
-Insertar captura de pantalla de Excel aquí.
+![](images/paste-5.png)
 :::
 
 ::: {.column width="50%"}
@@ -328,7 +334,7 @@ $$
 
 [En Excel]{.emphasis}
 
-Insertar captura de pantalla de Excel aquí.
+![](images/paste-6.png)
 :::
 
 ::: {.column width="50%"}
@@ -363,7 +369,7 @@ $$
 
 [En Excel]{.emphasis}
 
-Insertar captura de pantalla de Excel aquí.
+![](images/paste-7.png)
 :::
 
 ::: {.column width="50%"}
@@ -440,7 +446,7 @@ $$
 
 [En Excel]{.emphasis}
 
-Insertar captura de pantalla de Excel aquí.
+![](images/paste-8.png)
 :::
 
 ::: {.column width="50%"}
@@ -478,7 +484,7 @@ $$
 
 [En Excel]{.emphasis}
 
-Insertar captura de pantalla de Excel aquí.
+![](images/paste-9.png)
 :::
 
 ::: {.column width="50%"}

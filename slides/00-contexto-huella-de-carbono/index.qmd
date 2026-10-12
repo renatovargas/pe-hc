@@ -127,8 +127,6 @@ A escala mundial, las emisiones basadas en la demanda y las basadas en la produc
 
 ## Territorio y residencia: el caso de un vuelo {.smaller}
 
-:::::: columns
-:::: {.column width="50%"}
 Las cuentas de emisiones registran las emisiones de las unidades residentes, sin importar dónde ocurren. Los inventarios de la CMNUCC registran lo emitido en el territorio, sin importar quién lo emite [@eurostat2015].
 
 Una aerolínea residente en Irlanda opera un vuelo entre Fráncfort y Nueva York. La cuenta lo registra en Irlanda, porque la utilidad del vuelo contribuye a su PIB. El inventario territorial no.
@@ -136,12 +134,10 @@ Una aerolínea residente en Irlanda opera un vuelo entre Fráncfort y Nueva York
 Lo mismo vale para embarcaciones pesqueras, camiones de carga y turistas que conducen en el extranjero. En economías pequeñas, con mucho tránsito internacional, las diferencias pueden ser grandes [@eurostat2015].
 
 La conciliación se muestra en las **partidas puente**. El transporte internacional es su fuente principal.
-::::
 
-:::: {.column width="50%"}
+## Territorio y residencia: definición geográfica y económica
+
 ![Definición geográfica y económica (de residencia) de un país. Fuente: Eurostat (2015), figura 3.](images/eurostat-figura-3.png)
-::::
-::::::
 
 ## Gases y unidad de medida
 
@@ -269,6 +265,55 @@ Fuente: [@eurostat2015].
 | Alcance de gases | Incluir o no el cambio de uso de suelo y los gases distintos del CO2 [@yamano2020; @owen2026] |
 | Revisiones y rezago | Las series se revisan en cada edición y se publican con varios años de rezago [@owen2026] |
 | Gasto de hogares | Escalar la encuesta de gasto a las cuentas nacionales sigue siendo un tema abierto [@malerba2024] |
+
+## Efectos de la agregación {.smaller}
+
+El nivel de detalle del modelo cambia las emisiones que se atribuyen a cada categoría de demanda final. La tabla compara dos versiones del mismo cálculo, una detallada (modelo D) y otra a nivel resumen (modelo S), en kt de CO2. El ejemplo viene de la agricultura de Colombia: en una industria agregada se aplica la intensidad promedio de emisiones, y eso cambia los resultados, en especial el saldo neto (por ejemplo, el azúcar). Cada modelo tiene tres columnas:
+
+- **Total:** el cálculo completo, con las importaciones tratadas con la tecnología nacional.
+- **Doméstico:** requerimientos nacionales, sin la parte que viene de importaciones.
+- **Fugas (leakages):** emisiones incorporadas en las importaciones, netas de las que se exportan. La fila de existencias (INVW) queda vacía porque la variación de existencias no genera emisiones en el período.
+
+| Categoría | D: total | D: doméstico | D: fugas | S: total | S: doméstico | S: fugas |
+|:----------------------|-------:|-------:|-------:|-------:|-------:|-------:|
+| Consumo de hogares (PE) | 248,125 | 148,084 | 145,821 | 271,762 | 155,297 | 151,488 |
+| Instituciones sin fines de lucro (NPISH) | 6,935 | 5,376 | 5,343 | 6,770 | 5,266 | 5,240 |
+| Gobierno (GOV) | 55,567 | 39,260 | 38,976 | 56,246 | 39,510 | 39,255 |
+| Formación de capital (FCF) | 146,264 | 74,528 | 72,310 | 159,940 | 77,107 | 75,124 |
+| Exportaciones (EXP) | 332,668 | 233,069 | 226,080 | 315,186 | 223,466 | 217,422 |
+| Importaciones (IMP) | -282,353 | -171,610 | -168,410 | -315,462 | -218,394 | -216,164 |
+| Existencias (INVW) | -18,677 | -11,788 | - | -17,637 | -12,117 | - |
+| Exportaciones menos importaciones | 50,315 | 61,459 | 57,670 | -277 | 5,071 | 1,257 |
+
+## Efectos de la agregación: las intensidades {.smaller}
+
+Las cifras por categoría cambian con el nivel de agregación, y el efecto no tiene un solo signo: el consumo de los hogares sube en la versión agregada y las exportaciones bajan. El saldo de exportaciones menos importaciones del total pasa de 50,315 a -277 kt, así que la agregación puede cambiar incluso la lectura del comercio de emisiones. Conviene compilar con el mayor detalle disponible y declarar el nivel usado.
+
+Esto tiene que ver con las diferencias de intensidades. Al agregar, todos los productos de una industria reciben la intensidad promedio de emisiones de esa industria. Si un producto muy intensivo pesa poco en la industria, pero pesa mucho en las exportaciones (o en las importaciones), la intensidad promedio lo subestima, y el resultado del comercio cambia. El gráfico es ilustrativo, con valores aproximados.
+
+```{r}
+#| fig-width: 10
+#| fig-height: 3.4
+#| fig-align: center
+intens <- data.frame(
+  producto = c("Trigo", "Cereales\nforrajeros", "Oleaginosas", "Papas",
+               "Frutas y\nverduras", "Lácteos", "Ganado\nvacuno", "Cerdos",
+               "Aves y\nhuevos", "Agricultura\n(total)"),
+  valor = c(2.67, 2.45, 1.80, 0.62, 0.40, 0.88, 3.13, 0.92, 0.29, 1.72)
+)
+intens$producto <- factor(intens$producto, levels = intens$producto)
+intens$nivel <- ifelse(intens$producto == "Agricultura\n(total)",
+                       "Industria agregada", "Producto detallado")
+
+ggplot(intens, aes(producto, valor, fill = nivel)) +
+  geom_col(width = 0.5) +
+  scale_fill_manual(values = c("Industria agregada" = "#F47A32",
+                               "Producto detallado" = "#204B92")) +
+  labs(x = NULL, y = "kg CO2eq por dólar", fill = NULL) +
+  theme_minimal(base_size = 12) +
+  theme(legend.position = "top",
+        panel.grid.major.x = element_blank())
+```
 
 # Para qué sirve
 
@@ -656,8 +701,11 @@ Fuentes: [@davis2010; @peters2011].
 | OCDE: ICIO y huellas [@oecdghgfp2025] | 1995 a 2022; Perú, Chile, Colombia, Costa Rica, México, Brasil y Argentina | Datos abiertos | Economía individual |
 | EXIOBASE 3 [@stadler2018] | 44 países y 5 regiones del resto del mundo; 163 industrias | Licencia abierta | No es economía individual |
 | Eora [@eora2026] | 190 países | Gratuita solo para uso académico | Verificar cobertura y licencia |
+| IMF-MARIO [@guilhoto2025] | 212 economías, 145 industrias y 179 productos; 1990 a 2023 | En desarrollo (versión preliminar de 2025); acceso por confirmar | Verificar la cobertura de Perú y la disponibilidad |
 
 EXIOBASE se construye de arriba hacia abajo desde las cuentas nacionales, privilegia la coherencia de la serie sobre la coincidencia con los cuadros de cada país, y supone que cada usuario compra a cada exportador en las mismas proporciones [@stadler2018].
+
+IMF-MARIO es el modelo multirregional del Fondo Monetario Internacional. Se construye a partir de FIGARO, ICIO, GLORIA, EXIOBASE y las bases del BAD y de la CEPAL, y de los cuadros de oferta y utilización oficiales que el FMI recoge de sus países miembros [@guilhoto2025]. Una presentación aparte lo describe en detalle.
 
 ## América Latina: el contexto
 
