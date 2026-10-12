@@ -21,15 +21,15 @@ format:
     css: ../estilos.css
   # Salidas en PDF y Word, desactivadas por ahora. Para activarlas, quitar
   # el comentario; falta crear assets/plantilla-referencia.docx.
-  # pdf:
-  #   toc: true
-  #   toc-depth: 3
-  #   number-sections: true
-  # docx:
-  #   toc: true
-  #   toc-depth: 3
-  #   number-sections: true
-  #   reference-doc: ../../../assets/plantilla-referencia.docx
+  pdf:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+  docx:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+  #  reference-doc: ../../../assets/plantilla-referencia.docx
 crossref:
   fig-prefix: "Figura"
   tbl-prefix: "Cuadro"

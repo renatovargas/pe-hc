@@ -13,7 +13,7 @@ toc: false
 
 Notas escritas para consulta y lectura detallada: el contexto de la misión y el concepto, el método y las experiencias internacionales de huellas de carbono.
 
-[Ver documentos](documentos/contexto-asistencia-tecnica/index.qmd){.btn .btn-primary}
+[Ver documentos](documentos/contexto-huella-de-carbono-peru/index.qmd){.btn .btn-primary}
 
 :::
 :::
