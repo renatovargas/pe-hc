@@ -43,6 +43,7 @@ website:
         - section: Presentaciones
           contents:
             - materiales/presentaciones/00-contexto-huella-de-carbono.qmd
+            - materiales/presentaciones/00b-intro-cou-formato-plano.qmd
             - materiales/presentaciones/01-intro-algebra.qmd
             - materiales/presentaciones/02-modelo-insumo-producto.qmd
             - materiales/presentaciones/03-extension-ambiental.qmd

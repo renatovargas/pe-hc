@@ -1,0 +1,19 @@
+---
+title: "Las cuentas nacionales como un flujo de datos"
+subtitle: "Automatización del trabajo con datos de Cuentas Nacionales"
+---
+
+::::{.slide-embed}
+<iframe class="slide-deck" src="../../slides/00b-intro-cou-formato-plano/index.html" title="Las cuentas nacionales como un flujo de datos" loading="lazy"></iframe>
+::::
+
+::::{.slide-links}
+[⛶ Pantalla completa](../../slides/00b-intro-cou-formato-plano/index.html){target="_blank"}
+::::
+
+## Objetivos
+
+- Revisar las definiciones de bioeconomía y de recursos biológicos
+- Ubicar los cuadros de oferta y utilización dentro de las cuentas nacionales y temáticas
+- Conocer un abordaje automatizado para las cuentas de sectores clave
+- Ver los resultados en el contexto latinoamericano
