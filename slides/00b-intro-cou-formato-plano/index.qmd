@@ -535,6 +535,40 @@ ggplot(
 :::
 :::
 
+## Descargas de ejemplo {.center .smaller}
+
+:::::: {.columns}
+::: {.column width="50%" style="text-align: center"}
+
+[Ejemplo Perú]{.emphasis}
+
+Base de datos de los Cuadros de Oferta y Utilización del INEI para Perú (años 2022 y 2023):
+
+[PER_SCN_BD_Actual.xlsx](../../datos/per/PER_SCN_BD_Actual.xlsx){.button download="PER_SCN_BD_Actual.xlsx"}
+:::
+
+::: {.column width="50%" style="text-align: center"}
+
+[Ejemplo Guatemala]{.emphasis}
+
+Base de Datos de balances energéticos, expresada en términos de cuentas de energía:
+
+[BALGT_BD_Descriptivo.xlsx](../../datos/gtm/scaegt/BALGT_BD_Descriptivo.xlsx){.button download="BALGT_BD_Descriptivo.xlsx"}
+
+Cuenta de energía de Guatemala:
+
+[SCN_E_Descriptivo.xlsx](../../datos/gtm/scaegt/SCN_E_Descriptivo.xlsx){.button download="SCN_E_Descriptivo.xlsx"}
+
+Balances Energéticos 2013 - 2020:
+
+[GTM_Balances_Energeticos_2013-2020.xlsx](../../datos/gtm/scaegt/GTM_Balances_Energeticos_2013-2020.xlsx){.button download="GTM_Balances_Energeticos_2013-2020.xlsx"}
+
+Tabla de correspondencia entre balances de energía y cuentas ambientales:
+
+[CLASIFICACIONES_BALANCES.xlsx](../../datos/gtm/scaegt/CLASIFICACIONES_BALANCES.xlsx){.button download="CLASIFICACIONES_BALANCES.xlsx"}
+:::
+::::::
+
 # Resultados
 
 ## Cuadro de oferta bioeconómica de Ecuador (año 2019, millones de dólares)

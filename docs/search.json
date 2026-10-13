@@ -602,6 +602,13 @@
     "text": "¿Para qué? Gráficos\nPor ejemplo, podemos generar gráficos para un informe que todos los años tienen que ser igual y respetar cierta paleta corporativa directamente desde nuestra base de datos.\n\n\n\nggplot(\n  insumos_bio,\n  aes(\n    x = Actividades,\n    y = Valor, fill = Insumos\n  )) +\n  geom_bar(\n    stat = \"identity\", \n    position = \"fill\"\n  ) +\n  geom_text(\n    aes(\n      label = paste0(\n        sprintf(\"%1.1f\", Pct), \"%\")),\n    position = \n      position_fill(vjust = 0.5),\n    colour = \"black\",\n    size = 5\n  ) +\n  ylab(\"Porcentaje\") +\n  xlab(\"Actividades económicas\") +\n  labs(fill = \"Insumos\") +\n  scale_x_discrete(\n    labels = c(\n      \"Carne\", \n      \"Servicio de \\nalimentos\",\n      \"Construcción\",\n      \"Químicos\"))"
   },
   {
+    "objectID": "slides/00b-intro-cou-formato-plano/index.html#descargas-de-ejemplo",
+    "href": "slides/00b-intro-cou-formato-plano/index.html#descargas-de-ejemplo",
+    "title": "Las cuentas nacionales como un flujo de datos",
+    "section": "Descargas de ejemplo",
+    "text": "Descargas de ejemplo\n\n\nEjemplo Perú\nBase de datos de los Cuadros de Oferta y Utilización del INEI para Perú (años 2022 y 2023):\nPER_SCN_BD_Actual.xlsx\n\nEjemplo Guatemala\nBase de Datos de balances energéticos, expresada en términos de cuentas de energía:\nBALGT_BD_Descriptivo.xlsx\nCuenta de energía de Guatemala:\nSCN_E_Descriptivo.xlsx\nBalances Energéticos 2013 - 2020:\nGTM_Balances_Energeticos_2013-2020.xlsx\nTabla de correspondencia entre balances de energía y cuentas ambientales:\nCLASIFICACIONES_BALANCES.xlsx"
+  },
+  {
     "objectID": "slides/00b-intro-cou-formato-plano/index.html#cuadro-de-oferta-bioeconómica-de-ecuador-año-2019-millones-de-dólares",
     "href": "slides/00b-intro-cou-formato-plano/index.html#cuadro-de-oferta-bioeconómica-de-ecuador-año-2019-millones-de-dólares",
     "title": "Las cuentas nacionales como un flujo de datos",
