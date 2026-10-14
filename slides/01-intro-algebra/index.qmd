@@ -38,9 +38,13 @@ execute:
 ##  {.theme-blank .center}
 
 ::: {style="text-align: center"}
-Descargar el archivo de ejemplo:
+Descargar materiales de ejemplo:
 
 [operaciones-matriciales.xlsx](../../datos/ejemplos/operaciones-matriciales.xlsx){.button download="operaciones-matriciales.xlsx"}
+
+[operaciones-matriciales.R](../../datos/ejemplos/operaciones-matriciales.R){.button download="operaciones-matriciales.R"}
+
+[R-introduccion.R](../../datos/ejemplos/R-introduccion.R){.button download="R-introduccion.R"}
 :::
 
 ## Definición de una matriz
