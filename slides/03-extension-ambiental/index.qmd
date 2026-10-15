@@ -512,6 +512,22 @@ sum(huella)
 
 ##  {.theme-blank .center}
 
+::: {style="text-align: center"}
+
+**Descargar los archivos de ejemplo:**
+
+| | |
+| :--- | :----------: |
+| | |
+| [Excel:]{.emphasis} | [correspondencia.xlsx](../../datos/ejemplos/correspondencia.xlsx){.button download="correspondencia.xlsx"} |
+| [R:]{.emphasis} | [insumo-producto-ambiental-peru.R](../../datos/ejemplos/insumo-producto-ambiental-peru.R){.button download="insumo-producto-ambiental-peru.R"} |
+| [Perú:]{.emphasis} | [PER_Modelo_Insumo_Producto.xlsx](../../datos/ejemplos/cuenta_emisiones.xlsx){.button download="PER_Modelo_Insumo_Producto.xlsx"} |
+| | |
+:::
+
+
+##  {.theme-blank .center}
+
 ::::::: columns
 ::: {.column width="15%"}
 :::

@@ -4,7 +4,13 @@
   },
   "permission": {
     "edit": {
-      "*.qmd": "allow"
+      "*.qmd": "allow",
+      "*.R": "allow"
+    },
+    "bash": {
+      "cd *": "allow",
+      "Rscript *": "allow",
+      "tail *": "allow"
     }
   }
 }
