@@ -7,6 +7,9 @@
 # de Perú. Las rutas son relativas a la raíz del proyecto.
 
 library(readxl)
+library(tidyverse)
+
+rm(list = ls())
 
 archivo <- "datos/per/PER_Modelo_Insumo_Producto.xlsx"
 hoja <- "MIP_Basico_2007_Corrientes_101_"
