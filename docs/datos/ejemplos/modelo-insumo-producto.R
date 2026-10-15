@@ -46,6 +46,8 @@ x
 xhat <- diag(x)
 xhat
 
+solve(xhat)
+
 #  Nuestra matriz de coeficientes técnicos.
 A <- Z %*% solve( xhat )
 A

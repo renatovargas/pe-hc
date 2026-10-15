@@ -44,6 +44,7 @@ execute:
 | | |
 | [Excel:]{.emphasis} | [insumo-producto-ambiental.xlsx](../../datos/ejemplos/insumo-producto-ambiental.xlsx){.button download="insumo-producto-ambiental.xlsx"} |
 | [R:]{.emphasis} | [insumo-producto-ambiental.R](../../datos/ejemplos/insumo-producto-ambiental.R){.button download="insumo-producto-ambiental.R"} |
+| [Perú:]{.emphasis} | [PER_Modelo_Insumo_Producto.xlsx](../../datos/per/PER_Modelo_Insumo_Producto.xlsx){.button download="PER_Modelo_Insumo_Producto.xlsx"} |
 | | |
 :::
 

@@ -87,7 +87,7 @@ M
 ```
 
 ::: {.callout-note title="Matrices en Excel" icon="false"}
-Seleccione un rango y asígnele un nombre en el Cuadro de nombres. Para hacer operaciones matriciales, seleccione un rango con las dimensiones del resultado, escriba `=` seguido de la fórmula y presione CTRL + ENTER. Esto envolverá a la fórmula entre `{ }` como se verá más adelante en la diapositiva de [Suma](#suma) lo cual señalará que se trata de una operación matricial.
+Seleccione un rango y asígnele un nombre en el Cuadro de nombres. Para hacer operaciones matriciales, seleccione un rango con las dimensiones del resultado, escriba `=` seguido de la fórmula y presione CTRL + SHIFT + ENTER. Esto envolverá a la fórmula entre `{ }` como se verá más adelante en la diapositiva de [Suma](#suma) lo cual señalará que se trata de una operación matricial.
 :::
 ::::
 :::::::

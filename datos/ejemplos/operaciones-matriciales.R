@@ -147,7 +147,7 @@ dim(M)[2]
 I3 <- diag(3)
 I3
 
-diag(dim(M)[2])
+diag(  dim(M)[2]  )
 
 # Premultiplicación por la identidad
 diag(dim(M)[1]) %*% M
