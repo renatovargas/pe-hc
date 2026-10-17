@@ -21,5 +21,20 @@ activity_map <- data.frame(
   new_name = as_factor(c("agriculture", "agriculture", "agriculture", "manufacturing", "manufacturing", "services", "services"))
 )
 
+# Using base
+df <- aggregate(
+  df, 
+  list(agg1 = activity_map$new_name), 
+  FUN = sum
+)
 
+rownames(df) <- df$agg1
+df <- t(df[,-1])
+df <- aggregate(
+  df, list(
+    agg1 = activity_map$new_name), 
+    FUN = sum)
+rownames(df) <- df$agg1
+df <- t(df[,-1])
+df
 

@@ -5,12 +5,21 @@
   "permission": {
     "edit": {
       "*.qmd": "allow",
-      "*.R": "allow"
+      "*.R": "allow",
+      "*.bib": "allow"
     },
     "bash": {
       "cd *": "allow",
       "Rscript *": "allow",
-      "tail *": "allow"
+      "tail *": "allow",
+      "head *": "allow",
+      "sed *": "allow",
+      "grep *": "allow",
+      "pdftoppm *": "allow",
+      "ls *": "allow"
+    },
+    "executeCode": {
+      "*": "allow"
     }
   }
 }

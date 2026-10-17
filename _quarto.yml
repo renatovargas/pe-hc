@@ -18,6 +18,9 @@ project:
 
 website:
   title: "Perú HC"
+  repo-url: https://github.com/renatovargas/pe-hc
+  repo-branch: main
+  repo-actions: [source]
   description: "Implementación de Huellas de Carbono por parte del INEI de Perú"
   navbar:
     left:
