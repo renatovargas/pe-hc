@@ -41,7 +41,9 @@ website:
           contents:
             - text: "Contexto de la misión"
               href: materiales/documentos/contexto-asistencia-tecnica/index.qmd
-            - text: "Huellas de carbono"
+            - text: "Referencias huellas de carbono"
+              href: materiales/documentos/contexto-huella-de-carbono-peru/index.qmd
+            - text: "Cálculo huella carbono Perú"
               href: materiales/documentos/contexto-huella-de-carbono-peru/index.qmd
         - section: Presentaciones
           contents:
