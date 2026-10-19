@@ -1,0 +1,326 @@
+---
+title: "Modelo de insumo-producto de Perú de 101 actividades"
+description: "Intensidades de empleo, multiplicadores y atribución por categoría de demanda final con la matriz de 101 x 101 de 2007"
+author: "Renato Vargas"
+date: "2026-10-16"
+lang: es
+categories:
+  - insumo-producto
+  - rstats
+  - Perú
+bibliography: refs.bib
+csl: ../../../assets/apa-es.csl
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    css: ../estilos.css
+  pdf:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    geometry: margin=2cm
+    fontsize: 10pt
+execute:
+  warning: false
+---
+
+# Introducción
+
+Este documento desarrolla en R el modelo de insumo-producto de Perú con la matriz a precios corrientes de 2007, de 101 actividades por 101 actividades. Muestra el método completo con el detalle de la matriz original: lectura de los datos, coeficientes técnicos, matriz de Leontief, multiplicadores y atribución del resultado a las categorías de demanda final. Seguimos la notación de las presentaciones del proyecto [@millerblair2022]: $\mathbf{Z}$ es la matriz de flujos intermedios, $\mathbf{f}$ el vector de demanda final, $\mathbf{x}$ el producto total, $\mathbf{A}$ la matriz de coeficientes técnicos y $\mathbf{L}$ la matriz de Leontief.
+
+Como variable de aplicación usamos el **empleo**. El vector de intensidades $\boldsymbol{\varepsilon}$ mide puestos de trabajo por millón de soles de producto, y el procedimiento para calcularlo y propagarlo con $\mathbf{L}$ es el mismo que se usa para una huella de carbono: se divide una variable directa (de empleo, de emisiones o de energía) entre el producto y se propaga con la inversa de Leontief. Si se reemplaza el empleo por las emisiones directas de cada actividad, se obtiene la huella de carbono. El documento [Insumo-producto y huella de carbono con datos de Perú](../insumo-producto-huella-peru/index.qmd) aplica esa lógica a las emisiones de la cuenta de emisiones al aire, con ocho sectores agregados. Cada documento se puede leer sin el otro.
+
+::: {.callout-note}
+## Alcance
+
+Es un ejercicio didáctico con la estructura productiva de 2007. Los resultados ilustran el método y no son una estimación oficial.
+:::
+
+# Preámbulo
+
+```{r}
+#| label: preambulo
+#| message: false
+
+# Limpiar el área de trabajo
+rm(list = ls())
+
+# Cargar librerías
+library(readxl)    # leer los datos de Excel
+library(tidyverse) # manipular datos
+library(gt)        # tablas
+library(openxlsx)  # exportar resultados a Excel
+```
+
+Para que las tablas sean legibles, definimos una función que las muestra con `gt()`. La función no modifica los datos, solo cambia cómo se muestran.
+
+```{r}
+#| label: ayudas-tablas
+
+tabla_gt <- function(x, digitos = 0) {
+  x |>
+    as.data.frame() |>
+    gt(rownames_to_stub = TRUE) |>
+    fmt_number(decimals = digitos, use_seps = TRUE) |>
+    tab_options(table.font.size = "small")
+}
+```
+
+# Modelo de 101 x 101 con intensidades de empleo
+
+## Lectura de los datos
+
+La hoja de la matriz tiene los 101 productos en filas y columnas, la demanda final por categoría a la derecha y, debajo de la matriz, filas con el empleo y otros coeficientes. Como vamos a leer varios rangos, definimos una función corta que devuelve una matriz sin nombres, y fijamos el archivo y la hoja. Las rutas son relativas a la raíz del proyecto.
+
+```{r}
+#| label: lectura-funcion
+
+archivo <- "datos/per/PER_Modelo_Insumo_Producto.xlsx"
+hoja <- "MIP_Basico_2007_Corrientes_101_"
+
+leer_rango <- function(rango, hoja_excel = hoja) {
+  as.matrix(
+    read_excel(
+      archivo,
+      sheet = hoja_excel,
+      range = rango,
+      col_names = FALSE,
+      .name_repair = "minimal"
+    )
+  )
+}
+```
+
+Los nombres de los 101 productos están en el encabezado de la pestaña `Empleo`. Con ellos rotulamos filas y columnas de $\mathbf{Z}$ y las filas de la demanda final.
+
+```{r}
+#| label: lectura-sectores
+
+sectores <- c(leer_rango("C1:CY1", hoja_excel = "Empleo"))
+length(sectores)
+head(sectores, 3)
+```
+
+La matriz de flujos $\mathbf{Z}$ es de 101 x 101. La demanda final viene desagregada en siete categorías (`FDEM`), con los mismos productos en las filas.
+
+```{r}
+#| label: lectura-Z-FDEM
+
+# Matriz de flujos intermedios Z (101 x 101)
+Z <- leer_rango("N12:DJ112")
+dimnames(Z) <- list(sectores, sectores)
+
+# Demanda final por categoría (101 x 7)
+categorias <- c(leer_rango("DN11:DT11"))
+FDEM <- leer_rango("DN12:DT112")
+dimnames(FDEM) <- list(sectores, categorias)
+
+dim(Z)
+dim(FDEM)
+categorias
+```
+
+El empleo directo de cada producto está en la fila 154 de la hoja: asalariados más empresarios individuales, sin ayudantes familiares. Lo comprobamos sumando las dos filas que lo componen.
+
+```{r}
+#| label: lectura-empleo
+
+empleo <- c(leer_rango("N154:DJ154"))
+names(empleo) <- sectores
+
+# Asalariados de la propia empresa (fila 145) más empresarios individuales (150)
+isTRUE(all.equal(
+  unname(empleo),
+  c(leer_rango("N145:DJ145")) + c(leer_rango("N150:DJ150"))
+))
+```
+
+## El modelo básico
+
+La demanda final total $\mathbf{f}$ es la suma de las categorías de cada producto. El producto total $\mathbf{x}$ es lo que se vende a otros sectores más la demanda final.
+
+```{r}
+#| label: modelo-f-x
+
+f <- rowSums(FDEM)
+x <- rowSums(Z) + f
+```
+
+Con $\mathbf{x}$ calculamos los coeficientes técnicos $\mathbf{A} = \mathbf{Z}\hat{\mathbf{x}}^{-1}$ y la matriz de Leontief $\mathbf{L} = (\mathbf{I} - \mathbf{A})^{-1}$. El producto matricial descarta los nombres de filas y columnas, así que los reasignamos.
+
+```{r}
+#| label: modelo-A-L
+
+A <- Z %*% solve(diag(x))
+L <- solve(diag(nrow(A)) - A)
+dimnames(A) <- dimnames(L) <- list(sectores, sectores)
+```
+
+Una comprobación básica: $\mathbf{L}\mathbf{f}$ debe devolver el producto total.
+
+```{r}
+#| label: modelo-comprobacion
+
+isTRUE(all.equal(c(L %*% f), x, check.attributes = FALSE))
+```
+
+## Intensidades de empleo
+
+La intensidad $\varepsilon_i$ es el empleo directo por unidad de producto del sector $i$. Como son puestos por millón de soles de 2007, las cifras son del orden de decenas o cientos. La hoja de Excel trae el mismo cálculo en la fila 160, que usamos para contrastar.
+
+```{r}
+#| label: intensidades-empleo
+
+epsilon <- empleo / x
+
+# Contraste con el "Coeficiente de empleo" de la hoja (fila 160)
+isTRUE(all.equal(
+  unname(epsilon),
+  c(leer_rango("N160:DJ160"))
+))
+
+tabla_gt(head(cbind(Intensidad = epsilon)), digitos = 1)
+```
+
+::: {.callout-note}
+## El denominador de la intensidad
+
+El producto total $\mathbf{x}$ de esta hoja suma la producción nacional (columna D) y las importaciones (columna E), como se verifica a continuación. Como el empleo es el de la producción nacional, estas intensidades quedan algo por debajo de los puestos por unidad de producción nacional en las actividades con muchas importaciones. Mantenemos la convención de la hoja para que los resultados coincidan con el Excel. Un cálculo de huella de carbono, donde la distinción importa, divide entre la producción nacional.
+:::
+
+```{r}
+#| label: verificar-denominador
+
+produccion <- c(leer_rango("D12:D112"))
+importaciones <- c(leer_rango("E12:E112"))
+importaciones[is.na(importaciones)] <- 0
+
+isTRUE(all.equal(produccion + importaciones, unname(x)))
+```
+
+## Empleo a partir de la demanda final
+
+Si multiplicamos las intensidades por el producto que se necesita para satisfacer la demanda final, recuperamos el empleo directo de cada sector: $\mathbf{e} = \hat{\boldsymbol{\varepsilon}}\mathbf{L}\mathbf{f}$.
+
+```{r}
+#| label: empleo-e
+
+e <- diag(epsilon) %*% L %*% f
+rownames(e) <- sectores
+colnames(e) <- "Empleo"
+
+isTRUE(all.equal(c(e), unname(empleo)))
+```
+
+## Multiplicadores
+
+El multiplicador de producto de cada sector es la suma de su columna de $\mathbf{L}$. Indica cuánto producto total se genera por cada unidad de demanda final de ese producto.
+
+```{r}
+#| label: multiplicadores-producto
+
+i <- rep(1, nrow(L))
+mp <- c(i %*% L)
+names(mp) <- sectores
+tabla_gt(head(cbind(Multiplicador = mp)), digitos = 2)
+```
+
+El multiplicador de empleo sigue la misma idea: $\mathbf{M}_e = \hat{\boldsymbol{\varepsilon}}\mathbf{L}$. Cada columna $j$ muestra el empleo que se genera en cada sector por una unidad de demanda final del producto $j$, y su suma es el multiplicador de empleo total de ese producto.
+
+```{r}
+#| label: multiplicadores-empleo
+
+Me <- diag(epsilon) %*% L
+dimnames(Me) <- list(sectores, sectores)
+
+# Multiplicador de empleo total por producto demandado
+mult_empleo <- colSums(Me)
+tabla_gt(head(cbind(`Multiplicador de empleo` = mult_empleo)), digitos = 1)
+```
+
+## Empleo total según el producto demandado
+
+Al multiplicar $\mathbf{M}_e$ por la demanda final de cada producto, repartimos el empleo total entre los productos que lo originan. La suma de todo el vector es el empleo total del cuadro.
+
+```{r}
+#| label: huella-producto
+
+huella_producto <- c(epsilon %*% L %*% diag(f))
+names(huella_producto) <- sectores
+
+sum(huella_producto)
+sum(empleo)
+```
+
+## Empleo diferenciado por categoría de demanda final
+
+Como el modelo es lineal, podemos reemplazar el vector $\mathbf{f}$ por la matriz completa `FDEM`. Cada columna del resultado es el vector $\mathbf{e}$ de una categoría de demanda final (hogares, gobierno, inversión, exportaciones, etc.). El resultado tiene los sectores en las filas (101) y las categorías en las columnas (7).
+
+```{r}
+#| label: empleo-categorias
+
+e_categoria <- diag(epsilon) %*% L %*% FDEM
+dimnames(e_categoria) <- list(sectores, categorias)
+
+# La suma de las categorías reproduce el vector e
+isTRUE(all.equal(rowSums(e_categoria), c(e), check.attributes = FALSE))
+```
+
+Finalmente, el empleo total por categoría y su participación en el total.
+
+```{r}
+#| label: empleo-categorias-totales
+
+tibble(
+  Categoría = categorias,
+  Empleo = colSums(e_categoria),
+  `Participación (%)` = round(100 * Empleo / sum(Empleo), 1)
+) |>
+  gt() |>
+  fmt_number(columns = Empleo, decimals = 0, use_seps = TRUE) |>
+  fmt_number(columns = `Participación (%)`, decimals = 1)
+```
+
+## Resultados exportados
+
+Para dejar registro, exportamos a un solo libro las matrices y los resultados. Cada objeto va en su pestaña, con los nombres de filas en la primera columna.
+
+```{r}
+#| label: exportar
+
+res_101 <- list(
+  "Z" = Z,
+  "FDEM" = FDEM,
+  "f_x" = data.frame(f = f, x = x),
+  "A" = A,
+  "L" = L,
+  "empleo_intensidad" = data.frame(
+    empleo = empleo,
+    x = x,
+    epsilon = epsilon,
+    mult_producto = mp,
+    mult_empleo = mult_empleo,
+    empleo_por_producto_dem = huella_producto
+  ),
+  "Me" = Me,
+  "empleo_categoria" = e_categoria
+)
+
+write.xlsx(
+  lapply(res_101, as.data.frame),
+  file = "datos/salidas/insumo-producto-peru-101.xlsx",
+  rowNames = TRUE,
+  overwrite = TRUE
+)
+
+names(res_101)
+```
+
+El archivo queda en [datos/salidas/insumo-producto-peru-101.xlsx](../../../datos/salidas/insumo-producto-peru-101.xlsx).
+
+# Referencias {.unnumbered}
+
+::: {#refs}
+:::

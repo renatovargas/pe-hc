@@ -215,6 +215,12 @@ window.Quarto = {
  <span class="menu-text">Cálculo huella carbono Perú</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materiales/documentos/insumo-producto-peru-101/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modelo insumo-producto Perú 101</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -452,6 +458,208 @@ Figura&nbsp;1: Definición geográfica y económica (de residencia) de un país.
 <p>El cálculo de una huella nacional combina tres insumos: tablas de insumo-producto, que pueden derivarse de los cuadros de oferta y utilización; medidas de las emisiones directas; y cuentas de emisiones atmosféricas, que asignan las emisiones a las actividades económicas con las mismas clasificaciones de las cuentas nacionales. Estas últimas siguen las estructuras y los principios del Marco Central del SEEA y son coherentes con los datos monetarios del Sistema de Cuentas Nacionales <span class="citation" data-cites="seea2014 sna2009">(<a href="#ref-sna2009" role="doc-biblioref">United Nations, 2009</a>, <a href="#ref-seea2014" role="doc-biblioref">2014</a>)</span>.</p>
 <p>Esa coherencia es lo que vuelve posible el modelo: como las cuentas físicas y los cuadros monetarios comparten clasificaciones, las emisiones por industria pueden vincularse directamente con el producto de cada industria. La cuenta debe además tener el desglose completo por actividad económica (en Eurostat, la lista A*64 de la NACE); sin él, las huellas y las descomposiciones no son posibles o pierden valor <span class="citation" data-cites="eurostat2015">(<a href="#ref-eurostat2015" role="doc-biblioref">Eurostat, 2015, párr. 118</a>)</span>.</p>
 <p>La compilación de la cuenta de emisiones, que suele ser el insumo menos familiar para una oficina de cuentas nacionales, admite dos rutas según el manual de Eurostat. En la primera se parte de los inventarios que se reportan a la CMNUCC y se reasignan a industrias y hogares. En la segunda se parte de las estadísticas de energía, idealmente de las cuentas físicas de flujos de energía, que ya siguen el criterio de residencia, y se aplican los mismos factores de emisión del inventario para la combustión, mientras las emisiones que no provienen de la combustión se toman de los inventarios <span class="citation" data-cites="eurostat2015">(<a href="#ref-eurostat2015" role="doc-biblioref">Eurostat, 2015, párr. 141</a> a 151)</span>. La combustión explica hasta cerca de 90% del CO2 <span class="citation" data-cites="eurostat2015">(<a href="#ref-eurostat2015" role="doc-biblioref">Eurostat, 2015, párr. 133</a>)</span>. Sigue el ajuste por residencia: se restan las emisiones de no residentes en el territorio y se suman las de residentes en el exterior. El manual recomienda concentrarse en las partidas grandes y no gastar esfuerzo en ajustes teóricamente correctos pero pequeños <span class="citation" data-cites="eurostat2015">(<a href="#ref-eurostat2015" role="doc-biblioref">Eurostat, 2015, párr. 190</a>)</span>, y reconoce que el transporte por carretera es una de las partes más difíciles <span class="citation" data-cites="eurostat2015">(<a href="#ref-eurostat2015" role="doc-biblioref">Eurostat, 2015, párr. 280</a>)</span>. Advierte además que un desglose incompleto por actividad, o la marcación como confidenciales de celdas que no lo son, puede impedir los modelos de huella <span class="citation" data-cites="eurostat2015">(<a href="#ref-eurostat2015" role="doc-biblioref">Eurostat, 2015, párr. 117</a> a 121)</span>.</p>
+<section id="insumos-de-energía-y-emisiones-disponibles-en-perú" class="level4" data-number="3.1.1">
+<h4 data-number="3.1.1" class="anchored" data-anchor-id="insumos-de-energía-y-emisiones-disponibles-en-perú"><span class="header-section-number">3.1.1</span> Insumos de energía y emisiones disponibles en Perú</h4>
+<p>El INEI difundió en octubre de 2026 las dos cuentas físicas que alimentan este cálculo: la cuenta experimental de los flujos físicos de la energía para 2019 a 2022 <span class="citation" data-cites="inei2026energia">(<a href="#ref-inei2026energia" role="doc-biblioref">Instituto Nacional de Estadística e Informática, 2026b</a>)</span> y la cuenta experimental de emisiones al aire para 2019 a 2021 <span class="citation" data-cites="inei2026emisiones">(<a href="#ref-inei2026emisiones" role="doc-biblioref">Instituto Nacional de Estadística e Informática, 2026a</a>)</span>. Forman parte de la serie Cuentas Ambientales y Económicas del Perú, actualizan y amplían las cuentas experimentales publicadas en julio de 2025, y se elaboraron con asistencia técnica del Departamento de Estadística del FMI y apoyo de la SECO. Siguen la estructura de los cuadros de oferta y utilización, por lo que pueden vincularse con las cuentas nacionales <span class="citation" data-cites="rivas2025">(<a href="#ref-rivas2025" role="doc-biblioref">Rivas y Gomes, 2025, párr. 3</a>)</span>. Ambas advierten que sus valores pueden cambiar en futuras ediciones por la actualización de las estadísticas básicas.</p>
+<p>La <strong>cuenta de emisiones</strong> se compiló a partir del inventario nacional de gases de efecto invernadero 2000 a 2021 del MINAM, presentado a la CMNUCC en 2025. Expresa las emisiones de CO2, metano y óxido nitroso en toneladas de CO2 equivalente, por actividad económica y para los hogares. Es el insumo central de la huella: aporta las emisiones directas por actividad. La <strong>cuenta de energía</strong> usa como fuentes el Balance Nacional de Energía del MINEM, los cuadros de oferta y utilización monetarios del INEI, la base de datos de la OCDE para el transporte aéreo y los registros de la Autoridad Portuaria Nacional para el transporte marítimo. Se expresa en terajulios por producto energético y actividad, e incluye una tabla puente entre los criterios de residencia y de territorio. Acompaña a la de emisiones: permite construir con el mismo método una huella de energía, o contrastar las emisiones de combustión de cada actividad con su consumo energético.</p>
+<p>El <a href="#tbl-emisiones-inei" class="quarto-xref">Cuadro&nbsp;2</a> resume la cuenta de emisiones y el <a href="#tbl-energia-inei" class="quarto-xref">Cuadro&nbsp;3</a> la de energía. El total de emisiones pasó de 106.5 millones de toneladas de CO2 equivalente en 2019 a 93.5 en 2020, y a 109.2 en 2021. La caída de 2020 se concentra en el transporte (de 12.1 a 6.8 millones) y en la manufactura. El consumo de energía muestra el mismo patrón, con 1409 miles de terajulios en 2019, 1232 en 2020 y 1464 en 2021.</p>
+<div class="cell">
+<div id="tbl-emisiones-inei" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-emisiones-inei-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;2: Cuenta de emisiones al aire: gases de efecto invernadero por actividad, 2019 a 2021 (millones de toneladas de CO2 equivalente). Fuente: INEI (2026), cuadros 4 y 8.
+</figcaption>
+<div aria-describedby="tbl-emisiones-inei-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">2019</th>
+<th style="text-align: right;">2020</th>
+<th style="text-align: right;">2021</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Agricultura, silvicultura y pesca</td>
+<td style="text-align: right;">29.9</td>
+<td style="text-align: right;">29.9</td>
+<td style="text-align: right;">31.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Minería y canteras</td>
+<td style="text-align: right;">8.9</td>
+<td style="text-align: right;">7.7</td>
+<td style="text-align: right;">8.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Manufactura</td>
+<td style="text-align: right;">16.6</td>
+<td style="text-align: right;">12.1</td>
+<td style="text-align: right;">18.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Electricidad, gas, vapor y aire acondicionado</td>
+<td style="text-align: right;">11.7</td>
+<td style="text-align: right;">10.3</td>
+<td style="text-align: right;">11.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Agua, alcantarillado y residuos</td>
+<td style="text-align: right;">9.4</td>
+<td style="text-align: right;">9.7</td>
+<td style="text-align: right;">9.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Transporte y almacenamiento</td>
+<td style="text-align: right;">12.1</td>
+<td style="text-align: right;">6.8</td>
+<td style="text-align: right;">9.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Otras actividades</td>
+<td style="text-align: right;">6.2</td>
+<td style="text-align: right;">5.1</td>
+<td style="text-align: right;">6.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hogares</td>
+<td style="text-align: right;">11.8</td>
+<td style="text-align: right;">11.9</td>
+<td style="text-align: right;">13.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Total</td>
+<td style="text-align: right;">106.5</td>
+<td style="text-align: right;">93.5</td>
+<td style="text-align: right;">109.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Intensidad (t CO2e por millón de soles de 2007)</td>
+<td style="text-align: right;">194.9</td>
+<td style="text-align: right;">192.0</td>
+<td style="text-align: right;">197.8</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<div class="cell">
+<div id="tbl-energia-inei" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-energia-inei-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;3: Cuenta de energía: consumo por actividad, 2019 a 2022 (terajulios). Fuente: INEI (2026), cuadro 3 y tablas D.
+</figcaption>
+<div aria-describedby="tbl-energia-inei-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 57%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">2019</th>
+<th style="text-align: right;">2020</th>
+<th style="text-align: right;">2021</th>
+<th style="text-align: right;">2022</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Agricultura, silvicultura y pesca</td>
+<td style="text-align: right;">10,297</td>
+<td style="text-align: right;">10,148</td>
+<td style="text-align: right;">16,065</td>
+<td style="text-align: right;">10,803</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Minería y extracción de canteras</td>
+<td style="text-align: right;">103,726</td>
+<td style="text-align: right;">94,277</td>
+<td style="text-align: right;">106,589</td>
+<td style="text-align: right;">107,121</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Manufactura</td>
+<td style="text-align: right;">264,378</td>
+<td style="text-align: right;">167,445</td>
+<td style="text-align: right;">221,219</td>
+<td style="text-align: right;">242,913</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Electricidad, gas, vapor y aire acondicionado</td>
+<td style="text-align: right;">412,994</td>
+<td style="text-align: right;">432,308</td>
+<td style="text-align: right;">485,728</td>
+<td style="text-align: right;">411,638</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Transporte y almacenamiento</td>
+<td style="text-align: right;">335,340</td>
+<td style="text-align: right;">248,141</td>
+<td style="text-align: right;">312,047</td>
+<td style="text-align: right;">344,425</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Otras industrias</td>
+<td style="text-align: right;">58,876</td>
+<td style="text-align: right;">51,468</td>
+<td style="text-align: right;">57,237</td>
+<td style="text-align: right;">59,066</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hogares</td>
+<td style="text-align: right;">223,256</td>
+<td style="text-align: right;">227,907</td>
+<td style="text-align: right;">264,658</td>
+<td style="text-align: right;">249,113</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Total</td>
+<td style="text-align: right;">1,408,867</td>
+<td style="text-align: right;">1,231,694</td>
+<td style="text-align: right;">1,463,542</td>
+<td style="text-align: right;">1,425,079</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Intensidad energética (TJ por millón de soles de 2007)</td>
+<td style="text-align: right;">2.6</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">2.7</td>
+<td style="text-align: right;">2.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Importaciones de productos energéticos</td>
+<td style="text-align: right;">485,473</td>
+<td style="text-align: right;">330,340</td>
+<td style="text-align: right;">449,432</td>
+<td style="text-align: right;">488,383</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Exportaciones de productos energéticos</td>
+<td style="text-align: right;">461,037</td>
+<td style="text-align: right;">368,587</td>
+<td style="text-align: right;">341,201</td>
+<td style="text-align: right;">361,101</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Los hogares aparecen por separado de las actividades económicas. Sus emisiones directas suman 11.8 millones de toneladas en 2019, cerca de 11% del total. Un detalle de comparabilidad es la biomasa: la cuenta de energía la incluye en el uso total, y la de emisiones la trata como partida informativa, según las directrices de los inventarios; la misión de octubre de 2026 recomendó una nota explicativa en ambas publicaciones <span class="citation" data-cites="rivas2026">(<a href="#ref-rivas2026" role="doc-biblioref">Rivas y Vargas, 2026</a>)</span>. El <a href="../../../materiales/documentos/insumo-producto-huella-peru/index.html">procesamiento de datos</a> de este proyecto usa la cuenta de emisiones de 2019 a 2021.</p>
+</section>
 </section>
 <section id="cálculo" class="level3" data-number="3.2">
 <h3 data-number="3.2" class="anchored" data-anchor-id="cálculo"><span class="header-section-number">3.2</span> Cálculo</h3>
@@ -470,11 +678,11 @@ F = \boldsymbol{\varepsilon}'\,\mathbf{T}\,\mathbf{f} + e_h
 </section>
 <section id="problemas-habituales-de-compilación" class="level3" data-number="3.4">
 <h3 data-number="3.4" class="anchored" data-anchor-id="problemas-habituales-de-compilación"><span class="header-section-number">3.4</span> Problemas habituales de compilación</h3>
-<p>Las experiencias revisadas en este documento coinciden en un conjunto de dificultades recurrentes, que resume el <a href="#tbl-problemas-gen" class="quarto-xref">Cuadro&nbsp;2</a>. Muchas de ellas son de naturaleza estadística y no de modelación: provienen de la correspondencia entre clasificaciones y de la coherencia temporal de las fuentes.</p>
+<p>Las experiencias revisadas en este documento coinciden en un conjunto de dificultades recurrentes, que resume el <a href="#tbl-problemas-gen" class="quarto-xref">Cuadro&nbsp;4</a>. Muchas de ellas son de naturaleza estadística y no de modelación: provienen de la correspondencia entre clasificaciones y de la coherencia temporal de las fuentes.</p>
 <div id="tbl-problemas-gen" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-problemas-gen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Tabla&nbsp;2: Problemas habituales en la compilación de huellas
+Tabla&nbsp;4: Problemas habituales en la compilación de huellas
 </figcaption>
 <div aria-describedby="tbl-problemas-gen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -548,11 +756,11 @@ Tabla&nbsp;2: Problemas habituales en la compilación de huellas
 <h2 data-number="5" class="anchored" data-anchor-id="evidencia-global-y-posición-de-américa-latina"><span class="header-section-number">5</span> Evidencia global y posición de América Latina</h2>
 <section id="cifras-globales" class="level3" data-number="5.1">
 <h3 data-number="5.1" class="anchored" data-anchor-id="cifras-globales"><span class="header-section-number">5.1</span> Cifras globales</h3>
-<p>Tres estudios de referencia, con bases y años distintos, cuantifican la parte de las emisiones ligada al comercio (<a href="#tbl-global" class="quarto-xref">Cuadro&nbsp;3</a>). Las cifras no forman una serie homogénea y no deben compararse como tal, pero coinciden en el orden de magnitud y en la tendencia creciente.</p>
+<p>Tres estudios de referencia, con bases y años distintos, cuantifican la parte de las emisiones ligada al comercio (<a href="#tbl-global" class="quarto-xref">Cuadro&nbsp;5</a>). Las cifras no forman una serie homogénea y no deben compararse como tal, pero coinciden en el orden de magnitud y en la tendencia creciente.</p>
 <div id="tbl-global" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-global-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Tabla&nbsp;3: Emisiones de CO2 asociadas con el comercio internacional
+Tabla&nbsp;5: Emisiones de CO2 asociadas con el comercio internacional
 </figcaption>
 <div aria-describedby="tbl-global-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -612,7 +820,7 @@ Figura&nbsp;2: Emisiones incorporadas en el comercio y en la demanda final. Adap
 </section>
 <section id="américa-latina-en-las-cifras-de-la-ocde" class="level3" data-number="5.2">
 <h3 data-number="5.2" class="anchored" data-anchor-id="américa-latina-en-las-cifras-de-la-ocde"><span class="header-section-number">5.2</span> América Latina en las cifras de la OCDE</h3>
-<p>La misma fuente permite situar a los países latinoamericanos incluidos en la base ICIO. Perú sirve de ejemplo de lo que muestran los datos. En 2015, el CO2 de combustión asociado con su demanda final sumó 63.6 Mt, frente a 49.2 Mt emitidos por la producción residente. La diferencia, 14.4 Mt, es el saldo neto de emisiones importadas; en 2005 fue de 2.6 Mt. Entre 2005 y 2015 la producción creció 71% y la huella basada en la demanda, 103% (<a href="#fig-peru" class="quarto-xref">Figura&nbsp;3</a>). Del total asociado con la demanda final, 36.6% se emitió fuera del país en 2015, frente a 32.4% en 2005 (<a href="#fig-ext" class="quarto-xref">Figura&nbsp;4</a>). El <a href="#tbl-oecd" class="quarto-xref">Cuadro&nbsp;4</a> compara a Perú con otros seis países de la región.</p>
+<p>La misma fuente permite situar a los países latinoamericanos incluidos en la base ICIO. Perú sirve de ejemplo de lo que muestran los datos. En 2015, el CO2 de combustión asociado con su demanda final sumó 63.6 Mt, frente a 49.2 Mt emitidos por la producción residente. La diferencia, 14.4 Mt, es el saldo neto de emisiones importadas; en 2005 fue de 2.6 Mt. Entre 2005 y 2015 la producción creció 71% y la huella basada en la demanda, 103% (<a href="#fig-peru" class="quarto-xref">Figura&nbsp;3</a>). Del total asociado con la demanda final, 36.6% se emitió fuera del país en 2015, frente a 32.4% en 2005 (<a href="#fig-ext" class="quarto-xref">Figura&nbsp;4</a>). El <a href="#tbl-oecd" class="quarto-xref">Cuadro&nbsp;6</a> compara a Perú con otros seis países de la región.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-peru" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -645,7 +853,7 @@ Figura&nbsp;4: Parte del CO2 asociado con la demanda final que se emite en el ex
 <div id="tbl-oecd" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-oecd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Tabla&nbsp;4: América Latina: CO2 por combustión según la OCDE, 2015 (millones de toneladas, salvo indicación) y parte emitida en el exterior
+Tabla&nbsp;6: América Latina: CO2 por combustión según la OCDE, 2015 (millones de toneladas, salvo indicación) y parte emitida en el exterior
 </figcaption>
 <div aria-describedby="tbl-oecd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -823,11 +1031,11 @@ Figura&nbsp;5: Reino Unido: emisiones de gases de efecto invernadero según tres
 </section>
 <section id="bases-multirregionales" class="level3" data-number="6.3">
 <h3 data-number="6.3" class="anchored" data-anchor-id="bases-multirregionales"><span class="header-section-number">6.3</span> Bases multirregionales</h3>
-<p>Como se explicó en la sección 3.3, las importaciones requieren una base multirregional o un supuesto sobre la tecnología extranjera. El <a href="#tbl-bases" class="quarto-xref">Cuadro&nbsp;5</a> resume las opciones revisadas. La elección depende de la cobertura de países, del detalle sectorial y de las condiciones de uso, que no son iguales en todas las bases.</p>
+<p>Como se explicó en la sección 3.3, las importaciones requieren una base multirregional o un supuesto sobre la tecnología extranjera. El <a href="#tbl-bases" class="quarto-xref">Cuadro&nbsp;7</a> resume las opciones revisadas. La elección depende de la cobertura de países, del detalle sectorial y de las condiciones de uso, que no son iguales en todas las bases.</p>
 <div id="tbl-bases" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-bases-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Tabla&nbsp;5: Bases multirregionales de acceso abierto o restringido
+Tabla&nbsp;7: Bases multirregionales de acceso abierto o restringido
 </figcaption>
 <div aria-describedby="tbl-bases-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -865,28 +1073,45 @@ Tabla&nbsp;5: Bases multirregionales de acceso abierto o restringido
 <td style="text-align: left;">Verificar la cobertura y la licencia antes de una publicación oficial</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">IMF-MARIO <span class="citation" data-cites="guilhoto2025">(<a href="#ref-guilhoto2025" role="doc-biblioref">Guilhoto et&nbsp;al., 2025</a>)</span></td>
-<td style="text-align: left;">212 economías, 145 industrias y 179 productos; 1990 a 2023</td>
-<td style="text-align: left;">En desarrollo (versión preliminar de octubre de 2025); acceso por confirmar</td>
-<td style="text-align: left;">Combina bases existentes con los cuadros oficiales que recoge el FMI; verificar la cobertura de Perú y la disponibilidad antes de usarla</td>
+<td style="text-align: left;">IMF-MARIO <span class="citation" data-cites="guilhoto2025 pegoue2026">(<a href="#ref-guilhoto2025" role="doc-biblioref">Guilhoto et&nbsp;al., 2025</a>; <a href="#ref-pegoue2026" role="doc-biblioref">Pegoue, 2026</a>)</span></td>
+<td style="text-align: left;">212 economías, 145 industrias y 179 productos; 1990 a 2023; Perú figura en la lista de economías</td>
+<td style="text-align: left;">En desarrollo (versión preliminar de octubre de 2025; versión 0 en validación en octubre de 2026); acceso controlado</td>
+<td style="text-align: left;">Combina bases existentes con los cuadros oficiales que recoge el FMI; ver la subsección sobre IMF-MARIO</td>
 </tr>
 </tbody>
 </table>
 </div>
 </figure>
 </div>
-<p>IMF-MARIO es el modelo multirregional que desarrolla el Fondo Monetario Internacional. Se construye a partir de FIGARO, ICIO, GLORIA, EXIOBASE y las bases del Banco Asiático de Desarrollo y de la CEPAL, y respeta las cifras de las bases regionales para sus países; además incorpora los cuadros de oferta y utilización oficiales que el FMI recoge de sus países miembros <span class="citation" data-cites="guilhoto2025">(<a href="#ref-guilhoto2025" role="doc-biblioref">Guilhoto et&nbsp;al., 2025</a>)</span>. El documento que lo describe es una versión preliminar, por lo que sus cifras de cobertura pueden cambiar.</p>
+<section id="exiobase-3" class="level4" data-number="6.3.1">
+<h4 data-number="6.3.1" class="anchored" data-anchor-id="exiobase-3"><span class="header-section-number">6.3.1</span> EXIOBASE 3</h4>
 <p>EXIOBASE 3 merece una descripción más detallada, porque es la base abierta de uso más extendido y la que usa, por ejemplo, el modelo británico <span class="citation" data-cites="stadler2018">(<a href="#ref-stadler2018" role="doc-biblioref">Stadler et&nbsp;al., 2018</a>)</span>. Se construye de arriba hacia abajo: parte de los agregados de cuentas nacionales de Naciones Unidas, y desarrolla cuadros de oferta y utilización rectangulares (con más productos que industrias) para 44 países, 28 de la Unión Europea y 16 grandes economías, más cinco regiones del resto del mundo. El comercio se obtiene de BACI (Naciones Unidas) y de datos de la AIE, y los márgenes de transporte se estiman con un modelo. Cada año se equilibra por separado con un programa cuadrático de mínimos cuadrados ponderados que altera lo menos posible la tabla inicial. Para las emisiones, los gases de combustión se calculan de abajo hacia arriba con los balances de energía de la AIE y factores de emisión de modelos europeos, y se reasignan al criterio de residencia con modelos de transporte para la pesca internacional, la aviación y la navegación. La base incluye 27 contaminantes, además de agua, materiales, tierra, residuos y empleo <span class="citation" data-cites="stadler2018">(<a href="#ref-stadler2018" role="doc-biblioref">Stadler et&nbsp;al., 2018</a>)</span>.</p>
 <p>Los autores advierten de limitaciones que importan a quien la use <span class="citation" data-cites="stadler2018">(<a href="#ref-stadler2018" role="doc-biblioref">Stadler et&nbsp;al., 2018</a>)</span>. Las tablas privilegian la coherencia de la serie sobre la coincidencia con las estadísticas oficiales, por lo que no replican exactamente los cuadros nacionales ni los datos más recientes de Eurostat. Los cambios de clasificación en el tiempo se revisaron visualmente y afectan sobre todo a los servicios. La asignación de importaciones por origen supone que cada usuario compra a cada exportador en las mismas proporciones, y los impuestos y márgenes mantienen proporciones de 2007. Los autores recomiendan considerar el número limitado de países al analizar economías en desarrollo y emergentes, para las cuales Eora o bases construidas sobre GTAP pueden ser más adecuadas. No ofrecen estimaciones de incertidumbre. Perú no figura entre los países individuales, y solo puede quedar dentro de la región del resto del mundo de América.</p>
+</section>
+<section id="imf-mario" class="level4" data-number="6.3.2">
+<h4 data-number="6.3.2" class="anchored" data-anchor-id="imf-mario"><span class="header-section-number">6.3.2</span> IMF-MARIO</h4>
+<p>IMF-MARIO (<em>Multi-Analytical Regional Input-Output model</em>) es el modelo multirregional que desarrolla el Departamento de Estadística del FMI. Surgió porque las bases globales existentes no cubrían del todo las necesidades del Fondo en economías y años, detalle de productos e industrias, oportunidad y flexibilidad de uso <span class="citation" data-cites="guilhoto2025">(<a href="#ref-guilhoto2025" role="doc-biblioref">Guilhoto et&nbsp;al., 2025</a>)</span>. Cubrirá 212 economías, con 179 productos y 145 industrias, de 1990 a 2023, y Perú figura entre ellas <span class="citation" data-cites="guilhoto2025">(<a href="#ref-guilhoto2025" role="doc-biblioref">Guilhoto et&nbsp;al., 2025</a>)</span>. Se construye por etapas, con un núcleo económico primero y luego las dimensiones de empleo y ambientales. En octubre de 2026 era una base de datos de investigación en versión 0, en validación, y aún no elaboraba plenamente indicadores de presión ambiental <span class="citation" data-cites="pegoue2026">(<a href="#ref-pegoue2026" role="doc-biblioref">Pegoue, 2026</a>)</span>.</p>
+<p>El método combina fuentes de distinta jerarquía en cinco bloques, que pueden avanzar en paralelo <span class="citation" data-cites="guilhoto2025 pegoue2026">(<a href="#ref-guilhoto2025" role="doc-biblioref">Guilhoto et&nbsp;al., 2025</a>; <a href="#ref-pegoue2026" role="doc-biblioref">Pegoue, 2026</a>)</span>:</p>
+<ol type="1">
+<li>Restricciones de cuentas nacionales: PIB, producto, importaciones y demanda final de fuentes internacionales y de oficinas de estadística.</li>
+<li>Producto, valor agregado, impuestos, subsidios y demanda final por producto e industria.</li>
+<li>Coeficientes técnicos de los cuadros de oferta y utilización nacionales, armonizados a las clasificaciones de MARIO; para los países que no los producen se usan coeficientes de economías con un perfil similar.</li>
+<li>Comercio internacional: matrices bilaterales por producto y por uso final, a partir de Comtrade, BaTIS, BIMTS, BTiGE y BACI.</li>
+<li>Ensamblaje: cuadros de oferta y utilización armonizados, cuadro de uso regional a precios básicos y, con el supuesto de estructura fija de ventas de producto (modelo D de Eurostat), la tabla de industria por industria.</li>
+</ol>
+<p>Las fuentes se ordenan por función y cobertura: primero las cifras de referencia de Eurostat, el FMI y las Naciones Unidas; luego los cuadros nacionales oficiales; y, para la estructura global, FIGARO, ICIO, ADB-MRIO, CEPAL-MRIO, EXIOBASE y GLORIA. Los resultados se alinean con FIGARO para la Unión Europea, con ICIO para los países de la OCDE no europeos, con ADB-MRIO para Asia y con CEPAL-MRIO para América Latina, de modo que los datos de Perú deberían ser consistentes con la base de la CEPAL <span class="citation" data-cites="guilhoto2025">(<a href="#ref-guilhoto2025" role="doc-biblioref">Guilhoto et&nbsp;al., 2025</a>)</span>. Para los sectores con mayor relevancia ambiental (minería de minerales críticos, combustibles, electricidad por tecnología de generación, transporte por modalidad), MARIO desagrega las industrias más allá del detalle habitual de los cuadros de oferta y utilización, con datos físicos de la AIE, IRENA, ONUDI, FAOSTAT y la OCDE, entre otros <span class="citation" data-cites="pegoue2026">(<a href="#ref-pegoue2026" role="doc-biblioref">Pegoue, 2026</a>)</span>.</p>
+<p>La producción usa R para la estimación básica y el procesamiento, con módulos por bloque, conjuntos de datos intermedios y tablas de concordancia reutilizables <span class="citation" data-cites="pegoue2026">(<a href="#ref-pegoue2026" role="doc-biblioref">Pegoue, 2026</a>)</span>. Los productos previstos son un cuadro de uso global, cuadros de uso nacionales (interno, importado y total), tablas de insumo-producto de producto por producto y de industria por industria, e indicadores como cadenas globales de valor, comercio en valor agregado, multiplicadores y huellas. El acceso a la versión 0 es controlado, con nota técnica, clasificaciones y extractos a medida <span class="citation" data-cites="pegoue2026">(<a href="#ref-pegoue2026" role="doc-biblioref">Pegoue, 2026</a>)</span>. Entre las salvedades de calidad, los autores señalan fuentes de calidad desigual, imputación en economías con pocos datos, cambios de fuente a lo largo del tiempo, cuadros de fabricación simplificados y validación pendiente; la coherencia contable no equivale a exactitud estadística. Como ampliaciones, prevén vincular con puentes explícitos las cuentas de emisiones, energía, tierra, materiales y agua <span class="citation" data-cites="pegoue2026">(<a href="#ref-pegoue2026" role="doc-biblioref">Pegoue, 2026</a>)</span>. Un grupo de organizaciones internacionales (OCDE, Eurostat, FMI, CEPAL y Banco Asiático de Desarrollo) coordina además la armonización de metadatos, concordancias y comparaciones entre bases <span class="citation" data-cites="guilhoto2025 pegoue2026">(<a href="#ref-guilhoto2025" role="doc-biblioref">Guilhoto et&nbsp;al., 2025</a>; <a href="#ref-pegoue2026" role="doc-biblioref">Pegoue, 2026</a>)</span>.</p>
+<p>Para una oficina de estadística como el INEI, IMF-MARIO es una opción para el tratamiento de las importaciones y una referencia externa. Su uso requiere confirmar el acceso, verificar la cobertura y el detalle de Perú, y tener presente que los cuadros nacionales oficiales que el FMI recoge de sus países miembros alimentan la propia base <span class="citation" data-cites="guilhoto2025">(<a href="#ref-guilhoto2025" role="doc-biblioref">Guilhoto et&nbsp;al., 2025</a>)</span>. La <a href="../../../materiales/documentos/contexto-asistencia-tecnica/index.html#misión-de-octubre-de-2026">misión de octubre de 2026</a> discutió el posible uso de información multirregional junto con el supuesto de tecnología doméstica <span class="citation" data-cites="rivas2026">(<a href="#ref-rivas2026" role="doc-biblioref">Rivas y Vargas, 2026, párr. 7</a>)</span>.</p>
+</section>
 </section>
 <section id="américa-latina" class="level3" data-number="6.4">
 <h3 data-number="6.4" class="anchored" data-anchor-id="américa-latina"><span class="header-section-number">6.4</span> América Latina</h3>
 <p>El contexto regional da relieve a estos estudios. Según un documento de la CEPAL, la región emite cerca de 5% del CO2 mundial, y su perfil difiere del global: el cambio de uso de suelo explica 34% de los gases de efecto invernadero de la región, la energía 33% y la agricultura 24%, y las emisiones por persona (2.9 toneladas de CO2 equivalente en 2008) eran inferiores al promedio mundial de 4.8. Además, 52% de las exportaciones regionales en 2011 se dirigió a Estados Unidos y a la Unión Europea, mercados donde la huella de carbono de los productos importados es un tema creciente de política comercial <span class="citation" data-cites="frohmann2013">(<a href="#ref-frohmann2013" role="doc-biblioref">Frohmann y Olmos, 2013</a>)</span>. Ese mismo documento ilustra la diferencia entre la huella de producto o de empresa y la huella nacional: usa el análisis de ciclo de vida y el GHG Protocol para estudiar casos de exportadores de alimentos, pero no recurre a tablas de insumo-producto. Es útil sobre todo para entender el entorno de exportadores y reguladores, y para apreciar que los datos de uso de suelo y de óxido nitroso de los suelos son difíciles de medir, un dato que reaparece en los estudios nacionales <span class="citation" data-cites="frohmann2013">(<a href="#ref-frohmann2013" role="doc-biblioref">Frohmann y Olmos, 2013</a>)</span>.</p>
-<p>La revisión no identificó estadísticas oficiales de huella de carbono basadas en cuentas nacionales, con acceso abierto verificable, en los institutos de estadística de la región. Los trabajos encontrados provienen de la academia y de organismos multilaterales, y siguen tres enfoques: huellas de hogares con encuestas de gasto (Perú, México, Brasil, región), huellas nacionales con una base multirregional abierta (Ecuador) y multiplicadores de emisiones con tablas nacionales (Colombia). El <a href="#tbl-latam" class="quarto-xref">Cuadro&nbsp;6</a> los resume. Conviene confirmar el vacío de estadísticas oficiales directamente con las oficinas de estadística de Colombia, México, Chile, Brasil y Costa Rica.</p>
+<p>La revisión no identificó estadísticas oficiales de huella de carbono basadas en cuentas nacionales, con acceso abierto verificable, en los institutos de estadística de la región. Los trabajos encontrados provienen de la academia y de organismos multilaterales, y siguen tres enfoques: huellas de hogares con encuestas de gasto (Perú, México, Brasil, región), huellas nacionales con una base multirregional abierta (Ecuador) y multiplicadores de emisiones con tablas nacionales (Colombia). El <a href="#tbl-latam" class="quarto-xref">Cuadro&nbsp;8</a> los resume. Conviene confirmar el vacío de estadísticas oficiales directamente con las oficinas de estadística de Colombia, México, Chile, Brasil y Costa Rica.</p>
 <div id="tbl-latam" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-latam-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Tabla&nbsp;6: Experiencias latinoamericanas de huellas de carbono
+Tabla&nbsp;8: Experiencias latinoamericanas de huellas de carbono
 </figcaption>
 <div aria-describedby="tbl-latam-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -1104,6 +1329,12 @@ Hernández, G. (2021). Emisiones de gases de efecto invernadero y sectores clave
 <div id="ref-hertwich2009" class="csl-entry" role="listitem">
 Hertwich, E. G. y Peters, G. P. (2009). Carbon footprint of nations: A global, trade-linked analysis. <em>Environmental Science &amp; Technology</em>, <em>43</em>(16), 6414-6420. <a href="https://doi.org/10.1021/es803496a">https://doi.org/10.1021/es803496a</a>
 </div>
+<div id="ref-inei2026emisiones" class="csl-entry" role="listitem">
+Instituto Nacional de Estadística e Informática. (2026a). <em>Cuenta experimental de emisiones al aire: resultados 2019–2021</em> [Cuentas Ambientales y Econ{\'o}micas del Per{\'u}]. Instituto Nacional de Estad<span>í</span>stica e Inform<span>á</span>tica. <a href="https://www.gob.pe/institucion/inei/informes-publicaciones/8704253-peru-cuentas-experimentales-de-emisiones-al-aire-2019-2021">https://www.gob.pe/institucion/inei/informes-publicaciones/8704253-peru-cuentas-experimentales-de-emisiones-al-aire-2019-2021</a>
+</div>
+<div id="ref-inei2026energia" class="csl-entry" role="listitem">
+Instituto Nacional de Estadística e Informática. (2026b). <em>Cuenta experimental de los flujos f<span>í</span>sicos de la energ<span>í</span>a: resultados 2019–2022</em> [Cuentas Ambientales y Econ{\'o}micas del Per{\'u}]. Instituto Nacional de Estad<span>í</span>stica e Inform<span>á</span>tica. <a href="https://www.gob.pe/institucion/inei/informes-publicaciones/8704329-cuenta-experimental-de-flujos-fisicos-de-energia-2019-2022">https://www.gob.pe/institucion/inei/informes-publicaciones/8704329-cuenta-experimental-de-flujos-fisicos-de-energia-2019-2022</a>
+</div>
 <div id="ref-malerba2024" class="csl-entry" role="listitem">
 Malerba, D., Roscioli, F., Gaentzsch, A. y Ward, H. (2024). Changing carbon footprints and the consequent impacts of carbon taxes and cash transfers on poverty and inequality across years: A <span>P</span>eruvian case study. <em>Energy Policy</em>, <em>192</em>, 114246. <a href="https://doi.org/10.1016/j.enpol.2024.114246">https://doi.org/10.1016/j.enpol.2024.114246</a>
 </div>
@@ -1116,11 +1347,20 @@ OECD. (2025). <em>Greenhouse gas footprints (<span>GHGFP</span>), edici<span>ó<
 <div id="ref-owen2026" class="csl-entry" role="listitem">
 Owen, A. (2026). <em>Consumption-based accounts for the <span>UK</span>, 1990 to 2023: Summary of methods</em>. <span>Universidad de Leeds para el Department for Environment, Food and Rural Affairs</span>. <a href="https://assets.publishing.service.gov.uk/media/6a3ce626eaee00074150f449/UK_and_England_s_Carbon_Footprint_Summary_of_Methods_2026.pdf">https://assets.publishing.service.gov.uk/media/6a3ce626eaee00074150f449/UK_and_England_s_Carbon_Footprint_Summary_of_Methods_2026.pdf</a>
 </div>
+<div id="ref-pegoue2026" class="csl-entry" role="listitem">
+Pegoue, A. (2026). <em><span>MARIO</span> del <span>FMI</span>: fuentes, m<span>é</span>todos y divulgaci<span>ó</span>n</em>. Fondo Monetario Internacional, Departamento de Estad<span>í</span>stica; Presentaci<span>ó</span>n en el taller Eurostat-FMI-CML.
+</div>
 <div id="ref-peters2011" class="csl-entry" role="listitem">
 Peters, G. P., Minx, J. C., Weber, C. L. y Edenhofer, O. (2011). Growth in emission transfers via international trade from 1990 to 2008. <em>Proceedings of the National Academy of Sciences</em>, <em>108</em>(21), 8903-8908. <a href="https://doi.org/10.1073/pnas.1006388108">https://doi.org/10.1073/pnas.1006388108</a>
 </div>
 <div id="ref-renner2018" class="csl-entry" role="listitem">
 Renner, S. (2018). Poverty and distributional effects of a carbon tax in <span>M</span>exico. <em>Energy Policy</em>, <em>112</em>, 98-110. <a href="https://doi.org/10.1016/j.enpol.2017.10.011">https://doi.org/10.1016/j.enpol.2017.10.011</a>
+</div>
+<div id="ref-rivas2025" class="csl-entry" role="listitem">
+Rivas, L. y Gomes, A. (2025). <em>Peru: Report on the Physical Energy Flow and Air Emissions Accounts Mission (February 3–7, 2025)</em> [Technical Assistance Report]. Fondo Monetario Internacional, Departamento de Estad<span>í</span>stica.
+</div>
+<div id="ref-rivas2026" class="csl-entry" role="listitem">
+Rivas, L. y Vargas, R. (2026). <em>Peru: Carbon Footprint (Mission, October 12–16, 2026)</em> [Technical Assistance Report]. Fondo Monetario Internacional, Departamento de Estad<span>í</span>stica.
 </div>
 <div id="ref-romancollado2021" class="csl-entry" role="listitem">
 Román-Collado, R., Sanz-Díaz, M. T. y Loja Pacheco, C. (2021). Towards the decarbonisation of <span>E</span>cuador: A multisectoral and multiregional analysis of its carbon footprint. <em>Environmental Science and Pollution Research</em>, <em>28</em>, 53412-53431. <a href="https://doi.org/10.1007/s11356-021-14521-1">https://doi.org/10.1007/s11356-021-14521-1</a>

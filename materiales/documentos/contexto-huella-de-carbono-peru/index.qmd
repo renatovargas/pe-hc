@@ -126,6 +126,101 @@ Esa coherencia es lo que vuelve posible el modelo: como las cuentas físicas y l
 
 La compilación de la cuenta de emisiones, que suele ser el insumo menos familiar para una oficina de cuentas nacionales, admite dos rutas según el manual de Eurostat. En la primera se parte de los inventarios que se reportan a la CMNUCC y se reasignan a industrias y hogares. En la segunda se parte de las estadísticas de energía, idealmente de las cuentas físicas de flujos de energía, que ya siguen el criterio de residencia, y se aplican los mismos factores de emisión del inventario para la combustión, mientras las emisiones que no provienen de la combustión se toman de los inventarios [@eurostat2015, párr. 141 a 151]. La combustión explica hasta cerca de 90% del CO2 [@eurostat2015, párr. 133]. Sigue el ajuste por residencia: se restan las emisiones de no residentes en el territorio y se suman las de residentes en el exterior. El manual recomienda concentrarse en las partidas grandes y no gastar esfuerzo en ajustes teóricamente correctos pero pequeños [@eurostat2015, párr. 190], y reconoce que el transporte por carretera es una de las partes más difíciles [@eurostat2015, párr. 280]. Advierte además que un desglose incompleto por actividad, o la marcación como confidenciales de celdas que no lo son, puede impedir los modelos de huella [@eurostat2015, párr. 117 a 121].
 
+#### Insumos de energía y emisiones disponibles en Perú
+
+El INEI difundió en octubre de 2026 las dos cuentas físicas que alimentan este cálculo: la cuenta experimental de los flujos físicos de la energía para 2019 a 2022 [@inei2026energia] y la cuenta experimental de emisiones al aire para 2019 a 2021 [@inei2026emisiones]. Forman parte de la serie Cuentas Ambientales y Económicas del Perú, actualizan y amplían las cuentas experimentales publicadas en julio de 2025, y se elaboraron con asistencia técnica del Departamento de Estadística del FMI y apoyo de la SECO. Siguen la estructura de los cuadros de oferta y utilización, por lo que pueden vincularse con las cuentas nacionales [@rivas2025, párr. 3]. Ambas advierten que sus valores pueden cambiar en futuras ediciones por la actualización de las estadísticas básicas.
+
+La **cuenta de emisiones** se compiló a partir del inventario nacional de gases de efecto invernadero 2000 a 2021 del MINAM, presentado a la CMNUCC en 2025. Expresa las emisiones de CO2, metano y óxido nitroso en toneladas de CO2 equivalente, por actividad económica y para los hogares. Es el insumo central de la huella: aporta las emisiones directas por actividad. La **cuenta de energía** usa como fuentes el Balance Nacional de Energía del MINEM, los cuadros de oferta y utilización monetarios del INEI, la base de datos de la OCDE para el transporte aéreo y los registros de la Autoridad Portuaria Nacional para el transporte marítimo. Se expresa en terajulios por producto energético y actividad, e incluye una tabla puente entre los criterios de residencia y de territorio. Acompaña a la de emisiones: permite construir con el mismo método una huella de energía, o contrastar las emisiones de combustión de cada actividad con su consumo energético.
+
+```{r}
+#| label: datos-cuentas-inei
+
+library(readxl)
+
+f_aea <- "datos/per/PERU_CUENTA_EXPERIMENTAL_DE_EMISIONES_AL_AIRE_2019-2021.xlsx"
+f_pefa <- "datos/per/PERU_Cuenta_Experimental_de_los_Flujos_Fisicos_de_la_Energia_2019-2022.xlsx"
+
+hoja <- function(f, h) {
+  as.data.frame(suppressMessages(read_excel(f, sheet = h, col_names = FALSE)))
+}
+num <- function(x) suppressWarnings(as.numeric(x))
+
+# Emisiones: cuadro 4 de la cuenta (toneladas de CO2 equivalente)
+aea <- hoja(f_aea, "aea_1")[8:20, 1:4]
+aea <- aea[!is.na(aea[[1]]), ]
+em <- as.matrix(sapply(aea[, 2:4], num))
+dimnames(em) <- list(aea[[1]], 2019:2021)
+fila_em <- function(patron) em[grep(patron, rownames(em))[1], ]
+
+tab_em <- rbind(
+  "Agricultura, silvicultura y pesca" = fila_em("^Agricultura"),
+  "Minería y canteras" = fila_em("^Explotación"),
+  "Manufactura" = fila_em("^Manufactura"),
+  "Electricidad, gas, vapor y aire acondicionado" = fila_em("^Electricidad"),
+  "Agua, alcantarillado y residuos" = fila_em("^Suministro"),
+  "Transporte y almacenamiento" = fila_em("^Transporte"),
+  "Otras actividades" = fila_em("^Construcción") + fila_em("^Industrias no") + fila_em("^Servicios"),
+  "Hogares" = fila_em("^Hogares"),
+  "Total" = fila_em("^Total")
+)
+stopifnot(isTRUE(all.equal(colSums(tab_em[1:8, ]), tab_em["Total", ])))
+
+# Producto interno bruto a precios constantes de 2007 (cuadro 8)
+pbi <- hoja(f_aea, "int_pbi_1")
+pbi <- setNames(num(pbi[[2]][match(2019:2021, num(pbi[[1]]))]), 2019:2021)
+
+# Energía: consumo por actividad (cuadro 3, terajulios)
+ek <- hoja(f_pefa, "Ind_Kte1")[9:18, ]
+ek <- ek[!is.na(ek[[1]]), ]
+cons <- as.matrix(sapply(ek[, 2:5], num))
+dimnames(cons) <- list(ek[[1]], 2019:2022)
+pbi_e <- num(unlist(ek[ek[[1]] == "Total", 6:9]))
+
+# Importaciones y exportaciones de energía (tablas D de cada año)
+primero <- function(anio, patron) {
+  d <- hoja(f_pefa, paste0("D_", anio))
+  v <- num(unlist(d[grep(patron, d[[1]])[1], -1]))
+  v[!is.na(v)][1]
+}
+importaciones <- sapply(2019:2022, primero, patron = "^Importaciones de productos energéticos$")
+exportaciones <- sapply(2019:2022, primero, patron = "^Exportaciones de productos")
+```
+
+El @tbl-emisiones-inei resume la cuenta de emisiones y el @tbl-energia-inei la de energía. El total de emisiones pasó de `r sprintf("%.1f", tab_em["Total", "2019"] / 1e6)` millones de toneladas de CO2 equivalente en 2019 a `r sprintf("%.1f", tab_em["Total", "2020"] / 1e6)` en 2020, y a `r sprintf("%.1f", tab_em["Total", "2021"] / 1e6)` en 2021. La caída de 2020 se concentra en el transporte (de `r sprintf("%.1f", tab_em["Transporte y almacenamiento", "2019"] / 1e6)` a `r sprintf("%.1f", tab_em["Transporte y almacenamiento", "2020"] / 1e6)` millones) y en la manufactura. El consumo de energía muestra el mismo patrón, con `r sprintf("%.0f", cons["Total", "2019"] / 1e3)` miles de terajulios en 2019, `r sprintf("%.0f", cons["Total", "2020"] / 1e3)` en 2020 y `r sprintf("%.0f", cons["Total", "2021"] / 1e3)` en 2021.
+
+```{r}
+#| label: tbl-emisiones-inei
+#| tbl-cap: "Cuenta de emisiones al aire: gases de efecto invernadero por actividad, 2019 a 2021 (millones de toneladas de CO2 equivalente). Fuente: INEI (2026), cuadros 4 y 8."
+
+knitr::kable(
+  rbind(
+    tab_em / 1e6,
+    "Intensidad (t CO2e por millón de soles de 2007)" = tab_em["Total", ] / pbi
+  ),
+  digits = 1,
+  align = "r"
+)
+```
+
+```{r}
+#| label: tbl-energia-inei
+#| tbl-cap: "Cuenta de energía: consumo por actividad, 2019 a 2022 (terajulios). Fuente: INEI (2026), cuadro 3 y tablas D."
+
+tab_en <- rbind(
+  cons[!rownames(cons) %in% "Industrias", ],
+  "Intensidad energética (TJ por millón de soles de 2007)" = cons["Total", ] / pbi_e,
+  "Importaciones de productos energéticos" = importaciones,
+  "Exportaciones de productos energéticos" = exportaciones
+)
+rownames(tab_en)[rownames(tab_en) == "Todas las demás industrias"] <- "Otras industrias"
+tab_en_txt <- apply(tab_en, 2, function(v) format(round(v, 0), big.mark = ",", trim = TRUE))
+tab_en_txt[grep("^Intensidad", rownames(tab_en)), ] <-
+  sprintf("%.1f", tab_en[grep("^Intensidad", rownames(tab_en)), ])
+knitr::kable(tab_en_txt, align = "r")
+```
+
+Los hogares aparecen por separado de las actividades económicas. Sus emisiones directas suman `r sprintf("%.1f", tab_em["Hogares", "2019"] / 1e6)` millones de toneladas en 2019, cerca de `r sprintf("%.0f", 100 * tab_em["Hogares", "2019"] / tab_em["Total", "2019"])`% del total. Un detalle de comparabilidad es la biomasa: la cuenta de energía la incluye en el uso total, y la de emisiones la trata como partida informativa, según las directrices de los inventarios; la misión de octubre de 2026 recomendó una nota explicativa en ambas publicaciones [@rivas2026]. El [procesamiento de datos](../insumo-producto-huella-peru/index.qmd) de este proyecto usa la cuenta de emisiones de 2019 a 2021.
+
 ### Cálculo
 
 La idea del cálculo es sencilla. Cada industria emite una cantidad conocida por unidad de producto, pero para producir un bien necesita insumos de otras industrias, que a su vez emiten y necesitan insumos. El modelo de insumo-producto suma todas esas rondas de producción, y por eso la huella de un producto incluye las emisiones de sus proveedores directos e indirectos [@millerblair2022]. Sea $\boldsymbol{\varepsilon}$ el vector de coeficientes de emisión por industria (emisiones directas divididas entre el producto bruto), $\mathbf{T}$ la matriz de requerimientos totales del modelo de producto por industria y $\mathbf{f}$ el vector de demanda final por producto. La huella de la demanda final es:
@@ -458,15 +553,33 @@ Como se explicó en la sección 3.3, las importaciones requieren una base multir
 | ICIO y huellas de gases de efecto invernadero de la OCDE [@oecdghgfp2025] | 1995 a 2022 (edición 2025); incluye Perú, Chile, Colombia, Costa Rica, México, Brasil y Argentina; no incluye Ecuador, Bolivia, Uruguay, Paraguay ni Venezuela | Datos abiertos mediante SDMX | Buena cobertura latinoamericana; sirve también como referencia externa |
 | EXIOBASE 3 [@stadler2018] | 44 países y 5 regiones del resto del mundo; 163 industrias y 200 productos; 1995 a 2011 en el artículo | Licencia abierta | Entre los países latinoamericanos, Perú no figura como economía individual |
 | Eora [@eora2026] | 190 países; versión Eora26 con 26 sectores | Gratuita solo para uso académico; los informes requieren licencia comercial | Verificar la cobertura y la licencia antes de una publicación oficial |
-| IMF-MARIO [@guilhoto2025] | 212 economías, 145 industrias y 179 productos; 1990 a 2023 | En desarrollo (versión preliminar de octubre de 2025); acceso por confirmar | Combina bases existentes con los cuadros oficiales que recoge el FMI; verificar la cobertura de Perú y la disponibilidad antes de usarla |
+| IMF-MARIO [@guilhoto2025; @pegoue2026] | 212 economías, 145 industrias y 179 productos; 1990 a 2023; Perú figura en la lista de economías | En desarrollo (versión preliminar de octubre de 2025; versión 0 en validación en octubre de 2026); acceso controlado | Combina bases existentes con los cuadros oficiales que recoge el FMI; ver la subsección sobre IMF-MARIO |
 
 : Bases multirregionales de acceso abierto o restringido {#tbl-bases}
 
-IMF-MARIO es el modelo multirregional que desarrolla el Fondo Monetario Internacional. Se construye a partir de FIGARO, ICIO, GLORIA, EXIOBASE y las bases del Banco Asiático de Desarrollo y de la CEPAL, y respeta las cifras de las bases regionales para sus países; además incorpora los cuadros de oferta y utilización oficiales que el FMI recoge de sus países miembros [@guilhoto2025]. El documento que lo describe es una versión preliminar, por lo que sus cifras de cobertura pueden cambiar.
+#### EXIOBASE 3
 
 EXIOBASE 3 merece una descripción más detallada, porque es la base abierta de uso más extendido y la que usa, por ejemplo, el modelo británico [@stadler2018]. Se construye de arriba hacia abajo: parte de los agregados de cuentas nacionales de Naciones Unidas, y desarrolla cuadros de oferta y utilización rectangulares (con más productos que industrias) para 44 países, 28 de la Unión Europea y 16 grandes economías, más cinco regiones del resto del mundo. El comercio se obtiene de BACI (Naciones Unidas) y de datos de la AIE, y los márgenes de transporte se estiman con un modelo. Cada año se equilibra por separado con un programa cuadrático de mínimos cuadrados ponderados que altera lo menos posible la tabla inicial. Para las emisiones, los gases de combustión se calculan de abajo hacia arriba con los balances de energía de la AIE y factores de emisión de modelos europeos, y se reasignan al criterio de residencia con modelos de transporte para la pesca internacional, la aviación y la navegación. La base incluye 27 contaminantes, además de agua, materiales, tierra, residuos y empleo [@stadler2018].
 
 Los autores advierten de limitaciones que importan a quien la use [@stadler2018]. Las tablas privilegian la coherencia de la serie sobre la coincidencia con las estadísticas oficiales, por lo que no replican exactamente los cuadros nacionales ni los datos más recientes de Eurostat. Los cambios de clasificación en el tiempo se revisaron visualmente y afectan sobre todo a los servicios. La asignación de importaciones por origen supone que cada usuario compra a cada exportador en las mismas proporciones, y los impuestos y márgenes mantienen proporciones de 2007. Los autores recomiendan considerar el número limitado de países al analizar economías en desarrollo y emergentes, para las cuales Eora o bases construidas sobre GTAP pueden ser más adecuadas. No ofrecen estimaciones de incertidumbre. Perú no figura entre los países individuales, y solo puede quedar dentro de la región del resto del mundo de América.
+
+#### IMF-MARIO
+
+IMF-MARIO (*Multi-Analytical Regional Input-Output model*) es el modelo multirregional que desarrolla el Departamento de Estadística del FMI. Surgió porque las bases globales existentes no cubrían del todo las necesidades del Fondo en economías y años, detalle de productos e industrias, oportunidad y flexibilidad de uso [@guilhoto2025]. Cubrirá 212 economías, con 179 productos y 145 industrias, de 1990 a 2023, y Perú figura entre ellas [@guilhoto2025]. Se construye por etapas, con un núcleo económico primero y luego las dimensiones de empleo y ambientales. En octubre de 2026 era una base de datos de investigación en versión 0, en validación, y aún no elaboraba plenamente indicadores de presión ambiental [@pegoue2026].
+
+El método combina fuentes de distinta jerarquía en cinco bloques, que pueden avanzar en paralelo [@guilhoto2025; @pegoue2026]:
+
+1.  Restricciones de cuentas nacionales: PIB, producto, importaciones y demanda final de fuentes internacionales y de oficinas de estadística.
+2.  Producto, valor agregado, impuestos, subsidios y demanda final por producto e industria.
+3.  Coeficientes técnicos de los cuadros de oferta y utilización nacionales, armonizados a las clasificaciones de MARIO; para los países que no los producen se usan coeficientes de economías con un perfil similar.
+4.  Comercio internacional: matrices bilaterales por producto y por uso final, a partir de Comtrade, BaTIS, BIMTS, BTiGE y BACI.
+5.  Ensamblaje: cuadros de oferta y utilización armonizados, cuadro de uso regional a precios básicos y, con el supuesto de estructura fija de ventas de producto (modelo D de Eurostat), la tabla de industria por industria.
+
+Las fuentes se ordenan por función y cobertura: primero las cifras de referencia de Eurostat, el FMI y las Naciones Unidas; luego los cuadros nacionales oficiales; y, para la estructura global, FIGARO, ICIO, ADB-MRIO, CEPAL-MRIO, EXIOBASE y GLORIA. Los resultados se alinean con FIGARO para la Unión Europea, con ICIO para los países de la OCDE no europeos, con ADB-MRIO para Asia y con CEPAL-MRIO para América Latina, de modo que los datos de Perú deberían ser consistentes con la base de la CEPAL [@guilhoto2025]. Para los sectores con mayor relevancia ambiental (minería de minerales críticos, combustibles, electricidad por tecnología de generación, transporte por modalidad), MARIO desagrega las industrias más allá del detalle habitual de los cuadros de oferta y utilización, con datos físicos de la AIE, IRENA, ONUDI, FAOSTAT y la OCDE, entre otros [@pegoue2026].
+
+La producción usa R para la estimación básica y el procesamiento, con módulos por bloque, conjuntos de datos intermedios y tablas de concordancia reutilizables [@pegoue2026]. Los productos previstos son un cuadro de uso global, cuadros de uso nacionales (interno, importado y total), tablas de insumo-producto de producto por producto y de industria por industria, e indicadores como cadenas globales de valor, comercio en valor agregado, multiplicadores y huellas. El acceso a la versión 0 es controlado, con nota técnica, clasificaciones y extractos a medida [@pegoue2026]. Entre las salvedades de calidad, los autores señalan fuentes de calidad desigual, imputación en economías con pocos datos, cambios de fuente a lo largo del tiempo, cuadros de fabricación simplificados y validación pendiente; la coherencia contable no equivale a exactitud estadística. Como ampliaciones, prevén vincular con puentes explícitos las cuentas de emisiones, energía, tierra, materiales y agua [@pegoue2026]. Un grupo de organizaciones internacionales (OCDE, Eurostat, FMI, CEPAL y Banco Asiático de Desarrollo) coordina además la armonización de metadatos, concordancias y comparaciones entre bases [@guilhoto2025; @pegoue2026].
+
+Para una oficina de estadística como el INEI, IMF-MARIO es una opción para el tratamiento de las importaciones y una referencia externa. Su uso requiere confirmar el acceso, verificar la cobertura y el detalle de Perú, y tener presente que los cuadros nacionales oficiales que el FMI recoge de sus países miembros alimentan la propia base [@guilhoto2025]. La [misión de octubre de 2026](../contexto-asistencia-tecnica/index.qmd#misión-de-octubre-de-2026) discutió el posible uso de información multirregional junto con el supuesto de tecnología doméstica [@rivas2026, párr. 7].
 
 ### América Latina
 

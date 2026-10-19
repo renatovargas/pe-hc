@@ -1,6 +1,6 @@
 ---
 title: "Contexto de la asistencia técnica del FMI a Perú"
-subtitle: "Antecedentes, disponibilidad de datos y secuencia de compilación de la huella de carbono"
+subtitle: "Antecedentes, logros por misión, disponibilidad de datos y secuencia de compilación de la huella de carbono"
 author:
   - name: "Renato Vargas"
     affiliations:
@@ -10,7 +10,7 @@ author:
       - name: Economista Senior FMI
 lang: es
 abstract: |
-  Esta nota resume el contexto que motivó la preparación de los materiales de este sitio y aplica a Perú las consideraciones de diseño de la [nota sobre huellas de carbono](../contexto-huella-de-carbono-peru/index.qmd). Se basa en los informes de las misiones del Departamento de Estadística del FMI de julio de 2023 y febrero de 2025.
+  Esta nota resume el contexto que motivó la preparación de los materiales de este sitio y aplica a Perú las consideraciones de diseño de la [nota sobre huellas de carbono](../contexto-huella-de-carbono-peru/index.qmd). Presenta por separado los objetivos, logros y recomendaciones de las misiones del Departamento de Estadística del FMI de julio de 2023, febrero de 2025, octubre de 2025 y octubre de 2026, y describe el estado actual de las fuentes de datos.
 bibliography: refs.bib
 csl: ../../../assets/apa-es.csl
 format:
@@ -28,53 +28,180 @@ execute:
 
 ## Introducción
 
-Este documento complementa la [nota sobre huellas de carbono nacionales](../contexto-huella-de-carbono-peru/index.qmd). Las referencias a secciones y cuadros de esa nota enlazan directamente a ella. Se basa en los informes de las misiones del Departamento de Estadística del FMI de julio de 2023 y febrero de 2025 [@stanger2024; @rivas2025].
+Este documento complementa la [nota sobre huellas de carbono nacionales](../contexto-huella-de-carbono-peru/index.qmd). Las referencias a secciones y cuadros de esa nota enlazan directamente a ella. Se basa en los informes de las misiones del Departamento de Estadística del FMI de julio de 2023, febrero de 2025, octubre de 2025 y octubre de 2026 [@stanger2024; @rivas2025; @rivas2025b; @rivas2026]. La sección 3 separa lo que logró y recomendó cada misión; las secciones siguientes describen el estado de los datos y la secuencia de trabajo que resulta.
 
 ## Antecedentes
 
 El Gobierno de Perú estableció su marco legal de cambio climático con la Ley N.° 30754 y, en 2020, elevó su meta de mitigación de 30% a 40% respecto del escenario de referencia a 2030, con un límite absoluto de 179 MtCO2e [@stanger2024; @rivas2025]. El monitoreo de las medidas cubre cinco sectores: energía, residuos, procesos industriales, agricultura y cambio de uso de suelo [@stanger2024]. Dos de ellos, la agricultura y el cambio de uso de suelo, quedan fuera de las series de CO2 por combustión de la [sección 5 de la nota sobre huellas de carbono](../contexto-huella-de-carbono-peru/index.qmd#evidencia-global-y-posición-de-américa-latina), lo que subraya la conveniencia de una huella en CO2 equivalente.
 
-El Departamento de Estadística del FMI, con apoyo de la Secretaría de Estado de Asuntos Económicos de Suiza, lanzó en marzo de 2023 un programa de estadísticas ambientales y de cambio climático. La misión diagnóstica de julio de 2023 recomendó tres productos con fecha meta de diciembre de 2024: cuentas de flujos de energía, cuentas de emisiones atmosféricas con cambio de uso de suelo y huellas de carbono domésticas, estas últimas a cargo del Ministerio del Ambiente (MINAM) y del Instituto Nacional de Estadística e Informática (INEI) [@stanger2024]. La misión de febrero de 2025 revisó las cuentas físicas de energía y de emisiones del año 2019, fijó abril de 2025 como meta para su publicación experimental y propuso incluir la huella de carbono entre los usos de la cuenta de emisiones para su difusión [@rivas2025].
+El Departamento de Estadística del FMI, con apoyo de la Secretaría de Estado de Asuntos Económicos de Suiza (SECO), lanzó en marzo de 2023 un programa de estadísticas ambientales y de cambio climático [@rivas2026, párr. 2]. Su fundamento es que vincular los datos de energía y de emisiones con las actividades económicas aporta la información necesaria para políticas de reducción de emisiones y de transición hacia una economía baja en carbono. Como las cuentas de energía y de emisiones atmosféricas comparten la estructura de los cuadros de oferta y utilización, también sirven de insumo para calcular huellas de carbono en un modelo de insumo-producto, y apoyan las decisiones sobre impuestos o precios del carbono y la comprensión de los efectos de los ajustes de carbono en frontera [@rivas2025, párr. 3].
 
-El INEI compila y difunde cuadros de oferta y utilización anuales de 2007 a 2021, con 101 industrias y 365 productos, sobre la base 2007; el cambio a la base 2019 estaba en curso [@stanger2024]. La misión de 2023 concluyó que, con cuentas de emisiones y cuadros actualizados, Perú estaría en buena posición para iniciar la compilación de huellas nacionales, y señaló sus usos: identificar industrias de alta y baja emisión y los productos cuyo consumo genera más emisiones, comparar las emisiones de alcance 1, 2 y 3 de una empresa con el promedio de su industria, y alimentar un modelo de precios del carbono para evaluar, por ejemplo, el efecto de un impuesto sobre la inflación [@stanger2024, párr. 36, 37 y 45]. La misión de 2025 agregó el apoyo a las decisiones sobre impuestos o precios del carbono y la comprensión de los efectos de los ajustes de carbono en frontera [@rivas2025, párr. 3].
+El INEI compila y difunde cuadros de oferta y utilización anuales de 2007 a 2021, con 101 industrias y 365 productos, sobre la base 2007; el cambio a la base 2019 estaba en curso [@stanger2024]. La misión de 2023 concluyó que, con cuentas de emisiones y cuadros actualizados, Perú estaría en buena posición para iniciar la compilación de huellas nacionales, y señaló sus usos: identificar industrias de alta y baja emisión y los productos cuyo consumo genera más emisiones, comparar las emisiones de alcance 1, 2 y 3 de una empresa con el promedio de su industria, y alimentar un modelo de precios del carbono para evaluar, por ejemplo, el efecto de un impuesto sobre la inflación [@stanger2024, párr. 36, 37 y 45].
 
 Perú cuenta además con una plataforma de huella de organización: la Huella de Carbono Perú del MINAM, donde organizaciones públicas y privadas declaran sus emisiones a nivel de empresa [@stanger2024, apéndice A]. Es una huella del tipo descrito en la [sección 2.1 de la nota sobre huellas de carbono](../contexto-huella-de-carbono-peru/index.qmd#un-término-con-varios-significados) y no sustituye a la huella nacional.
 
+## Misiones y logros
+
+El programa tiene tres componentes: una misión diagnóstica en Lima (julio de 2023), un taller regional de capacitación en Chiba, Japón (febrero de 2024), con tres participantes de Perú (dos del INEI y uno del MINEM), y asistencia técnica directa para compilar las cuentas físicas de energía (PEFA, por sus siglas en inglés) y las cuentas de emisiones al aire (AEA) [@rivas2025, párr. 4 y 14]. La asistencia directa comenzó con una misión en mayo de 2024, seguida de reuniones virtuales mensuales y consultas escritas entre junio de 2024 y enero de 2025 [@rivas2025, párr. 5 y 7]. El @tbl-misiones resume las cuatro misiones que se describen a continuación.
+
+| Misión | Enfoque | Resultado principal |
+|:------------------|:--------------------------|:--------------------------|
+| Julio de 2023 (diagnóstica) [@stanger2024] | Hoja de ruta de estadísticas climáticas | Tres prioridades: cuentas de energía, cuentas de emisiones y huellas de carbono domésticas |
+| Febrero de 2025 [@rivas2025] | Revisión y validación de las cuentas de 2019 | Ajustes por residencia en el transporte; hoja de ruta de publicación; difusión experimental de 2019 en julio de 2025 [@rivas2026] |
+| Octubre de 2025 [@rivas2025b] | Validación de las cuentas preliminares de energía 2020 a 2022 y de emisiones 2020 y 2021 | Ajustes de gas natural, diésel y transporte acuático; formato de publicación; avance de 95% en cada cuenta |
+| Octubre de 2026 [@rivas2026] | Seguimiento de las cuentas y primeros indicadores de huella de carbono | Difusión de las cuentas de energía 2019 a 2022 y de emisiones 2019 a 2021; ejercicio de huella con datos de Perú; plan de acción |
+
+: Misiones del Departamento de Estadística del FMI a Perú {#tbl-misiones}
+
+### Misión diagnóstica de julio de 2023
+
+**Objetivo.** Elaborar una hoja de ruta para compilar estadísticas climáticas que apoyen las necesidades de política de Perú [@stanger2024, párr. 1].
+
+**Logros.** La misión estableció el diagnóstico de partida. Perú no tenía cuentas de flujos de energía, pero sí balances de energía desde 1965, con siete industrias consumidoras y siete grupos de productos; los resultados se publicaban solo en PDF, sin base de datos descargable, y la última edición correspondía a 2021 [@stanger2024, párr. 31]. Para las emisiones, la información disponible provenía de la estimación de las contribuciones determinadas a nivel nacional y del inventario de gases de efecto invernadero (ambos del MINAM), del balance de energía (MINEM) y de datos agropecuarios (MIDAGRI), con 2019 como año de referencia [@stanger2024, párr. 34]. Hubo acuerdo amplio sobre la necesidad de mejorar la coordinación entre productores de datos y de crear un centro único de información climática [@stanger2024, párr. 4]. Como prioridades secundarias se identificaron las cuentas de activos minerales y energéticos y las cuentas de actividades ambientales; el MINAM expresó interés en indicadores de riesgo físico y de transición [@stanger2024, párr. 5].
+
+**Recomendaciones.** Los tres productos prioritarios tenían fecha meta de diciembre de 2024 [@stanger2024, cuadro 1]:
+
+| Producto | Instituciones responsables |
+|:---------------------------------------|:------------------------------|
+| Cuentas de flujos de energía, a partir de los balances de energía | INEI y MINEM |
+| Cuentas de emisiones al aire, incluido el cambio de uso de suelo | INEI, MINAM y MIDAGRI |
+| Huellas de carbono domésticas | MINAM e INEI |
+
+: Prioridades de la misión de julio de 2023 {#tbl-prioridades-2023}
+
+Sobre la huella de carbono, la misión indicó que las cuentas de emisiones y los cuadros actualizados facilitarían su compilación, y que podría ser estratégico que el MINAM y el INEI fueran las instituciones estimadoras, con el liderazgo del MINAM [@stanger2024, párr. 36 y 38].
+
+### Misión de febrero de 2025
+
+**Objetivo.** Revisar, evaluar y validar los resultados de las cuentas de energía y de emisiones de 2019, y discutir la estrategia de difusión y las guías para los metadatos [@rivas2025, párr. 1]. El informe se emitió en octubre de 2025.
+
+**Logros.** La misión asistió en el trabajo práctico para los ajustes por residencia del transporte terrestre, acuático y aéreo, con datos de cuentas nacionales y de la OCDE sobre transporte aéreo, y la mayoría de los ajustes se incorporó en el lugar [@rivas2025, párr. 9]. Se verificaron los procesos de compilación de las cuentas de energía (conversión al formato contable, ajustes por residencia, asignación por industria, identidades de oferta y uso) y se confirmó que las cuentas de emisiones siguen el marco central del SEEA, por lo que son coherentes con los datos monetarios de las cuentas nacionales [@rivas2025, párr. 37 y 41]. El INEI presentó una propuesta de publicación con nota metodológica, indicadores y datos, y la misión discutió las guías de difusión [@rivas2025, párr. 47 y 48]. Entre las aplicaciones sugeridas para la cuenta de emisiones figura la huella de carbono [@rivas2025, párr. 51].
+
+**Recomendaciones.** Las prioridades fueron las siguientes [@rivas2025, cuadro 1]:
+
+| Fecha meta | Recomendación prioritaria |
+|:-------------|:-------------------------------------------------------------|
+| Febrero de 2025 | Usar los cuadros de oferta y utilización y la balanza de pagos para cerrar los ajustes de los servicios de transporte |
+| Abril de 2025 | Publicar los resultados y metadatos de las cuentas de 2019 |
+| Marzo a junio de 2025 | Actualizar la cuenta de emisiones de 2019 y compilar las de 2020 y 2021 cuando estuviera el inventario; compilar las cuentas de energía de 2020 a 2022 |
+
+: Prioridades de la misión de febrero de 2025 {#tbl-prioridades-feb2025}
+
+Además, la misión recomendó preparar un documento metodológico, asignar más recursos humanos, solicitar oficialmente a la Autoridad Portuaria los datos de transporte marítimo y enviar los datos a la División de Estadística de las Naciones Unidas [@rivas2025, párr. 54]. Según el informe de la misión de octubre de 2026, el INEI difundió las cuentas experimentales de 2019 el 11 de julio de 2025, con métodos, resultados, indicadores y metadatos, es decir, después de la fecha meta de abril [@rivas2026, párr. 2].
+
+### Misión de octubre de 2025
+
+**Objetivo.** Asistir al INEI en el análisis y la validación de las cuentas preliminares de energía de 2020 a 2022 y de emisiones de 2020 y 2021 [@rivas2025b].
+
+**Logros.** La misión revisó y validó las cuentas, propuso un formato de publicación y asistió en los ajustes sobre la asignación del gas natural y del diésel a las industrias, y sobre la aplicación del principio de residencia al transporte marítimo y por aguas interiores. También se resolvieron en el lugar problemas de correspondencia, en particular la asignación de los distintos tipos de diésel a los productos energéticos de la cuenta, y la mayoría de los ajustes se incorporó durante la misión [@rivas2025b]. El marco de resultados registró un avance de 95% al 10 de octubre de 2025 en cada una de las dos cuentas [@rivas2025b, anexo 1]. El informe de 2026 resume el resultado de esta misión como la revisión de las cuentas de 2019 revisadas y de las cuentas preliminares de 2020 a 2022 (energía) y de 2020 y 2021 (emisiones) [@rivas2026, párr. 3].
+
+**Recomendaciones** [@rivas2025b]:
+
+- Aplicar los ajustes sugeridos sobre gas natural, diésel y transporte acuático, y consultar a la OCDE por las estimaciones de transporte marítimo basadas en el sistema de identificación automática de buques.
+- Revisar y redistribuir el autoconsumo de productos energéticos de las industrias minera y manufacturera, para lo cual se solicitarían datos adicionales al MINEM.
+- Usar los cuadros de oferta y utilización y el producto interno bruto a precios corrientes del año correspondiente para calcular las razones de los ajustes por industria y los indicadores de las cuentas.
+- Publicar las tablas revisadas de 2019 y las preliminares de 2020 a 2022 (energía) y de 2020 y 2021 (emisiones), con sus metadatos, antes de diciembre de 2025.
+- Pasar de un nivel de desagregación agregado a uno medio en la siguiente compilación.
+- Establecer un mecanismo de compilación y publicación regular desde 2026, y comenzar el reporte anual de los cuestionarios a las Naciones Unidas y a la OCDE antes de marzo de 2026.
+
+El informe identificó como riesgo que las autoridades no publicaran las cuentas en diciembre de 2025 por limitaciones de recursos y otros compromisos [@rivas2025b].
+
+### Misión de octubre de 2026
+
+**Objetivo.** Orientar al personal del INEI en el desarrollo de indicadores de huella de carbono y dar seguimiento a la compilación, validación, producción regular y difusión de las cuentas de energía y de emisiones al aire. La misión evaluó los datos y métodos disponibles para vincular las cuentas de emisiones con la tabla de insumo-producto de 2007 [@rivas2026, párr. 1].
+
+**Logros.**
+
+- Las cuentas de energía de 2019 a 2022 y las de emisiones al aire de 2019 a 2021 se difundieron el 13 de octubre de 2026, y el INEI se comprometió a mantenerlas y a preparar las ediciones siguientes [@rivas2026, párr. 4].
+- Se revisaron los avances desde octubre de 2025: ajustes metodológicos, cobertura y metadatos publicados, reporte anual y arreglos de producción regular [@rivas2026, párr. 5].
+- Se presentaron los conceptos de emisiones basadas en la producción y en el consumo, incluidas las emisiones directas de los hogares, las emisiones incorporadas en la demanda final y el tratamiento de importaciones y exportaciones [@rivas2026, párr. 6].
+- Se realizó un ejercicio de trabajo con datos de Perú que cubrió la construcción del modelo de insumo-producto, las intensidades y multiplicadores de emisiones, la atribución de emisiones a la demanda final y las verificaciones de validación. Se introdujo además el concepto de tablas de insumo-producto rectangulares, que aprovechan los cuadros de oferta y utilización que el INEI publica con regularidad [@rivas2026, párr. 6].
+- Se discutieron las decisiones metodológicas y sus limitaciones: el supuesto de tecnología doméstica, el posible uso de información multirregional, los efectos de la agregación, la consistencia de las series, los metadatos, el aseguramiento de la calidad y la política de revisiones [@rivas2026, párr. 7].
+- Se acordó con el INEI un plan de acción con responsables y calendario [@rivas2026, párr. 8].
+
+**Recomendaciones.** Las prioridades acordadas fueron las siguientes [@rivas2026, cuadro 1]:
+
+| Fecha meta | Recomendación prioritaria | Instituciones responsables |
+|:-------------|:--------------------------------|:------------------|
+| Febrero de 2027 | Actualizar las cuentas de energía y de emisiones con los nuevos datos del inventario de emisiones y del balance de energía, y el documento metodológico | INEI, MINAM y MINEM |
+| Marzo de 2027 | Compilar la huella de carbono de 2019 a 2022 | INEI |
+| Diciembre de 2027 | Aplicar el supuesto de tecnología doméstica para incluir las importaciones en el modelo de insumo-producto | INEI |
+
+: Prioridades de la misión de octubre de 2026 {#tbl-prioridades-2026}
+
+La misión hizo además tres recomendaciones [@rivas2026]. La primera es agregar a las publicaciones de ambas cuentas una nota sobre el tratamiento de la biomasa: la cuenta de energía la incluye en el uso total de energía, y la de emisiones la presenta como partida informativa, según las directrices de los inventarios. La segunda es desarrollar una rutina automatizada que convierta los cuadros de oferta y utilización más recientes en tablas de insumo-producto rectangulares, para adaptar la metodología a ese modelo. La tercera es profundizar en el tratamiento de la residencia en la metodología de huella, para asegurar la consistencia entre productos; como la tabla de 2007 se basó en cuentas nacionales, es probable que ya aplicara el principio de residencia.
+
 ## Disponibilidad de datos
 
-El @tbl-datos resume el estado de las fuentes según las dos misiones.
+El @tbl-datos resume el estado de las fuentes según las misiones.
 
 | Insumo | Institución y estado | Observación |
 |:-----------------|:--------------------------|:--------------------------|
-| Cuadros de oferta y utilización | INEI; anuales de 2007 a 2021, 101 industrias y 365 productos, base 2007; cambio a la base 2019 en curso [@stanger2024] | El proyecto dispone de los cuadros de 2019 a precios corrientes, con 365 productos y 101 industrias |
-| Inventario nacional de gases de efecto invernadero | MINAM; último año publicado 2019 | Difundido por INFOCARBONO; se usó una correspondencia uno a uno con las industrias para la mayoría de las clases [@rivas2025] |
-| Balance nacional de energía | Ministerio de Energía y Minas (MINEM); último año 2021, con series desde 1965 | El consumo se presenta para siete industrias y siete grupos de productos; solo se publica en PDF, sin base de datos descargable [@stanger2024] |
+| Cuadros de oferta y utilización | INEI; anuales de 2007 a 2021, 101 industrias y 365 productos, base 2007; cambio a la base 2019 en curso [@stanger2024] | El proyecto dispone de los cuadros de 2019 a precios corrientes, con 365 productos y 101 industrias. El ejercicio de octubre de 2026 usó la tabla de insumo-producto de 2007 [@rivas2026] |
+| Inventario nacional de gases de efecto invernadero | MINAM; último año publicado 2019 al momento de la misión de febrero de 2025 | Difundido por INFOCARBONO; se usó una correspondencia uno a uno con las industrias para la mayoría de las clases [@rivas2025]. Su actualización es insumo de la meta de febrero de 2027 [@rivas2026] |
+| Balance nacional de energía | Ministerio de Energía y Minas (MINEM); último año 2021 en 2023, con series desde 1965 | El consumo se presenta para siete industrias y siete grupos de productos; solo se publicaba en PDF, sin base de datos descargable [@stanger2024]. Las cuentas de energía usan los balances de 2020 a 2022 [@rivas2025] |
 | Datos agropecuarios | Ministerio de Desarrollo Agrario y Riego (MIDAGRI) | Insumo de las emisiones agropecuarias y de cambio de uso de suelo [@stanger2024] |
-| Cuentas físicas de energía y de emisiones 2019 | INEI; versión experimental con ajustes por residencia | Meta de publicación: abril de 2025 [@rivas2025] |
-| Fuentes para ajustes por residencia | Estadísticas de transporte, balanza de pagos, comercio exterior, turismo y Autoridad Portuaria | La misión recomendó solicitar oficialmente los datos de transporte marítimo [@rivas2025] |
+| Cuentas de flujos físicos de energía | INEI; serie 2019 a 2022, difundida el 13 de octubre de 2026 [@rivas2026; @inei2026energia] | Fuentes: balance nacional de energía del MINEM, cuadros de oferta y utilización del INEI, datos de la OCDE sobre transporte aéreo y registros de la Autoridad Portuaria Nacional sobre transporte marítimo [@inei2026energia]. La edición experimental de 2019 se difundió el 11 de julio de 2025 [@rivas2026]. Ver la [sección de insumos de energía y emisiones de la nota sobre huellas](../contexto-huella-de-carbono-peru/index.qmd#insumos-de-energía-y-emisiones-disponibles-en-perú) |
+| Cuentas de emisiones al aire | INEI; serie 2019 a 2021, difundida el 13 de octubre de 2026, con ajustes por residencia [@rivas2026; @inei2026emisiones] | Se basa en el inventario nacional 2000 a 2021 del MINAM, en toneladas de CO2 equivalente, e incluye a los hogares por separado [@inei2026emisiones]. Es la fuente de las emisiones directas de la huella de carbono |
+| Fuentes para ajustes por residencia | Estadísticas de transporte, balanza de pagos, comercio exterior, turismo y Autoridad Portuaria | La misión de febrero de 2025 recomendó solicitar oficialmente los datos de transporte marítimo [@rivas2025]; la cuenta de energía de 2026 declara el uso de los registros de la Autoridad Portuaria Nacional [@inei2026energia] |
 | Encuesta de hogares | INEI (ENAHO) | Necesaria para huellas por hogar o decil [@malerba2024] |
 | Base multirregional | Externa (ver el [cuadro de bases multirregionales](../contexto-huella-de-carbono-peru/index.qmd#tbl-bases)) | Para las emisiones incorporadas en las importaciones |
 
 : Fuentes de datos para una huella de carbono en Perú {#tbl-datos}
 
-Las fuentes de energía y de emisiones están muy agregadas para el detalle por actividad que exige la cuenta; los datos de las cuentas nacionales y la información auxiliar permiten desagregarlas [@rivas2025, párr. 5 y 25]. Los ajustes por residencia revisados en la misión de 2025 cubren el transporte acuático, aéreo y por carretera, las embarcaciones pesqueras, el turismo (no residentes en el territorio y residentes en el exterior) y el transporte por ductos [@rivas2025, párr. 32]. La pandemia afectó la disponibilidad y oportunidad de las fuentes [@rivas2025, párr. 1].
+Las fuentes de energía y de emisiones estaban muy agregadas para el detalle por actividad que exige la cuenta; los datos de las cuentas nacionales y la información auxiliar permiten desagregarlas [@rivas2025, párr. 5 y 25]. Los ajustes por residencia revisados en la misión de 2025 cubren el transporte acuático, aéreo y por carretera, las embarcaciones pesqueras, el turismo (no residentes en el territorio y residentes en el exterior) y el transporte por ductos [@rivas2025, párr. 32]. La pandemia afectó la disponibilidad y oportunidad de las fuentes [@rivas2025, párr. 1].
 
 ## Secuencia de compilación sugerida
 
-La secuencia sigue el orden de las presentaciones 02 a 04 de este proyecto, que desarrollan el álgebra de insumo-producto, y las recomendaciones de las misiones:
+La secuencia sigue el orden de las presentaciones 02 a 04 de este proyecto, que desarrollan el álgebra de insumo-producto, y las prioridades de la misión de octubre de 2026:
 
-1.  Completar y validar las cuentas de emisiones de 2019, con la clasificación alineada a las 101 industrias de los cuadros.
-2.  Preparar los cuadros de oferta y utilización de 2019: márgenes de comercio y transporte, importaciones competitivas e impuestos, e importaciones no competitivas. Verificar los balances de productos y de industrias antes de continuar.
+1.  Actualizar las cuentas de energía y de emisiones con el nuevo inventario y el balance de energía, y completar su documento metodológico (meta: febrero de 2027), con la clasificación alineada a las 101 industrias de los cuadros.
+2.  Preparar los cuadros de oferta y utilización de cada año (hay archivos hasta 2024; ver la [rutina propuesta](#rutina-rectangular)): márgenes de comercio y transporte, importaciones competitivas e impuestos, e importaciones no competitivas. Verificar los balances de productos y de industrias antes de continuar.
 3.  Calcular los coeficientes de emisión y la matriz de requerimientos totales.
-4.  Decidir el tratamiento de las importaciones (ver el [cuadro de bases multirregionales](../contexto-huella-de-carbono-peru/index.qmd#tbl-bases)).
-5.  Calcular la huella por categoría de demanda final y por producto, y conciliarla con la cuenta de emisiones de producción mediante las partidas puente.
+4.  Calcular la huella de 2019 a 2022 por categoría de demanda final y por producto, y conciliarla con la cuenta de emisiones de producción mediante las partidas puente (meta: marzo de 2027).
+5.  Incluir las importaciones con el supuesto de tecnología doméstica (meta: diciembre de 2027) y contrastar el resultado con una base multirregional (ver el [cuadro de bases multirregionales](../contexto-huella-de-carbono-peru/index.qmd#tbl-bases)).
 6.  Documentar los metadatos y fijar el calendario de revisiones.
+
+### Rutina para obtener tablas rectangulares {#rutina-rectangular}
+
+El ejercicio de huella del proyecto usa la tabla de insumo-producto de 2007 porque era la única disponible como matriz. El INEI dispone de los cuadros de oferta y utilización hasta 2024, con 365 productos y 101 actividades, repartidos en dos archivos por año. Una revisión de los archivos de 2024 indica que es posible diseñar una rutina en R que los convierta en las matrices rectangulares de la [presentación 04](../../../slides/04-matrices-rectangulares/index.qmd) ($\mathbf{U}$, $\mathbf{V}$, $\mathbf{f}$, $\mathbf{B}$, $\mathbf{D}$ y $\mathbf{T}$) y que reemplace la estructura de 2007 por la del año de las emisiones. La rutina no está implementada.
+
+| Archivo (uno por año) | Hoja | Contenido y rango |
+|:----------------------|:-----|:---------------------------------------|
+| `matrizprod<año>_corrientes_365_prod_x_101_activ.xlsx` | `MPro` | Matriz de producción a precios básicos: 365 productos en filas (`A8:C372`, con código y nombre) y 101 actividades en columnas (`D6:CZ6` con el código; datos `D8:CZ372`) |
+| `PER_<año>_ corr.xlsx` (el nombre trae un espacio) | `Tip` | Oferta por producto (`D11:L375`: producción, importaciones, derechos de importación, márgenes de transporte y de comercio, impuestos, subsidios e IVA no deducible); utilización intermedia a precios de comprador (`O11:DK375`); demanda final en siete categorías (`DO11:DU375`); valor agregado y empleo por actividad (filas 377 a 412) |
+
+: Archivos de entrada de la rutina {#tbl-archivos-cou}
+
+En 2024, los dos archivos cuadran entre sí y consigo mismos: la producción por producto de la hoja `Tip` es igual a la suma de las filas de `MPro`; la oferta total de cada producto es igual a su utilización intermedia más su demanda final; y, para cada actividad, los insumos más el valor agregado son iguales a la producción bruta. Los códigos de las 101 actividades son los mismos de la matriz de 2007, de modo que la correspondencia a ocho sectores de `datos/ejemplos/correspondencia.xlsx` sigue valiendo. Las siete categorías de demanda final son las mismas del ejercicio actual.
+
+Con una prueba preliminar en memoria, los tres pasos de la presentación 04 funcionan con estos datos:
+
+1.  **Márgenes.** La oferta trae los márgenes de comercio y de transporte por producto, con signo negativo en los dos productos que los prestan (el servicio de comercialización y el transporte terrestre de carga). Se restan de cada fila de la utilización y de la demanda final, y se suman a esas dos filas.
+2.  **Importaciones e impuestos.** Con las importaciones y con los derechos, impuestos, subsidios e IVA no deducible, se calculan las fracciones $r_i$ y $s_i$ y se obtienen $\mathbf{U}$ y $\mathbf{f}$ nacionales a precios básicos. Las celdas resultantes no son negativas y $r_i + s_i$ no supera 1.
+3.  **Matrices del modelo.** Con $\mathbf{V}$ de la hoja `MPro`, $\mathbf{B}$, $\mathbf{D}$ y $\mathbf{T}$ se calculan sin problemas: las columnas de $\mathbf{D}$ suman 1, el radio espectral de $\mathbf{D}\mathbf{B}$ es menor que 1 y $\mathbf{T}\mathbf{f}$ reproduce la producción por actividad.
+
+Tras los ajustes, la oferta nacional de cada producto es igual a su utilización nacional más su demanda final. Es la verificación que debe correr la rutina para cada año, junto con las demás de la presentación 04, y detener el proceso si alguna falla.
+
+Hay una ventaja adicional frente a la tabla de 2007. Las emisiones de la cuenta del INEI vienen por actividad económica, que es la dimensión de las columnas de $\mathbf{T}$, y los cuadros están a precios corrientes del mismo año que las emisiones. Desaparece así la inconsistencia de dividir emisiones de 2019 a 2021 entre un producto de 2007.
+
+Decisiones que hay que tomar y documentar en la nota metodológica:
+
+- **Identificación de las filas de márgenes.** Las dos filas de servicios que reciben los márgenes deben ubicarse por su código y no por su posición.
+- **Impuestos.** Se propone agrupar en $s_i$ los derechos de importación, los impuestos a los productos, los subsidios (negativos) y el IVA no deducible. El IVA no deducible pesa más que los demás componentes, así que conviene decidirlo con el equipo de cuentas nacionales.
+- **Importaciones.** Se valoran a precios CIF, y se supone la misma fracción importada para todas las industrias y categorías de demanda final, incluidas las exportaciones y la variación de existencias. En 2024, tres productos tienen importaciones y ninguna producción nacional (importaciones no competitivas), y uno no tiene oferta; hay que fijar su tratamiento, que según la presentación 04 consiste en una industria adicional sin insumos.
+- **Cierre del modelo para la huella.** Con la matriz nacional, las importaciones se valoran con tecnología nacional, como en el ejercicio actual. La matriz de importaciones por uso es $\widehat{\mathbf{r}}\widetilde{\mathbf{U}}$, que sirve para calcular las emisiones incorporadas en las importaciones.
+- **Hogares y existencias.** Las emisiones directas de los hogares se reparten entre las dos categorías de consumo como en el ejercicio actual. La variación de existencias es negativa en 2024, y hay que comprobar su efecto en cada año.
+- **Cambio de base y clasificación.** Antes de procesar un año nuevo, la rutina debe comprobar que los códigos de productos y de actividades coinciden con los del año anterior, y fallar si no es así. Esto es relevante con el cambio a la base 2019.
+- **Años.** Las cuentas de emisiones cubren 2019 a 2021 (la de energía, hasta 2022), así que la rutina debe aceptar el año como parámetro, aplicarse a esos años y guardar las matrices de cada año con sus metadatos.
+
+**¿Matriz cuadrada?** Es posible, y sale de la rectangular sin esfuerzo adicional. Con la hipótesis de estructura fija de ventas del producto (modelo D de Eurostat, la misma que usa IMF-MARIO), $\mathbf{D}\mathbf{B}$ es la matriz de coeficientes de industria por industria, $(\mathbf{I} - \mathbf{D}\mathbf{B})^{-1}$ su inversa de Leontief y $\mathbf{D}\mathbf{f}$ la demanda final por industria. Los resultados de huella son los mismos que con $\mathbf{T}$. Para una matriz de producto por producto de 365 por 365 se necesita en cambio una hipótesis de tecnología (por producto o por industria) que implica decisiones sobre la producción secundaria, y algunas hipótesis pueden generar coeficientes negativos. Se recomienda que la rutina entregue la rectangular como producto principal y la cuadrada de industria por industria como derivada, para comparar con la tabla de 2007 y con IMF-MARIO.
 
 ## Problemas específicos y decisiones
 
-Además de los [problemas generales de compilación](../contexto-huella-de-carbono-peru/index.qmd#tbl-problemas-gen), las misiones señalan tres aspectos propios de la situación peruana. El primero es la agregación de las fuentes: el balance de energía y el inventario tienen menos detalle que las cuentas nacionales [@rivas2025]. El segundo es la coordinación entre agencias: los datos ambientales están dispersos, en formatos distintos y sin un protocolo formal de intercambio, por lo que se propone un centro único de datos a cargo del INEI o del MINAM [@stanger2024; @rivas2025]. El tercero es la oportunidad: el inventario más reciente corresponde a 2019 y el balance de energía a 2021, de modo que las fuentes no coinciden en el año.
+Además de los [problemas generales de compilación](../contexto-huella-de-carbono-peru/index.qmd#tbl-problemas-gen), las misiones señalan cuatro aspectos propios de la situación peruana. El primero es la agregación de las fuentes: el balance de energía y el inventario tienen menos detalle que las cuentas nacionales [@rivas2025]. El segundo es la coordinación entre agencias: los datos ambientales están dispersos, en formatos distintos y sin un protocolo formal de intercambio, por lo que se propone un centro único de datos a cargo del INEI o del MINAM [@stanger2024; @rivas2025]. El tercero es la oportunidad: según el informe de febrero de 2025, el inventario más reciente correspondía a 2019 y el balance de energía a 2021, de modo que las fuentes no coincidían en el año. El cuarto es la consistencia entre las dos cuentas en el tratamiento de la biomasa, que requiere una nota explicativa en ambas publicaciones [@rivas2026].
 
-Las [consideraciones de diseño](../contexto-huella-de-carbono-peru/index.qmd#consideraciones-de-diseño) de la nota sobre huellas de carbono se concretan para Perú en cuatro puntos que conviene acordar con el INEI y el MINAM: el alcance de gases y el tratamiento del cambio de uso de suelo; el tratamiento de las importaciones, con una comparación frente a la referencia de la OCDE, que incluye a Perú como economía individual; el año 2019 como punto de partida, con un calendario para extender la serie; y el reparto de funciones entre ambas instituciones, con un protocolo de intercambio de datos en el marco del comité interinstitucional de estadísticas y cuentas ambientales y económicas.
+Las [consideraciones de diseño](../contexto-huella-de-carbono-peru/index.qmd#consideraciones-de-diseño) de la nota sobre huellas de carbono se concretan para Perú en cuatro puntos que conviene acordar con el INEI y el MINAM: el alcance de gases y el tratamiento del cambio de uso de suelo; el tratamiento de las importaciones, con una comparación frente a la referencia de la OCDE, que incluye a Perú como economía individual; la serie de 2019 a 2022 como punto de partida, con un calendario para actualizarla; y el reparto de funciones entre ambas instituciones, con un protocolo de intercambio de datos en el marco del comité interinstitucional de estadísticas y cuentas ambientales y económicas.
 
 ## Referencias {.unnumbered}
 

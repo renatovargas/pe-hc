@@ -1,6 +1,6 @@
 ---
 title: "Insumo-producto y huella de carbono con datos de Perú"
-description: "Dos ejercicios con la matriz de 101 productos de 2007: intensidades de empleo y huella de carbono de 8 sectores, con ajuste por importaciones y exportaciones"
+description: "Procesamiento de datos para la huella de carbono de Perú, 2019 a 2021: matriz de 8 sectores, ajuste por importaciones y exportaciones, y balance de emisiones"
 author: "Renato Vargas"
 date: "2026-10-16"
 lang: es
@@ -29,21 +29,18 @@ execute:
 
 # Introducción
 
-Este documento desarrolla en R dos ejercicios con la matriz de insumo-producto de Perú a precios corrientes de 2007, de 101 productos por 101 productos. Seguimos la notación de las presentaciones anteriores [@millerblair2022]: $\mathbf{Z}$ es la matriz de flujos intermedios, $\mathbf{f}$ el vector de demanda final, $\mathbf{x}$ el producto total, $\mathbf{A}$ la matriz de coeficientes técnicos y $\mathbf{L}$ la matriz de Leontief.
+Este documento desarrolla en R el procesamiento de datos para calcular la huella de carbono de Perú de 2019 a 2021. Combina dos fuentes: la matriz de insumo-producto de Perú a precios corrientes de 2007, de 101 por 101, agregada a ocho sectores, y la cuenta experimental de emisiones al aire del Instituto Nacional de Estadística e Informática (INEI) para 2019 a 2021 [@inei2026emisiones]. Con ellas se calculan las intensidades de emisión, la matriz de Leontief nacional y la huella de consumo de cada año, con ajuste por importaciones y exportaciones.
 
-Los dos ejercicios comparten la misma lógica y se distinguen por su tamaño y su variable ambiental:
-
-1. **Ejercicio grande (101 x 101).** Usa un vector de intensidades de **empleo**. Sirve para ver el método completo con el detalle de la matriz original.
-2. **Ejercicio pequeño (8 x 8).** Agrega la matriz a ocho sectores y usa las **emisiones de CO2** de la cuenta de emisiones al aire de 2019 a 2021 para calcular la huella de carbono de los tres años, con ajuste por importaciones y exportaciones.
+Seguimos la notación de las presentaciones del proyecto [@millerblair2022]: $\mathbf{Z}$ es la matriz de flujos intermedios, $\mathbf{f}$ el vector de demanda final, $\mathbf{x}$ el producto total, $\mathbf{A}$ la matriz de coeficientes técnicos y $\mathbf{L}$ la matriz de Leontief. El mismo método aplicado a la matriz completa de 101 actividades, con una variable de empleo, se desarrolla en el documento [Modelo de insumo-producto de Perú de 101 actividades](../insumo-producto-peru-101/index.qmd). Cada documento se puede leer sin el otro.
 
 ::: {.callout-note}
-## Empleo y emisiones comparten la misma lógica
+## Información relacionada: la cuenta de energía
 
-En el ejercicio grande, el vector de intensidades $\boldsymbol{\varepsilon}$ mide **puestos de trabajo por millón de soles de producto**, y no emisiones. El procedimiento es idéntico al de la huella de carbono: se divide una variable ambiental (o social) directa entre el producto y se propaga con $\mathbf{L}$. Si reemplazamos el empleo por las emisiones, obtenemos el ejercicio pequeño.
+El INEI publica también la cuenta de flujos físicos de energía para 2019 a 2022 [@inei2026energia]. Este ejercicio no la usa, porque la huella se calcula con las emisiones directas de la cuenta de emisiones. Ambas cuentas comparten la estructura de los cuadros de oferta y utilización, de modo que la cuenta de energía permite complementar el estudio con el mismo método: una huella de energía por categoría de demanda final, o la verificación de las emisiones de combustión de cada sector con su consumo de energía. La serie de energía llega a 2022, un año más que la de emisiones.
 :::
 
 ::: {.callout-warning}
-## Una limitación del ejercicio pequeño
+## Una limitación del ejercicio
 
 La estructura productiva es la de 2007, y las emisiones son las de 2019 a 2021. Las intensidades de cada año resultan de dividir las emisiones de ese año entre el producto de 2007, que está en soles de 2007. La tecnología y la composición de la demanda final se mantienen fijas, y lo que cambia entre años es el nivel de emisiones y su reparto. Es un ejercicio didáctico, y los resultados no son una estimación oficial. Con los cuadros de oferta y utilización de 2019 se podrá reemplazar la estructura de 2007.
 :::
@@ -104,11 +101,11 @@ tabla_gt <- function(x, digitos = 0) {
 }
 ```
 
-# Ejercicio grande: 101 x 101 con intensidades de empleo
+# Lectura de la matriz de 101 x 101
 
-## Lectura de los datos
+## Flujos intermedios y demanda final
 
-La hoja de la matriz tiene los 101 productos en filas y columnas, la demanda final por categoría a la derecha y, debajo de la matriz, filas con el empleo y otros coeficientes. Como vamos a leer varios rangos, definimos una función corta que devuelve una matriz sin nombres, y fijamos el archivo y la hoja. Las rutas son relativas a la raíz del proyecto.
+La hoja de la matriz tiene las 101 actividades en filas y columnas, la demanda final por categoría a la derecha y, debajo de la matriz, filas con otros coeficientes. Como vamos a leer varios rangos, definimos una función corta que devuelve una matriz sin nombres, y fijamos el archivo y la hoja. Las rutas son relativas a la raíz del proyecto.
 
 ```{r}
 #| label: lectura-funcion
@@ -129,7 +126,7 @@ leer_rango <- function(rango, hoja_excel = hoja) {
 }
 ```
 
-Los nombres de los 101 productos están en el encabezado de la pestaña `Empleo`. Con ellos rotulamos filas y columnas de $\mathbf{Z}$ y las filas de la demanda final.
+Los nombres de las 101 actividades están en el encabezado de la pestaña `Empleo`. Con ellos rotulamos filas y columnas de $\mathbf{Z}$ y las filas de la demanda final.
 
 ```{r}
 #| label: lectura-sectores
@@ -139,7 +136,7 @@ length(sectores)
 head(sectores, 3)
 ```
 
-La matriz de flujos $\mathbf{Z}$ es de 101 x 101. La demanda final viene desagregada en siete categorías (`FDEM`), con los mismos productos en las filas.
+La matriz de flujos $\mathbf{Z}$ es de 101 x 101. La demanda final viene desagregada en siete categorías (`FDEM`), con las mismas actividades en las filas.
 
 ```{r}
 #| label: lectura-Z-FDEM
@@ -158,24 +155,7 @@ dim(FDEM)
 categorias
 ```
 
-El empleo directo de cada producto está en la fila 154 de la hoja: asalariados más empresarios individuales, sin ayudantes familiares. Lo comprobamos sumando las dos filas que lo componen.
-
-```{r}
-#| label: lectura-empleo
-
-empleo <- c(leer_rango("N154:DJ154"))
-names(empleo) <- sectores
-
-# Asalariados de la propia empresa (fila 145) más empresarios individuales (150)
-isTRUE(all.equal(
-  unname(empleo),
-  c(leer_rango("N145:DJ145")) + c(leer_rango("N150:DJ150"))
-))
-```
-
-## El modelo básico
-
-La demanda final total $\mathbf{f}$ es la suma de las categorías de cada producto. El producto total $\mathbf{x}$ es lo que se vende a otros sectores más la demanda final.
+La demanda final total $\mathbf{f}$ es la suma de las categorías de cada actividad. El producto total $\mathbf{x}$ es lo que se vende a otros sectores más la demanda final.
 
 ```{r}
 #| label: modelo-f-x
@@ -184,160 +164,11 @@ f <- rowSums(FDEM)
 x <- rowSums(Z) + f
 ```
 
-Con $\mathbf{x}$ calculamos los coeficientes técnicos $\mathbf{A} = \mathbf{Z}\hat{\mathbf{x}}^{-1}$ y la matriz de Leontief $\mathbf{L} = (\mathbf{I} - \mathbf{A})^{-1}$. El producto matricial descarta los nombres de filas y columnas, así que los reasignamos.
-
-```{r}
-#| label: modelo-A-L
-
-A <- Z %*% solve(diag(x))
-L <- solve(diag(nrow(A)) - A)
-dimnames(A) <- dimnames(L) <- list(sectores, sectores)
-```
-
-Una comprobación básica: $\mathbf{L}\mathbf{f}$ debe devolver el producto total.
-
-```{r}
-#| label: modelo-comprobacion
-
-isTRUE(all.equal(c(L %*% f), x, check.attributes = FALSE))
-```
-
-## Intensidades de empleo
-
-La intensidad $\varepsilon_i$ es el empleo directo por unidad de producto del sector $i$. Como son puestos por millón de soles de 2007, las cifras son del orden de decenas o cientos. La hoja de Excel trae el mismo cálculo en la fila 160, que usamos para contrastar.
-
-```{r}
-#| label: intensidades-empleo
-
-epsilon <- empleo / x
-
-# Contraste con el "Coeficiente de empleo" de la hoja (fila 160)
-isTRUE(all.equal(
-  unname(epsilon),
-  c(leer_rango("N160:DJ160"))
-))
-
-tabla_gt(head(cbind(Intensidad = epsilon)), digitos = 1)
-```
-
-::: {.callout-note}
-## El denominador de la intensidad
-
-El producto total $\mathbf{x}$ de esta hoja suma la producción nacional y las importaciones (lo verificamos en la segunda parte). Como el empleo es el de la producción nacional, estas intensidades quedan algo por debajo de los puestos por unidad de producción nacional en los productos con muchas importaciones. Mantenemos la convención de la hoja para que los resultados coincidan con el Excel. En el ejercicio pequeño, donde la distinción importa, sí dividimos entre la producción nacional.
-:::
-
-## Empleo a partir de la demanda final
-
-Si multiplicamos las intensidades por el producto que se necesita para satisfacer la demanda final, recuperamos el empleo directo de cada sector: $\mathbf{e} = \hat{\boldsymbol{\varepsilon}}\mathbf{L}\mathbf{f}$.
-
-```{r}
-#| label: empleo-e
-
-e <- diag(epsilon) %*% L %*% f
-rownames(e) <- sectores
-colnames(e) <- "Empleo"
-
-isTRUE(all.equal(c(e), unname(empleo)))
-```
-
-## Multiplicadores
-
-El multiplicador de producto de cada sector es la suma de su columna de $\mathbf{L}$. Indica cuánto producto total se genera por cada unidad de demanda final de ese producto.
-
-```{r}
-#| label: multiplicadores-producto
-
-i <- rep(1, nrow(L))
-mp <- c(i %*% L)
-names(mp) <- sectores
-tabla_gt(head(cbind(Multiplicador = mp)), digitos = 2)
-```
-
-El multiplicador de empleo sigue la misma idea: $\mathbf{M}_e = \hat{\boldsymbol{\varepsilon}}\mathbf{L}$. Cada columna $j$ muestra el empleo que se genera en cada sector por una unidad de demanda final del producto $j$, y su suma es el multiplicador de empleo total de ese producto.
-
-```{r}
-#| label: multiplicadores-empleo
-
-Me <- diag(epsilon) %*% L
-dimnames(Me) <- list(sectores, sectores)
-
-# Multiplicador de empleo total por producto demandado
-mult_empleo <- colSums(Me)
-tabla_gt(head(cbind(`Multiplicador de empleo` = mult_empleo)), digitos = 1)
-```
-
-## Empleo total según el producto demandado
-
-Al multiplicar $\mathbf{M}_e$ por la demanda final de cada producto, repartimos el empleo total entre los productos que lo originan. La suma de todo el vector es el empleo total del cuadro.
-
-```{r}
-#| label: huella-producto
-
-huella_producto <- c(epsilon %*% L %*% diag(f))
-names(huella_producto) <- sectores
-
-sum(huella_producto)
-sum(empleo)
-```
-
-## Empleo diferenciado por categoría de demanda final
-
-Como el modelo es lineal, podemos reemplazar el vector $\mathbf{f}$ por la matriz completa `FDEM`. Cada columna del resultado es el vector $\mathbf{e}$ de una categoría de demanda final (hogares, gobierno, inversión, exportaciones, etc.). El resultado tiene los sectores en las filas (101) y las categorías en las columnas (7).
-
-```{r}
-#| label: empleo-categorias
-
-e_categoria <- diag(epsilon) %*% L %*% FDEM
-dimnames(e_categoria) <- list(sectores, categorias)
-
-# La suma de las categorías reproduce el vector e
-isTRUE(all.equal(rowSums(e_categoria), c(e), check.attributes = FALSE))
-```
-
-Finalmente, el empleo total por categoría y su participación en el total.
-
-```{r}
-#| label: empleo-categorias-totales
-
-tibble(
-  Categoría = categorias,
-  Empleo = colSums(e_categoria),
-  `Participación (%)` = round(100 * Empleo / sum(Empleo), 1)
-) |>
-  gt() |>
-  fmt_number(columns = Empleo, decimals = 0, use_seps = TRUE) |>
-  fmt_number(columns = `Participación (%)`, decimals = 1)
-```
-
-Guardamos los resultados que vamos a exportar, porque en el ejercicio pequeño reutilizaremos los nombres $\mathbf{Z}$, $\mathbf{f}$ y $\mathbf{x}$.
-
-```{r}
-#| label: guardar-101
-
-res_101 <- list(
-  "101_Z" = Z,
-  "101_FDEM" = FDEM,
-  "101_f_x" = data.frame(f = f, x = x),
-  "101_A" = A,
-  "101_L" = L,
-  "101_empleo_intensidad" = data.frame(
-    empleo = empleo,
-    x = x,
-    epsilon = epsilon,
-    mult_producto = mp,
-    mult_empleo = mult_empleo,
-    empleo_por_producto_dem = huella_producto
-  ),
-  "101_Me" = Me,
-  "101_empleo_categoria" = e_categoria
-)
-```
-
-# Ejercicio pequeño: 8 x 8 y huella de carbono 2019 a 2021
+# Huella de carbono con ocho sectores, 2019 a 2021
 
 ## Qué hacemos con las importaciones y las exportaciones
 
-Hasta aquí, la demanda final incluye las exportaciones, así que el modelo asigna las emisiones de la producción nacional a todos los destinos, incluido el exterior. Eso responde a una pregunta (¿qué emisiones se producen en el territorio y para quién?), pero la huella de carbono de un país pregunta algo distinto: ¿qué emisiones provoca la demanda interna, produzcan donde produzcan? El manual de cuentas de emisiones al aire de Eurostat lo resume así: las emisiones incorporadas en las importaciones se incluyen, y las incorporadas en las exportaciones se excluyen [@eurostat2015, cap. 8]. En términos de una identidad:
+La demanda final de la matriz incluye las exportaciones, así que un modelo de insumo-producto básico asigna las emisiones de la producción nacional a todos los destinos, incluido el exterior. Eso responde a una pregunta (¿qué emisiones se producen en el territorio y para quién?), pero la huella de carbono de un país pregunta algo distinto: ¿qué emisiones provoca la demanda interna, produzcan donde produzcan? El manual de cuentas de emisiones al aire de Eurostat lo resume así: las emisiones incorporadas en las importaciones se incluyen, y las incorporadas en las exportaciones se excluyen [@eurostat2015, cap. 8]. En términos de una identidad:
 
 $$\text{Huella de consumo} = \text{Emisiones territoriales} - \text{EEE} + \text{EEI}$$
 
@@ -396,14 +227,17 @@ isTRUE(all.equal(
   unname(m)
 ))
 
-res_101[["101_importaciones"]] <- data.frame(
+importaciones_101 <- data.frame(
   produccion = produccion, m = m, ex = ex, x = x, s = s
 )
+
+# Totales de la matriz de 101, para verificar la agregación
+totales_101 <- c(Z = sum(Z), FDEM = sum(FDEM), m = sum(m))
 ```
 
 ## Agregación de la matriz
 
-La cuenta de emisiones al aire reporta ocho categorías, así que agregamos los 101 productos a esos mismos ocho sectores. La tabla de correspondencia asigna cada producto a un sector agregado (`new_name`). Antes de usarla, verificamos que sus códigos coincidan uno a uno con los de nuestros 101 productos.
+La cuenta de emisiones al aire reporta nueve categorías de actividades económicas, que se agrupan en ocho sectores (la manufactura incluye las industrias no especificadas), así que agregamos los 101 productos a esos mismos ocho sectores. La tabla de correspondencia asigna cada producto a un sector agregado (`new_name`). Antes de usarla, verificamos que sus códigos coincidan uno a uno con los de nuestros 101 productos.
 
 ```{r}
 #| label: correspondencia
@@ -455,9 +289,9 @@ Comprobamos que la agregación conserva los totales y que las partes nacional e 
 #| label: agregacion-totales
 
 c(
-  Z = isTRUE(all.equal(sum(Z), sum(res_101[["101_Z"]]))),
-  FDEM = isTRUE(all.equal(sum(FDEM), sum(res_101[["101_FDEM"]]))),
-  m = isTRUE(all.equal(sum(m), sum(res_101[["101_importaciones"]]$m))),
+  Z = isTRUE(all.equal(sum(Z), totales_101[["Z"]])),
+  FDEM = isTRUE(all.equal(sum(FDEM), totales_101[["FDEM"]])),
+  m = isTRUE(all.equal(sum(m), totales_101[["m"]])),
   Z_partes = isTRUE(all.equal(Z, Zd + Zm)),
   FDEM_partes = isTRUE(all.equal(FDEM, FDEMd + FDEMm))
 )
@@ -501,20 +335,36 @@ cbind(
 
 ## Emisiones directas de 2019 a 2021
 
-El archivo de la cuenta de emisiones trae una fila por año y una columna por sector. La última columna no tiene encabezado en el archivo; por su posición corresponde a los servicios, el octavo sector, así que rotulamos todas las columnas con los nombres de $\mathbf{Z}$ después de verificar que los siete primeros coincidan.
+Las emisiones directas vienen del cuadro 4 de la cuenta experimental de emisiones al aire del INEI [@inei2026emisiones], en toneladas de CO2 equivalente (CO2, metano y óxido nitroso). La cuenta separa las industrias no especificadas de la manufactura y tiene una fila para los hogares. Para que las filas coincidan con los ocho sectores de $\mathbf{Z}$, sumamos las industrias no especificadas a la manufactura, dejamos los hogares aparte y verificamos que los nombres de los sectores coincidan con los de la matriz.
 
 ```{r}
 #| label: emisiones-lectura
 #| message: false
 
-emisiones <- read_excel("datos/per/PER_Cuenta_Emisiones_2019-2021.xlsx")
+cuenta <- read_excel(
+  "datos/per/PERU_CUENTA_EXPERIMENTAL_DE_EMISIONES_AL_AIRE_2019-2021.xlsx",
+  sheet = "aea_1",
+  range = "A9:D18",
+  col_names = c("actividad", "2019", "2020", "2021")
+)
 
-stopifnot(all(names(emisiones)[2:8] == sectores[1:7]))
-names(emisiones)[2:9] <- sectores
+# Etiquetas sin los números de nota al pie (1/, 2/)
+actividad <- trimws(sub("[0-9]/$", "", cuenta$actividad))
+valores <- as.matrix(cuenta[, -1])
+rownames(valores) <- actividad
 
-# Matriz de 8 sectores (filas) por 3 años (columnas)
-E <- t(as.matrix(emisiones[, -1]))
-colnames(E) <- emisiones$Año
+# Hogares aparte; industrias no especificadas dentro de la manufactura
+E_hogares <- valores["Hogares", ]
+E <- valores[actividad != "Hogares", ]
+E["Manufactura", ] <- E["Manufactura", ] + E["Industrias no especificadas", ]
+E <- E[rownames(E) != "Industrias no especificadas", ]
+
+# Los nombres de Z empiezan con el número del sector ("01_") y el del sector 5
+# está abreviado, así que se comparan los primeros 30 caracteres
+stopifnot(all(
+  substr(rownames(E), 1, 30) == substr(sub("^0[1-8]_", "", sectores), 1, 30)
+))
+rownames(E) <- sectores
 tabla_gt(E)
 ```
 
@@ -551,7 +401,10 @@ Para cada año calculamos tres cosas con la tecnología nacional:
 
 - las emisiones nacionales que provoca cada categoría de demanda final, $\boldsymbol{\varepsilon}'\mathbf{L}^d\mathbf{F}^d$ (parte **interna**);
 - las emisiones que habría si el país produjera lo que importa para cada categoría, $\boldsymbol{\varepsilon}'\mathbf{L}^d\mathbf{M}$ (parte **importada**, bajo DTA);
-- por producto, las emisiones incorporadas en las exportaciones y en las importaciones de uso interno.
+- por producto, las emisiones incorporadas en las exportaciones y en las importaciones de uso interno;
+- las emisiones **directas de los hogares** (combustible del transporte privado, cocina y otros usos), que la cuenta registra por separado y que no pasan por la matriz de Leontief. Pertenecen a la demanda final de los hogares, así que se suman a la huella de las dos categorías de consumo de los hogares (`CFHogaresAutoC` y `CFHogaresMercado`).
+
+La cuenta no indica a cuál de las dos categorías corresponden las emisiones directas. Las repartimos en proporción a la demanda final de cada una, un supuesto que se puede reemplazar si hay información de la encuesta de hogares. El total de los hogares no depende del reparto.
 
 Recorremos los tres años con `lapply()` y guardamos un resultado por año. El multiplicador de emisiones $\mathbf{M}_e = \hat{\boldsymbol{\varepsilon}}\mathbf{L}^d$ también se guarda.
 
@@ -576,11 +429,17 @@ resultados <- lapply(
     sector_categoria <- Me %*% FDEMd
     dimnames(sector_categoria) <- dimnames(FDEM)
 
+    # Emisiones directas de los hogares, repartidas según su demanda final
+    directo <- setNames(rep(0, ncol(FDEM)), colnames(FDEM))
+    hogares <- c("CFHogaresAutoC", "CFHogaresMercado")
+    directo[hogares] <- E_hogares[[anio]] * colSums(FDEM[, hogares]) / sum(FDEM[, hogares])
+
     list(
       Me = Me,
       mult_emisiones = colSums(Me),
       interno = interno,
       importado = importado,
+      directo = directo,
       sector_categoria = sector_categoria,
       EEE_producto = c(eps %*% Ld %*% diag(ex)),
       EEI_producto = c(eps %*% Ld %*% diag(m_uso))
@@ -589,7 +448,7 @@ resultados <- lapply(
 )
 ```
 
-Con estos resultados armamos el balance de cada año y verificamos la identidad: las emisiones nacionales que provoca toda la demanda final (interna y exportaciones) reproducen las emisiones territoriales, y la huella de consumo es igual a emisiones territoriales menos EEE más EEI.
+Con estos resultados armamos el balance de cada año y verificamos la identidad: las emisiones de las actividades que provoca toda la demanda final (interna y exportaciones) reproducen las emisiones territoriales de las actividades, y la huella de consumo es igual a las emisiones territoriales totales (actividades más hogares) menos EEE más EEI.
 
 ```{r}
 #| label: huella-balance
@@ -601,18 +460,21 @@ balance <- map_dfr(
     interna <- colnames(FDEM) != "Exportaciones"
     tibble(
       Año = anio,
-      Territorial = sum(E[, anio]),
+      Territorial = sum(E[, anio]) + E_hogares[[anio]],
       EEE = sum(r$EEE_producto),
       EEI = sum(r$EEI_producto),
-      Huella = sum(r$interno[interna] + r$importado[interna]),
+      Huella = sum(r$interno[interna] + r$importado[interna] + r$directo[interna]),
       Saldo = EEI - EEE,
       Diferencia = 100 * (Huella / Territorial - 1)
     )
   }
 )
 
-# Las emisiones nacionales de toda la demanda final reproducen las territoriales
+# Las emisiones de las actividades que provoca toda la demanda final reproducen las territoriales
 sapply(anios, function(anio) isTRUE(all.equal(sum(resultados[[anio]]$interno), sum(E[, anio]))))
+
+# Las emisiones directas repartidas suman las de los hogares
+sapply(anios, function(anio) isTRUE(all.equal(sum(resultados[[anio]]$directo), E_hogares[[anio]])))
 
 # La huella cumple la identidad
 isTRUE(all.equal(balance$Huella, balance$Territorial - balance$EEE + balance$EEI))
@@ -620,7 +482,7 @@ isTRUE(all.equal(balance$Huella, balance$Territorial - balance$EEE + balance$EEI
 
 ## Resultados
 
-El balance de cada año, en millones de las unidades de la cuenta de emisiones. La última columna compara la huella de consumo con las emisiones territoriales.
+El balance de cada año, en millones de toneladas de CO2 equivalente. La última columna compara la huella de consumo con las emisiones territoriales.
 
 ```{r}
 #| label: tbl-balance
@@ -633,7 +495,7 @@ balance |>
     Diferencia = "Dif. (%)"
   ) |>
   tab_source_note(
-    "Territorial: emisiones territoriales. EEE y EEI: emisiones incorporadas en exportaciones e importaciones. Dif. (%): huella frente a emisiones territoriales."
+    "Territorial: emisiones territoriales, incluidas las directas de los hogares. EEE y EEI: emisiones incorporadas en exportaciones e importaciones. Dif. (%): huella frente a emisiones territoriales."
   ) |>
   fmt_number(
     columns = c(Territorial, EEE, EEI, Huella, Saldo),
@@ -642,11 +504,11 @@ balance |>
   fmt_number(columns = Diferencia, decimals = 1)
 ```
 
-La huella de consumo por categoría de demanda final, separada en la parte producida en el país (interna) y la parte que corresponde a lo importado, valorada con tecnología nacional. Las exportaciones no forman parte de la huella de consumo.
+La huella de consumo por categoría de demanda final, separada en la parte producida en el país (interna), la parte que corresponde a lo importado, valorada con tecnología nacional, y las emisiones directas de los hogares. Las exportaciones no forman parte de la huella de consumo.
 
 ```{r}
 #| label: tbl-huella-categoria
-#| tbl-cap: "Huella de consumo por categoría de demanda final (millones de unidades de la cuenta de emisiones)"
+#| tbl-cap: "Huella de consumo por categoría de demanda final (millones de toneladas de CO2 equivalente)"
 
 huella_categoria <- do.call(
   cbind,
@@ -657,7 +519,8 @@ huella_categoria <- do.call(
       out <- cbind(
         Interno = r$interno,
         Importado = r$importado,
-        Total = r$interno + r$importado
+        Directo = r$directo,
+        Total = r$interno + r$importado + r$directo
       )
       colnames(out) <- paste(anio, colnames(out), sep = "_")
       out
@@ -675,7 +538,7 @@ rbind(
   fmt_number(decimals = 2, scale_by = 1e-6)
 ```
 
-Los multiplicadores de emisiones por producto demandado ($\mathbf{M}_e$, suma de columnas), calculados con la matriz nacional y en las unidades de la cuenta por millón de soles de 2007 de demanda final:
+Los multiplicadores de emisiones por producto demandado ($\mathbf{M}_e$, suma de columnas), calculados con la matriz nacional y en toneladas de CO2 equivalente por millón de soles de 2007 de demanda final:
 
 ```{r}
 #| label: tbl-multiplicadores
@@ -687,11 +550,11 @@ tabla_gt(mult_emisiones, digitos = 0)
 
 ### Cómo leer los resultados
 
-- **Emisiones territoriales.** Son las de la cuenta de emisiones: lo que ocurre dentro del territorio, sin importar quién consume los productos.
+- **Emisiones territoriales.** Son las de la cuenta de emisiones: lo que ocurre dentro del territorio, sin importar quién consume los productos. Incluyen las emisiones directas de los hogares.
 - **EEE.** Parte de las emisiones territoriales que se generan para producir lo que se exporta, incluyendo la producción nacional de sus insumos. En los tres años, las exportaciones explican alrededor de `r sprintf("%.0f", mean(100 * balance$EEE / balance$Territorial))` por ciento de las emisiones territoriales. Esto es coherente con una canasta exportadora concentrada en minería y manufactura.
 - **EEI.** Emisiones que se habrían generado en Perú si el país hubiera producido por sí mismo lo que importa para uso interno. Es una estimación con el supuesto de tecnología nacional.
-- **Huella de consumo.** Emisiones territoriales, menos EEE, más EEI. Con estos supuestos, la huella resulta entre `r sprintf("%.1f", min(abs(balance$Diferencia)))` y `r sprintf("%.1f", max(abs(balance$Diferencia)))` por ciento `r if (all(balance$Diferencia < 0)) "menor" else "distinta"` que las emisiones territoriales. Un saldo `r if (all(balance$Saldo < 0)) "negativo (EEI menor que EEE)" else "con signo variable"` indica que Perú aparece como exportador neto de emisiones incorporadas en el comercio, en el sentido de este modelo.
-- **Partes interna e importada.** La parte interna son emisiones que ocurren en Perú por la demanda de cada categoría. La importada son emisiones que, bajo DTA, ocurrirían si el país produjera lo que importa; en la realidad ocurren fuera de Perú.
+- **Huella de consumo.** Emisiones territoriales (con las directas de los hogares), menos EEE, más EEI. Con estos supuestos, la huella resulta entre `r sprintf("%.1f", min(abs(balance$Diferencia)))` y `r sprintf("%.1f", max(abs(balance$Diferencia)))` por ciento `r if (all(balance$Diferencia < 0)) "menor" else "distinta"` que las emisiones territoriales. Un saldo `r if (all(balance$Saldo < 0)) "negativo (EEI menor que EEE)" else "con signo variable"` indica que Perú aparece como exportador neto de emisiones incorporadas en el comercio, en el sentido de este modelo.
+- **Partes interna, importada y directa.** La parte interna son emisiones de las actividades que ocurren en Perú por la demanda de cada categoría. La importada son emisiones que, bajo DTA, ocurrirían si el país produjera lo que importa; en la realidad ocurren fuera de Perú. La directa son las emisiones que los propios hogares generan al consumir combustibles, y solo aparece en sus dos categorías de consumo.
 - **Entre años.** Como la estructura es fija, las diferencias entre 2019, 2020 y 2021 reflejan solo los cambios en las emisiones directas de cada sector, y no cambios en el comercio ni en la tecnología.
 
 ::: {.callout-warning}
@@ -700,13 +563,13 @@ tabla_gt(mult_emisiones, digitos = 0)
 - **Tecnología nacional para las importaciones.** Si los países de origen tienen intensidades distintas de las peruanas (por ejemplo, manufacturas importadas más intensivas en carbono), el EEI real sería distinto. No tenemos información para corregirlo con esta matriz.
 - **Proporcionalidad de las importaciones.** Suponemos la misma proporción importada en todos los usos de un producto. Una tabla de importaciones por usuario reemplazaría este supuesto.
 - **Importaciones de insumos importados.** Al valorar las importaciones, usamos la matriz nacional $\mathbf{L}^d$, que no incluye los insumos importados de esa producción hipotética.
-- **Emisiones de los hogares.** La cuenta de emisiones disponible solo tiene los ocho sectores productivos. La combustión directa de los hogares (transporte privado, cocina) no está en estos totales, y la huella queda subestimada en esa parte.
+- **Emisiones directas de los hogares.** Suman `r sprintf("%.1f", E_hogares[["2019"]] / 1e6)` millones de toneladas de CO2 equivalente en 2019 y entran completas en la huella. Su reparto entre consumo de autoconsumo y de mercado es un supuesto (proporcional a la demanda final), y no afecta el total. No se ajustan por importaciones: no pasan por la matriz.
 - **Estructura de 2007.** Aplica la advertencia de la introducción.
 :::
 
 # Exportación a Excel
 
-Para dejar registro, exportamos a un solo libro las matrices agregadas, los resultados de ambos ejercicios y las emisiones de entrada. Cada objeto va en su pestaña, con los nombres de filas en la primera columna. El nombre de cada pestaña empieza con `101_` o `8x8_` según el ejercicio.
+Para dejar registro, exportamos a un solo libro las matrices agregadas, los resultados y las emisiones de entrada. Cada objeto va en su pestaña, con los nombres de filas en la primera columna. El nombre de las pestañas empieza con `8x8_`, salvo la de importaciones de la matriz original de 101, que empieza con `101_`.
 
 ```{r}
 #| label: exportar
@@ -729,6 +592,7 @@ res_8x8 <- list(
   "8x8_L_nacional" = Ld,
   "8x8_importaciones_categoria" = FDEMimp,
   "8x8_emisiones_directas" = E,
+  "8x8_emisiones_hogares" = as.data.frame(E_hogares),
   "8x8_epsilon" = epsilon,
   "8x8_mult_emisiones" = mult_emisiones,
   "8x8_balance" = balance |> column_to_rownames("Año"),
@@ -751,7 +615,7 @@ por_anio <- unlist(
   recursive = FALSE
 )
 
-libro <- c(res_101, res_8x8, por_anio) |>
+libro <- c(list("101_importaciones" = importaciones_101), res_8x8, por_anio) |>
   lapply(as.data.frame)
 
 write.xlsx(

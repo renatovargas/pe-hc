@@ -45,6 +45,8 @@ website:
               href: materiales/documentos/contexto-huella-de-carbono-peru/index.qmd
             - text: "Cálculo huella carbono Perú"
               href: materiales/documentos/insumo-producto-huella-peru/index.qmd
+            - text: "Modelo insumo-producto Perú 101"
+              href: materiales/documentos/insumo-producto-peru-101/index.qmd
         - section: Presentaciones
           contents:
             - materiales/presentaciones/00-contexto-huella-de-carbono.qmd
